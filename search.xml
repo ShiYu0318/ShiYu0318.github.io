@@ -1201,12 +1201,12 @@ queue&lt;int&gt; q;q.emplace(1);q.emplace(2);q.emplace(3);while(!q.empty()) &#12
 常見應用
 圖論中的 BFS
 deque 雙端佇列
-為 double ended queue 的縮寫，一般的 queue 只能從尾端加入元素、從前端移除元素，而 deque 的前後都可以使用加入和移除的操作，基本上就是多了 emplace_front()、pop_front() 的 vector，雖然方便但由於常數較大，競技比賽中非必要不會去使用
+為 double ended queue 的縮寫，唸作 deck 而非 de-queue，一般的 queue 只能從尾端加入元素、從前端移除元素，而 deque 的前後都可以使用加入和移除的操作，基本上就是多了 emplace_front()、pop_front() 的 vector，雖然方便但由於常數較大，競技比賽中非必要不會去使用
 示意圖
 
 (圖片來源)
 可支援的操作方法
-vector 有的 deque 幾乎都有
+deque 與 vector 相比只是多了針對 front 的操作，少了針對記憶體的操作（因為 vector 記憶體連續，deque 則是分段儲存），不過 deeque 也支援隨機存取 dq[i]
 
 
 
