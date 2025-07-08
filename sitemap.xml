@@ -11,52 +11,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/post/STL/</loc>
-    
-    <lastmod>2025-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://4yu.dev/post/SPC-NCHU/</loc>
-    
-    <lastmod>2025-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/SPC-CSIE/</loc>
-    
-    <lastmod>2025-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/SPC-NTNU/</loc>
-    
-    <lastmod>2025-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/SPC-NTHU/</loc>
-    
-    <lastmod>2025-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/SPC-NSYSU/</loc>
     
     <lastmod>2025-07-08</lastmod>
     
@@ -75,6 +30,51 @@
   
   <url>
     <loc>https://4yu.dev/post/SPC-NCU/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/SPC-NSYSU/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/SPC-NTHU/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/SPC-NTNU/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/STL/</loc>
+    
+    <lastmod>2025-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/SPC-CSIE/</loc>
     
     <lastmod>2025-07-08</lastmod>
     
@@ -128,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/about/</loc>
+    <loc>https://4yu.dev/about/index.html</loc>
     
     <lastmod>2024-05-23</lastmod>
     
@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/music/</loc>
+    <loc>https://4yu.dev/music/index.html</loc>
     
     <lastmod>2024-04-25</lastmod>
     
@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/link/</loc>
+    <loc>https://4yu.dev/link/index.html</loc>
     
     <lastmod>2024-04-25</lastmod>
     
@@ -155,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/</loc>
+    <loc>https://4yu.dev/categories/index.html</loc>
     
     <lastmod>2024-04-25</lastmod>
     
@@ -164,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/</loc>
+    <loc>https://4yu.dev/tags/index.html</loc>
     
     <lastmod>2024-01-01</lastmod>
     
@@ -577,13 +577,6 @@
   
   <url>
     <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
-    <lastmod>2025-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
     <lastmod>2025-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
