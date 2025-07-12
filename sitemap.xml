@@ -182,20 +182,6 @@
 
   
   <url>
-    <loc>https://4yu.dev/tags/%E5%8D%97%E9%99%84%E8%B3%87%E7%A0%94%E7%A4%BE/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/NFIRC-1st/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://4yu.dev/tags/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -287,6 +273,20 @@
   </url>
   
   <url>
+    <loc>https://4yu.dev/tags/%E4%B8%AD%E8%88%88%E5%A4%A7%E5%AD%B8/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E6%88%90%E5%8A%9F%E5%A4%A7%E5%AD%B8/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/tags/%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -295,13 +295,6 @@
   
   <url>
     <loc>https://4yu.dev/tags/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E4%B8%AD%E8%88%88%E5%A4%A7%E5%AD%B8/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -322,14 +315,21 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/%E6%88%90%E5%8A%9F%E5%A4%A7%E5%AD%B8/</loc>
+    <loc>https://4yu.dev/tags/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%B8/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%B8/</loc>
+    <loc>https://4yu.dev/tags/%E5%8D%97%E9%99%84%E8%B3%87%E7%A0%94%E7%A4%BE/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/NFIRC-1st/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -555,13 +555,6 @@
 
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -569,14 +562,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -591,6 +577,20 @@
   
   <url>
     <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
