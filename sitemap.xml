@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://4yu.dev/post/Hello-World/</loc>
+    
+    <lastmod>2025-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/post/SPC-CSIE/</loc>
     
     <lastmod>2025-07-10</lastmod>
@@ -93,15 +102,6 @@
   
   <url>
     <loc>https://4yu.dev/post/SCIST-Winter-Camp-2025/</loc>
-    
-    <lastmod>2025-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/Hello-World/</loc>
     
     <lastmod>2025-07-06</lastmod>
     
@@ -569,7 +569,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -583,14 +583,14 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
+    <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
