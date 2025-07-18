@@ -341,9 +341,9 @@ Email：shiyu@scist.org
       <tags>
         <tag>資訊工程學系</tag>
         <tag>特殊選才</tag>
-        <tag>中興大學</tag>
         <tag>中央大學</tag>
         <tag>中山大學</tag>
+        <tag>中興大學</tag>
         <tag>臺灣師範大學</tag>
         <tag>清華大學</tag>
         <tag>成功大學</tag>
@@ -2129,7 +2129,7 @@ W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.
   </entry>
   <entry>
     <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
-    <url>/post/Winter-Camp-2024/</url>
+    <url>/post/SCIST-Camp-2024/</url>
     <content><![CDATA[寒訓詳細資訊 🔗
 
 引言 🔗
@@ -2598,23 +2598,6 @@ ping 的原理
       </tags>
   </entry>
   <entry>
-    <title>資工特選 - 清華大學</title>
-    <url>/post/SPC-NTHU/</url>
-    <content><![CDATA[待更新 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>清華大學</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>資工特選 - 中山大學</title>
     <url>/post/SPC-NSYSU/</url>
     <content><![CDATA[待更新 🔗
@@ -2629,6 +2612,23 @@ ping 的原理
         <tag>資訊工程學系</tag>
         <tag>特殊選才</tag>
         <tag>中山大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 清華大學</title>
+    <url>/post/SPC-NTHU/</url>
+    <content><![CDATA[待更新 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>清華大學</tag>
       </tags>
   </entry>
   <entry>
