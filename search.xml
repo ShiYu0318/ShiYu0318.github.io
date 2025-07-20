@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello, World.</title>
+    <url>/post/Hello-World/</url>
+    <content><![CDATA[歡迎來到士育的部落格！ 🔗
+網頁介紹 🔗
+此網頁使用了 Hexo 靜態網頁框架
+部署在 Github pages 上
+我使用的 Theme 主題是 Butterfly
+創建日期為 2022/12/01（國一）版本使用 4.5.1（已在 2025/07/06 升級為 5.4.1）
+網頁用途 🔗
+這裡是我的程式筆記網頁
+內容包括我所學到的 資料結構 演算法
+不會有程式語言基礎語法 因為網路上資源多且詳細
+筆記中的內容或許會有小錯誤或不完整 所以我會不斷的更新修改
+我也會不定期的發佈 程式解題 知識筆記 還有各種心得紀錄 …
+有興趣的人可以參閱其他文章或到上方其他頁面看看
+如果你對文章有任何想法或建議 歡迎在文章下方評論區登入 Github 帳號 留下你的看法
+或是可以直接使用右下角的 線上聊天室功能 傳訊息給我 我會盡快回覆你的訊息
+若你想開始學程式 請到上方 link 連結 的頁面 我有放許多資源可以提供你學習
+提供的資源涵蓋 各種程式語言的基礎語法 以及各種程式相關平台 工具…
+以及各個程式社群的 Discord 伺服器
+希望能對你有所幫助 ！
+本網站網址 🔗
+https://4yu.dev
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+  </entry>
+  <entry>
     <title>C++ 實作資料結構</title>
     <url>/post/Data-Structures/</url>
     <content><![CDATA[本篇文章撰寫中 請稍等內容完整後再閱讀… 🔗
@@ -160,349 +189,6 @@ pbds 🔗
       <tags>
         <tag>南附資研社</tag>
         <tag>NFIRC 1st</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello, World.</title>
-    <url>/post/Hello-World/</url>
-    <content><![CDATA[歡迎來到士育的部落格！ 🔗
-網頁介紹 🔗
-此網頁使用了 Hexo 靜態網頁框架
-部署在 Github pages 上
-我使用的 Theme 主題是 Butterfly
-創建日期為 2022/12/01（國一）版本使用 4.5.1（已在 2025/07/06 升級為 5.4.1）
-網頁用途 🔗
-這裡是我的程式筆記網頁
-內容包括我所學到的 資料結構 演算法
-不會有程式語言基礎語法 因為網路上資源多且詳細
-筆記中的內容或許會有小錯誤或不完整 所以我會不斷的更新修改
-我也會不定期的發佈 程式解題 知識筆記 還有各種心得紀錄 …
-有興趣的人可以參閱其他文章或到上方其他頁面看看
-如果你對文章有任何想法或建議 歡迎在文章下方評論區登入 Github 帳號 留下你的看法
-或是可以直接使用右下角的 線上聊天室功能 傳訊息給我 我會盡快回覆你的訊息
-若你想開始學程式 請到上方 link 連結 的頁面 我有放許多資源可以提供你學習
-提供的資源涵蓋 各種程式語言的基礎語法 以及各種程式相關平台 工具…
-以及各個程式社群的 Discord 伺服器
-希望能對你有所幫助 ！
-本網站網址 🔗
-https://4yu.dev
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-  </entry>
-  <entry>
-    <title>資訊學科能力競賽 參賽心得</title>
-    <url>/post/NHSPC/</url>
-    <content><![CDATA[競賽資訊 🔗
-
-名稱：112 學年度學科能力競賽 複賽 資訊科
-賽區：國教署負責區第四區（台南）
-時間：2023/11/2
-地點：台南女中
-比賽人數：50 人（資訊科）
-獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作
-當天詳細時程：
-
-
-前言 🔗
-這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽
-南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了
-南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的
-我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說
-此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討
-如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了
-對你來說可能是一篇廢文 沒什麼參考價值
-上午場 🔗
-報到抽籤後 發現只有我們學校沒有領隊…
-到了我們學校的座位 被排在最後一排
-我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈
-
-我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的
-可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃
-到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說
-來寫一下解題過程
-p1 🔗
-第 1 題明顯滿難的 我看到就先跳過了
-p2 🔗
-
-題意
-
-有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數
-
-Input
-
-21126
-
-Output
-
-413
-
-解題想法
-
-3 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code
-
-AC Code
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;=n; ++i)signed main(void)&#123;    ShiYu;    int t; cin &gt;&gt; t;    int n;    while(t--)    &#123;        cin &gt;&gt; n;        int ans = 0;        FOR(i, n / 50)        &#123;            FOR(j, (n - i*50) / 25)            &#123;                FOR(k, (n - i*50 - j*25) / 10)                &#123;                    ans += (n - i*50 - j*25 - k*10) / 5 + 1;                &#125;            &#125;        &#125;        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;    &#125;&#125;
-p3 疊蛋餅 🔗
-
-題意
-
-要疊 n 層圓形蛋餅 最底層的蛋餅半徑是 1每層的半徑都不能比下面整疊的最大半徑多出 1 以上求有幾種可能
-
-解題想法
-
-一開始就先寫出 1 2 3 4 層的可能性
-我用樹狀圖來畫出每層的可能性 然後試著尋找規律
-
-後來觀察出會有重複計算的地方
-
-但就算這樣我還是不知道該如何用程式去計算出所有可能
-因為有會重複計算到的數值 所以不能用暴力枚舉的方法 我猜應該是用動態規劃 DP 把算完的東西記下來 不過在賽中我沒有解出來
-後來跟新化高中的 Eason 與 Silv 討論
-他們也覺得這題很難讀懂題目意思
-p4 最大矩形面積 🔗
-
-題意
-
-給一張大小為 n x m 且由 0 與 1 所組成的二維陣列1 是有種樹, 0 是沒樹求沒種樹的最大面積
-
-Input
-
-6 7001010001000011010000110000100100010110101
-
-Output
-
-12
-顯然是找出中間這塊算出面積就好
-
-我在賽中不知道該如何用程式實作出來
-聽 Silv 說這是 CSES 的經典題 用二維前綴和就能解出來了
-但我學會的沒有很多而且練習的題目太少了 不知道能這樣做
-p5 🔗
-
-題意
-
-有人把一條方程式中的 + 與 * 寫反了所以給整數 a求有幾組整數 b , c 能滿足 a + (b * c) = a * (b + c)若有無限解 則輸出 -1
-
-解題想法
-一看就是個數學題
-我把式子移項後變成 b×c=a×(b+c−1)b \times c = a \times (b + c - 1)
-腦中馬上想到了算幾不等式 a+b2≥ab\frac{a+b}{2} \ge \sqrt{ab} 感覺解法會往這個方向走
-但因為題目說可能會有無限解 所以我在賽中想不到如何判斷是否有無限解的方法就沒解出來了
-
-p6 p7 🔗
-不在我能力範圍內 跳過
-p8 🔗
-
-題意
-
-給 n 個整數若選擇了第 i 個整數 則 i+1 與 i-1 （前後兩數）都不能選求最大總和
-
-解題想法
-我原本用 Greedy 來做 每次都選最大的數字
-後來發現如果第 i 個數字最大 我選了 i
-但前後兩數加起來比 i 大我卻不能選 這樣就不是最大總和了
-所以這題要用 DP 來做 聽說 CSES 也有這種題目
-我真的練太少題目了 連這種簡單經典題都寫不出來
-
-p9 🔗
-
-題意
-
-有 n 人要分組給 i = 0 ~ n-1ai 為 i 的組員求每組成員及組數
-
-Input
-
-62 4 3 5 1 0
-把輸入做成表格
-
-
-
-人的編號
-0
-1
-2
-3
-4
-5
-
-
-
-
-他的組員的編號
-2
-4
-3
-5
-1
-0
-
-
-
-
-Output
-
-0 2 3 51 42
-把輸出做成表格
-
-
-
-組別
-組員
-
-
-
-
-第一組
-0 2 3 5
-
-
-第二組
-1 4
-
-
-
-
-
-解題想法
-來自 SCIST 總召 Fishhh 的梗
-
-
-
-AC Code
-
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    int a[n]; FOR(i,n) cin &gt;&gt; a[i];    vector&lt;vector&lt;int&gt; &gt; v;    FOR(i,n)    &#123;        if(a[i] == -1) continue;        vector&lt;int&gt; t;        t.push_back(i);        int next = a[i], b = i;        while(a[next] != -1)        &#123;            t.push_back(next);            a[b] = -1;            b = next;            next = a[next];        &#125;        a[b] = -1;        v.push_back(t);       &#125;    FOR(i,v.size())    &#123;        FOR(j,v[i].size())        &#123;            cout &lt;&lt; v[i][j] &lt;&lt; &quot; &quot;;        &#125;        cout &lt;&lt; &quot;\n&quot;;    &#125;    cout &lt;&lt; v.size() &lt;&lt; &quot;\n&quot;;&#125;
-
-下午場 2 小時 2 / 6 🔗
-p1 🔗
-
-題意
-
-每天有 10 小時可以用給很多組活動的 起始時間 與 結束時間求如何安排才能在 10 小時中舉辦最多活動
-這題感覺很簡單不過一樣的我也沒有寫過類似的題目所以跳過
-後來聽 Silv 說只要過濾較多時間的活動
-然後依結束時間排序活動 再依開始時間挑選活動就可以了
-p2 🔗
-我把下午的比賽時間都砸在這題上了
-
-題意
-
-給 n 間糖果店每間不同的店花 1 塊錢可以買到不同的 a 顆糖果且每間店都會額外贈送 b 顆糖果有 q 筆操作分為兩類1. 把第 x 間店 移動到 第 y 個位置2. 詢問在 L 與 R 間店中 可以選擇「一間」買糖果 有 x 塊錢可以買 求糖果最大值
-
-Input
-
-52 24 51 33 61 732 2 3 31 2 42 2 3 3
-
-Output
-
-1715
-
-AC Code
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define vpii vector&lt;pair&lt;int,int&gt; &gt;signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vpii v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(a,b));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vpii vt;            pair&lt;int,int&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1;            for(int i=l-1; i&lt;r; ++i)            &#123;                int sum = v[i].first * x + v[i].second;                if(sum &gt; maxn) maxn = sum;            &#125;            cout &lt;&lt; maxn &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
-一開始以為第 1 種操作是交換兩間店的位置
-後來才知道是把第 x 間店抽掉後 插入到 第 y 個位置 其餘的順延補上
-但寫完還是錯 因為後來這題題目在賽中被主辦方改過題目意思
-害我原本照著原題目意思寫的程式碼都要改掉
-上面的版本是已經重新寫過而且在最後幾分鐘通過的
-原版意思是可以去「任何」糖果店買糖果 後來才改成只能去「一間」買
-這個題目意思改動浪費了我超級多時間修改程式碼＝＝
-原版程式碼多用了 bool 記錄每間糖果店有沒有去買過
-用了 vector&lt; pair&lt; pair&lt;int,int&gt;,bool &gt; &gt;
-（事後感覺用 tuple 或 struct 會比較好）
-也判斷了每塊硬幣要去哪間糖果店買才會得到最多糖果
-寫完比上面的程式碼還要多了整整 20 行
-原版 Code：
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define  signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(make_pair(a,b),true));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; vt;            pair&lt;pair&lt;int,int&gt;,bool&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1,now=-1,sum = 0;            while(x--)            &#123;                for(int i=l-1; i&lt;r; ++i)                &#123;                    if(v[i].second == true)                    &#123;                        if(v[i].first.first + v[i].first.second &gt; maxn)                        &#123;                            maxn = v[i].first.first + v[i].first.second;                            now = i;                        &#125;                    &#125;                    else if(v[i].second == false)                    &#123;                        if(v[i].first.first &gt; maxn)                        &#123;                            maxn = v[i].first.first;                            now = i;                        &#125;                    &#125;                &#125;                sum += maxn;                v[now].second = false;            &#125;            cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
-p3 ~ p5 🔗
-由於花太多時間在 p2 了 根本來不及想這 3 題要怎麼做
-p6 🔗
-
-題意
-這題題目超長 花了一整頁的文字在介紹 2 進制如何進位  根本素養題 所以我直接濃縮成兩句話
-
-給 a b 兩正整數求相乘後的 2 進制與 10 進制
-
-Input
-
-3126
-
-Output
-
-1100100110806
-
-解題想法
-
-先直接 a * b 求 10 進位後用字串的方法換成 2 進位這題 Eason 用位元左移右移來做 但我太笨了不會那種方法
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int a, b; cin &gt;&gt; a &gt;&gt; b;    int n = a * b, t = n;    string s = &quot;&quot;;    while(t != 0)    &#123;        if(t % 2) s = &quot;1&quot; + s;        else s = &quot;0&quot; + s;        t /= 2;    &#125;    cout &lt;&lt; s &lt;&lt; &quot;\n&quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;&#125;
-
-抱怨區 可跳過或忽視這裡詳細講一下主辦方這次競賽發生的一堆錯誤
-
-賽前測試沒有把系統用好 導致大家上傳測試題的程式碼時都發生 SE（系統錯誤）主辦卻說這不影響正式比賽 延誤了很久才開始
-正式開始之後 評測系統又掛掉了 大家都沒辦法登進去提交程式碼 於是主辦就開始做起超荒謬的事：人工評測 我當下是超級傻眼 都 2023 年了還在人工 Judge
-人工評測只是叫你執行程式然後輸入範例測資看有沒有跟範例輸出一樣 然後簡單看了一下程式碼就直接算你通過 我認為這喪失了公平性因為人工評測是直接用範例測資來看輸出是否正確 但正常比賽用的線上評測是由很多筆測試資料測試你的程式碼是否通過 如果用人工評測範例測資輸出正確 但程式碼錯誤 卻沒被檢查到呢？
-在系統正常後 我提交了剛剛人工評測通過的題目程式碼看看是否在評測平台也能通過 雖然成功通過 但主辦方過了一陣子才出來說：人工評測通過的人不用傳線上評測 又說上傳的話會影響原本人工評測時紀錄的時間 我都已經在平台正常的那刻上傳通過了之後才說不用傳＝＝ 而且重點是不傳怎麼知道程式碼通過或不通過？那如果有人人工評測正確但程式碼錯誤卻又不用上傳線上評測 是不是就多賺別人一題？
-主辦出題感覺真的很不用心 不知道有沒有認真審題 題目很多數字都沒給範圍 然後很多題都需要在賽中出來大聲講解補充題目意思 很多題都是在比賽時改了又改 還有重新拿一張題目給我們的 一堆題目連範例側資都是錯的 還叫我們整個打叉不要看 然後我都已經照著原版題目意思寫完程式碼了 才出來把題目意思改掉讓我重新修改程式碼
-
-
-
-心得 &amp; 檢討 🔗
-這次比賽總共 15 題 我只解出 4 題
-有很多都是出自 CSES 的簡單經典題
-而我卻因為練太少題目 都想不出解法
-這場比賽集結了很多電神 整個比賽會場都充滿著高壓電
-全場最強第一名的自學生趙翊佑（聽說是陳水扁的孫子）
-還有前幾名有進全國賽的郭育愷、葉智揚、陳秉宏、鄭柏軒 都南一中的
-還有因為 SCIST 而認識新化高中的 Eason 跟 Silv 他們都有得佳作
-我看到些人就會覺得我自己超級弱
-我本身實力與其他選手相比實在差太多了
-最後雖然跟 silv 一樣都是解出 4 題 但他有佳作我卻沒有
-我認為可能真的是被主辦方說的上傳線上評測的時間影響到成績
-或是他有解到第一題會多一分 或是我最後花的時間確實比較多
-心裡其實滿沮喪的 一直在想為什麼會這樣 也一直很想抱怨主辦方
-但又覺得我實力比不上別人 好像也沒什麼資格抱怨的
-總而言之 見識到有那麼多人都比我更厲害而且比我更努力
-我會多多練題 持續精進自己
-
-11/03 更新 我得佳作了？！ 🔗
-廢話不多說 直接附上得獎名單
-
-明明現場沒喊到我的名字
-今天公布的得獎名單裡佳作竟然有我？？？
-心中滿滿問號與懷疑
-不過後來猜測是因為主辦方重新整理過分數與解題時間
-調整了名次 讓我成功獲得佳作
-心情慢慢轉變為喜悅
-我把這次的成績視為對自己的一種肯定
-作為我之後的動力
-高二的一堆比賽 讓我心裡也不知道該怎麼平衡課業與競賽
-一直在擔心如果把時間花在比賽 卻沒有比出成績的話怎麼辦
-我的段考分數也因為社團與競賽 相比高一真的變差太多了
-身邊的同學也一直在問為什麼我成績變得不好
-但我真的無法解釋 只能做好我該做的事 做我想做的事
-希望我能漸漸學會如何分配我自己的時間
-我相信我能越來越好的
-特別感謝 🔗
-Yudong 每次比賽的搭檔 沒有你我也不會有佳作 感謝你常常陪我打線上程式競賽到半夜 每天討論程式題目怎麼解 讓我們一起進步 最後也謝謝賽前給我加油打氣的老師與同學朋友們
-延伸閱讀 🔗
-競賽心得 @Yudong
-競賽心得 @tw20000807
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>心得</category>
-        <category>競賽</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>資訊競賽</tag>
-        <tag>競程</tag>
-        <tag>題解</tag>
       </tags>
   </entry>
   <entry>
@@ -1278,6 +964,337 @@ Email：shiyu@scist.org
       </tags>
   </entry>
   <entry>
+    <title>資訊學科能力競賽 參賽心得</title>
+    <url>/post/NHSPC/</url>
+    <content><![CDATA[競賽資訊 🔗
+
+名稱：112 學年度學科能力競賽 複賽 資訊科
+賽區：國教署負責區第四區（台南）
+時間：2023/11/2
+地點：台南女中
+比賽人數：50 人（資訊科）
+獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作
+當天詳細時程：
+
+
+前言 🔗
+這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽
+南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了
+南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的
+我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說
+此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討
+如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了
+對你來說可能是一篇廢文 沒什麼參考價值
+上午場 🔗
+報到抽籤後 發現只有我們學校沒有領隊…
+到了我們學校的座位 被排在最後一排
+我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈
+
+我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的
+可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃
+到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說
+來寫一下解題過程
+p1 🔗
+第 1 題明顯滿難的 我看到就先跳過了
+p2 🔗
+
+題意
+
+有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數
+
+Input
+
+21126
+
+Output
+
+413
+
+解題想法
+
+3 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code
+
+AC Code
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;=n; ++i)signed main(void)&#123;    ShiYu;    int t; cin &gt;&gt; t;    int n;    while(t--)    &#123;        cin &gt;&gt; n;        int ans = 0;        FOR(i, n / 50)        &#123;            FOR(j, (n - i*50) / 25)            &#123;                FOR(k, (n - i*50 - j*25) / 10)                &#123;                    ans += (n - i*50 - j*25 - k*10) / 5 + 1;                &#125;            &#125;        &#125;        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;    &#125;&#125;
+p3 疊蛋餅 🔗
+
+題意
+
+要疊 n 層圓形蛋餅 最底層的蛋餅半徑是 1每層的半徑都不能比下面整疊的最大半徑多出 1 以上求有幾種可能
+
+解題想法
+
+一開始就先寫出 1 2 3 4 層的可能性
+我用樹狀圖來畫出每層的可能性 然後試著尋找規律
+
+後來觀察出會有重複計算的地方
+
+但就算這樣我還是不知道該如何用程式去計算出所有可能
+因為有會重複計算到的數值 所以不能用暴力枚舉的方法 我猜應該是用動態規劃 DP 把算完的東西記下來 不過在賽中我沒有解出來
+後來跟新化高中的 Eason 與 Silv 討論
+他們也覺得這題很難讀懂題目意思
+p4 最大矩形面積 🔗
+
+題意
+
+給一張大小為 n x m 且由 0 與 1 所組成的二維陣列1 是有種樹, 0 是沒樹求沒種樹的最大面積
+
+Input
+
+6 7001010001000011010000110000100100010110101
+
+Output
+
+12
+顯然是找出中間這塊算出面積就好
+
+我在賽中不知道該如何用程式實作出來
+聽 Silv 說這是 CSES 的經典題 用二維前綴和就能解出來了
+但我學會的沒有很多而且練習的題目太少了 不知道能這樣做
+p5 🔗
+
+題意
+
+有人把一條方程式中的 + 與 * 寫反了所以給整數 a求有幾組整數 b , c 能滿足 a + (b * c) = a * (b + c)若有無限解 則輸出 -1
+
+解題想法
+一看就是個數學題
+我把式子移項後變成 b×c=a×(b+c−1)b \times c = a \times (b + c - 1)
+腦中馬上想到了算幾不等式 a+b2≥ab\frac{a+b}{2} \ge \sqrt{ab} 感覺解法會往這個方向走
+但因為題目說可能會有無限解 所以我在賽中想不到如何判斷是否有無限解的方法就沒解出來了
+
+p6 p7 🔗
+不在我能力範圍內 跳過
+p8 🔗
+
+題意
+
+給 n 個整數若選擇了第 i 個整數 則 i+1 與 i-1 （前後兩數）都不能選求最大總和
+
+解題想法
+我原本用 Greedy 來做 每次都選最大的數字
+後來發現如果第 i 個數字最大 我選了 i
+但前後兩數加起來比 i 大我卻不能選 這樣就不是最大總和了
+所以這題要用 DP 來做 聽說 CSES 也有這種題目
+我真的練太少題目了 連這種簡單經典題都寫不出來
+
+p9 🔗
+
+題意
+
+有 n 人要分組給 i = 0 ~ n-1ai 為 i 的組員求每組成員及組數
+
+Input
+
+62 4 3 5 1 0
+把輸入做成表格
+
+
+
+人的編號
+0
+1
+2
+3
+4
+5
+
+
+
+
+他的組員的編號
+2
+4
+3
+5
+1
+0
+
+
+
+
+Output
+
+0 2 3 51 42
+把輸出做成表格
+
+
+
+組別
+組員
+
+
+
+
+第一組
+0 2 3 5
+
+
+第二組
+1 4
+
+
+
+
+
+解題想法
+來自 SCIST 總召 Fishhh 的梗
+
+
+
+AC Code
+
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    int a[n]; FOR(i,n) cin &gt;&gt; a[i];    vector&lt;vector&lt;int&gt; &gt; v;    FOR(i,n)    &#123;        if(a[i] == -1) continue;        vector&lt;int&gt; t;        t.push_back(i);        int next = a[i], b = i;        while(a[next] != -1)        &#123;            t.push_back(next);            a[b] = -1;            b = next;            next = a[next];        &#125;        a[b] = -1;        v.push_back(t);       &#125;    FOR(i,v.size())    &#123;        FOR(j,v[i].size())        &#123;            cout &lt;&lt; v[i][j] &lt;&lt; &quot; &quot;;        &#125;        cout &lt;&lt; &quot;\n&quot;;    &#125;    cout &lt;&lt; v.size() &lt;&lt; &quot;\n&quot;;&#125;
+
+下午場 2 小時 2 / 6 🔗
+p1 🔗
+
+題意
+
+每天有 10 小時可以用給很多組活動的 起始時間 與 結束時間求如何安排才能在 10 小時中舉辦最多活動
+這題感覺很簡單不過一樣的我也沒有寫過類似的題目所以跳過
+後來聽 Silv 說只要過濾較多時間的活動
+然後依結束時間排序活動 再依開始時間挑選活動就可以了
+p2 🔗
+我把下午的比賽時間都砸在這題上了
+
+題意
+
+給 n 間糖果店每間不同的店花 1 塊錢可以買到不同的 a 顆糖果且每間店都會額外贈送 b 顆糖果有 q 筆操作分為兩類1. 把第 x 間店 移動到 第 y 個位置2. 詢問在 L 與 R 間店中 可以選擇「一間」買糖果 有 x 塊錢可以買 求糖果最大值
+
+Input
+
+52 24 51 33 61 732 2 3 31 2 42 2 3 3
+
+Output
+
+1715
+
+AC Code
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define vpii vector&lt;pair&lt;int,int&gt; &gt;signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vpii v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(a,b));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vpii vt;            pair&lt;int,int&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1;            for(int i=l-1; i&lt;r; ++i)            &#123;                int sum = v[i].first * x + v[i].second;                if(sum &gt; maxn) maxn = sum;            &#125;            cout &lt;&lt; maxn &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
+一開始以為第 1 種操作是交換兩間店的位置
+後來才知道是把第 x 間店抽掉後 插入到 第 y 個位置 其餘的順延補上
+但寫完還是錯 因為後來這題題目在賽中被主辦方改過題目意思
+害我原本照著原題目意思寫的程式碼都要改掉
+上面的版本是已經重新寫過而且在最後幾分鐘通過的
+原版意思是可以去「任何」糖果店買糖果 後來才改成只能去「一間」買
+這個題目意思改動浪費了我超級多時間修改程式碼＝＝
+原版程式碼多用了 bool 記錄每間糖果店有沒有去買過
+用了 vector&lt; pair&lt; pair&lt;int,int&gt;,bool &gt; &gt;
+（事後感覺用 tuple 或 struct 會比較好）
+也判斷了每塊硬幣要去哪間糖果店買才會得到最多糖果
+寫完比上面的程式碼還要多了整整 20 行
+原版 Code：
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define  signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(make_pair(a,b),true));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; vt;            pair&lt;pair&lt;int,int&gt;,bool&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1,now=-1,sum = 0;            while(x--)            &#123;                for(int i=l-1; i&lt;r; ++i)                &#123;                    if(v[i].second == true)                    &#123;                        if(v[i].first.first + v[i].first.second &gt; maxn)                        &#123;                            maxn = v[i].first.first + v[i].first.second;                            now = i;                        &#125;                    &#125;                    else if(v[i].second == false)                    &#123;                        if(v[i].first.first &gt; maxn)                        &#123;                            maxn = v[i].first.first;                            now = i;                        &#125;                    &#125;                &#125;                sum += maxn;                v[now].second = false;            &#125;            cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
+p3 ~ p5 🔗
+由於花太多時間在 p2 了 根本來不及想這 3 題要怎麼做
+p6 🔗
+
+題意
+這題題目超長 花了一整頁的文字在介紹 2 進制如何進位  根本素養題 所以我直接濃縮成兩句話
+
+給 a b 兩正整數求相乘後的 2 進制與 10 進制
+
+Input
+
+3126
+
+Output
+
+1100100110806
+
+解題想法
+
+先直接 a * b 求 10 進位後用字串的方法換成 2 進位這題 Eason 用位元左移右移來做 但我太笨了不會那種方法
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int a, b; cin &gt;&gt; a &gt;&gt; b;    int n = a * b, t = n;    string s = &quot;&quot;;    while(t != 0)    &#123;        if(t % 2) s = &quot;1&quot; + s;        else s = &quot;0&quot; + s;        t /= 2;    &#125;    cout &lt;&lt; s &lt;&lt; &quot;\n&quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;&#125;
+
+抱怨區 可跳過或忽視這裡詳細講一下主辦方這次競賽發生的一堆錯誤
+
+賽前測試沒有把系統用好 導致大家上傳測試題的程式碼時都發生 SE（系統錯誤）主辦卻說這不影響正式比賽 延誤了很久才開始
+正式開始之後 評測系統又掛掉了 大家都沒辦法登進去提交程式碼 於是主辦就開始做起超荒謬的事：人工評測 我當下是超級傻眼 都 2023 年了還在人工 Judge
+人工評測只是叫你執行程式然後輸入範例測資看有沒有跟範例輸出一樣 然後簡單看了一下程式碼就直接算你通過 我認為這喪失了公平性因為人工評測是直接用範例測資來看輸出是否正確 但正常比賽用的線上評測是由很多筆測試資料測試你的程式碼是否通過 如果用人工評測範例測資輸出正確 但程式碼錯誤 卻沒被檢查到呢？
+在系統正常後 我提交了剛剛人工評測通過的題目程式碼看看是否在評測平台也能通過 雖然成功通過 但主辦方過了一陣子才出來說：人工評測通過的人不用傳線上評測 又說上傳的話會影響原本人工評測時紀錄的時間 我都已經在平台正常的那刻上傳通過了之後才說不用傳＝＝ 而且重點是不傳怎麼知道程式碼通過或不通過？那如果有人人工評測正確但程式碼錯誤卻又不用上傳線上評測 是不是就多賺別人一題？
+主辦出題感覺真的很不用心 不知道有沒有認真審題 題目很多數字都沒給範圍 然後很多題都需要在賽中出來大聲講解補充題目意思 很多題都是在比賽時改了又改 還有重新拿一張題目給我們的 一堆題目連範例側資都是錯的 還叫我們整個打叉不要看 然後我都已經照著原版題目意思寫完程式碼了 才出來把題目意思改掉讓我重新修改程式碼
+
+
+
+心得 &amp; 檢討 🔗
+這次比賽總共 15 題 我只解出 4 題
+有很多都是出自 CSES 的簡單經典題
+而我卻因為練太少題目 都想不出解法
+這場比賽集結了很多電神 整個比賽會場都充滿著高壓電
+全場最強第一名的自學生趙翊佑（聽說是陳水扁的孫子）
+還有前幾名有進全國賽的郭育愷、葉智揚、陳秉宏、鄭柏軒 都南一中的
+還有因為 SCIST 而認識新化高中的 Eason 跟 Silv 他們都有得佳作
+我看到些人就會覺得我自己超級弱
+我本身實力與其他選手相比實在差太多了
+最後雖然跟 silv 一樣都是解出 4 題 但他有佳作我卻沒有
+我認為可能真的是被主辦方說的上傳線上評測的時間影響到成績
+或是他有解到第一題會多一分 或是我最後花的時間確實比較多
+心裡其實滿沮喪的 一直在想為什麼會這樣 也一直很想抱怨主辦方
+但又覺得我實力比不上別人 好像也沒什麼資格抱怨的
+總而言之 見識到有那麼多人都比我更厲害而且比我更努力
+我會多多練題 持續精進自己
+
+11/03 更新 我得佳作了？！ 🔗
+廢話不多說 直接附上得獎名單
+
+明明現場沒喊到我的名字
+今天公布的得獎名單裡佳作竟然有我？？？
+心中滿滿問號與懷疑
+不過後來猜測是因為主辦方重新整理過分數與解題時間
+調整了名次 讓我成功獲得佳作
+心情慢慢轉變為喜悅
+我把這次的成績視為對自己的一種肯定
+作為我之後的動力
+高二的一堆比賽 讓我心裡也不知道該怎麼平衡課業與競賽
+一直在擔心如果把時間花在比賽 卻沒有比出成績的話怎麼辦
+我的段考分數也因為社團與競賽 相比高一真的變差太多了
+身邊的同學也一直在問為什麼我成績變得不好
+但我真的無法解釋 只能做好我該做的事 做我想做的事
+希望我能漸漸學會如何分配我自己的時間
+我相信我能越來越好的
+特別感謝 🔗
+Yudong 每次比賽的搭檔 沒有你我也不會有佳作 感謝你常常陪我打線上程式競賽到半夜 每天討論程式題目怎麼解 讓我們一起進步 最後也謝謝賽前給我加油打氣的老師與同學朋友們
+延伸閱讀 🔗
+競賽心得 @Yudong
+競賽心得 @tw20000807
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>競賽</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資訊競賽</tag>
+        <tag>競程</tag>
+        <tag>題解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 成功大學</title>
+    <url>/post/SPC-NCKU/</url>
+    <content><![CDATA[待更新 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>成功大學</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>資工特選 - 中央大學</title>
     <url>/post/SPC-NCU/</url>
     <content><![CDATA[人數 🔗
@@ -1356,40 +1373,6 @@ Email：shiyu@scist.org
       </tags>
   </entry>
   <entry>
-    <title>資工特選 - 中山大學</title>
-    <url>/post/SPC-NSYSU/</url>
-    <content><![CDATA[待更新 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>中山大學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>資工特選 - 成功大學</title>
-    <url>/post/SPC-NCKU/</url>
-    <content><![CDATA[待更新 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>成功大學</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>資工特選 - 清華大學</title>
     <url>/post/SPC-NTHU/</url>
     <content><![CDATA[待更新 🔗
@@ -1404,6 +1387,23 @@ Email：shiyu@scist.org
         <tag>資訊工程學系</tag>
         <tag>特殊選才</tag>
         <tag>清華大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 中山大學</title>
+    <url>/post/SPC-NSYSU/</url>
+    <content><![CDATA[待更新 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中山大學</tag>
       </tags>
   </entry>
   <entry>
@@ -1771,111 +1771,6 @@ Blogs
 ]]></content>
       <tags>
         <tag>網頁導覽 Site map</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
-    <url>/post/SCIST-Camp-2024/</url>
-    <content><![CDATA[寒訓詳細資訊 🔗
-
-引言 🔗
-在 2023/11/25 這次的寒訓總召 茶碗蒸 私訊我問說要不要一起辦寒訓，但其實我們南附資研在 2023/11/13 幹部線上開會時就有討論到說寒假要辦營隊，本來沒想說要辦那麼大規模的寒訓，那時的規劃主要是開放給校內的所有學生和老師，大概會舉辦講座提供給校內對資訊領域有興趣的人，且主題訂為資訊領域的多元課程。
-後來思考過後決定接下本次寒訓副召，一開始的召群有南女的總召 茶碗蒸、一中的副召 KCC 還有我，加上 Fishhh、Eason 和 Curious 這三位 SCIST S4 的總召們協助，還有小白的加入也讓我們日後籌備更順利。
-
-籌備階段 🔗
-我們是先開了線上會議，確認好活動目的與受眾，排好 Deadline 後才開始籌備，一開始是要先招募工作人員，因為有茶碗蒸這個 SCIST 文書在，所以各種表單很快就做好了，而且他也有之前辦茶會迎新的經驗，所以初期還挺順利的，也在一開始就把各校的邀請訊息發出去了，最後是找到了 9 間學校聯合主辦，而 SCIST 則是掛協辦，提供我們講師助教等課程上的資源，我們也開始著手撰寫計劃書、排時間表、預估經費、詢問場地租借…等。在計劃書撰寫上感謝小白幫了很大的忙，而其他的事情也很幸運有上一屆寒訓的 PJ、Koying…等人的努力，有留下文檔提供我們很多資訊可作參考，讓我們在初期不容易迷失方向，對我們幫助很大。
-在短短的一週內，就收到了個主辦校報名的工作人員 35 人左右，其中我從南附資研中就拉了 10 幾個人來當行政，加上 SCIST 的講師及助教，最後行政組達到了 50 人左右。
-
-我們接著開放學員報名，一開始報名狀況其實不是很好，我們很怕無法收到預估的學員人數，所以加強了各校的宣傳，我也以擔任小編的經驗到各大社團和營隊網站上刊登廣告，後來發現報名期間只有第一週和最後一週報名人數才會增加的現象…
-在這要感謝成功大學資工系的 Colten 幫忙處理成大場地以及接線讓成大資工系與本次寒訓合作，讓推廣曝光提升了很多，也提供了我們成大超級棒的階梯教室和電腦教室場地給寒訓使用，也要特別感謝副召 KCC 不斷地與南一中接洽，才能有超大的群英堂提供我們舉辦晚會活動。
-
-過了學員報名期限，很開心的我們收到了超過 100 多位學生的報名，接下來就是繁瑣篩選學員環節，繁瑣是因為要閱讀大量的試算表內容，根據報名者的意願、動機、對資訊領域的了解及熱忱來篩選出 80 位實體學員參與為期 3 天的寒訓，然後要開始寄錄取和未錄取通知信，也開始開放學員繳費，過程中遇到了一些困難與挑戰。
-
-挑戰與學習 🔗
-在做行政的過程中，會不小心放錯連結之類的，當下其實滿慌的，很難及時補救，所以很感謝有行政組的其他人幫忙處理，我也在這次的籌備過程中學到了很多應對問題的方法，讓我了解到做事須謹慎小心且要再三確認，也在當行政的過程中，學習到如何回信、如何應對突發狀況等。
-團隊分工合作 🔗
-在籌備期間我們團隊訂好 Deadline，由召群這分派給每個職位工作，行政組招收了活動、隊輔、總務、場務、美宣和醫護，將每個職位開討論區讓各組員交流更便利，且將資訊公開透明，也將各種連結彙整在一起，讓行政組同步且避免落差，很感謝各組組長非常積極的參與和組員的配合，讓我體會到團隊分工合作的重要性。
-
-活動組 🔗
-這次寒訓的所有遊戲內容和晚會皆由活動組規劃，我覺得他們非常辛苦，比我們召群還要肝，他們從上任就開始想活動、出題、討論流程，常常看到他們在開會，我大部分都會在，感受到他們的忙碌，要絞盡腦汁的思考有什麼團康遊戲可以玩，思考如何讓學員們破冰，讓彼此在短時間內互相熟悉了解，這裡要特別感謝 Yudong、OsGa 和 Joyce 三位超強的活動，前兩位甚至是三天裡最辛苦的主持人，而活動組長 Yudong 和隊輔組長 Joyce 的規劃和執行能力也讓我相當佩服，這三天有這麼精彩的活動真的要歸功於他們
-
-    [{"url":"https://hackmd.io/_uploads/HJxGBXroT.png","alt":"活動組開會","title":""},{"url":"https://hackmd.io/_uploads/rJa7UaQoT.png","alt":"活動組規劃","title":""},{"url":"https://hackmd.io/_uploads/Bkf8pASia.png","alt":"題庫","title":""},{"url":"https://hackmd.io/_uploads/rkl48J8sT.png","alt":"大地遊戲關主分配","title":""}]
-  
-隊輔組 🔗
-隊輔組是人數最多的一組，因為我們總共招收了 85 位實體學員，所以收了 18 位隊輔，負責帶領小隊完成這三天的所有活動，還要做小隊牌、點名、帶跳小隊舞(這點子不是我想的)…等繁雜的工作，是需要有責任感且能了解活動流程的人擔任
-
-    [{"url":"https://hackmd.io/_uploads/SJbTwaQi6.png","alt":"隊輔組開會","title":""},{"url":"https://hackmd.io/_uploads/SkcTL1Usa.png","alt":"小隊舞音樂","title":""},{"url":"https://hackmd.io/_uploads/H1msjkIsT.png","alt":"隊輔組點名","title":""}]
-  
-總務組 🔗
-總務組只有兩個人，負責事前的訂餐與金錢的管控，是非常重要的角色
-
-    [{"url":"https://hackmd.io/_uploads/HkGd6y8iT.png","alt":"餐點店家","title":""},{"url":"https://hackmd.io/_uploads/r1adxgUi6.png","alt":"金錢規劃與收支紀錄","title":""}]
-  
-場務組 🔗
-場務組負責拍照、餐點搬運、場復…等工作，要在大家休息的時候努力工作，非常辛苦，感謝場務這三天的付出。
-美宣組 🔗
-這次的美宣組只有 JT Lin 一個人，他非常辛苦要製作所有工作人員和實體學員的名牌、獎狀、參與證明…等，需要大量的時間製作，還要兼任隊輔，是一個效率高且負責的人，只不過這三天滿諧咖的
-
-    [{"url":"https://hackmd.io/_uploads/ByjPvkIi6.png","alt":"宣傳圖","title":""},{"url":"https://hackmd.io/_uploads/rJWnPyUs6.png","alt":"美宣工作","title":""},{"url":"https://hackmd.io/_uploads/Hyuu_yLjp.jpg","alt":"名牌","title":""}]
-  
-課程內容 🔗
-這次因為 SCIST 協辦，所以有了講師以及助教，感謝講師們在寒訓前辛苦的準備課程講義，每位都帶給學員很大的幫助，以下是我整理的課程資源彙整，大家可以善加利用
-課程資源彙整 🔗
-
-    [{"url":"https://hackmd.io/_uploads/HJGrUmAha.jpg","alt":"20240206_101644","title":""},{"url":"https://hackmd.io/_uploads/HkRNI7Rha.jpg","alt":"20240206_101837","title":""},{"url":"https://hackmd.io/_uploads/BJKIIX02p.jpg","alt":"DSC_3378","title":""},{"url":"https://hackmd.io/_uploads/HyY8IX02p.jpg","alt":"DSC_3383","title":""},{"url":"https://hackmd.io/_uploads/BJKU8mCnp.jpg","alt":"DSC_3385","title":""},{"url":"https://hackmd.io/_uploads/HkML8QC36.jpg","alt":"DSC_3396","title":""},{"url":"https://hackmd.io/_uploads/BkdL8mC3p.jpg","alt":"DSC_3444","title":""},{"url":"https://hackmd.io/_uploads/S1tII70hT.jpg","alt":"DSC_3452","title":""},{"url":"https://hackmd.io/_uploads/rkHULmC2a.jpg","alt":"DSC_3456","title":""},{"url":"https://hackmd.io/_uploads/H1L8UQ0na.jpg","alt":"DSC_3458","title":""},{"url":"https://hackmd.io/_uploads/B1wULQR2T.jpg","alt":"DSC_3460","title":""},{"url":"https://hackmd.io/_uploads/S1X88QRhT.jpg","alt":"DSC_3485","title":""},{"url":"https://hackmd.io/_uploads/HyuILQ036.jpg","alt":"DSC_3503","title":""},{"url":"https://hackmd.io/_uploads/HkYUL703T.jpg","alt":"DSC_3505","title":""},{"url":"https://hackmd.io/_uploads/SkwUU7R36.jpg","alt":"DSC_3514","title":""},{"url":"https://hackmd.io/_uploads/rkeUI7Rha.jpg","alt":"IMG_7065","title":""},{"url":"https://hackmd.io/_uploads/SJiH8Q0h6.jpg","alt":"IMG_7081","title":""},{"url":"https://hackmd.io/_uploads/SJw4UQ03T.jpg","alt":"IMG_9032","title":""},{"url":"https://hackmd.io/_uploads/r1UVUm026.jpg","alt":"IMG_9036","title":""},{"url":"https://hackmd.io/_uploads/rJLNU7Rh6.jpg","alt":"IMG_9086","title":""}]
-  
-活動內容 🔗
-先放照片 下面剩下的文字內容等我有空再補 …
-開幕與破冰 🔗
-
-    [{"url":"https://hackmd.io/_uploads/HkhetmAnT.jpg","alt":"20240205_085547","title":""},{"url":"https://hackmd.io/_uploads/ry4bFQ03a.jpg","alt":"20240205_085620","title":""},{"url":"https://hackmd.io/_uploads/Hk21Y7Ahp.jpg","alt":"20240205_093011","title":""},{"url":"https://hackmd.io/_uploads/H1HlFXAh6.jpg","alt":"20240205_093051","title":""},{"url":"https://hackmd.io/_uploads/BkagYX02p.jpg","alt":"20240205_093139","title":""},{"url":"https://hackmd.io/_uploads/ry1-t7Anp.jpg","alt":"20240205_093648","title":""},{"url":"https://hackmd.io/_uploads/S1JbFQC2p.jpg","alt":"20240205_093708","title":""},{"url":"https://hackmd.io/_uploads/rkigK7A2p.jpg","alt":"20240205_093714","title":""},{"url":"https://hackmd.io/_uploads/ByHxFXR3a.jpg","alt":"20240205_093746","title":""},{"url":"https://hackmd.io/_uploads/S16ltX0hT.jpg","alt":"20240205_093822","title":""},{"url":"https://hackmd.io/_uploads/SyHlFQAha.jpg","alt":"20240205_093916","title":""},{"url":"https://hackmd.io/_uploads/BJlixKQCnT.jpg","alt":"20240205_093947","title":""},{"url":"https://hackmd.io/_uploads/HJKeFXC2p.jpg","alt":"20240205_094010","title":""},{"url":"https://hackmd.io/_uploads/rJMetmChT.jpg","alt":"20240205_094025","title":""},{"url":"https://hackmd.io/_uploads/rJ_xKmAnp.jpg","alt":"20240205_094042","title":""},{"url":"https://hackmd.io/_uploads/SyDso7A3T.jpg","alt":"DSC_3550","title":""},{"url":"https://hackmd.io/_uploads/rkdooXA3a.jpg","alt":"DSC_3372","title":""},{"url":"https://hackmd.io/_uploads/SkDiiXR3p.jpg","alt":"DSC_3263","title":""},{"url":"https://hackmd.io/_uploads/HkOssmR2a.jpg","alt":"20240205_094324","title":""},{"url":"https://hackmd.io/_uploads/rkujoQ0np.jpg","alt":"20240205_094148","title":""},{"url":"https://hackmd.io/_uploads/ryuojXR2T.jpg","alt":"20240205_094125","title":""},{"url":"https://hackmd.io/_uploads/Bkusjm0hp.jpg","alt":"20240205_090344","title":""},{"url":"https://hackmd.io/_uploads/S1lWYXA3a.jpg","alt":"20240205_094358","title":""},{"url":"https://hackmd.io/_uploads/Hy7WF70h6.jpg","alt":"20240205_094504","title":""},{"url":"https://hackmd.io/_uploads/BJJxYQC26.jpg","alt":"20240205_094856","title":""},{"url":"https://hackmd.io/_uploads/ByPltXA3T.jpg","alt":"20240205_095313","title":""},{"url":"https://hackmd.io/_uploads/Bk5gtmRhT.jpg","alt":"20240205_095827","title":""},{"url":"https://hackmd.io/_uploads/BJylKQ03p.jpg","alt":"20240205_100114","title":""},{"url":"https://hackmd.io/_uploads/HyK1FQR2a.jpg","alt":"20240205_100417","title":""},{"url":"https://hackmd.io/_uploads/S1mgYQC3p.jpg","alt":"20240205_101227","title":""}]
-  
-贊助商分享 🔗
-
-    [{"url":"https://hackmd.io/_uploads/H1jw37Cnp.jpg","alt":"IMG_7336","title":""},{"url":"https://hackmd.io/_uploads/r1hvh7C2a.jpg","alt":"DSC_3652","title":""},{"url":"https://hackmd.io/_uploads/SJnv3QRnp.jpg","alt":"DSC_3609","title":""},{"url":"https://hackmd.io/_uploads/S13P2QC3a.jpg","alt":"DSC_3602","title":""},{"url":"https://hackmd.io/_uploads/rJ2P27Rha.jpg","alt":"DSC_3571","title":""},{"url":"https://hackmd.io/_uploads/B12v3XRna.jpg","alt":"20240206_132112","title":""}]
-  
-遊戲活動 🔗
-
-    [{"url":"https://hackmd.io/_uploads/SJ98cmy6T.jpg","alt":"20240205_195634","title":""},{"url":"https://hackmd.io/_uploads/SyGu9XyTp.jpg","alt":"20240206_194936","title":""},{"url":"https://hackmd.io/_uploads/HJGucQy6p.jpg","alt":"20240206_195113","title":""},{"url":"https://hackmd.io/_uploads/HyfO5m166.jpg","alt":"20240206_195918","title":""},{"url":"https://hackmd.io/_uploads/HkGu5mJpp.jpg","alt":"20240206_200137","title":""},{"url":"https://hackmd.io/_uploads/rkf_cQJT6.jpg","alt":"20240206_200804","title":""},{"url":"https://hackmd.io/_uploads/r1fdcmy66.jpg","alt":"20240206_200805","title":""},{"url":"https://hackmd.io/_uploads/HJhK5XyaT.jpg","alt":"DSC_3475","title":""},{"url":"https://hackmd.io/_uploads/S1e2Yq7JTa.jpg","alt":"DSC_3480","title":""},{"url":"https://hackmd.io/_uploads/ryxhF5XJ6T.jpg","alt":"DSC_3653","title":""},{"url":"https://hackmd.io/_uploads/SJnY5mypT.jpg","alt":"DSC_3854","title":""},{"url":"https://hackmd.io/_uploads/r1hY9mJpp.jpg","alt":"IMG_7110","title":""},{"url":"https://hackmd.io/_uploads/S16Yq7k6T.jpg","alt":"IMG_7114","title":""},{"url":"https://hackmd.io/_uploads/HkhtcmypT.jpg","alt":"IMG_7117","title":""},{"url":"https://hackmd.io/_uploads/S1hK9Q1pT.jpg","alt":"IMG_7120","title":""},{"url":"https://hackmd.io/_uploads/HynFqQyTp.jpg","alt":"IMG_7122","title":""},{"url":"https://hackmd.io/_uploads/rknK5Q1pp.jpg","alt":"IMG_7125","title":""},{"url":"https://hackmd.io/_uploads/HJ3Ycm1a6.jpg","alt":"IMG_7127","title":""},{"url":"https://hackmd.io/_uploads/r1htcQ1p6.jpg","alt":"IMG_7133","title":""},{"url":"https://hackmd.io/_uploads/SJnYc716p.jpg","alt":"IMG_7136","title":""},{"url":"https://hackmd.io/_uploads/ry3F9XyTp.jpg","alt":"IMG_7139","title":""},{"url":"https://hackmd.io/_uploads/rJg2Yq7k6T.jpg","alt":"IMG_7141","title":""},{"url":"https://hackmd.io/_uploads/ryght57ypp.jpg","alt":"IMG_7143","title":""},{"url":"https://hackmd.io/_uploads/SJe3K5mJpa.jpg","alt":"IMG_7144","title":""},{"url":"https://hackmd.io/_uploads/S12Y9X1TT.jpg","alt":"IMG_7146","title":""},{"url":"https://hackmd.io/_uploads/rJ3Y5QyTp.jpg","alt":"IMG_7171","title":""},{"url":"https://hackmd.io/_uploads/HkehF5my6p.jpg","alt":"IMG_7186","title":""},{"url":"https://hackmd.io/_uploads/By3YqXJap.jpg","alt":"IMG_7196","title":""},{"url":"https://hackmd.io/_uploads/HkxnF571pp.jpg","alt":"IMG_7224","title":""},{"url":"https://hackmd.io/_uploads/SJg3Kq7kaT.jpg","alt":"IMG_7225","title":""},{"url":"https://hackmd.io/_uploads/SknKq7kTT.jpg","alt":"IMG_7227","title":""},{"url":"https://hackmd.io/_uploads/r13K57Jpa.jpg","alt":"IMG_7228","title":""},{"url":"https://hackmd.io/_uploads/rJe3KqQ1aT.jpg","alt":"IMG_7246","title":""},{"url":"https://hackmd.io/_uploads/rJhF5XyTa.jpg","alt":"IMG_7247","title":""},{"url":"https://hackmd.io/_uploads/H1hY97ypa.jpg","alt":"IMG_7395","title":""},{"url":"https://hackmd.io/_uploads/Skl2FcXJ6a.jpg","alt":"IMG_7401","title":""},{"url":"https://hackmd.io/_uploads/ByAO5XyTT.jpg","alt":"IMG_9050","title":""}]
-  
-晚會 🔗
-
-闖關活動 🔗
-
-    [{"url":"https://hackmd.io/_uploads/ryUD3m1aT.jpg","alt":"20240207_091051","title":""},{"url":"https://hackmd.io/_uploads/BkrwhQypa.jpg","alt":"20240207_092117","title":""},{"url":"https://hackmd.io/_uploads/H1rvnXyaT.jpg","alt":"20240207_104938","title":""},{"url":"https://hackmd.io/_uploads/ByLv2m1aa.jpg","alt":"DSC_3856","title":""},{"url":"https://hackmd.io/_uploads/S1Lv3Xkaa.jpg","alt":"DSC_3875","title":""},{"url":"https://hackmd.io/_uploads/SJLD37Jap.jpg","alt":"DSC_3880","title":""},{"url":"https://hackmd.io/_uploads/S1Dvh7kTT.jpg","alt":"DSC_3881","title":""},{"url":"https://hackmd.io/_uploads/H1vw2mk6T.jpg","alt":"DSC_3883","title":""},{"url":"https://hackmd.io/_uploads/r18wh716T.jpg","alt":"DSC_3884","title":""},{"url":"https://hackmd.io/_uploads/Sywvh7JT6.jpg","alt":"DSC_3887","title":""},{"url":"https://hackmd.io/_uploads/By8PhQ1a6.jpg","alt":"DSC_3901","title":""},{"url":"https://hackmd.io/_uploads/ry8PhQkpp.jpg","alt":"DSC_3910","title":""},{"url":"https://hackmd.io/_uploads/rk8v3m1ap.jpg","alt":"DSC_3911","title":""},{"url":"https://hackmd.io/_uploads/B1LDnXkpp.jpg","alt":"DSC_3915","title":""},{"url":"https://hackmd.io/_uploads/BkLwnmy66.jpg","alt":"DSC_3916","title":""},{"url":"https://hackmd.io/_uploads/BJvD2QkT6.jpg","alt":"DSC_3921","title":""},{"url":"https://hackmd.io/_uploads/SJwD27ypT.jpg","alt":"DSC_3924","title":""},{"url":"https://hackmd.io/_uploads/BkgIvnQypa.jpg","alt":"DSC_3928","title":""},{"url":"https://hackmd.io/_uploads/rJIvhmypT.jpg","alt":"DSC_3948","title":""},{"url":"https://hackmd.io/_uploads/SJvv2m1TT.jpg","alt":"DSC_3951","title":""},{"url":"https://hackmd.io/_uploads/B1eIv2QJ66.jpg","alt":"DSC_3961","title":""},{"url":"https://hackmd.io/_uploads/H1xUP37JTa.jpg","alt":"DSC_3979","title":""},{"url":"https://hackmd.io/_uploads/SJlIvh7Jap.jpg","alt":"DSC_3994","title":""},{"url":"https://hackmd.io/_uploads/HyIw3QyTa.jpg","alt":"DSC_4010","title":""},{"url":"https://hackmd.io/_uploads/ryUD2Xkpa.jpg","alt":"DSC_4019","title":""},{"url":"https://hackmd.io/_uploads/r1LDhQkaT.jpg","alt":"DSC_4029","title":""},{"url":"https://hackmd.io/_uploads/B1xIP2mJTp.jpg","alt":"DSC_4040","title":""},{"url":"https://hackmd.io/_uploads/HyxUv3Q1a6.jpg","alt":"DSC_4048","title":""},{"url":"https://hackmd.io/_uploads/ByxIvnXk6T.jpg","alt":"DSC_4113","title":""},{"url":"https://hackmd.io/_uploads/HJl8v3mJTp.jpg","alt":"DSC_4125","title":""},{"url":"https://hackmd.io/_uploads/BkgLDhm16T.jpg","alt":"DSC_4131","title":""},{"url":"https://hackmd.io/_uploads/rkeUPnQyTT.jpg","alt":"DSC_4160","title":""},{"url":"https://hackmd.io/_uploads/BygDD27kTa.jpg","alt":"IMG_7522","title":""},{"url":"https://hackmd.io/_uploads/ryvP3my6a.jpg","alt":"IMG_7529","title":""},{"url":"https://hackmd.io/_uploads/SyPw271p6.jpg","alt":"IMG_7530","title":""},{"url":"https://hackmd.io/_uploads/Hk8PhQJap.jpg","alt":"IMG_7532","title":""}]
-  
-經驗分享 🔗
-
-    [{"url":"https://hackmd.io/_uploads/rJS9jQkTp.jpg","alt":"DSC_4264","title":""},{"url":"https://hackmd.io/_uploads/SyS5j71aa.jpg","alt":"DSC_4255","title":""},{"url":"https://hackmd.io/_uploads/rkH5iQkaa.jpg","alt":"DSC_4240","title":""},{"url":"https://hackmd.io/_uploads/rkr5s7kpT.jpg","alt":"DSC_4247","title":""},{"url":"https://hackmd.io/_uploads/Bkrco7kT6.jpg","alt":"DSC_4226","title":""},{"url":"https://hackmd.io/_uploads/BkB9oXk6a.jpg","alt":"DSC_4215","title":""},{"url":"https://hackmd.io/_uploads/SkH5j7JaT.jpg","alt":"DSC_4220","title":""},{"url":"https://hackmd.io/_uploads/S1BqsXkpa.jpg","alt":"DSC_4214","title":""},{"url":"https://hackmd.io/_uploads/SkBciXypT.jpg","alt":"20240207_135837","title":""},{"url":"https://hackmd.io/_uploads/BJS9s7k6a.jpg","alt":"DSC_4209","title":""},{"url":"https://hackmd.io/_uploads/SJr5o7yaT.jpg","alt":"20240207_135437","title":""},{"url":"https://hackmd.io/_uploads/rkHqj7J66.jpg","alt":"20240207_135238","title":""},{"url":"https://hackmd.io/_uploads/S1S9jm1Tp.jpg","alt":"20240207_135221","title":""},{"url":"https://hackmd.io/_uploads/Syrcom1T6.jpg","alt":"20240207_134445","title":""},{"url":"https://hackmd.io/_uploads/rkHco716T.jpg","alt":"20240207_134024","title":""}]
-  
-頒獎與閉幕 🔗
-
-    []
-  
-大合照 🔗
-
-回饋 🔗
-
-    [{"url":"https://hackmd.io/_uploads/H1Uq5TQj6.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/SJFyo6Qja.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/S1Ylspmjp.png","alt":"image","title":""}]
-  
-檢討與反思 🔗
-照片整理了很久，等我有空再來回補文字
-未來展望 🔗
-待更新…
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>心得</category>
-        <category>營隊</category>
-      </categories>
-      <tags>
-        <tag>資訊社</tag>
-        <tag>成大資工</tag>
-        <tag>SCIST</tag>
-        <tag>寒訓</tag>
-        <tag>營隊</tag>
       </tags>
   </entry>
   <entry>
@@ -3134,6 +3029,111 @@ Sorting algorithms on GeeksforGeeks
         <tag>計數排序 Counting Sort</tag>
         <tag>桶排序 Bucket Sort</tag>
         <tag>基數排序 Radix Sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
+    <url>/post/SCIST-Camp-2024/</url>
+    <content><![CDATA[寒訓詳細資訊 🔗
+
+引言 🔗
+在 2023/11/25 這次的寒訓總召 茶碗蒸 私訊我問說要不要一起辦寒訓，但其實我們南附資研在 2023/11/13 幹部線上開會時就有討論到說寒假要辦營隊，本來沒想說要辦那麼大規模的寒訓，那時的規劃主要是開放給校內的所有學生和老師，大概會舉辦講座提供給校內對資訊領域有興趣的人，且主題訂為資訊領域的多元課程。
+後來思考過後決定接下本次寒訓副召，一開始的召群有南女的總召 茶碗蒸、一中的副召 KCC 還有我，加上 Fishhh、Eason 和 Curious 這三位 SCIST S4 的總召們協助，還有小白的加入也讓我們日後籌備更順利。
+
+籌備階段 🔗
+我們是先開了線上會議，確認好活動目的與受眾，排好 Deadline 後才開始籌備，一開始是要先招募工作人員，因為有茶碗蒸這個 SCIST 文書在，所以各種表單很快就做好了，而且他也有之前辦茶會迎新的經驗，所以初期還挺順利的，也在一開始就把各校的邀請訊息發出去了，最後是找到了 9 間學校聯合主辦，而 SCIST 則是掛協辦，提供我們講師助教等課程上的資源，我們也開始著手撰寫計劃書、排時間表、預估經費、詢問場地租借…等。在計劃書撰寫上感謝小白幫了很大的忙，而其他的事情也很幸運有上一屆寒訓的 PJ、Koying…等人的努力，有留下文檔提供我們很多資訊可作參考，讓我們在初期不容易迷失方向，對我們幫助很大。
+在短短的一週內，就收到了個主辦校報名的工作人員 35 人左右，其中我從南附資研中就拉了 10 幾個人來當行政，加上 SCIST 的講師及助教，最後行政組達到了 50 人左右。
+
+我們接著開放學員報名，一開始報名狀況其實不是很好，我們很怕無法收到預估的學員人數，所以加強了各校的宣傳，我也以擔任小編的經驗到各大社團和營隊網站上刊登廣告，後來發現報名期間只有第一週和最後一週報名人數才會增加的現象…
+在這要感謝成功大學資工系的 Colten 幫忙處理成大場地以及接線讓成大資工系與本次寒訓合作，讓推廣曝光提升了很多，也提供了我們成大超級棒的階梯教室和電腦教室場地給寒訓使用，也要特別感謝副召 KCC 不斷地與南一中接洽，才能有超大的群英堂提供我們舉辦晚會活動。
+
+過了學員報名期限，很開心的我們收到了超過 100 多位學生的報名，接下來就是繁瑣篩選學員環節，繁瑣是因為要閱讀大量的試算表內容，根據報名者的意願、動機、對資訊領域的了解及熱忱來篩選出 80 位實體學員參與為期 3 天的寒訓，然後要開始寄錄取和未錄取通知信，也開始開放學員繳費，過程中遇到了一些困難與挑戰。
+
+挑戰與學習 🔗
+在做行政的過程中，會不小心放錯連結之類的，當下其實滿慌的，很難及時補救，所以很感謝有行政組的其他人幫忙處理，我也在這次的籌備過程中學到了很多應對問題的方法，讓我了解到做事須謹慎小心且要再三確認，也在當行政的過程中，學習到如何回信、如何應對突發狀況等。
+團隊分工合作 🔗
+在籌備期間我們團隊訂好 Deadline，由召群這分派給每個職位工作，行政組招收了活動、隊輔、總務、場務、美宣和醫護，將每個職位開討論區讓各組員交流更便利，且將資訊公開透明，也將各種連結彙整在一起，讓行政組同步且避免落差，很感謝各組組長非常積極的參與和組員的配合，讓我體會到團隊分工合作的重要性。
+
+活動組 🔗
+這次寒訓的所有遊戲內容和晚會皆由活動組規劃，我覺得他們非常辛苦，比我們召群還要肝，他們從上任就開始想活動、出題、討論流程，常常看到他們在開會，我大部分都會在，感受到他們的忙碌，要絞盡腦汁的思考有什麼團康遊戲可以玩，思考如何讓學員們破冰，讓彼此在短時間內互相熟悉了解，這裡要特別感謝 Yudong、OsGa 和 Joyce 三位超強的活動，前兩位甚至是三天裡最辛苦的主持人，而活動組長 Yudong 和隊輔組長 Joyce 的規劃和執行能力也讓我相當佩服，這三天有這麼精彩的活動真的要歸功於他們
+
+    [{"url":"https://hackmd.io/_uploads/HJxGBXroT.png","alt":"活動組開會","title":""},{"url":"https://hackmd.io/_uploads/rJa7UaQoT.png","alt":"活動組規劃","title":""},{"url":"https://hackmd.io/_uploads/Bkf8pASia.png","alt":"題庫","title":""},{"url":"https://hackmd.io/_uploads/rkl48J8sT.png","alt":"大地遊戲關主分配","title":""}]
+  
+隊輔組 🔗
+隊輔組是人數最多的一組，因為我們總共招收了 85 位實體學員，所以收了 18 位隊輔，負責帶領小隊完成這三天的所有活動，還要做小隊牌、點名、帶跳小隊舞(這點子不是我想的)…等繁雜的工作，是需要有責任感且能了解活動流程的人擔任
+
+    [{"url":"https://hackmd.io/_uploads/SJbTwaQi6.png","alt":"隊輔組開會","title":""},{"url":"https://hackmd.io/_uploads/SkcTL1Usa.png","alt":"小隊舞音樂","title":""},{"url":"https://hackmd.io/_uploads/H1msjkIsT.png","alt":"隊輔組點名","title":""}]
+  
+總務組 🔗
+總務組只有兩個人，負責事前的訂餐與金錢的管控，是非常重要的角色
+
+    [{"url":"https://hackmd.io/_uploads/HkGd6y8iT.png","alt":"餐點店家","title":""},{"url":"https://hackmd.io/_uploads/r1adxgUi6.png","alt":"金錢規劃與收支紀錄","title":""}]
+  
+場務組 🔗
+場務組負責拍照、餐點搬運、場復…等工作，要在大家休息的時候努力工作，非常辛苦，感謝場務這三天的付出。
+美宣組 🔗
+這次的美宣組只有 JT Lin 一個人，他非常辛苦要製作所有工作人員和實體學員的名牌、獎狀、參與證明…等，需要大量的時間製作，還要兼任隊輔，是一個效率高且負責的人，只不過這三天滿諧咖的
+
+    [{"url":"https://hackmd.io/_uploads/ByjPvkIi6.png","alt":"宣傳圖","title":""},{"url":"https://hackmd.io/_uploads/rJWnPyUs6.png","alt":"美宣工作","title":""},{"url":"https://hackmd.io/_uploads/Hyuu_yLjp.jpg","alt":"名牌","title":""}]
+  
+課程內容 🔗
+這次因為 SCIST 協辦，所以有了講師以及助教，感謝講師們在寒訓前辛苦的準備課程講義，每位都帶給學員很大的幫助，以下是我整理的課程資源彙整，大家可以善加利用
+課程資源彙整 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HJGrUmAha.jpg","alt":"20240206_101644","title":""},{"url":"https://hackmd.io/_uploads/HkRNI7Rha.jpg","alt":"20240206_101837","title":""},{"url":"https://hackmd.io/_uploads/BJKIIX02p.jpg","alt":"DSC_3378","title":""},{"url":"https://hackmd.io/_uploads/HyY8IX02p.jpg","alt":"DSC_3383","title":""},{"url":"https://hackmd.io/_uploads/BJKU8mCnp.jpg","alt":"DSC_3385","title":""},{"url":"https://hackmd.io/_uploads/HkML8QC36.jpg","alt":"DSC_3396","title":""},{"url":"https://hackmd.io/_uploads/BkdL8mC3p.jpg","alt":"DSC_3444","title":""},{"url":"https://hackmd.io/_uploads/S1tII70hT.jpg","alt":"DSC_3452","title":""},{"url":"https://hackmd.io/_uploads/rkHULmC2a.jpg","alt":"DSC_3456","title":""},{"url":"https://hackmd.io/_uploads/H1L8UQ0na.jpg","alt":"DSC_3458","title":""},{"url":"https://hackmd.io/_uploads/B1wULQR2T.jpg","alt":"DSC_3460","title":""},{"url":"https://hackmd.io/_uploads/S1X88QRhT.jpg","alt":"DSC_3485","title":""},{"url":"https://hackmd.io/_uploads/HyuILQ036.jpg","alt":"DSC_3503","title":""},{"url":"https://hackmd.io/_uploads/HkYUL703T.jpg","alt":"DSC_3505","title":""},{"url":"https://hackmd.io/_uploads/SkwUU7R36.jpg","alt":"DSC_3514","title":""},{"url":"https://hackmd.io/_uploads/rkeUI7Rha.jpg","alt":"IMG_7065","title":""},{"url":"https://hackmd.io/_uploads/SJiH8Q0h6.jpg","alt":"IMG_7081","title":""},{"url":"https://hackmd.io/_uploads/SJw4UQ03T.jpg","alt":"IMG_9032","title":""},{"url":"https://hackmd.io/_uploads/r1UVUm026.jpg","alt":"IMG_9036","title":""},{"url":"https://hackmd.io/_uploads/rJLNU7Rh6.jpg","alt":"IMG_9086","title":""}]
+  
+活動內容 🔗
+先放照片 下面剩下的文字內容等我有空再補 …
+開幕與破冰 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HkhetmAnT.jpg","alt":"20240205_085547","title":""},{"url":"https://hackmd.io/_uploads/ry4bFQ03a.jpg","alt":"20240205_085620","title":""},{"url":"https://hackmd.io/_uploads/Hk21Y7Ahp.jpg","alt":"20240205_093011","title":""},{"url":"https://hackmd.io/_uploads/H1HlFXAh6.jpg","alt":"20240205_093051","title":""},{"url":"https://hackmd.io/_uploads/BkagYX02p.jpg","alt":"20240205_093139","title":""},{"url":"https://hackmd.io/_uploads/ry1-t7Anp.jpg","alt":"20240205_093648","title":""},{"url":"https://hackmd.io/_uploads/S1JbFQC2p.jpg","alt":"20240205_093708","title":""},{"url":"https://hackmd.io/_uploads/rkigK7A2p.jpg","alt":"20240205_093714","title":""},{"url":"https://hackmd.io/_uploads/ByHxFXR3a.jpg","alt":"20240205_093746","title":""},{"url":"https://hackmd.io/_uploads/S16ltX0hT.jpg","alt":"20240205_093822","title":""},{"url":"https://hackmd.io/_uploads/SyHlFQAha.jpg","alt":"20240205_093916","title":""},{"url":"https://hackmd.io/_uploads/BJlixKQCnT.jpg","alt":"20240205_093947","title":""},{"url":"https://hackmd.io/_uploads/HJKeFXC2p.jpg","alt":"20240205_094010","title":""},{"url":"https://hackmd.io/_uploads/rJMetmChT.jpg","alt":"20240205_094025","title":""},{"url":"https://hackmd.io/_uploads/rJ_xKmAnp.jpg","alt":"20240205_094042","title":""},{"url":"https://hackmd.io/_uploads/SyDso7A3T.jpg","alt":"DSC_3550","title":""},{"url":"https://hackmd.io/_uploads/rkdooXA3a.jpg","alt":"DSC_3372","title":""},{"url":"https://hackmd.io/_uploads/SkDiiXR3p.jpg","alt":"DSC_3263","title":""},{"url":"https://hackmd.io/_uploads/HkOssmR2a.jpg","alt":"20240205_094324","title":""},{"url":"https://hackmd.io/_uploads/rkujoQ0np.jpg","alt":"20240205_094148","title":""},{"url":"https://hackmd.io/_uploads/ryuojXR2T.jpg","alt":"20240205_094125","title":""},{"url":"https://hackmd.io/_uploads/Bkusjm0hp.jpg","alt":"20240205_090344","title":""},{"url":"https://hackmd.io/_uploads/S1lWYXA3a.jpg","alt":"20240205_094358","title":""},{"url":"https://hackmd.io/_uploads/Hy7WF70h6.jpg","alt":"20240205_094504","title":""},{"url":"https://hackmd.io/_uploads/BJJxYQC26.jpg","alt":"20240205_094856","title":""},{"url":"https://hackmd.io/_uploads/ByPltXA3T.jpg","alt":"20240205_095313","title":""},{"url":"https://hackmd.io/_uploads/Bk5gtmRhT.jpg","alt":"20240205_095827","title":""},{"url":"https://hackmd.io/_uploads/BJylKQ03p.jpg","alt":"20240205_100114","title":""},{"url":"https://hackmd.io/_uploads/HyK1FQR2a.jpg","alt":"20240205_100417","title":""},{"url":"https://hackmd.io/_uploads/S1mgYQC3p.jpg","alt":"20240205_101227","title":""}]
+  
+贊助商分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1jw37Cnp.jpg","alt":"IMG_7336","title":""},{"url":"https://hackmd.io/_uploads/r1hvh7C2a.jpg","alt":"DSC_3652","title":""},{"url":"https://hackmd.io/_uploads/SJnv3QRnp.jpg","alt":"DSC_3609","title":""},{"url":"https://hackmd.io/_uploads/S13P2QC3a.jpg","alt":"DSC_3602","title":""},{"url":"https://hackmd.io/_uploads/rJ2P27Rha.jpg","alt":"DSC_3571","title":""},{"url":"https://hackmd.io/_uploads/B12v3XRna.jpg","alt":"20240206_132112","title":""}]
+  
+遊戲活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/SJ98cmy6T.jpg","alt":"20240205_195634","title":""},{"url":"https://hackmd.io/_uploads/SyGu9XyTp.jpg","alt":"20240206_194936","title":""},{"url":"https://hackmd.io/_uploads/HJGucQy6p.jpg","alt":"20240206_195113","title":""},{"url":"https://hackmd.io/_uploads/HyfO5m166.jpg","alt":"20240206_195918","title":""},{"url":"https://hackmd.io/_uploads/HkGu5mJpp.jpg","alt":"20240206_200137","title":""},{"url":"https://hackmd.io/_uploads/rkf_cQJT6.jpg","alt":"20240206_200804","title":""},{"url":"https://hackmd.io/_uploads/r1fdcmy66.jpg","alt":"20240206_200805","title":""},{"url":"https://hackmd.io/_uploads/HJhK5XyaT.jpg","alt":"DSC_3475","title":""},{"url":"https://hackmd.io/_uploads/S1e2Yq7JTa.jpg","alt":"DSC_3480","title":""},{"url":"https://hackmd.io/_uploads/ryxhF5XJ6T.jpg","alt":"DSC_3653","title":""},{"url":"https://hackmd.io/_uploads/SJnY5mypT.jpg","alt":"DSC_3854","title":""},{"url":"https://hackmd.io/_uploads/r1hY9mJpp.jpg","alt":"IMG_7110","title":""},{"url":"https://hackmd.io/_uploads/S16Yq7k6T.jpg","alt":"IMG_7114","title":""},{"url":"https://hackmd.io/_uploads/HkhtcmypT.jpg","alt":"IMG_7117","title":""},{"url":"https://hackmd.io/_uploads/S1hK9Q1pT.jpg","alt":"IMG_7120","title":""},{"url":"https://hackmd.io/_uploads/HynFqQyTp.jpg","alt":"IMG_7122","title":""},{"url":"https://hackmd.io/_uploads/rknK5Q1pp.jpg","alt":"IMG_7125","title":""},{"url":"https://hackmd.io/_uploads/HJ3Ycm1a6.jpg","alt":"IMG_7127","title":""},{"url":"https://hackmd.io/_uploads/r1htcQ1p6.jpg","alt":"IMG_7133","title":""},{"url":"https://hackmd.io/_uploads/SJnYc716p.jpg","alt":"IMG_7136","title":""},{"url":"https://hackmd.io/_uploads/ry3F9XyTp.jpg","alt":"IMG_7139","title":""},{"url":"https://hackmd.io/_uploads/rJg2Yq7k6T.jpg","alt":"IMG_7141","title":""},{"url":"https://hackmd.io/_uploads/ryght57ypp.jpg","alt":"IMG_7143","title":""},{"url":"https://hackmd.io/_uploads/SJe3K5mJpa.jpg","alt":"IMG_7144","title":""},{"url":"https://hackmd.io/_uploads/S12Y9X1TT.jpg","alt":"IMG_7146","title":""},{"url":"https://hackmd.io/_uploads/rJ3Y5QyTp.jpg","alt":"IMG_7171","title":""},{"url":"https://hackmd.io/_uploads/HkehF5my6p.jpg","alt":"IMG_7186","title":""},{"url":"https://hackmd.io/_uploads/By3YqXJap.jpg","alt":"IMG_7196","title":""},{"url":"https://hackmd.io/_uploads/HkxnF571pp.jpg","alt":"IMG_7224","title":""},{"url":"https://hackmd.io/_uploads/SJg3Kq7kaT.jpg","alt":"IMG_7225","title":""},{"url":"https://hackmd.io/_uploads/SknKq7kTT.jpg","alt":"IMG_7227","title":""},{"url":"https://hackmd.io/_uploads/r13K57Jpa.jpg","alt":"IMG_7228","title":""},{"url":"https://hackmd.io/_uploads/rJe3KqQ1aT.jpg","alt":"IMG_7246","title":""},{"url":"https://hackmd.io/_uploads/rJhF5XyTa.jpg","alt":"IMG_7247","title":""},{"url":"https://hackmd.io/_uploads/H1hY97ypa.jpg","alt":"IMG_7395","title":""},{"url":"https://hackmd.io/_uploads/Skl2FcXJ6a.jpg","alt":"IMG_7401","title":""},{"url":"https://hackmd.io/_uploads/ByAO5XyTT.jpg","alt":"IMG_9050","title":""}]
+  
+晚會 🔗
+
+闖關活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/ryUD3m1aT.jpg","alt":"20240207_091051","title":""},{"url":"https://hackmd.io/_uploads/BkrwhQypa.jpg","alt":"20240207_092117","title":""},{"url":"https://hackmd.io/_uploads/H1rvnXyaT.jpg","alt":"20240207_104938","title":""},{"url":"https://hackmd.io/_uploads/ByLv2m1aa.jpg","alt":"DSC_3856","title":""},{"url":"https://hackmd.io/_uploads/S1Lv3Xkaa.jpg","alt":"DSC_3875","title":""},{"url":"https://hackmd.io/_uploads/SJLD37Jap.jpg","alt":"DSC_3880","title":""},{"url":"https://hackmd.io/_uploads/S1Dvh7kTT.jpg","alt":"DSC_3881","title":""},{"url":"https://hackmd.io/_uploads/H1vw2mk6T.jpg","alt":"DSC_3883","title":""},{"url":"https://hackmd.io/_uploads/r18wh716T.jpg","alt":"DSC_3884","title":""},{"url":"https://hackmd.io/_uploads/Sywvh7JT6.jpg","alt":"DSC_3887","title":""},{"url":"https://hackmd.io/_uploads/By8PhQ1a6.jpg","alt":"DSC_3901","title":""},{"url":"https://hackmd.io/_uploads/ry8PhQkpp.jpg","alt":"DSC_3910","title":""},{"url":"https://hackmd.io/_uploads/rk8v3m1ap.jpg","alt":"DSC_3911","title":""},{"url":"https://hackmd.io/_uploads/B1LDnXkpp.jpg","alt":"DSC_3915","title":""},{"url":"https://hackmd.io/_uploads/BkLwnmy66.jpg","alt":"DSC_3916","title":""},{"url":"https://hackmd.io/_uploads/BJvD2QkT6.jpg","alt":"DSC_3921","title":""},{"url":"https://hackmd.io/_uploads/SJwD27ypT.jpg","alt":"DSC_3924","title":""},{"url":"https://hackmd.io/_uploads/BkgIvnQypa.jpg","alt":"DSC_3928","title":""},{"url":"https://hackmd.io/_uploads/rJIvhmypT.jpg","alt":"DSC_3948","title":""},{"url":"https://hackmd.io/_uploads/SJvv2m1TT.jpg","alt":"DSC_3951","title":""},{"url":"https://hackmd.io/_uploads/B1eIv2QJ66.jpg","alt":"DSC_3961","title":""},{"url":"https://hackmd.io/_uploads/H1xUP37JTa.jpg","alt":"DSC_3979","title":""},{"url":"https://hackmd.io/_uploads/SJlIvh7Jap.jpg","alt":"DSC_3994","title":""},{"url":"https://hackmd.io/_uploads/HyIw3QyTa.jpg","alt":"DSC_4010","title":""},{"url":"https://hackmd.io/_uploads/ryUD2Xkpa.jpg","alt":"DSC_4019","title":""},{"url":"https://hackmd.io/_uploads/r1LDhQkaT.jpg","alt":"DSC_4029","title":""},{"url":"https://hackmd.io/_uploads/B1xIP2mJTp.jpg","alt":"DSC_4040","title":""},{"url":"https://hackmd.io/_uploads/HyxUv3Q1a6.jpg","alt":"DSC_4048","title":""},{"url":"https://hackmd.io/_uploads/ByxIvnXk6T.jpg","alt":"DSC_4113","title":""},{"url":"https://hackmd.io/_uploads/HJl8v3mJTp.jpg","alt":"DSC_4125","title":""},{"url":"https://hackmd.io/_uploads/BkgLDhm16T.jpg","alt":"DSC_4131","title":""},{"url":"https://hackmd.io/_uploads/rkeUPnQyTT.jpg","alt":"DSC_4160","title":""},{"url":"https://hackmd.io/_uploads/BygDD27kTa.jpg","alt":"IMG_7522","title":""},{"url":"https://hackmd.io/_uploads/ryvP3my6a.jpg","alt":"IMG_7529","title":""},{"url":"https://hackmd.io/_uploads/SyPw271p6.jpg","alt":"IMG_7530","title":""},{"url":"https://hackmd.io/_uploads/Hk8PhQJap.jpg","alt":"IMG_7532","title":""}]
+  
+經驗分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/rJS9jQkTp.jpg","alt":"DSC_4264","title":""},{"url":"https://hackmd.io/_uploads/SyS5j71aa.jpg","alt":"DSC_4255","title":""},{"url":"https://hackmd.io/_uploads/rkH5iQkaa.jpg","alt":"DSC_4240","title":""},{"url":"https://hackmd.io/_uploads/rkr5s7kpT.jpg","alt":"DSC_4247","title":""},{"url":"https://hackmd.io/_uploads/Bkrco7kT6.jpg","alt":"DSC_4226","title":""},{"url":"https://hackmd.io/_uploads/BkB9oXk6a.jpg","alt":"DSC_4215","title":""},{"url":"https://hackmd.io/_uploads/SkH5j7JaT.jpg","alt":"DSC_4220","title":""},{"url":"https://hackmd.io/_uploads/S1BqsXkpa.jpg","alt":"DSC_4214","title":""},{"url":"https://hackmd.io/_uploads/SkBciXypT.jpg","alt":"20240207_135837","title":""},{"url":"https://hackmd.io/_uploads/BJS9s7k6a.jpg","alt":"DSC_4209","title":""},{"url":"https://hackmd.io/_uploads/SJr5o7yaT.jpg","alt":"20240207_135437","title":""},{"url":"https://hackmd.io/_uploads/rkHqj7J66.jpg","alt":"20240207_135238","title":""},{"url":"https://hackmd.io/_uploads/S1S9jm1Tp.jpg","alt":"20240207_135221","title":""},{"url":"https://hackmd.io/_uploads/Syrcom1T6.jpg","alt":"20240207_134445","title":""},{"url":"https://hackmd.io/_uploads/rkHco716T.jpg","alt":"20240207_134024","title":""}]
+  
+頒獎與閉幕 🔗
+
+    []
+  
+大合照 🔗
+
+回饋 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1Uq5TQj6.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/SJFyo6Qja.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/S1Ylspmjp.png","alt":"image","title":""}]
+  
+檢討與反思 🔗
+照片整理了很久，等我有空再來回補文字
+未來展望 🔗
+待更新…
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>營隊</category>
+      </categories>
+      <tags>
+        <tag>資訊社</tag>
+        <tag>成大資工</tag>
+        <tag>SCIST</tag>
+        <tag>寒訓</tag>
+        <tag>營隊</tag>
       </tags>
   </entry>
 </search>
