@@ -1,6 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++ 實作資料結構</title>
+    <url>/post/Data-Structures/</url>
+    <content><![CDATA[本篇文章撰寫中 請稍等內容完整後再閱讀… 🔗
+Intro 🔗
+此篇文章使用 C++ 來實作各種從基礎到進階的資料結構
+可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續
+STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作
+內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改
+
+實作資料結構 🔗
+本篇包含以下資料結構的實作
+
+前綴和 &amp; 差分數列
+稀疏表 Sparse Table
+樹狀數組 BIT
+線段樹 Segment Tree
+樹堆 Treap
+鏈結串列 Linked-list
+並查集 DSU
+rope
+pbds
+
+
+前綴和 &amp; 差分數列 🔗
+本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧
+前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值
+
+建出前綴和數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0
+
+Input 🔗
+51 2 3 4 5
+Output 🔗
+0 1 3 6 10 15 
+快速查詢區間和 🔗
+要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加
+int sum = 0;for(int i=l;i&lt;=r;++i) sum += p[i];
+有了前綴和後，每次查詢使用一次減法 第 r+1 項 - 第 l 項 即可快速取得區間和，直接將時間複雜度從 O(n)O(n) 降到 O(1)O(1)
+
+int q,l,r; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r;    cout &lt;&lt; p[r+1] - p[l] &lt;&lt; &#x27;\n&#x27;;&#125;
+內建函數 🔗
+std 內建了可以建立前綴和的函數 partial_sum(原數列起點, 原數列終點, 新數列起點)，使用方法如下：
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    for(auto &amp;i:v) cin &gt;&gt; i;    partial_sum(v.begin(), v.end(), p.begin()+1);    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+前綴和能快速取得區間和，而快速取得區間的最大/最小值則會用到本篇內容之一的 稀疏表 Sparse Table
+
+
+補充：後綴和（Suffix Sum）
+會前綴和就知道後綴和就是由後往前累加的值，可以自己試著建看看
+
+二維前綴和 🔗
+二維前綴和是前綴和概念在二維空間的擴展，可快速查詢二維平面上任意子矩形的數值總和
+
+首先要先了解排容原理
+A∪B=A+B−A∩BA \cup B = A + B - A \cap B
+
+而二維前綴和也運用了這個原理
+
+建出二維前綴和 🔗
+#include &lt;bits/stdc++.h&gt;#define RPT(i,n) for(int i=1;i&lt;=n;++i)using namespace std;const int N = 100;int tb[N][N], pre[N][N];signed main() &#123;    int r,c; cin &gt;&gt; r &gt;&gt; c;    RPT(i,r) RPT(j,c)    &#123;        cin &gt;&gt; tb[i][j];        pre[i][j] = pre[i-1][j] + pre[i][j-1]                   - pre[i-1][j-1] + tb[i][j];    &#125;    RPT(i,r) RPT(j,c) cout &lt;&lt; pre[i][j] &lt;&lt; &quot; \n&quot;[j == c];&#125;
+Input 🔗
+3 31 2 34 5 67 8 9
+Output 🔗
+1 3 65 12 2112 27 45
+查詢子矩形總和 🔗
+建完二維前綴和後每個子矩形皆會在右下角的點形成總和
+查詢任意子矩形都可以用排容原理計算出來
+不用使用雙重迴圈一個一個加起來
+以下示範計算 (x1,y1) 到 (x2,y2) 的子矩形總和
+
+int q; cin &gt;&gt; q;while(q--)&#123;    int x1,x2,y1,y2;    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;    x1--; y1--;    int sum = pre[x2][y2] - pre[x1][y2]             - pre[x2][y1] + pre[x1][y1];    cout &lt;&lt; ans &lt;&lt; &#x27;\n&#x27;;&#125;
+差分數列 🔗
+與前綴和相反的概念，差分數列為原數列相鄰元素的差值
+建出差分數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), d(n);    cin &gt;&gt; v[0]; d[0] = v[0];    for(int i=1;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        d[i] = v[i] - v[i-1];    &#125;    for(auto i:d) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+我們要解決以下問題：
+在區間 [l,r] 加上 x，經過多次不同的操作後，求最後的數列
+有了差分數列我們就不用每次操作都用迴圈在原數列上從 l 到 r 逐個加上 x
+只需在差分數列上做以下兩步操作：
+
+第 l 項 + x（相當於將原數列第 l 項開始以後的數都 + x）
+第 r+1 項 - x（相當於將原數列第 r+1 項開始以後的數停止 + x）
+
+所以不管區間 [l,r] 多大，都只用兩次加減法操作就能達成在區間 [l,r] 加上 x
+所有操作結束後對差分數列做一次前綴和即可得到最後的數列結果，也成功降低了時間複雜度
+int q,l,r,x; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;    d[l] += x;    d[r+1] -= x;&#125;int sum = 0;for(int i=0;i&lt;n;++i)&#123;    sum += d[i];    cout &lt;&lt; sum &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：此方法只適用於不需要中途詢問的情況，前綴和 &amp; 差分如果要帶修改則會用到本篇內容之一的 BIT 樹狀數組
+
+
+補充：二維差分數列
+可以自行試著建看看，能有效地處理二維矩形區域更新的操作
+
+小結 🔗
+這兩種資料結構在處理區間操作時非常有用，特別是在需要頻繁進行區間求和或區間更新的問題中
+差分和前綴和互為逆運算
+對差分數列做前綴和 或 對前綴和數列作差分 都會獲得 原陣列
+
+稀疏表 Sparse Table 🔗
+
+樹狀數組 BIT 🔗
+樹狀樹組，英文叫做 Fenwick Tree 或 Binary Indexed Tree，又簡稱 BIT，由 Fenwick 在
+1994 年提出，用來解決「動態前綴和」問題
+
+線段樹 Segment Tree 🔗
+
+樹堆 Treap 🔗
+
+鏈結串列 Linked-list 🔗
+
+並查集 DSU 🔗
+Disjoint Set Union-find
+
+rope 🔗
+rope 是一個很強大的字串處理資料結構，聽說是為了與字串 string（英譯：細繩）做對比才叫做 rope（英譯：粗繩）的，其底層是一棵持久化平衡樹，因此在做合併或在中間插入的期望時間複雜度是 O(log⁡n)O(\log n)
+
+pbds 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>程式</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資料結構 Data Structures</tag>
+        <tag>前綴和 &amp; 差分數列</tag>
+        <tag>稀疏表 Sparse Table</tag>
+        <tag>樹狀數組 BIT</tag>
+        <tag>線段樹 Segment Tree</tag>
+        <tag>樹堆 Treap</tag>
+        <tag>鏈結串列 Linked-list</tag>
+        <tag>並查集 DSU</tag>
+        <tag>rope</tag>
+        <tag>pbds</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello, World.</title>
     <url>/post/Hello-World/</url>
     <content><![CDATA[歡迎來到士育的部落格！ 🔗
@@ -47,6 +189,525 @@ https://4yu.dev
       <tags>
         <tag>南附資研社</tag>
         <tag>NFIRC 1st</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>訓練神經網路計算過程</title>
+    <url>/post/Neural-Network/</url>
+    <content><![CDATA[這是一個具有一層隱藏層的神經網路：
+
+假設 🔗
+
+輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：
+
+X=[1202−32−1−13],Y=[12−3]    X = 
+        \begin{bmatrix}
+            1 &amp; 2 &amp; 0   \\
+            2 &amp; -3 &amp; 2  \\
+            -1 &amp; -1 &amp; 3 \\
+        \end{bmatrix},
+    Y = 
+        \begin{bmatrix}
+            1  \\
+            2  \\
+            -3 \\
+        \end{bmatrix}
+
+W1=[−10−111−1]    W_1 = 
+        \begin{bmatrix}
+            -1 &amp; 0 \\
+            -1 &amp; 1 \\
+            1 &amp; -1 \\
+        \end{bmatrix}
+
+
+隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1，
+經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z)
+另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)
+輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2
+
+W2=[1−2]    W_2 = 
+        \begin{bmatrix}
+            1  \\
+            -2 \\
+        \end{bmatrix}
+
+
+將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失
+
+J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2) 
+
+此時，已知輸出層梯度：
+Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y
+
+
+隱藏層梯度：
+
+G2=∂J∂W2=∂J∂O∂O∂W2=((Gout)T⋅K)T=KTGout\begin{equation}
+    \begin{aligned}
+        G_2
+        &amp;= 
+            \frac{\partial J}{\partial W_2}
+         = 
+            \frac{\partial J}{\partial O} \frac{\partial O}{\partial W_2} 
+            \\\\
+        &amp;= 
+            ((G_{out})^T \cdot K)^T 
+         = 
+            K^TG_{out}
+    \end{aligned}
+\end{equation}
+
+
+ReluRelu 函數的微分式：
+
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+    \begin{cases}
+        0 \quad x &lt; 0   \\
+        1 \quad x \ge 0 \\
+    \end{cases}
+
+
+先假定一個暫存的 GtempG_{temp} ：
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積
+
+輸入層梯度：
+
+G1=∂J∂W1=∂J∂O∂O∂K∂K∂Z∂Z∂W1=(((Gout⋅W2T)∘σ′(Z))T⋅X)T=((Gtemp)T⋅X)T=XTGtemp\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            \frac{\partial J}{\partial W_1}
+         = 
+            \frac{\partial J}{\partial O} 
+            \frac{\partial O}{\partial K}
+            \frac{\partial K}{\partial Z}
+            \frac{\partial Z}{\partial W_1} 
+            \\\\
+        &amp;= 
+            (((G_{out} \cdot W^T_2) \circ \sigma^{\prime} (Z))^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            ((G_{temp})^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            X^TG_{temp}
+    \end{aligned}
+\end{equation}
+
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+
+假設我們採用隨機梯度下降法來進行更新，且學習率令為 0.10.1，則
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+問題 🔗
+求矩陣 Z,K,O,Gout,G2,σ′(Z),Gtemp,G1,W1new,W2newZ,K,O,G_{out},G_2,\sigma^{\prime}(Z),G_{temp},G_1,W_1^{new},W_2^{new}
+
+求解過程皆省略公式推導過程，將直接使用最終結果代入計算
+
+
+ZZ
+由線性組合 Z=XW1Z=XW_1：
+Z=XW1=[1202−32−1−13]⋅[−10−111−1]=[−323−55−4]\begin{equation}
+    \begin{aligned}
+        Z
+        &amp;= 
+            XW_1 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; 0   \\
+                2 &amp; -3 &amp; 2  \\
+                -1 &amp; -1 &amp; 3 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+KK
+由經過激活函數 σ\sigma 後的值 K=σ(Z)K = \sigma(Z)，且激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)：
+K=σ(Z)=σ ([−323−55−4])=[023050]\begin{equation}
+    \begin{aligned}
+        K 
+        &amp;= 
+            \sigma(Z) 
+            \\\\
+        &amp;= 
+            \sigma\ 
+            (
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+            ) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+OO
+輸出層有 1 個節點，其權重矩陣為 W2W_2，由線性輸出 O=KW2O=KW_2：
+O=KW2=[023050]⋅[1−2]=[−435]\begin{equation}
+    \begin{aligned}
+        O 
+        &amp;= 
+            KW_2 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GoutG_{out}
+由輸出層梯度 Gout=O−YG_{out} = O-Y：
+Gout=O−Y=[−435]−[12−3]=[−518]\begin{equation}
+    \begin{aligned}
+        G_{out} 
+        &amp;= 
+            O-Y 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix} 
+            - 
+            \begin{bmatrix}
+                1  \\
+                2  \\
+                -3 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G2G_2
+由隱藏層梯度 G2=KTGoutG_2 = K^TG_{out}，其中 KTK^T 為 矩陣 KK 的轉置：
+K=[023050],KT=[035200]K = 
+    \begin{bmatrix}
+        0 &amp; 2 \\
+        3 &amp; 0 \\
+        5 &amp; 0 \\
+    \end{bmatrix},
+K^T = 
+    \begin{bmatrix}
+        0 &amp; 3 &amp; 5 \\
+        2 &amp; 0 &amp; 0 \\
+    \end{bmatrix}
+
+G2=KTGout=[035200]⋅[−518]=[43−10]\begin{equation}
+    \begin{aligned}
+        G_2 
+        &amp;= 
+            K^TG_{out} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 3 &amp; 5 \\
+                2 &amp; 0 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+σ′(Z)\sigma^{\prime}(Z)
+其中 σ′\sigma^{\prime} 為 ReluRelu 函數的微分式：
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+\begin{cases}
+    0 \quad x &lt; 0   \\
+    1 \quad x \ge 0 \\
+\end{cases}
+
+σ′(Z)=σ′([−323−55−4])=[011010]\begin{equation}
+    \begin{aligned}
+        \sigma^{\prime}(Z)
+        &amp;= 
+            \sigma^{\prime}(
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GtempG_{temp}
+由假定暫存的 Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z)
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積，且 W2TW_2^T 為矩陣 W2W_2 的轉置：
+W2=[1−2],W2T=[1−2]W_2 = 
+    \begin{bmatrix}
+        1  \\
+        -2 \\
+    \end{bmatrix},
+W_2^T = 
+    \begin{bmatrix}
+        1 &amp; -2 \\
+    \end{bmatrix}
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)=([−518]⋅[1−2])∘[011010]=[−5101−28−16]∘[011010]=[0101080]\begin{equation}
+    \begin{aligned}
+        G_{temp} 
+        &amp;= 
+            (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+            \\\\
+        &amp;=  (
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} \cdot
+            \begin{bmatrix}
+                1 &amp; -2
+            \end{bmatrix}
+            ) \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 &amp; 10 \\
+                1 &amp; -2 \\
+                8 &amp; -16 \\
+            \end{bmatrix}
+            \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;=
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0 \\
+                8 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G1G_1
+由輸入層梯度 G1=XTGtempG_1 = X^TG_{temp}，其中 XTX^T 為 矩陣 XX 的轉置：
+X=[1202−32−1−13],XT=[12−12−3−1023],X = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; 0   \\
+        2 &amp; -3 &amp; 2  \\
+        -1 &amp; -1 &amp; 3 \\
+    \end{bmatrix},
+X^T = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; -1   \\
+        2 &amp; -3 &amp; -1  \\
+        0 &amp; 2 &amp; 3    \\
+    \end{bmatrix},
+
+G1=XTGtemp=[12−12−3−1023]⋅[0101080]=[−610−1120260]\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            X^TG_{temp}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; -1   \\
+                2 &amp; -3 &amp; -1  \\
+                0 &amp; 2 &amp; 3    \\
+            \end{bmatrix}
+            \cdot
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0  \\
+                8 &amp; 0  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+W1new,W2newW_1^{new},W_2^{new}
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+已知我們採用隨機梯度下降法來進行更新，且學習率為 0.10.1，則
+
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+W1new=W1−0.1×G1=[−10−111−1]−0.1×[−610−1120260]=[−10−111−1]−[−0.61−1.122.60]=[−0.4−10.1−1−1.6−1]\begin{equation}
+    \begin{aligned}
+        W_1^{new}
+        &amp;= 
+            W_1 - 0.1 \times G_1
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                -0.6 &amp; 1  \\
+                -1.1 &amp; 2  \\
+                2.6 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -0.4 &amp; -1 \\
+                0.1 &amp; -1  \\
+                -1.6 &amp; -1 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.3−1]\begin{equation}
+    \begin{aligned}
+        W_2^{new}
+        &amp;= 
+            W_2 - 0.1 \times G_2
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                4.3 \\
+                -1  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3.3 \\
+                -1   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>AI 人工智慧</category>
+      </categories>
+      <tags>
+        <tag>AI 人工智慧</tag>
+        <tag>神經網路 Neural Network</tag>
+        <tag>梯度下降演算法</tag>
+        <tag>損失函數 Loss func</tag>
+        <tag>矩陣 Matrix</tag>
+        <tag>激活函數</tag>
       </tags>
   </entry>
   <entry>
@@ -634,667 +1295,6 @@ Email：shiyu@scist.org
       </tags>
   </entry>
   <entry>
-    <title>C++ 實作資料結構</title>
-    <url>/post/Data-Structures/</url>
-    <content><![CDATA[本篇文章撰寫中 請稍等內容完整後再閱讀… 🔗
-Intro 🔗
-此篇文章使用 C++ 來實作各種從基礎到進階的資料結構
-可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續
-STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作
-內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改
-
-實作資料結構 🔗
-本篇包含以下資料結構的實作
-
-前綴和 &amp; 差分數列
-稀疏表 Sparse Table
-樹狀數組 BIT
-線段樹 Segment Tree
-樹堆 Treap
-鏈結串列 Linked-list
-並查集 DSU
-rope
-pbds
-
-
-前綴和 &amp; 差分數列 🔗
-本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧
-前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值
-
-建出前綴和數列 🔗
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-
-注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0
-
-Input 🔗
-51 2 3 4 5
-Output 🔗
-0 1 3 6 10 15 
-快速查詢區間和 🔗
-要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加
-int sum = 0;for(int i=l;i&lt;=r;++i) sum += p[i];
-有了前綴和後，每次查詢使用一次減法 第 r+1 項 - 第 l 項 即可快速取得區間和，直接將時間複雜度從 O(n)O(n) 降到 O(1)O(1)
-
-int q,l,r; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r;    cout &lt;&lt; p[r+1] - p[l] &lt;&lt; &#x27;\n&#x27;;&#125;
-內建函數 🔗
-std 內建了可以建立前綴和的函數 partial_sum(原數列起點, 原數列終點, 新數列起點)，使用方法如下：
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    for(auto &amp;i:v) cin &gt;&gt; i;    partial_sum(v.begin(), v.end(), p.begin()+1);    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-
-前綴和能快速取得區間和，而快速取得區間的最大/最小值則會用到本篇內容之一的 稀疏表 Sparse Table
-
-
-補充：後綴和（Suffix Sum）
-會前綴和就知道後綴和就是由後往前累加的值，可以自己試著建看看
-
-二維前綴和 🔗
-二維前綴和是前綴和概念在二維空間的擴展，可快速查詢二維平面上任意子矩形的數值總和
-
-首先要先了解排容原理
-A∪B=A+B−A∩BA \cup B = A + B - A \cap B
-
-而二維前綴和也運用了這個原理
-
-建出二維前綴和 🔗
-#include &lt;bits/stdc++.h&gt;#define RPT(i,n) for(int i=1;i&lt;=n;++i)using namespace std;const int N = 100;int tb[N][N], pre[N][N];signed main() &#123;    int r,c; cin &gt;&gt; r &gt;&gt; c;    RPT(i,r) RPT(j,c)    &#123;        cin &gt;&gt; tb[i][j];        pre[i][j] = pre[i-1][j] + pre[i][j-1]                   - pre[i-1][j-1] + tb[i][j];    &#125;    RPT(i,r) RPT(j,c) cout &lt;&lt; pre[i][j] &lt;&lt; &quot; \n&quot;[j == c];&#125;
-Input 🔗
-3 31 2 34 5 67 8 9
-Output 🔗
-1 3 65 12 2112 27 45
-查詢子矩形總和 🔗
-建完二維前綴和後每個子矩形皆會在右下角的點形成總和
-查詢任意子矩形都可以用排容原理計算出來
-不用使用雙重迴圈一個一個加起來
-以下示範計算 (x1,y1) 到 (x2,y2) 的子矩形總和
-
-int q; cin &gt;&gt; q;while(q--)&#123;    int x1,x2,y1,y2;    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;    x1--; y1--;    int sum = pre[x2][y2] - pre[x1][y2]             - pre[x2][y1] + pre[x1][y1];    cout &lt;&lt; ans &lt;&lt; &#x27;\n&#x27;;&#125;
-差分數列 🔗
-與前綴和相反的概念，差分數列為原數列相鄰元素的差值
-建出差分數列 🔗
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), d(n);    cin &gt;&gt; v[0]; d[0] = v[0];    for(int i=1;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        d[i] = v[i] - v[i-1];    &#125;    for(auto i:d) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-我們要解決以下問題：
-在區間 [l,r] 加上 x，經過多次不同的操作後，求最後的數列
-有了差分數列我們就不用每次操作都用迴圈在原數列上從 l 到 r 逐個加上 x
-只需在差分數列上做以下兩步操作：
-
-第 l 項 + x（相當於將原數列第 l 項開始以後的數都 + x）
-第 r+1 項 - x（相當於將原數列第 r+1 項開始以後的數停止 + x）
-
-所以不管區間 [l,r] 多大，都只用兩次加減法操作就能達成在區間 [l,r] 加上 x
-所有操作結束後對差分數列做一次前綴和即可得到最後的數列結果，也成功降低了時間複雜度
-int q,l,r,x; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;    d[l] += x;    d[r+1] -= x;&#125;int sum = 0;for(int i=0;i&lt;n;++i)&#123;    sum += d[i];    cout &lt;&lt; sum &lt;&lt; &#x27; &#x27;;&#125;
-
-注意：此方法只適用於不需要中途詢問的情況，前綴和 &amp; 差分如果要帶修改則會用到本篇內容之一的 BIT 樹狀數組
-
-
-補充：二維差分數列
-可以自行試著建看看，能有效地處理二維矩形區域更新的操作
-
-小結 🔗
-這兩種資料結構在處理區間操作時非常有用，特別是在需要頻繁進行區間求和或區間更新的問題中
-差分和前綴和互為逆運算
-對差分數列做前綴和 或 對前綴和數列作差分 都會獲得 原陣列
-
-稀疏表 Sparse Table 🔗
-
-樹狀數組 BIT 🔗
-樹狀樹組，英文叫做 Fenwick Tree 或 Binary Indexed Tree，又簡稱 BIT，由 Fenwick 在
-1994 年提出，用來解決「動態前綴和」問題
-
-線段樹 Segment Tree 🔗
-
-樹堆 Treap 🔗
-
-鏈結串列 Linked-list 🔗
-
-並查集 DSU 🔗
-Disjoint Set Union-find
-
-rope 🔗
-rope 是一個很強大的字串處理資料結構，聽說是為了與字串 string（英譯：細繩）做對比才叫做 rope（英譯：粗繩）的，其底層是一棵持久化平衡樹，因此在做合併或在中間插入的期望時間複雜度是 O(log⁡n)O(\log n)
-
-pbds 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>筆記</category>
-        <category>程式</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>資料結構 Data Structures</tag>
-        <tag>前綴和 &amp; 差分數列</tag>
-        <tag>稀疏表 Sparse Table</tag>
-        <tag>樹狀數組 BIT</tag>
-        <tag>線段樹 Segment Tree</tag>
-        <tag>樹堆 Treap</tag>
-        <tag>鏈結串列 Linked-list</tag>
-        <tag>並查集 DSU</tag>
-        <tag>rope</tag>
-        <tag>pbds</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>訓練神經網路計算過程</title>
-    <url>/post/Neural-Network/</url>
-    <content><![CDATA[這是一個具有一層隱藏層的神經網路：
-
-假設 🔗
-
-輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：
-
-X=[1202−32−1−13],Y=[12−3]    X = 
-        \begin{bmatrix}
-            1 &amp; 2 &amp; 0   \\
-            2 &amp; -3 &amp; 2  \\
-            -1 &amp; -1 &amp; 3 \\
-        \end{bmatrix},
-    Y = 
-        \begin{bmatrix}
-            1  \\
-            2  \\
-            -3 \\
-        \end{bmatrix}
-
-W1=[−10−111−1]    W_1 = 
-        \begin{bmatrix}
-            -1 &amp; 0 \\
-            -1 &amp; 1 \\
-            1 &amp; -1 \\
-        \end{bmatrix}
-
-
-隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1，
-經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z)
-另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)
-輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2
-
-W2=[1−2]    W_2 = 
-        \begin{bmatrix}
-            1  \\
-            -2 \\
-        \end{bmatrix}
-
-
-將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失
-
-J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2) 
-
-此時，已知輸出層梯度：
-Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y
-
-
-隱藏層梯度：
-
-G2=∂J∂W2=∂J∂O∂O∂W2=((Gout)T⋅K)T=KTGout\begin{equation}
-    \begin{aligned}
-        G_2
-        &amp;= 
-            \frac{\partial J}{\partial W_2}
-         = 
-            \frac{\partial J}{\partial O} \frac{\partial O}{\partial W_2} 
-            \\\\
-        &amp;= 
-            ((G_{out})^T \cdot K)^T 
-         = 
-            K^TG_{out}
-    \end{aligned}
-\end{equation}
-
-
-ReluRelu 函數的微分式：
-
-σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
-    \begin{cases}
-        0 \quad x &lt; 0   \\
-        1 \quad x \ge 0 \\
-    \end{cases}
-
-
-先假定一個暫存的 GtempG_{temp} ：
-
-Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
-
-其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積
-
-輸入層梯度：
-
-G1=∂J∂W1=∂J∂O∂O∂K∂K∂Z∂Z∂W1=(((Gout⋅W2T)∘σ′(Z))T⋅X)T=((Gtemp)T⋅X)T=XTGtemp\begin{equation}
-    \begin{aligned}
-        G_1
-        &amp;= 
-            \frac{\partial J}{\partial W_1}
-         = 
-            \frac{\partial J}{\partial O} 
-            \frac{\partial O}{\partial K}
-            \frac{\partial K}{\partial Z}
-            \frac{\partial Z}{\partial W_1} 
-            \\\\
-        &amp;= 
-            (((G_{out} \cdot W^T_2) \circ \sigma^{\prime} (Z))^T \cdot X)^T 
-            \\\\
-        &amp;= 
-            ((G_{temp})^T \cdot X)^T 
-            \\\\
-        &amp;= 
-            X^TG_{temp}
-    \end{aligned}
-\end{equation}
-
-
-可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
-
-假設我們採用隨機梯度下降法來進行更新，且學習率令為 0.10.1，則
-{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
-    W_1^{new} = W_1 - 0.1 \times G_1 \\
-    W_2^{new} = W_2 - 0.1 \times G_2 \\
-\end{cases}
-
-問題 🔗
-求矩陣 Z,K,O,Gout,G2,σ′(Z),Gtemp,G1,W1new,W2newZ,K,O,G_{out},G_2,\sigma^{\prime}(Z),G_{temp},G_1,W_1^{new},W_2^{new}
-
-求解過程皆省略公式推導過程，將直接使用最終結果代入計算
-
-
-ZZ
-由線性組合 Z=XW1Z=XW_1：
-Z=XW1=[1202−32−1−13]⋅[−10−111−1]=[−323−55−4]\begin{equation}
-    \begin{aligned}
-        Z
-        &amp;= 
-            XW_1 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1 &amp; 2 &amp; 0   \\
-                2 &amp; -3 &amp; 2  \\
-                -1 &amp; -1 &amp; 3 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-KK
-由經過激活函數 σ\sigma 後的值 K=σ(Z)K = \sigma(Z)，且激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)：
-K=σ(Z)=σ ([−323−55−4])=[023050]\begin{equation}
-    \begin{aligned}
-        K 
-        &amp;= 
-            \sigma(Z) 
-            \\\\
-        &amp;= 
-            \sigma\ 
-            (
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}
-            ) 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 2 \\
-                3 &amp; 0 \\
-                5 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-OO
-輸出層有 1 個節點，其權重矩陣為 W2W_2，由線性輸出 O=KW2O=KW_2：
-O=KW2=[023050]⋅[1−2]=[−435]\begin{equation}
-    \begin{aligned}
-        O 
-        &amp;= 
-            KW_2 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 2 \\
-                3 &amp; 0 \\
-                5 &amp; 0 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                1  \\
-                -2 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -4 \\
-                3  \\
-                5  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-GoutG_{out}
-由輸出層梯度 Gout=O−YG_{out} = O-Y：
-Gout=O−Y=[−435]−[12−3]=[−518]\begin{equation}
-    \begin{aligned}
-        G_{out} 
-        &amp;= 
-            O-Y 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -4 \\
-                3  \\
-                5  \\
-            \end{bmatrix} 
-            - 
-            \begin{bmatrix}
-                1  \\
-                2  \\
-                -3 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-G2G_2
-由隱藏層梯度 G2=KTGoutG_2 = K^TG_{out}，其中 KTK^T 為 矩陣 KK 的轉置：
-K=[023050],KT=[035200]K = 
-    \begin{bmatrix}
-        0 &amp; 2 \\
-        3 &amp; 0 \\
-        5 &amp; 0 \\
-    \end{bmatrix},
-K^T = 
-    \begin{bmatrix}
-        0 &amp; 3 &amp; 5 \\
-        2 &amp; 0 &amp; 0 \\
-    \end{bmatrix}
-
-G2=KTGout=[035200]⋅[−518]=[43−10]\begin{equation}
-    \begin{aligned}
-        G_2 
-        &amp;= 
-            K^TG_{out} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 3 &amp; 5 \\
-                2 &amp; 0 &amp; 0 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                43   \\
-                -10  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-σ′(Z)\sigma^{\prime}(Z)
-其中 σ′\sigma^{\prime} 為 ReluRelu 函數的微分式：
-σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
-\begin{cases}
-    0 \quad x &lt; 0   \\
-    1 \quad x \ge 0 \\
-\end{cases}
-
-σ′(Z)=σ′([−323−55−4])=[011010]\begin{equation}
-    \begin{aligned}
-        \sigma^{\prime}(Z)
-        &amp;= 
-            \sigma^{\prime}(
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}) 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-GtempG_{temp}
-由假定暫存的 Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z)
-其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積，且 W2TW_2^T 為矩陣 W2W_2 的轉置：
-W2=[1−2],W2T=[1−2]W_2 = 
-    \begin{bmatrix}
-        1  \\
-        -2 \\
-    \end{bmatrix},
-W_2^T = 
-    \begin{bmatrix}
-        1 &amp; -2 \\
-    \end{bmatrix}
-
-Gtemp=(Gout⋅W2T)∘σ′(Z)=([−518]⋅[1−2])∘[011010]=[−5101−28−16]∘[011010]=[0101080]\begin{equation}
-    \begin{aligned}
-        G_{temp} 
-        &amp;= 
-            (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
-            \\\\
-        &amp;=  (
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix} \cdot
-            \begin{bmatrix}
-                1 &amp; -2
-            \end{bmatrix}
-            ) \circ 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -5 &amp; 10 \\
-                1 &amp; -2 \\
-                8 &amp; -16 \\
-            \end{bmatrix}
-            \circ 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;=
-            \begin{bmatrix}
-                0 &amp; 10 \\
-                1 &amp; 0 \\
-                8 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-G1G_1
-由輸入層梯度 G1=XTGtempG_1 = X^TG_{temp}，其中 XTX^T 為 矩陣 XX 的轉置：
-X=[1202−32−1−13],XT=[12−12−3−1023],X = 
-    \begin{bmatrix}
-        1 &amp; 2 &amp; 0   \\
-        2 &amp; -3 &amp; 2  \\
-        -1 &amp; -1 &amp; 3 \\
-    \end{bmatrix},
-X^T = 
-    \begin{bmatrix}
-        1 &amp; 2 &amp; -1   \\
-        2 &amp; -3 &amp; -1  \\
-        0 &amp; 2 &amp; 3    \\
-    \end{bmatrix},
-
-G1=XTGtemp=[12−12−3−1023]⋅[0101080]=[−610−1120260]\begin{equation}
-    \begin{aligned}
-        G_1
-        &amp;= 
-            X^TG_{temp}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1 &amp; 2 &amp; -1   \\
-                2 &amp; -3 &amp; -1  \\
-                0 &amp; 2 &amp; 3    \\
-            \end{bmatrix}
-            \cdot
-            \begin{bmatrix}
-                0 &amp; 10 \\
-                1 &amp; 0  \\
-                8 &amp; 0  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -6 &amp; 10  \\
-                -11 &amp; 20 \\
-                26 &amp; 0   \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-W1new,W2newW_1^{new},W_2^{new}
-
-可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
-已知我們採用隨機梯度下降法來進行更新，且學習率為 0.10.1，則
-
-{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
-    W_1^{new} = W_1 - 0.1 \times G_1 \\
-    W_2^{new} = W_2 - 0.1 \times G_2 \\
-\end{cases}
-
-W1new=W1−0.1×G1=[−10−111−1]−0.1×[−610−1120260]=[−10−111−1]−[−0.61−1.122.60]=[−0.4−10.1−1−1.6−1]\begin{equation}
-    \begin{aligned}
-        W_1^{new}
-        &amp;= 
-            W_1 - 0.1 \times G_1
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 0.1 \times
-            \begin{bmatrix}
-                -6 &amp; 10  \\
-                -11 &amp; 20 \\
-                26 &amp; 0   \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 
-            \begin{bmatrix}
-                -0.6 &amp; 1  \\
-                -1.1 &amp; 2  \\
-                2.6 &amp; 0   \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -0.4 &amp; -1 \\
-                0.1 &amp; -1  \\
-                -1.6 &amp; -1 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.3−1]\begin{equation}
-    \begin{aligned}
-        W_2^{new}
-        &amp;= 
-            W_2 - 0.1 \times G_2
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1  \\
-                -2 \\
-            \end{bmatrix}
-            - 0.1 \times
-            \begin{bmatrix}
-                43   \\
-                -10  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 
-            \begin{bmatrix}
-                4.3 \\
-                -1  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -3.3 \\
-                -1   \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>筆記</category>
-        <category>AI 人工智慧</category>
-      </categories>
-      <tags>
-        <tag>AI 人工智慧</tag>
-        <tag>神經網路 Neural Network</tag>
-        <tag>梯度下降演算法</tag>
-        <tag>損失函數 Loss func</tag>
-        <tag>矩陣 Matrix</tag>
-        <tag>激活函數</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>資工特選 - 中央大學</title>
     <url>/post/SPC-NCU/</url>
     <content><![CDATA[人數 🔗
@@ -1404,259 +1404,6 @@ W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.
         <tag>資訊工程學系</tag>
         <tag>特殊選才</tag>
         <tag>清華大學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>資工特選 - 臺灣師範大學</title>
-    <url>/post/SPC-NTNU/</url>
-    <content><![CDATA[人數 🔗
-
-
-
-人數
-一般組
-資安組
-
-
-
-
-報名人數
-83
-48
-
-
-過書審進面試人數
-17
-16
-
-
-錄取名額
-5
-3
-
-
-
-時程 🔗
-
-簡章公告：09/20
-報名：10/01 ~ 10/09
-面試名單：11/12
-面試：11/15
-放榜：12/05
-
-面試前 🔗
-臺師大把我這個臺南人排在第二個面試，我必須要超早起搭第一班高鐵才能趕得上，第一次在外面等高鐵站開門，還好有 Eason 陪我一起。之前一日資訊營我有來臺師大公館校區當助教所以路途有熟悉的感覺。
-
-面試過程 🔗
-臺師大的面試是最特別的，分為三間教室各一個教授，第一間是 3 分鐘自我介紹並要接受提問，第二間是專業問答，有幾個不同主題選兩個並回答問題，第三間是最輕鬆的聊天，有很多卡片可以選擇跟教授聊哪些主題，因為我一般組跟資安組都有進複試所以要面試兩輪
-第一輪面試 🔗
-第一間：自我介紹 🔗
-可使用簡報，我有準備也有在報到時用那邊的電腦上傳到他們給的資料夾，但不知道為什麼進到第一間面試時沒有同步過去導致我是沒有簡報直接講完的
-🤡：我
-👨🏻‍🏫：陳教授
-
-🤡：（自我介紹）
-👨🏻‍🏫：Supervised learning 跟 Unsupervised learning 的差別
-🤡：差別在於訓練時有沒有 Label，監督式學習資料與標籤之間的關係可以用來預測新資料，
-非監督式學習是要找出資料之間隱藏的內部結構
-👨🏻‍🏫：你的強化學習專案是用什麼算法
-🤡：有用過 DQN 和 PPO
-👨🏻‍🏫：Loss Function 有什麼不同
-🤡：DQN 是透過最小化誤差來學習 Q 值，PPO 比較像是學習一個策略
-👨🏻‍🏫：有考英文檢定嗎
-🤡：目前正在準備多益
-聊到外面學長敲門才出去，問到的都有回答出來，感覺第一間自我介紹的提問比第二間專業問題的提問還要更專業，還有很多人說在第一間被全英文問答，教授口音又很重，他們感覺滿慌的，我最後一題回答完後剛好學長敲門我才沒被用英文問，後來去查臺師大教授名單找了才知道原來專長是機器學習還在國外留學過難怪會這樣
-第二間：專業問答 🔗
-🤡：我
-👨🏻‍🏫：紀教授
-
-🤡：（進去先簡單自我介紹了一分鐘）
-👨🏻‍🏫：螢幕上的主題選兩個，可以不用選資安，因為你這次面完要接著考筆試
-
-
-
-
-
-
-
-
-
-
-演算法
-資料結構
-程式設計
-
-
-?
-?
-?
-
-
-資訊安全
-人工智慧
-?
-
-
-X
-其他
-X
-
-
-
-
-我忘記 ? 的是什麼了
-
-🤡：人工智慧 和 資料結構
-👨🏻‍🏫：解釋 圖靈測試
-🤡：由艾倫圖靈提出的思想實驗，目的是在測驗電腦能不能讓人類分辨不出來是在跟人還是電腦對話
-👨🏻‍🏫：解釋 K-NN
-🤡：K 近鄰算法，機器學習裡面預測一個新資料是哪個類別時，看看離它最近的 K 個資料是什麼類別來決定答案
-
-然後就開始聊我的強化學習專案技術細節：Reward Funtion 是如何設計之類的
-
-👨🏻‍🏫：好先換資料結構 解釋 stack 特性與應用
-🤡：特性是先進後出，像堆疊盤子一樣，先想到應用的是括號匹配的題目，還有維護單調隊列之類的
-👨🏻‍🏫：BST 最佳 / 最差情況 &amp; 如何解決
-🤡：最佳情況的話 BST 是平衡的 O(log N)，最差會變成一條鏈 O(N)，解決方法就是用像 set 這種底層是紅黑樹之類的資料結構
-第三間：卡片閒聊 🔗
-🤡：我
-👨🏻‍🏫：蔣教授
-
-👨🏻‍🏫：應該知道第三關要做什麼吧
-🤡：有先上網看過別人心得，結果真的是卡片
-👨🏻‍🏫：四張主要卡片選幾張介紹自己：
-
-可複選所以我選擇全部都講一次
-
-
-高中生活：描述高中生活
-🤡：高一開始考 APCS 並創了校內資訊社團，高二經營社團、到處打比賽、參與社群、擔任各種課程講師、高三擔任社群總召、準備特選，因為一直都有目標而且想持續進步所以過得滿精彩的
-特殊之處：與其他特選生的不同之處
-🤡：除了刷題精進自己能力以外，還有創社、講課、投入社群等不同的多元表現
-特殊選才：為何投入特殊選才、何時開始的、做了什麼準備
-🤡：因為有這些特殊經歷讓我想嘗試、高二暑假、調整心態和規劃未來
-未來展望：希望進大學後成為一個怎樣的人
-🤡：成為自己想要的樣子，為了目標努力，充實自己大學生活的人
-
-👨🏻‍🏫：選 3 張卡片描述未來想做的事
-
-社團領導
-師資培育
-學術研究
-海外留學
-程式競賽
-企業培訓
-
-
-我其實也想每張都選，但最後選了 3 張能讓我結合自身經歷的
-
-
-社團領導：對應我創社當社長和擔任社群總召的經歷
-師資培育：對應擔任課程講師、助教的經歷
-程式競賽：可以組隊打 ICPC 之類的競賽
-
-
-講完之後教授翻開卡片背面，每張背面都有台師大歷屆學生的相關成果，有點宣傳的效果
-
-整個過程滿輕鬆的，教授全程笑笑的，感覺真的是想透過卡片與聊天過程認識一個人的經歷與特質，我回答的時候有下意識地挑一些對我比較有優勢的地方特別提出來講，所以第一輪面試很順利也還滿有把握的
-資安組筆試 🔗
-資安組除了面試之外還有筆試，我甚至當天到現場才知道這件事，根本完全沒準備 🤡，而且時間超級緊迫，我第一輪面試完要馬上衝去別棟筆試完再回來面試第二輪
-一、程式設計 🔗
-
-ans = ?
-
-#include&lt;stdio.h&gt;int main()&#123;    int ans=0;    for(int i=0,j=0;i&lt;5;j+=(i++))        ans+=j;    printf(&quot;%d&quot;,ans);&#125;
-
-ans = ?
-
-#include&lt;stdio.h&gt;int f(int x,int y)&#123;    return x | (1 &lt;&lt;y);&#125;int main()&#123;    int ans = f(2,7);    printf(&quot;%d&quot; , ans);&#125;
-
-當輸入 50 時
-
-為何會印出 50 0 0？
-為何會印出stack smashing detected？
-
-
-
-#include&lt;stdio.h&gt;int main()&#123;    int8_t a=10 ,b=23, c=44;    scanf(&quot;%d&quot;,&amp;a);    printf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);&#125;
-二、系統安全 🔗
-
-linux 檔案權限中的 s 是什麼意思？
-proc/version 為何佔用 0 byte
-如果要將 test.pdf 隱藏起來，那該要怎麼去打 linux command
-
-三、網路 🔗
-
-ping 的原理
-家中的ip分享器原理
-為何網頁有時會顯示不安全，至少寫出3個原因
-
-四、密碼學 🔗
-
-手算凱撒密碼（密文忘了）
-在 1～124 中取一個數乘以 17，再除以 125 要餘 1，1～143 中與 143 互質的數有幾個
-證明 16 bits 的 key 不安全
-
-
-感謝 yih 背出來的題目 Orz
-
-寫完之後回到原本那棟的地下一樓休息室等第二輪面試，遇到很多認識的人，大家一起聊天，OsGa 好兄弟剛好在台北還特別過來師大陪我們一起，也遇到了 Ricky，他想從臺科大重特到臺師大，詳細過程可以看 這篇文章 真心滿佩服他的勇氣的，然後因為第一間自我介紹我有準備簡報但用不了就去找行政人員問了一下，發現另一個女生也跟我遇到同樣問題一起來問，我覺得他滿眼熟的感覺是我當某一場課程講師教過的學員。後來我重新上傳了一次在第二輪終於有簡報可以用了
-第二輪面試 🔗
-第一間 🔗
-
-用簡報快速帶過第一輪介紹過的經歷，因為是資安組面試所以最後有詳細補充我在 AIS3 Junior 2024 拿到最佳專題獎的實作內容
-
-👨🏻‍🏫：LLaMA 是什麼
-
-他的反應讓我感覺不是要我解釋 LLM，而是他真的不知道有 LLaMA，直到我說類似 GPT 他才懂）
-
-👨🏻‍🏫：AI 想的漏洞攻擊方法有比人類更好、更快嗎，如果沒有的話，你們專案有 AI 跟沒 AI 有什麼差別
-
-顯然完全放錯重點，我們專案是模擬駭客利用購物網站上的 AI 客服助手透過 Prompt Injection 的方式攻擊網站漏洞，而不是讓 AI 想出攻擊方法，反正他一直重複問類似的問題，我不管回答什麼他都跳針到最後時間結束，感覺他自己不太接觸資安領域，所以隨便想了個問題來一直問，出去之後覺得心情滿差的
-
-第二間：專業問答 🔗
-教授看到我又來一次，就不考專業問題了，直接開始聊天
-👨🏻‍🏫：你覺得剛剛考資安筆試的題目如何
-
-因為這份題目是他出的
-👨🏻‍🏫：有什麼問題想問嗎
-🤡：我想問關於 APCS 改制的問題，因為看到網路上有消息透露 APCS 要改成類似英檢那樣分級的新制度，這是假消息還是已經確定了
-👨🏻‍🏫：你們消息傳好快，是有這件事不過我是不太清楚詳細內容，而且負責的教授現在人在國外。時間還很多還有想問的嗎
-🤡：那我想了解一下師資培育的一些細節
-👨🏻‍🏫：校內有指定要修師培的課，然後要考核通過才行，我自己也是負責師資培育的，看過外面很多不太合格的資訊老師，所以對臺師大的學生滿有信心的
-🤡：那臺師大有什麼資源可以先修或需要提前準備什麼事情
-👨🏻‍🏫：我有開 TouTube 頻道：Neokent 的線上課程 可以去按讚訂閱分享開啟小鈴鐺。不然你之前是透過什麼資源學程式的
-🤡：之前學程式是參加 SCIST 演算法培訓課程 ，我現在擔任 S5 的總召
-👨🏻‍🏫：每年都會有 SCIST 的人上來這裡面試，印象滿深刻的
-
-第三間：專業問答 🔗
-
-教授看到我又來了就說不用翻卡牌了 直接開始閒聊
-👨🏻‍🏫：上面的教授都問了什麼
-👨🏻‍🏫：想問你們考生對目前 APCS 的看法
-👨🏻‍🏫：為什麼會想投資安組 還是想說順便投的
-🤡：雖然資安經歷比較沒有競程經歷多，但對資安和 AI 領域都有興趣
-教授看了桌上的表，上面有大家的主要經歷
-👨🏻‍🏫：你會兩組都進是因為有其他特殊經歷是別人沒有的所以加了不少分
-👨🏻‍🏫：你有 AIS3 最佳專題獎，今天很多人也都有，想知道為什麼
-🤡：除了不同年度之外，還分為 AIS3 和 AIS3 Junior，AIS3 有不同類別的主題，每個主題都有最佳專題獎，AIS3 Junior 則是只有前兩名有，所以今天才會有那麼多人有最佳專題獎。
-
-面試後 🔗
-面試後跟一群人（OsGa、Ricky、yih、soar）一起去吃師大學餐，自助餐價格跟菜色都還算可以，但是餐廳滿熱的，吃完就跟 Eason 逛北車地下街，最後搭客運還差點趕不上，總之就是行程很趕很累的一天
-結果 🔗
-一般組：正取（正取 5 人、備取 9 人） 🔗
-資安組：未錄取（正取 3 人、備取 7 人） 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>臺灣師範大學</tag>
       </tags>
   </entry>
   <entry>
@@ -2388,6 +2135,259 @@ Blogs
 ]]></content>
       <tags>
         <tag>網頁導覽 Site map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 臺灣師範大學</title>
+    <url>/post/SPC-NTNU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+一般組
+資安組
+
+
+
+
+報名人數
+83
+48
+
+
+過書審進面試人數
+17
+16
+
+
+錄取名額
+5
+3
+
+
+
+時程 🔗
+
+簡章公告：09/20
+報名：10/01 ~ 10/09
+面試名單：11/12
+面試：11/15
+放榜：12/05
+
+面試前 🔗
+臺師大把我這個臺南人排在第二個面試，我必須要超早起搭第一班高鐵才能趕得上，第一次在外面等高鐵站開門，還好有 Eason 陪我一起。之前一日資訊營我有來臺師大公館校區當助教所以路途有熟悉的感覺。
+
+面試過程 🔗
+臺師大的面試是最特別的，分為三間教室各一個教授，第一間是 3 分鐘自我介紹並要接受提問，第二間是專業問答，有幾個不同主題選兩個並回答問題，第三間是最輕鬆的聊天，有很多卡片可以選擇跟教授聊哪些主題，因為我一般組跟資安組都有進複試所以要面試兩輪
+第一輪面試 🔗
+第一間：自我介紹 🔗
+可使用簡報，我有準備也有在報到時用那邊的電腦上傳到他們給的資料夾，但不知道為什麼進到第一間面試時沒有同步過去導致我是沒有簡報直接講完的
+🤡：我
+👨🏻‍🏫：陳教授
+
+🤡：（自我介紹）
+👨🏻‍🏫：Supervised learning 跟 Unsupervised learning 的差別
+🤡：差別在於訓練時有沒有 Label，監督式學習資料與標籤之間的關係可以用來預測新資料，
+非監督式學習是要找出資料之間隱藏的內部結構
+👨🏻‍🏫：你的強化學習專案是用什麼算法
+🤡：有用過 DQN 和 PPO
+👨🏻‍🏫：Loss Function 有什麼不同
+🤡：DQN 是透過最小化誤差來學習 Q 值，PPO 比較像是學習一個策略
+👨🏻‍🏫：有考英文檢定嗎
+🤡：目前正在準備多益
+聊到外面學長敲門才出去，問到的都有回答出來，感覺第一間自我介紹的提問比第二間專業問題的提問還要更專業，還有很多人說在第一間被全英文問答，教授口音又很重，他們感覺滿慌的，我最後一題回答完後剛好學長敲門我才沒被用英文問，後來去查臺師大教授名單找了才知道原來專長是機器學習還在國外留學過難怪會這樣
+第二間：專業問答 🔗
+🤡：我
+👨🏻‍🏫：紀教授
+
+🤡：（進去先簡單自我介紹了一分鐘）
+👨🏻‍🏫：螢幕上的主題選兩個，可以不用選資安，因為你這次面完要接著考筆試
+
+
+
+
+
+
+
+
+
+
+演算法
+資料結構
+程式設計
+
+
+?
+?
+?
+
+
+資訊安全
+人工智慧
+?
+
+
+X
+其他
+X
+
+
+
+
+我忘記 ? 的是什麼了
+
+🤡：人工智慧 和 資料結構
+👨🏻‍🏫：解釋 圖靈測試
+🤡：由艾倫圖靈提出的思想實驗，目的是在測驗電腦能不能讓人類分辨不出來是在跟人還是電腦對話
+👨🏻‍🏫：解釋 K-NN
+🤡：K 近鄰算法，機器學習裡面預測一個新資料是哪個類別時，看看離它最近的 K 個資料是什麼類別來決定答案
+
+然後就開始聊我的強化學習專案技術細節：Reward Funtion 是如何設計之類的
+
+👨🏻‍🏫：好先換資料結構 解釋 stack 特性與應用
+🤡：特性是先進後出，像堆疊盤子一樣，先想到應用的是括號匹配的題目，還有維護單調隊列之類的
+👨🏻‍🏫：BST 最佳 / 最差情況 &amp; 如何解決
+🤡：最佳情況的話 BST 是平衡的 O(log N)，最差會變成一條鏈 O(N)，解決方法就是用像 set 這種底層是紅黑樹之類的資料結構
+第三間：卡片閒聊 🔗
+🤡：我
+👨🏻‍🏫：蔣教授
+
+👨🏻‍🏫：應該知道第三關要做什麼吧
+🤡：有先上網看過別人心得，結果真的是卡片
+👨🏻‍🏫：四張主要卡片選幾張介紹自己：
+
+可複選所以我選擇全部都講一次
+
+
+高中生活：描述高中生活
+🤡：高一開始考 APCS 並創了校內資訊社團，高二經營社團、到處打比賽、參與社群、擔任各種課程講師、高三擔任社群總召、準備特選，因為一直都有目標而且想持續進步所以過得滿精彩的
+特殊之處：與其他特選生的不同之處
+🤡：除了刷題精進自己能力以外，還有創社、講課、投入社群等不同的多元表現
+特殊選才：為何投入特殊選才、何時開始的、做了什麼準備
+🤡：因為有這些特殊經歷讓我想嘗試、高二暑假、調整心態和規劃未來
+未來展望：希望進大學後成為一個怎樣的人
+🤡：成為自己想要的樣子，為了目標努力，充實自己大學生活的人
+
+👨🏻‍🏫：選 3 張卡片描述未來想做的事
+
+社團領導
+師資培育
+學術研究
+海外留學
+程式競賽
+企業培訓
+
+
+我其實也想每張都選，但最後選了 3 張能讓我結合自身經歷的
+
+
+社團領導：對應我創社當社長和擔任社群總召的經歷
+師資培育：對應擔任課程講師、助教的經歷
+程式競賽：可以組隊打 ICPC 之類的競賽
+
+
+講完之後教授翻開卡片背面，每張背面都有台師大歷屆學生的相關成果，有點宣傳的效果
+
+整個過程滿輕鬆的，教授全程笑笑的，感覺真的是想透過卡片與聊天過程認識一個人的經歷與特質，我回答的時候有下意識地挑一些對我比較有優勢的地方特別提出來講，所以第一輪面試很順利也還滿有把握的
+資安組筆試 🔗
+資安組除了面試之外還有筆試，我甚至當天到現場才知道這件事，根本完全沒準備 🤡，而且時間超級緊迫，我第一輪面試完要馬上衝去別棟筆試完再回來面試第二輪
+一、程式設計 🔗
+
+ans = ?
+
+#include&lt;stdio.h&gt;int main()&#123;    int ans=0;    for(int i=0,j=0;i&lt;5;j+=(i++))        ans+=j;    printf(&quot;%d&quot;,ans);&#125;
+
+ans = ?
+
+#include&lt;stdio.h&gt;int f(int x,int y)&#123;    return x | (1 &lt;&lt;y);&#125;int main()&#123;    int ans = f(2,7);    printf(&quot;%d&quot; , ans);&#125;
+
+當輸入 50 時
+
+為何會印出 50 0 0？
+為何會印出stack smashing detected？
+
+
+
+#include&lt;stdio.h&gt;int main()&#123;    int8_t a=10 ,b=23, c=44;    scanf(&quot;%d&quot;,&amp;a);    printf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);&#125;
+二、系統安全 🔗
+
+linux 檔案權限中的 s 是什麼意思？
+proc/version 為何佔用 0 byte
+如果要將 test.pdf 隱藏起來，那該要怎麼去打 linux command
+
+三、網路 🔗
+
+ping 的原理
+家中的ip分享器原理
+為何網頁有時會顯示不安全，至少寫出3個原因
+
+四、密碼學 🔗
+
+手算凱撒密碼（密文忘了）
+在 1～124 中取一個數乘以 17，再除以 125 要餘 1，1～143 中與 143 互質的數有幾個
+證明 16 bits 的 key 不安全
+
+
+感謝 yih 背出來的題目 Orz
+
+寫完之後回到原本那棟的地下一樓休息室等第二輪面試，遇到很多認識的人，大家一起聊天，OsGa 好兄弟剛好在台北還特別過來師大陪我們一起，也遇到了 Ricky，他想從臺科大重特到臺師大，詳細過程可以看 這篇文章 真心滿佩服他的勇氣的，然後因為第一間自我介紹我有準備簡報但用不了就去找行政人員問了一下，發現另一個女生也跟我遇到同樣問題一起來問，我覺得他滿眼熟的感覺是我當某一場課程講師教過的學員。後來我重新上傳了一次在第二輪終於有簡報可以用了
+第二輪面試 🔗
+第一間 🔗
+
+用簡報快速帶過第一輪介紹過的經歷，因為是資安組面試所以最後有詳細補充我在 AIS3 Junior 2024 拿到最佳專題獎的實作內容
+
+👨🏻‍🏫：LLaMA 是什麼
+
+他的反應讓我感覺不是要我解釋 LLM，而是他真的不知道有 LLaMA，直到我說類似 GPT 他才懂）
+
+👨🏻‍🏫：AI 想的漏洞攻擊方法有比人類更好、更快嗎，如果沒有的話，你們專案有 AI 跟沒 AI 有什麼差別
+
+顯然完全放錯重點，我們專案是模擬駭客利用購物網站上的 AI 客服助手透過 Prompt Injection 的方式攻擊網站漏洞，而不是讓 AI 想出攻擊方法，反正他一直重複問類似的問題，我不管回答什麼他都跳針到最後時間結束，感覺他自己不太接觸資安領域，所以隨便想了個問題來一直問，出去之後覺得心情滿差的
+
+第二間：專業問答 🔗
+教授看到我又來一次，就不考專業問題了，直接開始聊天
+👨🏻‍🏫：你覺得剛剛考資安筆試的題目如何
+
+因為這份題目是他出的
+👨🏻‍🏫：有什麼問題想問嗎
+🤡：我想問關於 APCS 改制的問題，因為看到網路上有消息透露 APCS 要改成類似英檢那樣分級的新制度，這是假消息還是已經確定了
+👨🏻‍🏫：你們消息傳好快，是有這件事不過我是不太清楚詳細內容，而且負責的教授現在人在國外。時間還很多還有想問的嗎
+🤡：那我想了解一下師資培育的一些細節
+👨🏻‍🏫：校內有指定要修師培的課，然後要考核通過才行，我自己也是負責師資培育的，看過外面很多不太合格的資訊老師，所以對臺師大的學生滿有信心的
+🤡：那臺師大有什麼資源可以先修或需要提前準備什麼事情
+👨🏻‍🏫：我有開 TouTube 頻道：Neokent 的線上課程 可以去按讚訂閱分享開啟小鈴鐺。不然你之前是透過什麼資源學程式的
+🤡：之前學程式是參加 SCIST 演算法培訓課程 ，我現在擔任 S5 的總召
+👨🏻‍🏫：每年都會有 SCIST 的人上來這裡面試，印象滿深刻的
+
+第三間：專業問答 🔗
+
+教授看到我又來了就說不用翻卡牌了 直接開始閒聊
+👨🏻‍🏫：上面的教授都問了什麼
+👨🏻‍🏫：想問你們考生對目前 APCS 的看法
+👨🏻‍🏫：為什麼會想投資安組 還是想說順便投的
+🤡：雖然資安經歷比較沒有競程經歷多，但對資安和 AI 領域都有興趣
+教授看了桌上的表，上面有大家的主要經歷
+👨🏻‍🏫：你會兩組都進是因為有其他特殊經歷是別人沒有的所以加了不少分
+👨🏻‍🏫：你有 AIS3 最佳專題獎，今天很多人也都有，想知道為什麼
+🤡：除了不同年度之外，還分為 AIS3 和 AIS3 Junior，AIS3 有不同類別的主題，每個主題都有最佳專題獎，AIS3 Junior 則是只有前兩名有，所以今天才會有那麼多人有最佳專題獎。
+
+面試後 🔗
+面試後跟一群人（OsGa、Ricky、yih、soar）一起去吃師大學餐，自助餐價格跟菜色都還算可以，但是餐廳滿熱的，吃完就跟 Eason 逛北車地下街，最後搭客運還差點趕不上，總之就是行程很趕很累的一天
+結果 🔗
+一般組：正取（正取 5 人、備取 9 人） 🔗
+資安組：未錄取（正取 3 人、備取 7 人） 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>臺灣師範大學</tag>
       </tags>
   </entry>
   <entry>
