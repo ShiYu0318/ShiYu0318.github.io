@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://4yu.dev/post/Sitemap/</loc>
+    
+    <lastmod>2025-09-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/post/Hello-World/</loc>
     
     <lastmod>2025-09-06</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://4yu.dev/post/Sort-Algorithm/</loc>
-    
-    <lastmod>2025-09-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/Sitemap/</loc>
     
     <lastmod>2025-09-06</lastmod>
     
