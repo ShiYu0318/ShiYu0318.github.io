@@ -352,11 +352,11 @@ template {
 .container hr:before,
 .search-dialog hr:before {
   position: absolute;
-  top: 3 423;
+  top: e 0b 7;
   left: 5%;
   z-index: 1;
   color: var(--hr-before-color);
-  content: '\3423';
+  content: '\e0b7';
   font-size: 20px;
   line-height: 1;
   -webkit-transition: all 1s ease-in-out;
