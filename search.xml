@@ -1,1043 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>資料結構 進階實作（C++）</title>
-    <url>/post/Data-Structures/</url>
-    <content><![CDATA[本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗
-Intro 🔗
-此篇文章使用 C++ 來實作各種從基礎到進階的資料結構
-可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續
-STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作
-內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改
-
-實作資料結構 🔗
-本篇包含以下資料結構的實作
-
-前綴和 &amp; 差分數列
-樹狀數組 BIT
-稀疏表 Sparse Table
-線段樹 Segment Tree
-鏈結串列 Linked-list
-並查集 DSU
-二元搜尋樹 BST
-樹堆 Treap
-伸展樹 Splay Tree
-字典樹 Trie
-rope
-pbds
+    <title>網站頁面導覽</title>
+    <url>/post/Sitemap/</url>
+    <content><![CDATA[歡迎來到 4yu Blog 🔗
+可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁
+導覽 🔗
 
 
-前綴和 &amp; 差分數列 🔗
-本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧
-前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值
-
-建出前綴和數列 🔗
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-
-注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0
-
-Input 🔗
-51 2 3 4 5
-Output 🔗
-0 1 3 6 10 15 
-快速查詢區間和 🔗
-要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加
-int sum = 0;for(int i=l;i&lt;=r;++i) sum += p[i];
-有了前綴和後，每次查詢使用一次減法 第 r+1 項 - 第 l 項 即可快速取得區間和，直接將時間複雜度從 O(n)O(n) 降到 O(1)O(1)
-
-int q,l,r; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r;    cout &lt;&lt; p[r+1] - p[l] &lt;&lt; &#x27;\n&#x27;;&#125;
-內建函數 🔗
-std 內建了可以建立前綴和的函數 partial_sum(原數列起點, 原數列終點, 新數列起點)，使用方法如下：
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    for(auto &amp;i:v) cin &gt;&gt; i;    partial_sum(v.begin(), v.end(), p.begin()+1);    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-
-前綴和能快速取得區間和，而快速取得區間的最大/最小值則會用到本篇內容之一的 稀疏表 Sparse Table
+點擊前往 自我介紹 About me 
 
 
-補充：後綴和（Suffix Sum）
-會前綴和就知道後綴和就是由後往前累加的值，可以自己試著建看看
-
-二維前綴和 🔗
-二維前綴和是前綴和概念在二維空間的擴展，可快速查詢二維平面上任意子矩形的數值總和
-
-首先要先了解排容原理
-A∪B=A+B−A∩BA \cup B = A + B - A \cap B
-
-而二維前綴和也運用了這個原理
-
-建出二維前綴和 🔗
-#include &lt;bits/stdc++.h&gt;#define RPT(i,n) for(int i=1;i&lt;=n;++i)using namespace std;const int N = 100;int tb[N][N], pre[N][N];signed main() &#123;    int r,c; cin &gt;&gt; r &gt;&gt; c;    RPT(i,r) RPT(j,c)    &#123;        cin &gt;&gt; tb[i][j];        pre[i][j] = pre[i-1][j] + pre[i][j-1]                   - pre[i-1][j-1] + tb[i][j];    &#125;    RPT(i,r) RPT(j,c) cout &lt;&lt; pre[i][j] &lt;&lt; &quot; \n&quot;[j == c];&#125;
-Input 🔗
-3 31 2 34 5 67 8 9
-Output 🔗
-1 3 65 12 2112 27 45
-查詢子矩形總和 🔗
-建完二維前綴和後每個子矩形皆會在右下角的點形成總和
-查詢任意子矩形都可以用排容原理計算出來
-不用使用雙重迴圈一個一個加起來
-以下示範計算 (x1,y1) 到 (x2,y2) 的子矩形總和
-
-int q; cin &gt;&gt; q;while(q--)&#123;    int x1,x2,y1,y2;    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;    x1--; y1--;    int sum = pre[x2][y2] - pre[x1][y2]             - pre[x2][y1] + pre[x1][y1];    cout &lt;&lt; ans &lt;&lt; &#x27;\n&#x27;;&#125;
-差分數列 🔗
-與前綴和相反的概念，差分數列為原數列相鄰元素的差值
-建出差分數列 🔗
-#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), d(n);    cin &gt;&gt; v[0]; d[0] = v[0];    for(int i=1;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        d[i] = v[i] - v[i-1];    &#125;    for(auto i:d) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
-我們要解決以下問題：
-在區間 [l,r] 加上 x，經過多次不同的操作後，求最後的數列
-有了差分數列我們就不用每次操作都用迴圈在原數列上從 l 到 r 逐個加上 x
-只需在差分數列上做以下兩步操作：
-
-第 l 項 + x（相當於將原數列第 l 項開始以後的數都 + x）
-第 r+1 項 - x（相當於將原數列第 r+1 項開始以後的數停止 + x）
-
-所以不管區間 [l,r] 多大，都只用兩次加減法操作就能達成在區間 [l,r] 加上 x
-所有操作結束後對差分數列做一次前綴和即可得到最後的數列結果，也成功降低了時間複雜度
-int q,l,r,x; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;    d[l] += x;    d[r+1] -= x;&#125;int sum = 0;for(int i=0;i&lt;n;++i)&#123;    sum += d[i];    cout &lt;&lt; sum &lt;&lt; &#x27; &#x27;;&#125;
-
-注意：此方法只適用於不需要中途詢問的情況，前綴和 &amp; 差分如果要帶修改則會用到本篇內容之一的 BIT 樹狀數組
+點擊前往 第一篇文章 Hello, World. 
 
 
-補充：二維差分數列
-可以自行試著建看看，能有效地處理二維矩形區域更新的操作
+DSA 系列 🔗
+皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章
 
-小結 🔗
-這兩種資料結構在處理區間操作時非常有用，特別是在需要頻繁進行區間求和或區間更新的問題中
-差分和前綴和互為逆運算
-對差分數列做前綴和 或 對前綴和數列作差分 都會獲得 原陣列
+(修改中…即將發布) 複雜度分析 Complexity Analysis
 
-本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗
-
-樹狀數組 BIT 🔗
+點擊前往 C++ STL 大全
 
 
-稀疏表 Sparse Table 🔗
+點擊前往 排序演算法 Sort Algorithm (C++) 
 
-線段樹 Segment Tree 🔗
+(修改中…即將發布) 搜尋演算法 - 線性、二分搜、三分搜、Upper &amp; Lower bound
+(修改中…即將發布) 圖論 I - 基礎名詞、BFS &amp; DFS
+(撰寫中…) Greedy
+(撰寫中…) DP 動態規劃 I - 基本、背包、Kadane、LCS &amp; LIS、bitmask
 
-鏈結串列 Linked-list 🔗
+點擊前往 資料結構 進階實作（C++）
 
-並查集 DSU 🔗
+(規劃中…) DP 動態規劃 II - 區間 DP、樹 DP、DAG DP
+(規劃中…) DP 動態規劃 III - 各種優化（滾動、單調性、分治、斜率、狀壓、四邊形）
+(規劃中…) 分治 I - 逆序數對、矩陣快速冪、最近點對
+(規劃中…) 分治 II - CDQ、FFT/NTT、Master Theorem
+(規劃中…) 圖論 II - 最小生成樹 MST、拓墣排序、最短路徑
+(規劃中…) 樹論 - LCA、Tree DP、輕重鏈剖分
+(規劃中…) 圖論 III - 聯通分量（SCC &amp; BCC）、Tarjan、2-SAT
+(規劃中…) 圖論 IV - Flow &amp; Cut、Dinic、二分匹配
+(規劃中…) 計算幾何 - 基本、凸包、掃描線、最近點對
+(規劃中…) 數論
+(規劃中…) 字串演算法 - Manacher、Trie、KMP、Z-algorithm
+(規劃中…) 分塊 &amp; 莫隊
+(規劃中…) 其他雜項技巧
+(規劃中…) 賽局理論
+(規劃中…) 計算複雜度類別 - P / NP / NP-Hard / NP-Complete、歸約
+(規劃中…) 隨機算法、啟發算法、近似算法
+
+AI/ML 系列 🔗
+
+(持續撰寫補充中…) AI/ML 概論 &amp; 實作筆記
+
+點擊前往 訓練神經網路計算過程
+
+(撰寫中…) RL 專案分享
+(規劃中…) n8n + MCP
+
+量子計算 Quantum Computer 系列 🔗
+
+(持續撰寫補充中…) 量子計算概論 &amp; IBM Qiskit 實作筆記
+(學習中…) 量子計算數學基礎
+(規劃中…) 量子演算法（Deutsch-Jozsa、Grover、Shor &amp; Simon）
+(撰寫中…) QUBO 二進位二次式最佳化
+(撰寫中…) 量子退火演算法（Quantum Annealing）
+(規劃中…) QNN 量子機器學習
+
+其他待開發的系列 🔗
+以下是我除了程式以外的技能，但這些系列在我文章發佈的 priority_queue 最末端，可能需要等非常久之後才會開始撰寫。。。
+
+Figma
+Blender
+FL Studio
+
+心得系列 🔗
+文筆沒有很好，純粹紀錄當下心情，提供自己回顧
 
 
-二元搜尋樹 BST 🔗
-
-樹堆 Treap 🔗
-
-伸展樹 Splay Tree 🔗
-
-動態樹 Link-Cut Tree 🔗
-
-字典樹 Trie 🔗
-
-rope 🔗
+點擊前往 資訊學科能力競賽 心得
 
 
-pbds 🔗
+點擊前往 NFIRC 南附資研社 - 從零開始的社團經營之路
 
-點擊回到導覽頁面 🔗
+
+點擊前往 SCIST Camp 2024 籌辦心得
+
+(補充照片中…即將發布) SCIST Camp 2025 籌辦心得
+(補充照片中…即將發布) FunAI Winter Camp 2024 &amp; 2025 參與心得
+(修改中…即將發布) AI/ML 課程講師心得
+(修改中…即將發布) 演算法競賽出題心得 - SCIST x NHDK
+
+點擊前往 特殊選才資訊工程學系 心得彙整
+
+(撰寫中…) SCIST S5 總召心得
+(規劃中…) SITCON 2026 行銷組心得
+(規劃中…) GDG @ NCU AI PM 心得
+(規劃中…) 大一心得
+
+
+網頁架構 🔗
+本網頁組成架構
+主頁 Home
+
+網頁封面
+側邊資訊欄
+文章推薦
+
+
+文章 Posts
+
+此網頁所有文章
+
+
+標籤 Tags
+
+所有文章所提及的標籤、關鍵字
+
+
+分類 Categories
+
+針對特定主題分類文章
+
+
+音樂
+
+分享我的網易雲歌單
+
+
+連結 Link
+
+聯繫資訊
+友站
+NFIRC
+SCIST
+Discord Server
+學習資源
+程式平台
+軟體工具
+Blogs
+相關技術
+
+
+關於
+
+自我介紹
+經歷
+
+
+
+
+感謝閱覽此網頁！ 🔗
 
 ]]></content>
-      <categories>
-        <category>筆記</category>
-        <category>程式</category>
-      </categories>
       <tags>
-        <tag>C++</tag>
-        <tag>資料結構 Data Structures</tag>
-        <tag>前綴和 &amp; 差分數列</tag>
-        <tag>樹狀數組 BIT</tag>
-        <tag>稀疏表 Sparse Table</tag>
-        <tag>線段樹 Segment Tree</tag>
-        <tag>鏈結串列 Linked-list</tag>
-        <tag>並查集 DSU</tag>
-        <tag>二元搜尋樹 BST</tag>
-        <tag>樹堆 Treap</tag>
-        <tag>伸展樹 Splay Tree</tag>
-        <tag>動態樹 Link-Cut Tree</tag>
-        <tag>字典樹 Trie</tag>
-        <tag>rope</tag>
-        <tag>pbds</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello, World.</title>
-    <url>/post/Hello-World/</url>
-    <content><![CDATA[歡迎來到士育的部落格！ 🔗
-網頁介紹 🔗
-此網頁使用了 Hexo 靜態網頁框架
-部署在 Github pages 上
-我使用的 Theme 主題是 Butterfly
-創建日期為 2022/12/01（高一）版本使用 4.5.1（已在 2025/07/06 升級為 5.4.1）
-網頁用途 🔗
-這裡是我的程式筆記網頁
-內容包括我所學到的 資料結構 演算法
-不會有程式語言基礎語法 因為網路上資源多且詳細
-筆記中的內容或許會有小錯誤或不完整 所以我會不斷的更新修改
-我也會不定期的發佈 程式解題 知識筆記 還有各種心得紀錄 …
-有興趣的人可以參閱其他文章或到上方其他頁面看看
-如果你對文章有任何想法或建議 歡迎在文章下方評論區登入 Github 帳號 留下你的看法
-或是可以直接使用右下角的 線上聊天室功能 傳訊息給我 我會盡快回覆你的訊息
-若你想開始學程式 請到上方 link 連結 的頁面 我有放許多資源可以提供你學習
-提供的資源涵蓋 各種程式語言的基礎語法 以及各種程式相關平台 工具…
-以及各個程式社群的 Discord 伺服器
-希望能對你有所幫助 ！
-本網站網址 🔗
-https://4yu.dev
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-  </entry>
-  <entry>
-    <title>NFIRC 南附資研社 - 從零開始的社團經營之路</title>
-    <url>/post/NFIRC/</url>
-    <content><![CDATA[創社計畫 🔗
-創社歷程、成果、心得與反思 🔗
-撰寫中 … 🔗
-第一屆年報 🔗
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>心得</category>
-        <category>社團</category>
-      </categories>
-      <tags>
-        <tag>南附資研社</tag>
-        <tag>NFIRC 1st</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>資訊學科能力競賽 參賽心得</title>
-    <url>/post/NHSPC/</url>
-    <content><![CDATA[競賽資訊 🔗
-
-名稱：112 學年度學科能力競賽 複賽 資訊科
-賽區：國教署負責區第四區（台南）
-時間：2023/11/2
-地點：台南女中
-比賽人數：50 人（資訊科）
-獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作
-當天詳細時程：
-
-
-前言 🔗
-這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽
-南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了
-南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的
-我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說
-此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討
-如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了
-對你來說可能是一篇廢文 沒什麼參考價值
-上午場 🔗
-報到抽籤後 發現只有我們學校沒有領隊…
-到了我們學校的座位 被排在最後一排
-我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈
-
-我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的
-可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃
-到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說
-來寫一下解題過程
-p1 🔗
-第 1 題明顯滿難的 我看到就先跳過了
-p2 🔗
-
-題意
-
-有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數
-
-Input
-
-21126
-
-Output
-
-413
-
-解題想法
-
-3 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code
-
-AC Code
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;=n; ++i)signed main(void)&#123;    ShiYu;    int t; cin &gt;&gt; t;    int n;    while(t--)    &#123;        cin &gt;&gt; n;        int ans = 0;        FOR(i, n / 50)        &#123;            FOR(j, (n - i*50) / 25)            &#123;                FOR(k, (n - i*50 - j*25) / 10)                &#123;                    ans += (n - i*50 - j*25 - k*10) / 5 + 1;                &#125;            &#125;        &#125;        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;    &#125;&#125;
-p3 疊蛋餅 🔗
-
-題意
-
-要疊 n 層圓形蛋餅 最底層的蛋餅半徑是 1每層的半徑都不能比下面整疊的最大半徑多出 1 以上求有幾種可能
-
-解題想法
-
-一開始就先寫出 1 2 3 4 層的可能性
-我用樹狀圖來畫出每層的可能性 然後試著尋找規律
-
-後來觀察出會有重複計算的地方
-
-但就算這樣我還是不知道該如何用程式去計算出所有可能
-因為有會重複計算到的數值 所以不能用暴力枚舉的方法 我猜應該是用動態規劃 DP 把算完的東西記下來 不過在賽中我沒有解出來
-後來跟新化高中的 Eason 與 Silv 討論
-他們也覺得這題很難讀懂題目意思
-p4 最大矩形面積 🔗
-
-題意
-
-給一張大小為 n x m 且由 0 與 1 所組成的二維陣列1 是有種樹, 0 是沒樹求沒種樹的最大面積
-
-Input
-
-6 7001010001000011010000110000100100010110101
-
-Output
-
-12
-顯然是找出中間這塊算出面積就好
-
-我在賽中不知道該如何用程式實作出來
-聽 Silv 說這是 CSES 的經典題 用二維前綴和就能解出來了
-但我學會的沒有很多而且練習的題目太少了 不知道能這樣做
-p5 🔗
-
-題意
-
-有人把一條方程式中的 + 與 * 寫反了所以給整數 a求有幾組整數 b , c 能滿足 a + (b * c) = a * (b + c)若有無限解 則輸出 -1
-
-解題想法
-一看就是個數學題
-我把式子移項後變成 b×c=a×(b+c−1)b \times c = a \times (b + c - 1)
-腦中馬上想到了算幾不等式 a+b2≥ab\frac{a+b}{2} \ge \sqrt{ab} 感覺解法會往這個方向走
-但因為題目說可能會有無限解 所以我在賽中想不到如何判斷是否有無限解的方法就沒解出來了
-
-p6 p7 🔗
-不在我能力範圍內 跳過
-p8 🔗
-
-題意
-
-給 n 個整數若選擇了第 i 個整數 則 i+1 與 i-1 （前後兩數）都不能選求最大總和
-
-解題想法
-我原本用 Greedy 來做 每次都選最大的數字
-後來發現如果第 i 個數字最大 我選了 i
-但前後兩數加起來比 i 大我卻不能選 這樣就不是最大總和了
-所以這題要用 DP 來做 聽說 CSES 也有這種題目
-我真的練太少題目了 連這種簡單經典題都寫不出來
-
-p9 🔗
-
-題意
-
-有 n 人要分組給 i = 0 ~ n-1ai 為 i 的組員求每組成員及組數
-
-Input
-
-62 4 3 5 1 0
-把輸入做成表格
-
-
-
-人的編號
-0
-1
-2
-3
-4
-5
-
-
-
-
-他的組員的編號
-2
-4
-3
-5
-1
-0
-
-
-
-
-Output
-
-0 2 3 51 42
-把輸出做成表格
-
-
-
-組別
-組員
-
-
-
-
-第一組
-0 2 3 5
-
-
-第二組
-1 4
-
-
-
-
-
-解題想法
-來自 SCIST 總召 Fishhh 的梗
-
-
-
-AC Code
-
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    int a[n]; FOR(i,n) cin &gt;&gt; a[i];    vector&lt;vector&lt;int&gt; &gt; v;    FOR(i,n)    &#123;        if(a[i] == -1) continue;        vector&lt;int&gt; t;        t.push_back(i);        int next = a[i], b = i;        while(a[next] != -1)        &#123;            t.push_back(next);            a[b] = -1;            b = next;            next = a[next];        &#125;        a[b] = -1;        v.push_back(t);       &#125;    FOR(i,v.size())    &#123;        FOR(j,v[i].size())        &#123;            cout &lt;&lt; v[i][j] &lt;&lt; &quot; &quot;;        &#125;        cout &lt;&lt; &quot;\n&quot;;    &#125;    cout &lt;&lt; v.size() &lt;&lt; &quot;\n&quot;;&#125;
-
-下午場 2 小時 2 / 6 🔗
-p1 🔗
-
-題意
-
-每天有 10 小時可以用給很多組活動的 起始時間 與 結束時間求如何安排才能在 10 小時中舉辦最多活動
-這題感覺很簡單不過一樣的我也沒有寫過類似的題目所以跳過
-後來聽 Silv 說只要過濾較多時間的活動
-然後依結束時間排序活動 再依開始時間挑選活動就可以了
-p2 🔗
-我把下午的比賽時間都砸在這題上了
-
-題意
-
-給 n 間糖果店每間不同的店花 1 塊錢可以買到不同的 a 顆糖果且每間店都會額外贈送 b 顆糖果有 q 筆操作分為兩類1. 把第 x 間店 移動到 第 y 個位置2. 詢問在 L 與 R 間店中 可以選擇「一間」買糖果 有 x 塊錢可以買 求糖果最大值
-
-Input
-
-52 24 51 33 61 732 2 3 31 2 42 2 3 3
-
-Output
-
-1715
-
-AC Code
-
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define vpii vector&lt;pair&lt;int,int&gt; &gt;signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vpii v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(a,b));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vpii vt;            pair&lt;int,int&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1;            for(int i=l-1; i&lt;r; ++i)            &#123;                int sum = v[i].first * x + v[i].second;                if(sum &gt; maxn) maxn = sum;            &#125;            cout &lt;&lt; maxn &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
-一開始以為第 1 種操作是交換兩間店的位置
-後來才知道是把第 x 間店抽掉後 插入到 第 y 個位置 其餘的順延補上
-但寫完還是錯 因為後來這題題目在賽中被主辦方改過題目意思
-害我原本照著原題目意思寫的程式碼都要改掉
-上面的版本是已經重新寫過而且在最後幾分鐘通過的
-原版意思是可以去「任何」糖果店買糖果 後來才改成只能去「一間」買
-這個題目意思改動浪費了我超級多時間修改程式碼＝＝
-原版程式碼多用了 bool 記錄每間糖果店有沒有去買過
-用了 vector&lt; pair&lt; pair&lt;int,int&gt;,bool &gt; &gt;
-（事後感覺用 tuple 或 struct 會比較好）
-也判斷了每塊硬幣要去哪間糖果店買才會得到最多糖果
-寫完比上面的程式碼還要多了整整 20 行
-原版 Code：
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define  signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(make_pair(a,b),true));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; vt;            pair&lt;pair&lt;int,int&gt;,bool&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1,now=-1,sum = 0;            while(x--)            &#123;                for(int i=l-1; i&lt;r; ++i)                &#123;                    if(v[i].second == true)                    &#123;                        if(v[i].first.first + v[i].first.second &gt; maxn)                        &#123;                            maxn = v[i].first.first + v[i].first.second;                            now = i;                        &#125;                    &#125;                    else if(v[i].second == false)                    &#123;                        if(v[i].first.first &gt; maxn)                        &#123;                            maxn = v[i].first.first;                            now = i;                        &#125;                    &#125;                &#125;                sum += maxn;                v[now].second = false;            &#125;            cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
-p3 ~ p5 🔗
-由於花太多時間在 p2 了 根本來不及想這 3 題要怎麼做
-p6 🔗
-
-題意
-這題題目超長 花了一整頁的文字在介紹 2 進制如何進位  根本素養題 所以我直接濃縮成兩句話
-
-給 a b 兩正整數求相乘後的 2 進制與 10 進制
-
-Input
-
-3126
-
-Output
-
-1100100110806
-
-解題想法
-
-先直接 a * b 求 10 進位後用字串的方法換成 2 進位這題 Eason 用位元左移右移來做 但我太笨了不會那種方法
-#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int a, b; cin &gt;&gt; a &gt;&gt; b;    int n = a * b, t = n;    string s = &quot;&quot;;    while(t != 0)    &#123;        if(t % 2) s = &quot;1&quot; + s;        else s = &quot;0&quot; + s;        t /= 2;    &#125;    cout &lt;&lt; s &lt;&lt; &quot;\n&quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;&#125;
-
-抱怨區 可跳過或忽視這裡詳細講一下主辦方這次競賽發生的一堆錯誤
-
-賽前測試沒有把系統用好 導致大家上傳測試題的程式碼時都發生 SE（系統錯誤）主辦卻說這不影響正式比賽 延誤了很久才開始
-正式開始之後 評測系統又掛掉了 大家都沒辦法登進去提交程式碼 於是主辦就開始做起超荒謬的事：人工評測 我當下是超級傻眼 都 2023 年了還在人工 Judge
-人工評測只是叫你執行程式然後輸入範例測資看有沒有跟範例輸出一樣 然後簡單看了一下程式碼就直接算你通過 我認為這喪失了公平性因為人工評測是直接用範例測資來看輸出是否正確 但正常比賽用的線上評測是由很多筆測試資料測試你的程式碼是否通過 如果用人工評測範例測資輸出正確 但程式碼錯誤 卻沒被檢查到呢？
-在系統正常後 我提交了剛剛人工評測通過的題目程式碼看看是否在評測平台也能通過 雖然成功通過 但主辦方過了一陣子才出來說：人工評測通過的人不用傳線上評測 又說上傳的話會影響原本人工評測時紀錄的時間 我都已經在平台正常的那刻上傳通過了之後才說不用傳＝＝ 而且重點是不傳怎麼知道程式碼通過或不通過？那如果有人人工評測正確但程式碼錯誤卻又不用上傳線上評測 是不是就多賺別人一題？
-主辦出題感覺真的很不用心 不知道有沒有認真審題 題目很多數字都沒給範圍 然後很多題都需要在賽中出來大聲講解補充題目意思 很多題都是在比賽時改了又改 還有重新拿一張題目給我們的 一堆題目連範例側資都是錯的 還叫我們整個打叉不要看 然後我都已經照著原版題目意思寫完程式碼了 才出來把題目意思改掉讓我重新修改程式碼
-
-
-
-心得 &amp; 檢討 🔗
-這次比賽總共 15 題 我只解出 4 題
-有很多都是出自 CSES 的簡單經典題
-而我卻因為練太少題目 都想不出解法
-這場比賽集結了很多電神 整個比賽會場都充滿著高壓電
-全場最強第一名的自學生趙翊佑（聽說是陳水扁的孫子）
-還有前幾名有進全國賽的郭育愷、葉智揚、陳秉宏、鄭柏軒 都南一中的
-還有因為 SCIST 而認識新化高中的 Eason 跟 Silv 他們都有得佳作
-我看到些人就會覺得我自己超級弱
-我本身實力與其他選手相比實在差太多了
-最後雖然跟 silv 一樣都是解出 4 題 但他有佳作我卻沒有
-我認為可能真的是被主辦方說的上傳線上評測的時間影響到成績
-或是他有解到第一題會多一分 或是我最後花的時間確實比較多
-心裡其實滿沮喪的 一直在想為什麼會這樣 也一直很想抱怨主辦方
-但又覺得我實力比不上別人 好像也沒什麼資格抱怨的
-總而言之 見識到有那麼多人都比我更厲害而且比我更努力
-我會多多練題 持續精進自己
-
-11/03 更新 我得佳作了？！ 🔗
-廢話不多說 直接附上得獎名單
-
-明明現場沒喊到我的名字
-今天公布的得獎名單裡佳作竟然有我？？？
-心中滿滿問號與懷疑
-不過後來猜測是因為主辦方重新整理過分數與解題時間
-調整了名次 讓我成功獲得佳作
-心情慢慢轉變為喜悅
-我把這次的成績視為對自己的一種肯定
-作為我之後的動力
-高二的一堆比賽 讓我心裡也不知道該怎麼平衡課業與競賽
-一直在擔心如果把時間花在比賽 卻沒有比出成績的話怎麼辦
-我的段考分數也因為社團與競賽 相比高一真的變差太多了
-身邊的同學也一直在問為什麼我成績變得不好
-但我真的無法解釋 只能做好我該做的事 做我想做的事
-希望我能漸漸學會如何分配我自己的時間
-我相信我能越來越好的
-特別感謝 🔗
-Yudong 每次比賽的搭檔 沒有你我也不會有佳作 感謝你常常陪我打線上程式競賽到半夜 每天討論程式題目怎麼解 讓我們一起進步 最後也謝謝賽前給我加油打氣的老師與同學朋友們
-延伸閱讀 🔗
-競賽心得 @Yudong
-競賽心得 @tw20000807
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>心得</category>
-        <category>競賽</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>資訊競賽</tag>
-        <tag>競程</tag>
-        <tag>題解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>訓練神經網路計算過程</title>
-    <url>/post/Neural-Network/</url>
-    <content><![CDATA[這是一個具有一層隱藏層的神經網路：
-
-假設 🔗
-
-輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：
-
-X=[1202−32−1−13],Y=[12−3]    X = 
-        \begin{bmatrix}
-            1 &amp; 2 &amp; 0   \\
-            2 &amp; -3 &amp; 2  \\
-            -1 &amp; -1 &amp; 3 \\
-        \end{bmatrix},
-    Y = 
-        \begin{bmatrix}
-            1  \\
-            2  \\
-            -3 \\
-        \end{bmatrix}
-
-W1=[−10−111−1]    W_1 = 
-        \begin{bmatrix}
-            -1 &amp; 0 \\
-            -1 &amp; 1 \\
-            1 &amp; -1 \\
-        \end{bmatrix}
-
-
-隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1，
-經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z)
-另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)
-輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2
-
-W2=[1−2]    W_2 = 
-        \begin{bmatrix}
-            1  \\
-            -2 \\
-        \end{bmatrix}
-
-
-將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失
-
-J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2) 
-
-此時，已知輸出層梯度：
-Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y
-
-
-隱藏層梯度：
-
-G2=∂J∂W2=∂J∂O∂O∂W2=((Gout)T⋅K)T=KTGout\begin{equation}
-    \begin{aligned}
-        G_2
-        &amp;= 
-            \frac{\partial J}{\partial W_2}
-         = 
-            \frac{\partial J}{\partial O} \frac{\partial O}{\partial W_2} 
-            \\\\
-        &amp;= 
-            ((G_{out})^T \cdot K)^T 
-         = 
-            K^TG_{out}
-    \end{aligned}
-\end{equation}
-
-
-ReluRelu 函數的微分式：
-
-σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
-    \begin{cases}
-        0 \quad x &lt; 0   \\
-        1 \quad x \ge 0 \\
-    \end{cases}
-
-
-先假定一個暫存的 GtempG_{temp} ：
-
-Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
-
-其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積
-
-輸入層梯度：
-
-G1=∂J∂W1=∂J∂O∂O∂K∂K∂Z∂Z∂W1=(((Gout⋅W2T)∘σ′(Z))T⋅X)T=((Gtemp)T⋅X)T=XTGtemp\begin{equation}
-    \begin{aligned}
-        G_1
-        &amp;= 
-            \frac{\partial J}{\partial W_1}
-         = 
-            \frac{\partial J}{\partial O} 
-            \frac{\partial O}{\partial K}
-            \frac{\partial K}{\partial Z}
-            \frac{\partial Z}{\partial W_1} 
-            \\\\
-        &amp;= 
-            (((G_{out} \cdot W^T_2) \circ \sigma^{\prime} (Z))^T \cdot X)^T 
-            \\\\
-        &amp;= 
-            ((G_{temp})^T \cdot X)^T 
-            \\\\
-        &amp;= 
-            X^TG_{temp}
-    \end{aligned}
-\end{equation}
-
-
-可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
-
-假設我們採用隨機梯度下降法來進行更新，且學習率令為 0.10.1，則
-{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
-    W_1^{new} = W_1 - 0.1 \times G_1 \\
-    W_2^{new} = W_2 - 0.1 \times G_2 \\
-\end{cases}
-
-問題 🔗
-求矩陣 Z,K,O,Gout,G2,σ′(Z),Gtemp,G1,W1new,W2newZ,K,O,G_{out},G_2,\sigma^{\prime}(Z),G_{temp},G_1,W_1^{new},W_2^{new}
-
-求解過程皆省略公式推導過程，將直接使用最終結果代入計算
-
-
-ZZ
-由線性組合 Z=XW1Z=XW_1：
-Z=XW1=[1202−32−1−13]⋅[−10−111−1]=[−323−55−4]\begin{equation}
-    \begin{aligned}
-        Z
-        &amp;= 
-            XW_1 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1 &amp; 2 &amp; 0   \\
-                2 &amp; -3 &amp; 2  \\
-                -1 &amp; -1 &amp; 3 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-KK
-由經過激活函數 σ\sigma 後的值 K=σ(Z)K = \sigma(Z)，且激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)：
-K=σ(Z)=σ ([−323−55−4])=[023050]\begin{equation}
-    \begin{aligned}
-        K 
-        &amp;= 
-            \sigma(Z) 
-            \\\\
-        &amp;= 
-            \sigma\ 
-            (
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}
-            ) 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 2 \\
-                3 &amp; 0 \\
-                5 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-OO
-輸出層有 1 個節點，其權重矩陣為 W2W_2，由線性輸出 O=KW2O=KW_2：
-O=KW2=[023050]⋅[1−2]=[−435]\begin{equation}
-    \begin{aligned}
-        O 
-        &amp;= 
-            KW_2 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 2 \\
-                3 &amp; 0 \\
-                5 &amp; 0 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                1  \\
-                -2 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -4 \\
-                3  \\
-                5  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-GoutG_{out}
-由輸出層梯度 Gout=O−YG_{out} = O-Y：
-Gout=O−Y=[−435]−[12−3]=[−518]\begin{equation}
-    \begin{aligned}
-        G_{out} 
-        &amp;= 
-            O-Y 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -4 \\
-                3  \\
-                5  \\
-            \end{bmatrix} 
-            - 
-            \begin{bmatrix}
-                1  \\
-                2  \\
-                -3 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-G2G_2
-由隱藏層梯度 G2=KTGoutG_2 = K^TG_{out}，其中 KTK^T 為 矩陣 KK 的轉置：
-K=[023050],KT=[035200]K = 
-    \begin{bmatrix}
-        0 &amp; 2 \\
-        3 &amp; 0 \\
-        5 &amp; 0 \\
-    \end{bmatrix},
-K^T = 
-    \begin{bmatrix}
-        0 &amp; 3 &amp; 5 \\
-        2 &amp; 0 &amp; 0 \\
-    \end{bmatrix}
-
-G2=KTGout=[035200]⋅[−518]=[43−10]\begin{equation}
-    \begin{aligned}
-        G_2 
-        &amp;= 
-            K^TG_{out} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 3 &amp; 5 \\
-                2 &amp; 0 &amp; 0 \\
-            \end{bmatrix} 
-            \cdot
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix} 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                43   \\
-                -10  \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-σ′(Z)\sigma^{\prime}(Z)
-其中 σ′\sigma^{\prime} 為 ReluRelu 函數的微分式：
-σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
-\begin{cases}
-    0 \quad x &lt; 0   \\
-    1 \quad x \ge 0 \\
-\end{cases}
-
-σ′(Z)=σ′([−323−55−4])=[011010]\begin{equation}
-    \begin{aligned}
-        \sigma^{\prime}(Z)
-        &amp;= 
-            \sigma^{\prime}(
-            \begin{bmatrix}
-                -3 &amp; 2 \\
-                3 &amp; -5 \\
-                5 &amp; -4 \\
-            \end{bmatrix}) 
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-GtempG_{temp}
-由假定暫存的 Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z)
-其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積，且 W2TW_2^T 為矩陣 W2W_2 的轉置：
-W2=[1−2],W2T=[1−2]W_2 = 
-    \begin{bmatrix}
-        1  \\
-        -2 \\
-    \end{bmatrix},
-W_2^T = 
-    \begin{bmatrix}
-        1 &amp; -2 \\
-    \end{bmatrix}
-
-Gtemp=(Gout⋅W2T)∘σ′(Z)=([−518]⋅[1−2])∘[011010]=[−5101−28−16]∘[011010]=[0101080]\begin{equation}
-    \begin{aligned}
-        G_{temp} 
-        &amp;= 
-            (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
-            \\\\
-        &amp;=  (
-            \begin{bmatrix}
-                -5 \\
-                1  \\
-                8  \\
-            \end{bmatrix} \cdot
-            \begin{bmatrix}
-                1 &amp; -2
-            \end{bmatrix}
-            ) \circ 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -5 &amp; 10 \\
-                1 &amp; -2 \\
-                8 &amp; -16 \\
-            \end{bmatrix}
-            \circ 
-            \begin{bmatrix}
-                0 &amp; 1 \\
-                1 &amp; 0 \\
-                1 &amp; 0 \\
-            \end{bmatrix} 
-            \\\\
-        &amp;=
-            \begin{bmatrix}
-                0 &amp; 10 \\
-                1 &amp; 0 \\
-                8 &amp; 0 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-G1G_1
-由輸入層梯度 G1=XTGtempG_1 = X^TG_{temp}，其中 XTX^T 為 矩陣 XX 的轉置：
-X=[1202−32−1−13],XT=[12−12−3−1023],X = 
-    \begin{bmatrix}
-        1 &amp; 2 &amp; 0   \\
-        2 &amp; -3 &amp; 2  \\
-        -1 &amp; -1 &amp; 3 \\
-    \end{bmatrix},
-X^T = 
-    \begin{bmatrix}
-        1 &amp; 2 &amp; -1   \\
-        2 &amp; -3 &amp; -1  \\
-        0 &amp; 2 &amp; 3    \\
-    \end{bmatrix},
-
-G1=XTGtemp=[12−12−3−1023]⋅[0101080]=[−610−1120260]\begin{equation}
-    \begin{aligned}
-        G_1
-        &amp;= 
-            X^TG_{temp}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1 &amp; 2 &amp; -1   \\
-                2 &amp; -3 &amp; -1  \\
-                0 &amp; 2 &amp; 3    \\
-            \end{bmatrix}
-            \cdot
-            \begin{bmatrix}
-                0 &amp; 10 \\
-                1 &amp; 0  \\
-                8 &amp; 0  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -6 &amp; 10  \\
-                -11 &amp; 20 \\
-                26 &amp; 0   \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-W1new,W2newW_1^{new},W_2^{new}
-
-可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
-已知我們採用隨機梯度下降法來進行更新，且學習率為 0.10.1，則
-
-{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
-    W_1^{new} = W_1 - 0.1 \times G_1 \\
-    W_2^{new} = W_2 - 0.1 \times G_2 \\
-\end{cases}
-
-W1new=W1−0.1×G1=[−10−111−1]−0.1×[−610−1120260]=[−10−111−1]−[−0.61−1.122.60]=[−0.4−10.1−1−1.6−1]\begin{equation}
-    \begin{aligned}
-        W_1^{new}
-        &amp;= 
-            W_1 - 0.1 \times G_1
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 0.1 \times
-            \begin{bmatrix}
-                -6 &amp; 10  \\
-                -11 &amp; 20 \\
-                26 &amp; 0   \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 
-            \begin{bmatrix}
-                -0.6 &amp; 1  \\
-                -1.1 &amp; 2  \\
-                2.6 &amp; 0   \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -0.4 &amp; -1 \\
-                0.1 &amp; -1  \\
-                -1.6 &amp; -1 \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.3−1]\begin{equation}
-    \begin{aligned}
-        W_2^{new}
-        &amp;= 
-            W_2 - 0.1 \times G_2
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                1  \\
-                -2 \\
-            \end{bmatrix}
-            - 0.1 \times
-            \begin{bmatrix}
-                43   \\
-                -10  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -1 &amp; 0 \\
-                -1 &amp; 1 \\
-                1 &amp; -1 \\
-            \end{bmatrix}
-            - 
-            \begin{bmatrix}
-                4.3 \\
-                -1  \\
-            \end{bmatrix}
-            \\\\
-        &amp;= 
-            \begin{bmatrix}
-                -3.3 \\
-                -1   \\
-            \end{bmatrix}
-    \end{aligned}
-\end{equation}
-
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>筆記</category>
-        <category>AI 人工智慧</category>
-      </categories>
-      <tags>
-        <tag>AI 人工智慧</tag>
-        <tag>神經網路 Neural Network</tag>
-        <tag>梯度下降演算法</tag>
-        <tag>損失函數 Loss func</tag>
-        <tag>矩陣 Matrix</tag>
-        <tag>激活函數</tag>
+        <tag>網頁導覽 Site map</tag>
       </tags>
   </entry>
   <entry>
@@ -1326,459 +442,6 @@ Email：shiyu@scist.org
         <tag>清華大學</tag>
         <tag>成功大學</tag>
         <tag>海洋大學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
-    <url>/post/SCIST-Camp-2024/</url>
-    <content><![CDATA[寒訓詳細資訊 🔗
-
-引言 🔗
-在 2023/11/25 這次的寒訓總召 茶碗蒸 私訊我問說要不要一起辦寒訓，但其實我們南附資研在 2023/11/13 幹部線上開會時就有討論到說寒假要辦營隊，本來沒想說要辦那麼大規模的寒訓，那時的規劃主要是開放給校內的所有學生和老師，大概會舉辦講座提供給校內對資訊領域有興趣的人，且主題訂為資訊領域的多元課程。
-後來思考過後決定接下本次寒訓副召，一開始的召群有南女的總召 茶碗蒸、一中的副召 KCC 還有我，加上 Fishhh、Eason 和 Curious 這三位 SCIST S4 的總召們協助，還有小白的加入也讓我們日後籌備更順利。
-
-籌備階段 🔗
-我們是先開了線上會議，確認好活動目的與受眾，排好 Deadline 後才開始籌備，一開始是要先招募工作人員，因為有茶碗蒸這個 SCIST 文書在，所以各種表單很快就做好了，而且他也有之前辦茶會迎新的經驗，所以初期還挺順利的，也在一開始就把各校的邀請訊息發出去了，最後是找到了 9 間學校聯合主辦，而 SCIST 則是掛協辦，提供我們講師助教等課程上的資源，我們也開始著手撰寫計劃書、排時間表、預估經費、詢問場地租借…等。在計劃書撰寫上感謝小白幫了很大的忙，而其他的事情也很幸運有上一屆寒訓的 PJ、Koying…等人的努力，有留下文檔提供我們很多資訊可作參考，讓我們在初期不容易迷失方向，對我們幫助很大。
-在短短的一週內，就收到了個主辦校報名的工作人員 35 人左右，其中我從南附資研中就拉了 10 幾個人來當行政，加上 SCIST 的講師及助教，最後行政組達到了 50 人左右。
-
-我們接著開放學員報名，一開始報名狀況其實不是很好，我們很怕無法收到預估的學員人數，所以加強了各校的宣傳，我也以擔任小編的經驗到各大社團和營隊網站上刊登廣告，後來發現報名期間只有第一週和最後一週報名人數才會增加的現象…
-在這要感謝成功大學資工系的 Colten 幫忙處理成大場地以及接線讓成大資工系與本次寒訓合作，讓推廣曝光提升了很多，也提供了我們成大超級棒的階梯教室和電腦教室場地給寒訓使用，也要特別感謝副召 KCC 不斷地與南一中接洽，才能有超大的群英堂提供我們舉辦晚會活動。
-
-過了學員報名期限，很開心的我們收到了超過 100 多位學生的報名，接下來就是繁瑣篩選學員環節，繁瑣是因為要閱讀大量的試算表內容，根據報名者的意願、動機、對資訊領域的了解及熱忱來篩選出 80 位實體學員參與為期 3 天的寒訓，然後要開始寄錄取和未錄取通知信，也開始開放學員繳費，過程中遇到了一些困難與挑戰。
-
-挑戰與學習 🔗
-在做行政的過程中，會不小心放錯連結之類的，當下其實滿慌的，很難及時補救，所以很感謝有行政組的其他人幫忙處理，我也在這次的籌備過程中學到了很多應對問題的方法，讓我了解到做事須謹慎小心且要再三確認，也在當行政的過程中，學習到如何回信、如何應對突發狀況等。
-團隊分工合作 🔗
-在籌備期間我們團隊訂好 Deadline，由召群這分派給每個職位工作，行政組招收了活動、隊輔、總務、場務、美宣和醫護，將每個職位開討論區讓各組員交流更便利，且將資訊公開透明，也將各種連結彙整在一起，讓行政組同步且避免落差，很感謝各組組長非常積極的參與和組員的配合，讓我體會到團隊分工合作的重要性。
-
-活動組 🔗
-這次寒訓的所有遊戲內容和晚會皆由活動組規劃，我覺得他們非常辛苦，比我們召群還要肝，他們從上任就開始想活動、出題、討論流程，常常看到他們在開會，我大部分都會在，感受到他們的忙碌，要絞盡腦汁的思考有什麼團康遊戲可以玩，思考如何讓學員們破冰，讓彼此在短時間內互相熟悉了解，這裡要特別感謝 Yudong、OsGa 和 Joyce 三位超強的活動，前兩位甚至是三天裡最辛苦的主持人，而活動組長 Yudong 和隊輔組長 Joyce 的規劃和執行能力也讓我相當佩服，這三天有這麼精彩的活動真的要歸功於他們
-
-    [{"url":"https://hackmd.io/_uploads/HJxGBXroT.png","alt":"活動組開會","title":""},{"url":"https://hackmd.io/_uploads/rJa7UaQoT.png","alt":"活動組規劃","title":""},{"url":"https://hackmd.io/_uploads/Bkf8pASia.png","alt":"題庫","title":""},{"url":"https://hackmd.io/_uploads/rkl48J8sT.png","alt":"大地遊戲關主分配","title":""}]
-  
-隊輔組 🔗
-隊輔組是人數最多的一組，因為我們總共招收了 85 位實體學員，所以收了 18 位隊輔，負責帶領小隊完成這三天的所有活動，還要做小隊牌、點名、帶跳小隊舞(這點子不是我想的)…等繁雜的工作，是需要有責任感且能了解活動流程的人擔任
-
-    [{"url":"https://hackmd.io/_uploads/SJbTwaQi6.png","alt":"隊輔組開會","title":""},{"url":"https://hackmd.io/_uploads/SkcTL1Usa.png","alt":"小隊舞音樂","title":""},{"url":"https://hackmd.io/_uploads/H1msjkIsT.png","alt":"隊輔組點名","title":""}]
-  
-總務組 🔗
-總務組只有兩個人，負責事前的訂餐與金錢的管控，是非常重要的角色
-
-    [{"url":"https://hackmd.io/_uploads/HkGd6y8iT.png","alt":"餐點店家","title":""},{"url":"https://hackmd.io/_uploads/r1adxgUi6.png","alt":"金錢規劃與收支紀錄","title":""}]
-  
-場務組 🔗
-場務組負責拍照、餐點搬運、場復…等工作，要在大家休息的時候努力工作，非常辛苦，感謝場務這三天的付出。
-美宣組 🔗
-這次的美宣組只有 JT Lin 一個人，他非常辛苦要製作所有工作人員和實體學員的名牌、獎狀、參與證明…等，需要大量的時間製作，還要兼任隊輔，是一個效率高且負責的人，只不過這三天滿諧咖的
-
-    [{"url":"https://hackmd.io/_uploads/ByjPvkIi6.png","alt":"宣傳圖","title":""},{"url":"https://hackmd.io/_uploads/rJWnPyUs6.png","alt":"美宣工作","title":""},{"url":"https://hackmd.io/_uploads/Hyuu_yLjp.jpg","alt":"名牌","title":""}]
-  
-課程內容 🔗
-這次因為 SCIST 協辦，所以有了講師以及助教，感謝講師們在寒訓前辛苦的準備課程講義，每位都帶給學員很大的幫助，以下是我整理的課程資源彙整，大家可以善加利用
-課程資源彙整 🔗
-
-    [{"url":"https://hackmd.io/_uploads/HJGrUmAha.jpg","alt":"20240206_101644","title":""},{"url":"https://hackmd.io/_uploads/HkRNI7Rha.jpg","alt":"20240206_101837","title":""},{"url":"https://hackmd.io/_uploads/BJKIIX02p.jpg","alt":"DSC_3378","title":""},{"url":"https://hackmd.io/_uploads/HyY8IX02p.jpg","alt":"DSC_3383","title":""},{"url":"https://hackmd.io/_uploads/BJKU8mCnp.jpg","alt":"DSC_3385","title":""},{"url":"https://hackmd.io/_uploads/HkML8QC36.jpg","alt":"DSC_3396","title":""},{"url":"https://hackmd.io/_uploads/BkdL8mC3p.jpg","alt":"DSC_3444","title":""},{"url":"https://hackmd.io/_uploads/S1tII70hT.jpg","alt":"DSC_3452","title":""},{"url":"https://hackmd.io/_uploads/rkHULmC2a.jpg","alt":"DSC_3456","title":""},{"url":"https://hackmd.io/_uploads/H1L8UQ0na.jpg","alt":"DSC_3458","title":""},{"url":"https://hackmd.io/_uploads/B1wULQR2T.jpg","alt":"DSC_3460","title":""},{"url":"https://hackmd.io/_uploads/S1X88QRhT.jpg","alt":"DSC_3485","title":""},{"url":"https://hackmd.io/_uploads/HyuILQ036.jpg","alt":"DSC_3503","title":""},{"url":"https://hackmd.io/_uploads/HkYUL703T.jpg","alt":"DSC_3505","title":""},{"url":"https://hackmd.io/_uploads/SkwUU7R36.jpg","alt":"DSC_3514","title":""},{"url":"https://hackmd.io/_uploads/rkeUI7Rha.jpg","alt":"IMG_7065","title":""},{"url":"https://hackmd.io/_uploads/SJiH8Q0h6.jpg","alt":"IMG_7081","title":""},{"url":"https://hackmd.io/_uploads/SJw4UQ03T.jpg","alt":"IMG_9032","title":""},{"url":"https://hackmd.io/_uploads/r1UVUm026.jpg","alt":"IMG_9036","title":""},{"url":"https://hackmd.io/_uploads/rJLNU7Rh6.jpg","alt":"IMG_9086","title":""}]
-  
-活動內容 🔗
-先放照片 下面剩下的文字內容等我有空再補 …
-開幕與破冰 🔗
-
-    [{"url":"https://hackmd.io/_uploads/HkhetmAnT.jpg","alt":"20240205_085547","title":""},{"url":"https://hackmd.io/_uploads/ry4bFQ03a.jpg","alt":"20240205_085620","title":""},{"url":"https://hackmd.io/_uploads/Hk21Y7Ahp.jpg","alt":"20240205_093011","title":""},{"url":"https://hackmd.io/_uploads/H1HlFXAh6.jpg","alt":"20240205_093051","title":""},{"url":"https://hackmd.io/_uploads/BkagYX02p.jpg","alt":"20240205_093139","title":""},{"url":"https://hackmd.io/_uploads/ry1-t7Anp.jpg","alt":"20240205_093648","title":""},{"url":"https://hackmd.io/_uploads/S1JbFQC2p.jpg","alt":"20240205_093708","title":""},{"url":"https://hackmd.io/_uploads/rkigK7A2p.jpg","alt":"20240205_093714","title":""},{"url":"https://hackmd.io/_uploads/ByHxFXR3a.jpg","alt":"20240205_093746","title":""},{"url":"https://hackmd.io/_uploads/S16ltX0hT.jpg","alt":"20240205_093822","title":""},{"url":"https://hackmd.io/_uploads/SyHlFQAha.jpg","alt":"20240205_093916","title":""},{"url":"https://hackmd.io/_uploads/BJlixKQCnT.jpg","alt":"20240205_093947","title":""},{"url":"https://hackmd.io/_uploads/HJKeFXC2p.jpg","alt":"20240205_094010","title":""},{"url":"https://hackmd.io/_uploads/rJMetmChT.jpg","alt":"20240205_094025","title":""},{"url":"https://hackmd.io/_uploads/rJ_xKmAnp.jpg","alt":"20240205_094042","title":""},{"url":"https://hackmd.io/_uploads/SyDso7A3T.jpg","alt":"DSC_3550","title":""},{"url":"https://hackmd.io/_uploads/rkdooXA3a.jpg","alt":"DSC_3372","title":""},{"url":"https://hackmd.io/_uploads/SkDiiXR3p.jpg","alt":"DSC_3263","title":""},{"url":"https://hackmd.io/_uploads/HkOssmR2a.jpg","alt":"20240205_094324","title":""},{"url":"https://hackmd.io/_uploads/rkujoQ0np.jpg","alt":"20240205_094148","title":""},{"url":"https://hackmd.io/_uploads/ryuojXR2T.jpg","alt":"20240205_094125","title":""},{"url":"https://hackmd.io/_uploads/Bkusjm0hp.jpg","alt":"20240205_090344","title":""},{"url":"https://hackmd.io/_uploads/S1lWYXA3a.jpg","alt":"20240205_094358","title":""},{"url":"https://hackmd.io/_uploads/Hy7WF70h6.jpg","alt":"20240205_094504","title":""},{"url":"https://hackmd.io/_uploads/BJJxYQC26.jpg","alt":"20240205_094856","title":""},{"url":"https://hackmd.io/_uploads/ByPltXA3T.jpg","alt":"20240205_095313","title":""},{"url":"https://hackmd.io/_uploads/Bk5gtmRhT.jpg","alt":"20240205_095827","title":""},{"url":"https://hackmd.io/_uploads/BJylKQ03p.jpg","alt":"20240205_100114","title":""},{"url":"https://hackmd.io/_uploads/HyK1FQR2a.jpg","alt":"20240205_100417","title":""},{"url":"https://hackmd.io/_uploads/S1mgYQC3p.jpg","alt":"20240205_101227","title":""}]
-  
-贊助商分享 🔗
-
-    [{"url":"https://hackmd.io/_uploads/H1jw37Cnp.jpg","alt":"IMG_7336","title":""},{"url":"https://hackmd.io/_uploads/r1hvh7C2a.jpg","alt":"DSC_3652","title":""},{"url":"https://hackmd.io/_uploads/SJnv3QRnp.jpg","alt":"DSC_3609","title":""},{"url":"https://hackmd.io/_uploads/S13P2QC3a.jpg","alt":"DSC_3602","title":""},{"url":"https://hackmd.io/_uploads/rJ2P27Rha.jpg","alt":"DSC_3571","title":""},{"url":"https://hackmd.io/_uploads/B12v3XRna.jpg","alt":"20240206_132112","title":""}]
-  
-遊戲活動 🔗
-
-    [{"url":"https://hackmd.io/_uploads/SJ98cmy6T.jpg","alt":"20240205_195634","title":""},{"url":"https://hackmd.io/_uploads/SyGu9XyTp.jpg","alt":"20240206_194936","title":""},{"url":"https://hackmd.io/_uploads/HJGucQy6p.jpg","alt":"20240206_195113","title":""},{"url":"https://hackmd.io/_uploads/HyfO5m166.jpg","alt":"20240206_195918","title":""},{"url":"https://hackmd.io/_uploads/HkGu5mJpp.jpg","alt":"20240206_200137","title":""},{"url":"https://hackmd.io/_uploads/rkf_cQJT6.jpg","alt":"20240206_200804","title":""},{"url":"https://hackmd.io/_uploads/r1fdcmy66.jpg","alt":"20240206_200805","title":""},{"url":"https://hackmd.io/_uploads/HJhK5XyaT.jpg","alt":"DSC_3475","title":""},{"url":"https://hackmd.io/_uploads/S1e2Yq7JTa.jpg","alt":"DSC_3480","title":""},{"url":"https://hackmd.io/_uploads/ryxhF5XJ6T.jpg","alt":"DSC_3653","title":""},{"url":"https://hackmd.io/_uploads/SJnY5mypT.jpg","alt":"DSC_3854","title":""},{"url":"https://hackmd.io/_uploads/r1hY9mJpp.jpg","alt":"IMG_7110","title":""},{"url":"https://hackmd.io/_uploads/S16Yq7k6T.jpg","alt":"IMG_7114","title":""},{"url":"https://hackmd.io/_uploads/HkhtcmypT.jpg","alt":"IMG_7117","title":""},{"url":"https://hackmd.io/_uploads/S1hK9Q1pT.jpg","alt":"IMG_7120","title":""},{"url":"https://hackmd.io/_uploads/HynFqQyTp.jpg","alt":"IMG_7122","title":""},{"url":"https://hackmd.io/_uploads/rknK5Q1pp.jpg","alt":"IMG_7125","title":""},{"url":"https://hackmd.io/_uploads/HJ3Ycm1a6.jpg","alt":"IMG_7127","title":""},{"url":"https://hackmd.io/_uploads/r1htcQ1p6.jpg","alt":"IMG_7133","title":""},{"url":"https://hackmd.io/_uploads/SJnYc716p.jpg","alt":"IMG_7136","title":""},{"url":"https://hackmd.io/_uploads/ry3F9XyTp.jpg","alt":"IMG_7139","title":""},{"url":"https://hackmd.io/_uploads/rJg2Yq7k6T.jpg","alt":"IMG_7141","title":""},{"url":"https://hackmd.io/_uploads/ryght57ypp.jpg","alt":"IMG_7143","title":""},{"url":"https://hackmd.io/_uploads/SJe3K5mJpa.jpg","alt":"IMG_7144","title":""},{"url":"https://hackmd.io/_uploads/S12Y9X1TT.jpg","alt":"IMG_7146","title":""},{"url":"https://hackmd.io/_uploads/rJ3Y5QyTp.jpg","alt":"IMG_7171","title":""},{"url":"https://hackmd.io/_uploads/HkehF5my6p.jpg","alt":"IMG_7186","title":""},{"url":"https://hackmd.io/_uploads/By3YqXJap.jpg","alt":"IMG_7196","title":""},{"url":"https://hackmd.io/_uploads/HkxnF571pp.jpg","alt":"IMG_7224","title":""},{"url":"https://hackmd.io/_uploads/SJg3Kq7kaT.jpg","alt":"IMG_7225","title":""},{"url":"https://hackmd.io/_uploads/SknKq7kTT.jpg","alt":"IMG_7227","title":""},{"url":"https://hackmd.io/_uploads/r13K57Jpa.jpg","alt":"IMG_7228","title":""},{"url":"https://hackmd.io/_uploads/rJe3KqQ1aT.jpg","alt":"IMG_7246","title":""},{"url":"https://hackmd.io/_uploads/rJhF5XyTa.jpg","alt":"IMG_7247","title":""},{"url":"https://hackmd.io/_uploads/H1hY97ypa.jpg","alt":"IMG_7395","title":""},{"url":"https://hackmd.io/_uploads/Skl2FcXJ6a.jpg","alt":"IMG_7401","title":""},{"url":"https://hackmd.io/_uploads/ByAO5XyTT.jpg","alt":"IMG_9050","title":""}]
-  
-晚會 🔗
-
-闖關活動 🔗
-
-    [{"url":"https://hackmd.io/_uploads/ryUD3m1aT.jpg","alt":"20240207_091051","title":""},{"url":"https://hackmd.io/_uploads/BkrwhQypa.jpg","alt":"20240207_092117","title":""},{"url":"https://hackmd.io/_uploads/H1rvnXyaT.jpg","alt":"20240207_104938","title":""},{"url":"https://hackmd.io/_uploads/ByLv2m1aa.jpg","alt":"DSC_3856","title":""},{"url":"https://hackmd.io/_uploads/S1Lv3Xkaa.jpg","alt":"DSC_3875","title":""},{"url":"https://hackmd.io/_uploads/SJLD37Jap.jpg","alt":"DSC_3880","title":""},{"url":"https://hackmd.io/_uploads/S1Dvh7kTT.jpg","alt":"DSC_3881","title":""},{"url":"https://hackmd.io/_uploads/H1vw2mk6T.jpg","alt":"DSC_3883","title":""},{"url":"https://hackmd.io/_uploads/r18wh716T.jpg","alt":"DSC_3884","title":""},{"url":"https://hackmd.io/_uploads/Sywvh7JT6.jpg","alt":"DSC_3887","title":""},{"url":"https://hackmd.io/_uploads/By8PhQ1a6.jpg","alt":"DSC_3901","title":""},{"url":"https://hackmd.io/_uploads/ry8PhQkpp.jpg","alt":"DSC_3910","title":""},{"url":"https://hackmd.io/_uploads/rk8v3m1ap.jpg","alt":"DSC_3911","title":""},{"url":"https://hackmd.io/_uploads/B1LDnXkpp.jpg","alt":"DSC_3915","title":""},{"url":"https://hackmd.io/_uploads/BkLwnmy66.jpg","alt":"DSC_3916","title":""},{"url":"https://hackmd.io/_uploads/BJvD2QkT6.jpg","alt":"DSC_3921","title":""},{"url":"https://hackmd.io/_uploads/SJwD27ypT.jpg","alt":"DSC_3924","title":""},{"url":"https://hackmd.io/_uploads/BkgIvnQypa.jpg","alt":"DSC_3928","title":""},{"url":"https://hackmd.io/_uploads/rJIvhmypT.jpg","alt":"DSC_3948","title":""},{"url":"https://hackmd.io/_uploads/SJvv2m1TT.jpg","alt":"DSC_3951","title":""},{"url":"https://hackmd.io/_uploads/B1eIv2QJ66.jpg","alt":"DSC_3961","title":""},{"url":"https://hackmd.io/_uploads/H1xUP37JTa.jpg","alt":"DSC_3979","title":""},{"url":"https://hackmd.io/_uploads/SJlIvh7Jap.jpg","alt":"DSC_3994","title":""},{"url":"https://hackmd.io/_uploads/HyIw3QyTa.jpg","alt":"DSC_4010","title":""},{"url":"https://hackmd.io/_uploads/ryUD2Xkpa.jpg","alt":"DSC_4019","title":""},{"url":"https://hackmd.io/_uploads/r1LDhQkaT.jpg","alt":"DSC_4029","title":""},{"url":"https://hackmd.io/_uploads/B1xIP2mJTp.jpg","alt":"DSC_4040","title":""},{"url":"https://hackmd.io/_uploads/HyxUv3Q1a6.jpg","alt":"DSC_4048","title":""},{"url":"https://hackmd.io/_uploads/ByxIvnXk6T.jpg","alt":"DSC_4113","title":""},{"url":"https://hackmd.io/_uploads/HJl8v3mJTp.jpg","alt":"DSC_4125","title":""},{"url":"https://hackmd.io/_uploads/BkgLDhm16T.jpg","alt":"DSC_4131","title":""},{"url":"https://hackmd.io/_uploads/rkeUPnQyTT.jpg","alt":"DSC_4160","title":""},{"url":"https://hackmd.io/_uploads/BygDD27kTa.jpg","alt":"IMG_7522","title":""},{"url":"https://hackmd.io/_uploads/ryvP3my6a.jpg","alt":"IMG_7529","title":""},{"url":"https://hackmd.io/_uploads/SyPw271p6.jpg","alt":"IMG_7530","title":""},{"url":"https://hackmd.io/_uploads/Hk8PhQJap.jpg","alt":"IMG_7532","title":""}]
-  
-經驗分享 🔗
-
-    [{"url":"https://hackmd.io/_uploads/rJS9jQkTp.jpg","alt":"DSC_4264","title":""},{"url":"https://hackmd.io/_uploads/SyS5j71aa.jpg","alt":"DSC_4255","title":""},{"url":"https://hackmd.io/_uploads/rkH5iQkaa.jpg","alt":"DSC_4240","title":""},{"url":"https://hackmd.io/_uploads/rkr5s7kpT.jpg","alt":"DSC_4247","title":""},{"url":"https://hackmd.io/_uploads/Bkrco7kT6.jpg","alt":"DSC_4226","title":""},{"url":"https://hackmd.io/_uploads/BkB9oXk6a.jpg","alt":"DSC_4215","title":""},{"url":"https://hackmd.io/_uploads/SkH5j7JaT.jpg","alt":"DSC_4220","title":""},{"url":"https://hackmd.io/_uploads/S1BqsXkpa.jpg","alt":"DSC_4214","title":""},{"url":"https://hackmd.io/_uploads/SkBciXypT.jpg","alt":"20240207_135837","title":""},{"url":"https://hackmd.io/_uploads/BJS9s7k6a.jpg","alt":"DSC_4209","title":""},{"url":"https://hackmd.io/_uploads/SJr5o7yaT.jpg","alt":"20240207_135437","title":""},{"url":"https://hackmd.io/_uploads/rkHqj7J66.jpg","alt":"20240207_135238","title":""},{"url":"https://hackmd.io/_uploads/S1S9jm1Tp.jpg","alt":"20240207_135221","title":""},{"url":"https://hackmd.io/_uploads/Syrcom1T6.jpg","alt":"20240207_134445","title":""},{"url":"https://hackmd.io/_uploads/rkHco716T.jpg","alt":"20240207_134024","title":""}]
-  
-頒獎與閉幕 🔗
-
-    []
-  
-大合照 🔗
-
-回饋 🔗
-
-    [{"url":"https://hackmd.io/_uploads/H1Uq5TQj6.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/SJFyo6Qja.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/S1Ylspmjp.png","alt":"image","title":""}]
-  
-檢討與反思 🔗
-照片整理了很久，等我有空再來回補文字
-未來展望 🔗
-待更新…
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>心得</category>
-        <category>營隊</category>
-      </categories>
-      <tags>
-        <tag>資訊社</tag>
-        <tag>成大資工</tag>
-        <tag>SCIST</tag>
-        <tag>寒訓</tag>
-        <tag>營隊</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>資工特選 - 中央大學</title>
-    <url>/post/SPC-NCU/</url>
-    <content><![CDATA[人數 🔗
-
-錄取名額：3
-
-一般組：2
-資安組：1
-採聯招方式
-
-
-符合報名資格人數：56
-過書審進面試人數：15
-
-時程 🔗
-
-簡章公告：09/20
-報名：10/04 ~ 10/09
-面試名單：10/22
-面試：10/29
-放榜：11/19
-
-
-面試前 🔗
-我早起從臺南趕高鐵去桃園，然後坐計程車到中央準時報到，門口滿壯觀的是一個上坡跟中央校徽
-
-面試地點在工程五館
-
-我們先在二樓特選生休息室等待，冰川超社牛問其他人要不要加入 Discord 群
-
-由於那教室裡面網路超爛，所以我就出去走廊陽台透氣滑手機，wifecake 走過來跟我聊天（那時還不知道他是誰）
-面試順序是照書審分數由高到低排序的，我是第五位，前一個是 Eason，後一個是冰川，輪到我時有一個酷酷的學長帶上去三樓門口等待，他人超好一直跟我聊天，然後發現他也是臺南人，更巧的是他姐高中跟我同一間，另一個姐跟 Eason 同一間
-
-面試過程 🔗
-👨🏻‍🏫：教授（有五個，只有中間那個有講話）
-🤡：我
-（學長開門，Eason 走出來，我走進去跟教授打個招呼，然後開簡報）
-🤡：（介紹申請動機與家庭背景）
-🤡：（介紹檢定成績）
-👨🏻‍🏫：（打斷我介紹 直接開問）你是怎麼自學的
-🤡：（回答內容摘要：SCIST 線上資源、網路教材）
-👨🏻‍🏫：你為什麼會想考大學生在考的 CPE
-🤡：（回答內容摘要：檢驗自身程式能力、訓練英文閱讀能力，看看自己在大學生中的排名）（👨🏻‍🏫 轉過去對右邊的教授點頭微笑一下）
-（介紹程式競賽與資安領域的表現）
-👨🏻‍🏫：如何維持大學的學業
-🤡：（回答內容摘要：先修、時間管理）
-🤡：（介紹其他特殊經歷）
-👨🏻‍🏫：進大學後的研究方向
-🤡：（回答內容摘要：深度學習）
-🤡：（未來展望與結尾）
-🤡：請問教授還有問答環節嗎
-👩🏻‍🏫（最右邊的女教授）：因為時間滿久的剛剛問題有問完了
-中央原本公告：
-實際上：教授在自我介紹時打斷直接開問，中間因為還沒介紹完簡報我怕時間不夠用所以回答的沒有很完整就繼續介紹了，最後用了大概 10 分鐘左右
-
-面試後 🔗
-面試完後跟 冰川、Eason、隨風（Eason 的學長 之前的中央資工特選生）一起走去學校外面吃一間不錯的漢堡
-
-路途一直飄雨感覺中央這地理位置真的很潮濕，後來還去咖啡廳，有聊到他們都沒有被打斷介紹直接問問題，他們覺得是教授是對內容有興趣才會打斷，但我覺得讓我在介紹完簡報後再提問我會回答的更好一點
-
-結果 🔗
-雖然中央資工分成兩組，但是因為採聯招方式，所以報名時可以兩組都選而且只要繳費一次，面試也是只要一次，放榜之後會依照志願序分配組別
-放榜結果：
-
-一般組：備取 1（正取 2 人、備取 7 人）遞補錄取
-資安組：正取（正取 1 人、備取 3 人）
-
-中央放榜之後，我心中放下一塊大石，因為第一間就正取了，後面幾間面試時我其實都沒什麼壓力了，個人認為中央資工教授比較喜歡有接觸 AI 的人（一般組正取兩個都是做 AI 專題的旺宏金牌）還有多方面發展的人，太專精在競程反而會給比較低分，因為教授可能已經覺得這人會錄取特別喜歡競程的清大（實例：今年跟去年都有是清大正取且進過 TOI 選訓營一階的人在中央是備取很後面或未錄取），不過我是沒特別專精在某個領域但有很多特殊經歷的，所以在這裡對我來說會比較有優勢，但在其他學校就不一定了
-
-點擊回到特選心得彙整 🔗
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>中央大學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>資工特選 - 臺灣師範大學</title>
-    <url>/post/SPC-NTNU/</url>
-    <content><![CDATA[人數 🔗
-
-
-
-人數
-一般組
-資安組
-
-
-
-
-報名人數
-83
-48
-
-
-過書審進面試人數
-17
-16
-
-
-錄取名額
-5
-3
-
-
-
-時程 🔗
-
-簡章公告：09/20
-報名：10/01 ~ 10/09
-面試名單：11/12
-面試：11/15
-放榜：12/05
-
-
-面試前 🔗
-臺師大把我這個臺南人排在第二個面試，我必須要超早起搭第一班高鐵才能趕得上，第一次在外面等高鐵站開門，還好有 Eason 陪我一起。之前一日資訊營我有來臺師大公館校區當助教所以路途有熟悉的感覺。
-
-
-面試過程 🔗
-臺師大的面試是最特別的，分為三間教室各一個教授，第一間是 3 分鐘自我介紹並要接受提問，第二間是專業問答，有幾個不同主題選兩個並回答問題，第三間是最輕鬆的聊天，有很多卡片可以選擇跟教授聊哪些主題，因為我一般組跟資安組都有進複試所以要面試兩輪
-第一輪面試 🔗
-第一間：自我介紹 🔗
-可使用簡報，我有準備也有在報到時用那邊的電腦上傳到他們給的資料夾，但不知道為什麼進到第一間面試時沒有同步過去導致我是沒有簡報直接講完的
-🤡：我
-👨🏻‍🏫：陳教授
-
-🤡：（自我介紹）
-👨🏻‍🏫：Supervised learning 跟 Unsupervised learning 的差別
-🤡：差別在於訓練時有沒有 Label，監督式學習資料與標籤之間的關係可以用來預測新資料，
-非監督式學習是要找出資料之間隱藏的內部結構
-👨🏻‍🏫：你的強化學習專案是用什麼算法
-🤡：有用過 DQN 和 PPO
-👨🏻‍🏫：Loss Function 有什麼不同
-🤡：DQN 是透過最小化誤差來學習 Q 值，PPO 比較像是學習一個策略
-👨🏻‍🏫：有考英文檢定嗎
-🤡：目前正在準備多益
-聊到外面學長敲門才出去，問到的都有回答出來，感覺第一間自我介紹的提問比第二間專業問題的提問還要更專業，還有很多人說在第一間被全英文問答，教授口音又很重，他們感覺滿慌的，我最後一題回答完後剛好學長敲門我才沒被用英文問，後來去查臺師大教授名單找了才知道原來專長是機器學習還在國外留學過難怪會這樣
-第二間：專業問答 🔗
-🤡：我
-👨🏻‍🏫：紀教授
-
-🤡：（進去先簡單自我介紹了一分鐘）
-👨🏻‍🏫：螢幕上的主題選兩個，可以不用選資安，因為你這次面完要接著考筆試
-
-
-
-
-
-
-
-
-
-
-演算法
-資料結構
-程式設計
-
-
-?
-?
-?
-
-
-資訊安全
-人工智慧
-?
-
-
-X
-其他
-X
-
-
-
-
-我忘記 ? 的是什麼了
-
-🤡：人工智慧 和 資料結構
-👨🏻‍🏫：解釋 圖靈測試
-🤡：由艾倫圖靈提出的思想實驗，目的是在測驗電腦能不能讓人類分辨不出來是在跟人還是電腦對話
-👨🏻‍🏫：解釋 K-NN
-🤡：K 近鄰算法，機器學習裡面預測一個新資料是哪個類別時，看看離它最近的 K 個資料是什麼類別來決定答案
-
-然後就開始聊我的強化學習專案技術細節：Reward Funtion 是如何設計之類的
-
-👨🏻‍🏫：好先換資料結構 解釋 stack 特性與應用
-🤡：特性是先進後出，像堆疊盤子一樣，先想到應用的是括號匹配的題目，還有維護單調隊列之類的
-👨🏻‍🏫：BST 最佳 / 最差情況 &amp; 如何解決
-🤡：最佳情況的話 BST 是平衡的 O(log N)，最差會變成一條鏈 O(N)，解決方法就是用像 set 這種底層是紅黑樹之類的資料結構
-第三間：卡片閒聊 🔗
-🤡：我
-👨🏻‍🏫：蔣教授
-
-👨🏻‍🏫：應該知道第三關要做什麼吧
-🤡：有先上網看過別人心得，結果真的是卡片
-👨🏻‍🏫：四張主要卡片選幾張介紹自己：
-
-可複選所以我選擇全部都講一次
-
-
-高中生活：描述高中生活
-🤡：高一開始考 APCS 並創了校內資訊社團，高二經營社團、到處打比賽、參與社群、擔任各種課程講師、高三擔任社群總召、準備特選，因為一直都有目標而且想持續進步所以過得滿精彩的
-特殊之處：與其他特選生的不同之處
-🤡：除了刷題精進自己能力以外，還有創社、講課、投入社群等不同的多元表現
-特殊選才：為何投入特殊選才、何時開始的、做了什麼準備
-🤡：因為有這些特殊經歷讓我想嘗試、高二暑假、調整心態和規劃未來
-未來展望：希望進大學後成為一個怎樣的人
-🤡：成為自己想要的樣子，為了目標努力，充實自己大學生活的人
-
-👨🏻‍🏫：選 3 張卡片描述未來想做的事
-
-社團領導
-師資培育
-學術研究
-海外留學
-程式競賽
-企業培訓
-
-
-我其實也想每張都選，但最後選了 3 張能讓我結合自身經歷的
-
-
-社團領導：對應我創社當社長和擔任社群總召的經歷
-師資培育：對應擔任課程講師、助教的經歷
-程式競賽：可以組隊打 ICPC 之類的競賽
-
-
-講完之後教授翻開卡片背面，每張背面都有台師大歷屆學生的相關成果，有點宣傳的效果
-
-整個過程滿輕鬆的，教授全程笑笑的，感覺真的是想透過卡片與聊天過程認識一個人的經歷與特質，我回答的時候有下意識地挑一些對我比較有優勢的地方特別提出來講，所以第一輪面試很順利也還滿有把握的
-
-資安組筆試 🔗
-資安組除了面試之外還有筆試，我甚至當天到現場才知道這件事，根本完全沒準備 🤡，而且時間超級緊迫，我第一輪面試完要馬上衝去別棟筆試完再回來面試第二輪
-一、程式設計 🔗
-
-ans = ?
-
-#include&lt;stdio.h&gt;int main()&#123;    int ans=0;    for(int i=0,j=0;i&lt;5;j+=(i++))        ans+=j;    printf(&quot;%d&quot;,ans);&#125;
-
-ans = ?
-
-#include&lt;stdio.h&gt;int f(int x,int y)&#123;    return x | (1 &lt;&lt;y);&#125;int main()&#123;    int ans = f(2,7);    printf(&quot;%d&quot; , ans);&#125;
-
-當輸入 50 時
-
-為何會印出 50 0 0？
-為何會印出stack smashing detected？
-
-
-
-#include&lt;stdio.h&gt;int main()&#123;    int8_t a=10 ,b=23, c=44;    scanf(&quot;%d&quot;,&amp;a);    printf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);&#125;
-二、系統安全 🔗
-
-linux 檔案權限中的 s 是什麼意思？
-proc/version 為何佔用 0 byte
-如果要將 test.pdf 隱藏起來，那該要怎麼去打 linux command
-
-三、網路 🔗
-
-ping 的原理
-家中的ip分享器原理
-為何網頁有時會顯示不安全，至少寫出3個原因
-
-四、密碼學 🔗
-
-手算凱撒密碼（密文忘了）
-在 1～124 中取一個數乘以 17，再除以 125 要餘 1，1～143 中與 143 互質的數有幾個
-證明 16 bits 的 key 不安全
-
-
-感謝 yih 背出來的題目 Orz
-
-寫完之後回到原本那棟的地下一樓休息室等第二輪面試，遇到很多認識的人，大家一起聊天，OsGa 好兄弟剛好在台北還特別過來師大陪我們一起，也遇到了 Ricky，他想從臺科大重特到臺師大，詳細過程可以看 這篇文章 真心滿佩服他的勇氣的，然後因為第一間自我介紹我有準備簡報但用不了就去找行政人員問了一下，發現另一個女生也跟我遇到同樣問題一起來問，我覺得他滿眼熟的感覺是我當某一場課程講師教過的學員。後來我重新上傳了一次在第二輪終於有簡報可以用了
-
-第二輪面試 🔗
-第一間 🔗
-
-用簡報快速帶過第一輪介紹過的經歷，因為是資安組面試所以最後有詳細補充我在 AIS3 Junior 2024 拿到最佳專題獎的實作內容
-
-👨🏻‍🏫：LLaMA 是什麼
-
-他的反應讓我感覺不是要我解釋 LLM，而是他真的不知道有 LLaMA，直到我說類似 GPT 他才懂）
-
-👨🏻‍🏫：AI 想的漏洞攻擊方法有比人類更好、更快嗎，如果沒有的話，你們專案有 AI 跟沒 AI 有什麼差別
-
-顯然完全放錯重點，我們專案是模擬駭客利用購物網站上的 AI 客服助手透過 Prompt Injection 的方式攻擊網站漏洞，而不是讓 AI 想出攻擊方法，反正他一直重複問類似的問題，我不管回答什麼他都跳針到最後時間結束，感覺他自己不太接觸資安領域，所以隨便想了個問題來一直問，出去之後覺得心情滿差的
-
-第二間：專業問答 🔗
-教授看到我又來一次，就不考專業問題了，直接開始聊天
-👨🏻‍🏫：你覺得剛剛考資安筆試的題目如何
-
-因為這份題目是他出的
-
-👨🏻‍🏫：有什麼問題想問嗎
-🤡：我想問關於 APCS 改制的問題，因為看到網路上有消息透露 APCS 要改成類似英檢那樣分級的新制度，這是假消息還是已經確定了
-👨🏻‍🏫：你們消息傳好快，是有這件事不過我是不太清楚詳細內容，而且負責的教授現在人在國外。時間還很多還有想問的嗎
-🤡：那我想了解一下師資培育的一些細節
-👨🏻‍🏫：校內有指定要修師培的課，然後要考核通過才行，我自己也是負責師資培育的，看過外面很多不太合格的資訊老師，所以對臺師大的學生滿有信心的
-🤡：那臺師大有什麼資源可以先修或需要提前準備什麼事情
-👨🏻‍🏫：我有開 TouTube 頻道：Neokent 的線上課程 可以去按讚訂閱分享開啟小鈴鐺。不然你之前是透過什麼資源學程式的
-🤡：之前學程式是參加 SCIST 演算法培訓課程 ，我現在擔任 S5 的總召
-👨🏻‍🏫：每年都會有 SCIST 的人上來這裡面試，印象滿深刻的
-第三間：專業問答 🔗
-
-教授看到我又來了就說不用翻卡牌了 直接開始閒聊
-
-👨🏻‍🏫：上面的教授都問了什麼
-👨🏻‍🏫：想問你們考生對目前 APCS 的看法
-👨🏻‍🏫：為什麼會想投資安組 還是想說順便投的
-🤡：雖然資安經歷比較沒有競程經歷多，但對資安和 AI 領域都有興趣
-
-教授看了桌上的表，上面有大家的主要經歷
-👨🏻‍🏫：你會兩組都進是因為有其他特殊經歷是別人沒有的所以加了不少分
-👨🏻‍🏫：你有 AIS3 最佳專題獎，今天很多人也都有，想知道為什麼
-🤡：除了不同年度之外，還分為 AIS3 和 AIS3 Junior，AIS3 有不同類別的主題，每個主題都有最佳專題獎，AIS3 Junior 則是只有前兩名有，所以今天才會有那麼多人有最佳專題獎。
-
-
-面試後 🔗
-面試後跟一群人（OsGa、Ricky、yih、soar）一起去吃師大學餐，自助餐價格跟菜色都還算可以，但是餐廳滿熱的，吃完就跟 Eason 逛北車地下街，最後搭客運還差點趕不上，因為我們不知道上車的地方在五樓，總之就是行程很趕很累的一天
-
-結果 🔗
-一般組：正取（正取 5 人、備取 9 人） 🔗
-資安組：未錄取（正取 3 人、備取 7 人） 🔗
-
-心得 🔗
-待更新 🔗
-
-點擊回到特選心得彙整 🔗
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>臺灣師範大學</tag>
       </tags>
   </entry>
   <entry>
@@ -2396,162 +1059,6 @@ cppreference
         <tag>無序集合 unordered_set</tag>
         <tag>無序映射 unordered_map</tag>
         <tag>bitset</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>網站頁面導覽</title>
-    <url>/post/Sitemap/</url>
-    <content><![CDATA[歡迎來到 4yu Blog 🔗
-可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁
-導覽 🔗
-
-
-點擊前往 自我介紹 About me 
-
-
-點擊前往 第一篇文章 Hello, World. 
-
-
-DSA 系列 🔗
-皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章
-
-(修改中…即將發布) 複雜度分析 Complexity Analysis
-
-點擊前往 C++ STL 大全
-
-
-點擊前往 排序演算法 Sort Algorithm (C++) 
-
-(修改中…即將發布) 搜尋演算法 - 線性、二分搜、三分搜、Upper &amp; Lower bound
-(修改中…即將發布) 圖論 I - 基礎名詞、BFS &amp; DFS
-(撰寫中…) Greedy
-(撰寫中…) DP 動態規劃 I - 基本、背包、Kadane、LCS &amp; LIS、bitmask
-
-點擊前往 資料結構 進階實作（C++）
-
-(規劃中…) DP 動態規劃 II - 區間 DP、樹 DP、DAG DP
-(規劃中…) DP 動態規劃 III - 各種優化（滾動、單調性、分治、斜率、狀壓、四邊形）
-(規劃中…) 分治 I - 逆序數對、矩陣快速冪、最近點對
-(規劃中…) 分治 II - CDQ、FFT/NTT、Master Theorem
-(規劃中…) 圖論 II - 最小生成樹 MST、拓墣排序、最短路徑
-(規劃中…) 樹論 - LCA、Tree DP、輕重鏈剖分
-(規劃中…) 圖論 III - 聯通分量（SCC &amp; BCC）、Tarjan、2-SAT
-(規劃中…) 圖論 IV - Flow &amp; Cut、Dinic、二分匹配
-(規劃中…) 計算幾何 - 基本、凸包、掃描線、最近點對
-(規劃中…) 數論
-(規劃中…) 字串演算法 - Manacher、Trie、KMP、Z-algorithm
-(規劃中…) 分塊 &amp; 莫隊
-(規劃中…) 其他雜項技巧
-(規劃中…) 賽局理論
-(規劃中…) 計算複雜度類別 - P / NP / NP-Hard / NP-Complete、歸約
-(規劃中…) 隨機算法、啟發算法、近似算法
-
-AI/ML 系列 🔗
-
-(持續撰寫補充中…) AI/ML 概論 &amp; 實作筆記
-
-點擊前往 訓練神經網路計算過程
-
-(撰寫中…) RL 專案分享
-(規劃中…) n8n + MCP
-
-量子計算 Quantum Computer 系列 🔗
-
-(持續撰寫補充中…) 量子計算概論 &amp; IBM Qiskit 實作筆記
-(學習中…) 量子計算數學基礎
-(規劃中…) 量子演算法（Deutsch-Jozsa、Grover、Shor &amp; Simon）
-(撰寫中…) QUBO 二進位二次式最佳化
-(撰寫中…) 量子退火演算法（Quantum Annealing）
-(規劃中…) QNN 量子機器學習
-
-其他待開發的系列 🔗
-以下是我除了程式以外的技能，但這些系列在我文章發佈的 priority_queue 最末端，可能需要等非常久之後才會開始撰寫。。。
-
-Figma
-Blender
-FL Studio
-
-心得系列 🔗
-文筆沒有很好，純粹紀錄當下心情，提供自己回顧
-
-
-點擊前往 資訊學科能力競賽 心得
-
-
-點擊前往 NFIRC 南附資研社 - 從零開始的社團經營之路
-
-
-點擊前往 SCIST Camp 2024 籌辦心得
-
-(補充照片中…即將發布) SCIST Camp 2025 籌辦心得
-(補充照片中…即將發布) FunAI Winter Camp 2024 &amp; 2025 參與心得
-(修改中…即將發布) AI/ML 課程講師心得
-(修改中…即將發布) 演算法競賽出題心得 - SCIST x NHDK
-
-點擊前往 特殊選才資訊工程學系 心得彙整
-
-(撰寫中…) SCIST S5 總召心得
-(規劃中…) SITCON 2026 行銷組心得
-(規劃中…) GDG @ NCU AI PM 心得
-(規劃中…) 大一心得
-
-
-網頁架構 🔗
-本網頁組成架構
-主頁 Home
-
-網頁封面
-側邊資訊欄
-文章推薦
-
-
-文章 Posts
-
-此網頁所有文章
-
-
-標籤 Tags
-
-所有文章所提及的標籤、關鍵字
-
-
-分類 Categories
-
-針對特定主題分類文章
-
-
-音樂
-
-分享我的網易雲歌單
-
-
-連結 Link
-
-聯繫資訊
-友站
-NFIRC
-SCIST
-Discord Server
-學習資源
-程式平台
-軟體工具
-Blogs
-相關技術
-
-
-關於
-
-自我介紹
-經歷
-
-
-
-
-感謝閱覽此網頁！ 🔗
-
-]]></content>
-      <tags>
-        <tag>網頁導覽 Site map</tag>
       </tags>
   </entry>
   <entry>
@@ -3194,5 +1701,1498 @@ Sorting algorithms on GeeksforGeeks
         <tag>桶排序 Bucket Sort</tag>
         <tag>基數排序 Radix Sort</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>訓練神經網路計算過程</title>
+    <url>/post/Neural-Network/</url>
+    <content><![CDATA[這是一個具有一層隱藏層的神經網路：
+
+假設 🔗
+
+輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：
+
+X=[1202−32−1−13],Y=[12−3]    X = 
+        \begin{bmatrix}
+            1 &amp; 2 &amp; 0   \\
+            2 &amp; -3 &amp; 2  \\
+            -1 &amp; -1 &amp; 3 \\
+        \end{bmatrix},
+    Y = 
+        \begin{bmatrix}
+            1  \\
+            2  \\
+            -3 \\
+        \end{bmatrix}
+
+W1=[−10−111−1]    W_1 = 
+        \begin{bmatrix}
+            -1 &amp; 0 \\
+            -1 &amp; 1 \\
+            1 &amp; -1 \\
+        \end{bmatrix}
+
+
+隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1，
+經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z)
+另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)
+輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2
+
+W2=[1−2]    W_2 = 
+        \begin{bmatrix}
+            1  \\
+            -2 \\
+        \end{bmatrix}
+
+
+將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失
+
+J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2) 
+
+此時，已知輸出層梯度：
+Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y
+
+
+隱藏層梯度：
+
+G2=∂J∂W2=∂J∂O∂O∂W2=((Gout)T⋅K)T=KTGout\begin{equation}
+    \begin{aligned}
+        G_2
+        &amp;= 
+            \frac{\partial J}{\partial W_2}
+         = 
+            \frac{\partial J}{\partial O} \frac{\partial O}{\partial W_2} 
+            \\\\
+        &amp;= 
+            ((G_{out})^T \cdot K)^T 
+         = 
+            K^TG_{out}
+    \end{aligned}
+\end{equation}
+
+
+ReluRelu 函數的微分式：
+
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+    \begin{cases}
+        0 \quad x &lt; 0   \\
+        1 \quad x \ge 0 \\
+    \end{cases}
+
+
+先假定一個暫存的 GtempG_{temp} ：
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積
+
+輸入層梯度：
+
+G1=∂J∂W1=∂J∂O∂O∂K∂K∂Z∂Z∂W1=(((Gout⋅W2T)∘σ′(Z))T⋅X)T=((Gtemp)T⋅X)T=XTGtemp\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            \frac{\partial J}{\partial W_1}
+         = 
+            \frac{\partial J}{\partial O} 
+            \frac{\partial O}{\partial K}
+            \frac{\partial K}{\partial Z}
+            \frac{\partial Z}{\partial W_1} 
+            \\\\
+        &amp;= 
+            (((G_{out} \cdot W^T_2) \circ \sigma^{\prime} (Z))^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            ((G_{temp})^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            X^TG_{temp}
+    \end{aligned}
+\end{equation}
+
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+
+假設我們採用隨機梯度下降法來進行更新，且學習率令為 0.10.1，則
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+問題 🔗
+求矩陣 Z,K,O,Gout,G2,σ′(Z),Gtemp,G1,W1new,W2newZ,K,O,G_{out},G_2,\sigma^{\prime}(Z),G_{temp},G_1,W_1^{new},W_2^{new}
+
+求解過程皆省略公式推導過程，將直接使用最終結果代入計算
+
+
+ZZ
+由線性組合 Z=XW1Z=XW_1：
+Z=XW1=[1202−32−1−13]⋅[−10−111−1]=[−323−55−4]\begin{equation}
+    \begin{aligned}
+        Z
+        &amp;= 
+            XW_1 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; 0   \\
+                2 &amp; -3 &amp; 2  \\
+                -1 &amp; -1 &amp; 3 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+KK
+由經過激活函數 σ\sigma 後的值 K=σ(Z)K = \sigma(Z)，且激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)：
+K=σ(Z)=σ ([−323−55−4])=[023050]\begin{equation}
+    \begin{aligned}
+        K 
+        &amp;= 
+            \sigma(Z) 
+            \\\\
+        &amp;= 
+            \sigma\ 
+            (
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+            ) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+OO
+輸出層有 1 個節點，其權重矩陣為 W2W_2，由線性輸出 O=KW2O=KW_2：
+O=KW2=[023050]⋅[1−2]=[−435]\begin{equation}
+    \begin{aligned}
+        O 
+        &amp;= 
+            KW_2 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GoutG_{out}
+由輸出層梯度 Gout=O−YG_{out} = O-Y：
+Gout=O−Y=[−435]−[12−3]=[−518]\begin{equation}
+    \begin{aligned}
+        G_{out} 
+        &amp;= 
+            O-Y 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix} 
+            - 
+            \begin{bmatrix}
+                1  \\
+                2  \\
+                -3 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G2G_2
+由隱藏層梯度 G2=KTGoutG_2 = K^TG_{out}，其中 KTK^T 為 矩陣 KK 的轉置：
+K=[023050],KT=[035200]K = 
+    \begin{bmatrix}
+        0 &amp; 2 \\
+        3 &amp; 0 \\
+        5 &amp; 0 \\
+    \end{bmatrix},
+K^T = 
+    \begin{bmatrix}
+        0 &amp; 3 &amp; 5 \\
+        2 &amp; 0 &amp; 0 \\
+    \end{bmatrix}
+
+G2=KTGout=[035200]⋅[−518]=[43−10]\begin{equation}
+    \begin{aligned}
+        G_2 
+        &amp;= 
+            K^TG_{out} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 3 &amp; 5 \\
+                2 &amp; 0 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+σ′(Z)\sigma^{\prime}(Z)
+其中 σ′\sigma^{\prime} 為 ReluRelu 函數的微分式：
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+\begin{cases}
+    0 \quad x &lt; 0   \\
+    1 \quad x \ge 0 \\
+\end{cases}
+
+σ′(Z)=σ′([−323−55−4])=[011010]\begin{equation}
+    \begin{aligned}
+        \sigma^{\prime}(Z)
+        &amp;= 
+            \sigma^{\prime}(
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GtempG_{temp}
+由假定暫存的 Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z)
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積，且 W2TW_2^T 為矩陣 W2W_2 的轉置：
+W2=[1−2],W2T=[1−2]W_2 = 
+    \begin{bmatrix}
+        1  \\
+        -2 \\
+    \end{bmatrix},
+W_2^T = 
+    \begin{bmatrix}
+        1 &amp; -2 \\
+    \end{bmatrix}
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)=([−518]⋅[1−2])∘[011010]=[−5101−28−16]∘[011010]=[0101080]\begin{equation}
+    \begin{aligned}
+        G_{temp} 
+        &amp;= 
+            (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+            \\\\
+        &amp;=  (
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} \cdot
+            \begin{bmatrix}
+                1 &amp; -2
+            \end{bmatrix}
+            ) \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 &amp; 10 \\
+                1 &amp; -2 \\
+                8 &amp; -16 \\
+            \end{bmatrix}
+            \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;=
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0 \\
+                8 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G1G_1
+由輸入層梯度 G1=XTGtempG_1 = X^TG_{temp}，其中 XTX^T 為 矩陣 XX 的轉置：
+X=[1202−32−1−13],XT=[12−12−3−1023],X = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; 0   \\
+        2 &amp; -3 &amp; 2  \\
+        -1 &amp; -1 &amp; 3 \\
+    \end{bmatrix},
+X^T = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; -1   \\
+        2 &amp; -3 &amp; -1  \\
+        0 &amp; 2 &amp; 3    \\
+    \end{bmatrix},
+
+G1=XTGtemp=[12−12−3−1023]⋅[0101080]=[−610−1120260]\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            X^TG_{temp}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; -1   \\
+                2 &amp; -3 &amp; -1  \\
+                0 &amp; 2 &amp; 3    \\
+            \end{bmatrix}
+            \cdot
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0  \\
+                8 &amp; 0  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+W1new,W2newW_1^{new},W_2^{new}
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+已知我們採用隨機梯度下降法來進行更新，且學習率為 0.10.1，則
+
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+W1new=W1−0.1×G1=[−10−111−1]−0.1×[−610−1120260]=[−10−111−1]−[−0.61−1.122.60]=[−0.4−10.1−1−1.6−1]\begin{equation}
+    \begin{aligned}
+        W_1^{new}
+        &amp;= 
+            W_1 - 0.1 \times G_1
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                -0.6 &amp; 1  \\
+                -1.1 &amp; 2  \\
+                2.6 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -0.4 &amp; -1 \\
+                0.1 &amp; -1  \\
+                -1.6 &amp; -1 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.3−1]\begin{equation}
+    \begin{aligned}
+        W_2^{new}
+        &amp;= 
+            W_2 - 0.1 \times G_2
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                4.3 \\
+                -1  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3.3 \\
+                -1   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>AI 人工智慧</category>
+      </categories>
+      <tags>
+        <tag>AI 人工智慧</tag>
+        <tag>神經網路 Neural Network</tag>
+        <tag>梯度下降演算法</tag>
+        <tag>損失函數 Loss func</tag>
+        <tag>矩陣 Matrix</tag>
+        <tag>激活函數</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
+    <url>/post/SCIST-Camp-2024/</url>
+    <content><![CDATA[寒訓詳細資訊 🔗
+
+引言 🔗
+在 2023/11/25 這次的寒訓總召 茶碗蒸 私訊我問說要不要一起辦寒訓，但其實我們南附資研在 2023/11/13 幹部線上開會時就有討論到說寒假要辦營隊，本來沒想說要辦那麼大規模的寒訓，那時的規劃主要是開放給校內的所有學生和老師，大概會舉辦講座提供給校內對資訊領域有興趣的人，且主題訂為資訊領域的多元課程。
+後來思考過後決定接下本次寒訓副召，一開始的召群有南女的總召 茶碗蒸、一中的副召 KCC 還有我，加上 Fishhh、Eason 和 Curious 這三位 SCIST S4 的總召們協助，還有小白的加入也讓我們日後籌備更順利。
+
+籌備階段 🔗
+我們是先開了線上會議，確認好活動目的與受眾，排好 Deadline 後才開始籌備，一開始是要先招募工作人員，因為有茶碗蒸這個 SCIST 文書在，所以各種表單很快就做好了，而且他也有之前辦茶會迎新的經驗，所以初期還挺順利的，也在一開始就把各校的邀請訊息發出去了，最後是找到了 9 間學校聯合主辦，而 SCIST 則是掛協辦，提供我們講師助教等課程上的資源，我們也開始著手撰寫計劃書、排時間表、預估經費、詢問場地租借…等。在計劃書撰寫上感謝小白幫了很大的忙，而其他的事情也很幸運有上一屆寒訓的 PJ、Koying…等人的努力，有留下文檔提供我們很多資訊可作參考，讓我們在初期不容易迷失方向，對我們幫助很大。
+在短短的一週內，就收到了個主辦校報名的工作人員 35 人左右，其中我從南附資研中就拉了 10 幾個人來當行政，加上 SCIST 的講師及助教，最後行政組達到了 50 人左右。
+
+我們接著開放學員報名，一開始報名狀況其實不是很好，我們很怕無法收到預估的學員人數，所以加強了各校的宣傳，我也以擔任小編的經驗到各大社團和營隊網站上刊登廣告，後來發現報名期間只有第一週和最後一週報名人數才會增加的現象…
+在這要感謝成功大學資工系的 Colten 幫忙處理成大場地以及接線讓成大資工系與本次寒訓合作，讓推廣曝光提升了很多，也提供了我們成大超級棒的階梯教室和電腦教室場地給寒訓使用，也要特別感謝副召 KCC 不斷地與南一中接洽，才能有超大的群英堂提供我們舉辦晚會活動。
+
+過了學員報名期限，很開心的我們收到了超過 100 多位學生的報名，接下來就是繁瑣篩選學員環節，繁瑣是因為要閱讀大量的試算表內容，根據報名者的意願、動機、對資訊領域的了解及熱忱來篩選出 80 位實體學員參與為期 3 天的寒訓，然後要開始寄錄取和未錄取通知信，也開始開放學員繳費，過程中遇到了一些困難與挑戰。
+
+挑戰與學習 🔗
+在做行政的過程中，會不小心放錯連結之類的，當下其實滿慌的，很難及時補救，所以很感謝有行政組的其他人幫忙處理，我也在這次的籌備過程中學到了很多應對問題的方法，讓我了解到做事須謹慎小心且要再三確認，也在當行政的過程中，學習到如何回信、如何應對突發狀況等。
+團隊分工合作 🔗
+在籌備期間我們團隊訂好 Deadline，由召群這分派給每個職位工作，行政組招收了活動、隊輔、總務、場務、美宣和醫護，將每個職位開討論區讓各組員交流更便利，且將資訊公開透明，也將各種連結彙整在一起，讓行政組同步且避免落差，很感謝各組組長非常積極的參與和組員的配合，讓我體會到團隊分工合作的重要性。
+
+活動組 🔗
+這次寒訓的所有遊戲內容和晚會皆由活動組規劃，我覺得他們非常辛苦，比我們召群還要肝，他們從上任就開始想活動、出題、討論流程，常常看到他們在開會，我大部分都會在，感受到他們的忙碌，要絞盡腦汁的思考有什麼團康遊戲可以玩，思考如何讓學員們破冰，讓彼此在短時間內互相熟悉了解，這裡要特別感謝 Yudong、OsGa 和 Joyce 三位超強的活動，前兩位甚至是三天裡最辛苦的主持人，而活動組長 Yudong 和隊輔組長 Joyce 的規劃和執行能力也讓我相當佩服，這三天有這麼精彩的活動真的要歸功於他們
+
+    [{"url":"https://hackmd.io/_uploads/HJxGBXroT.png","alt":"活動組開會","title":""},{"url":"https://hackmd.io/_uploads/rJa7UaQoT.png","alt":"活動組規劃","title":""},{"url":"https://hackmd.io/_uploads/Bkf8pASia.png","alt":"題庫","title":""},{"url":"https://hackmd.io/_uploads/rkl48J8sT.png","alt":"大地遊戲關主分配","title":""}]
+  
+隊輔組 🔗
+隊輔組是人數最多的一組，因為我們總共招收了 85 位實體學員，所以收了 18 位隊輔，負責帶領小隊完成這三天的所有活動，還要做小隊牌、點名、帶跳小隊舞(這點子不是我想的)…等繁雜的工作，是需要有責任感且能了解活動流程的人擔任
+
+    [{"url":"https://hackmd.io/_uploads/SJbTwaQi6.png","alt":"隊輔組開會","title":""},{"url":"https://hackmd.io/_uploads/SkcTL1Usa.png","alt":"小隊舞音樂","title":""},{"url":"https://hackmd.io/_uploads/H1msjkIsT.png","alt":"隊輔組點名","title":""}]
+  
+總務組 🔗
+總務組只有兩個人，負責事前的訂餐與金錢的管控，是非常重要的角色
+
+    [{"url":"https://hackmd.io/_uploads/HkGd6y8iT.png","alt":"餐點店家","title":""},{"url":"https://hackmd.io/_uploads/r1adxgUi6.png","alt":"金錢規劃與收支紀錄","title":""}]
+  
+場務組 🔗
+場務組負責拍照、餐點搬運、場復…等工作，要在大家休息的時候努力工作，非常辛苦，感謝場務這三天的付出。
+美宣組 🔗
+這次的美宣組只有 JT Lin 一個人，他非常辛苦要製作所有工作人員和實體學員的名牌、獎狀、參與證明…等，需要大量的時間製作，還要兼任隊輔，是一個效率高且負責的人，只不過這三天滿諧咖的
+
+    [{"url":"https://hackmd.io/_uploads/ByjPvkIi6.png","alt":"宣傳圖","title":""},{"url":"https://hackmd.io/_uploads/rJWnPyUs6.png","alt":"美宣工作","title":""},{"url":"https://hackmd.io/_uploads/Hyuu_yLjp.jpg","alt":"名牌","title":""}]
+  
+課程內容 🔗
+這次因為 SCIST 協辦，所以有了講師以及助教，感謝講師們在寒訓前辛苦的準備課程講義，每位都帶給學員很大的幫助，以下是我整理的課程資源彙整，大家可以善加利用
+課程資源彙整 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HJGrUmAha.jpg","alt":"20240206_101644","title":""},{"url":"https://hackmd.io/_uploads/HkRNI7Rha.jpg","alt":"20240206_101837","title":""},{"url":"https://hackmd.io/_uploads/BJKIIX02p.jpg","alt":"DSC_3378","title":""},{"url":"https://hackmd.io/_uploads/HyY8IX02p.jpg","alt":"DSC_3383","title":""},{"url":"https://hackmd.io/_uploads/BJKU8mCnp.jpg","alt":"DSC_3385","title":""},{"url":"https://hackmd.io/_uploads/HkML8QC36.jpg","alt":"DSC_3396","title":""},{"url":"https://hackmd.io/_uploads/BkdL8mC3p.jpg","alt":"DSC_3444","title":""},{"url":"https://hackmd.io/_uploads/S1tII70hT.jpg","alt":"DSC_3452","title":""},{"url":"https://hackmd.io/_uploads/rkHULmC2a.jpg","alt":"DSC_3456","title":""},{"url":"https://hackmd.io/_uploads/H1L8UQ0na.jpg","alt":"DSC_3458","title":""},{"url":"https://hackmd.io/_uploads/B1wULQR2T.jpg","alt":"DSC_3460","title":""},{"url":"https://hackmd.io/_uploads/S1X88QRhT.jpg","alt":"DSC_3485","title":""},{"url":"https://hackmd.io/_uploads/HyuILQ036.jpg","alt":"DSC_3503","title":""},{"url":"https://hackmd.io/_uploads/HkYUL703T.jpg","alt":"DSC_3505","title":""},{"url":"https://hackmd.io/_uploads/SkwUU7R36.jpg","alt":"DSC_3514","title":""},{"url":"https://hackmd.io/_uploads/rkeUI7Rha.jpg","alt":"IMG_7065","title":""},{"url":"https://hackmd.io/_uploads/SJiH8Q0h6.jpg","alt":"IMG_7081","title":""},{"url":"https://hackmd.io/_uploads/SJw4UQ03T.jpg","alt":"IMG_9032","title":""},{"url":"https://hackmd.io/_uploads/r1UVUm026.jpg","alt":"IMG_9036","title":""},{"url":"https://hackmd.io/_uploads/rJLNU7Rh6.jpg","alt":"IMG_9086","title":""}]
+  
+活動內容 🔗
+先放照片 下面剩下的文字內容等我有空再補 …
+開幕與破冰 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HkhetmAnT.jpg","alt":"20240205_085547","title":""},{"url":"https://hackmd.io/_uploads/ry4bFQ03a.jpg","alt":"20240205_085620","title":""},{"url":"https://hackmd.io/_uploads/Hk21Y7Ahp.jpg","alt":"20240205_093011","title":""},{"url":"https://hackmd.io/_uploads/H1HlFXAh6.jpg","alt":"20240205_093051","title":""},{"url":"https://hackmd.io/_uploads/BkagYX02p.jpg","alt":"20240205_093139","title":""},{"url":"https://hackmd.io/_uploads/ry1-t7Anp.jpg","alt":"20240205_093648","title":""},{"url":"https://hackmd.io/_uploads/S1JbFQC2p.jpg","alt":"20240205_093708","title":""},{"url":"https://hackmd.io/_uploads/rkigK7A2p.jpg","alt":"20240205_093714","title":""},{"url":"https://hackmd.io/_uploads/ByHxFXR3a.jpg","alt":"20240205_093746","title":""},{"url":"https://hackmd.io/_uploads/S16ltX0hT.jpg","alt":"20240205_093822","title":""},{"url":"https://hackmd.io/_uploads/SyHlFQAha.jpg","alt":"20240205_093916","title":""},{"url":"https://hackmd.io/_uploads/BJlixKQCnT.jpg","alt":"20240205_093947","title":""},{"url":"https://hackmd.io/_uploads/HJKeFXC2p.jpg","alt":"20240205_094010","title":""},{"url":"https://hackmd.io/_uploads/rJMetmChT.jpg","alt":"20240205_094025","title":""},{"url":"https://hackmd.io/_uploads/rJ_xKmAnp.jpg","alt":"20240205_094042","title":""},{"url":"https://hackmd.io/_uploads/SyDso7A3T.jpg","alt":"DSC_3550","title":""},{"url":"https://hackmd.io/_uploads/rkdooXA3a.jpg","alt":"DSC_3372","title":""},{"url":"https://hackmd.io/_uploads/SkDiiXR3p.jpg","alt":"DSC_3263","title":""},{"url":"https://hackmd.io/_uploads/HkOssmR2a.jpg","alt":"20240205_094324","title":""},{"url":"https://hackmd.io/_uploads/rkujoQ0np.jpg","alt":"20240205_094148","title":""},{"url":"https://hackmd.io/_uploads/ryuojXR2T.jpg","alt":"20240205_094125","title":""},{"url":"https://hackmd.io/_uploads/Bkusjm0hp.jpg","alt":"20240205_090344","title":""},{"url":"https://hackmd.io/_uploads/S1lWYXA3a.jpg","alt":"20240205_094358","title":""},{"url":"https://hackmd.io/_uploads/Hy7WF70h6.jpg","alt":"20240205_094504","title":""},{"url":"https://hackmd.io/_uploads/BJJxYQC26.jpg","alt":"20240205_094856","title":""},{"url":"https://hackmd.io/_uploads/ByPltXA3T.jpg","alt":"20240205_095313","title":""},{"url":"https://hackmd.io/_uploads/Bk5gtmRhT.jpg","alt":"20240205_095827","title":""},{"url":"https://hackmd.io/_uploads/BJylKQ03p.jpg","alt":"20240205_100114","title":""},{"url":"https://hackmd.io/_uploads/HyK1FQR2a.jpg","alt":"20240205_100417","title":""},{"url":"https://hackmd.io/_uploads/S1mgYQC3p.jpg","alt":"20240205_101227","title":""}]
+  
+贊助商分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1jw37Cnp.jpg","alt":"IMG_7336","title":""},{"url":"https://hackmd.io/_uploads/r1hvh7C2a.jpg","alt":"DSC_3652","title":""},{"url":"https://hackmd.io/_uploads/SJnv3QRnp.jpg","alt":"DSC_3609","title":""},{"url":"https://hackmd.io/_uploads/S13P2QC3a.jpg","alt":"DSC_3602","title":""},{"url":"https://hackmd.io/_uploads/rJ2P27Rha.jpg","alt":"DSC_3571","title":""},{"url":"https://hackmd.io/_uploads/B12v3XRna.jpg","alt":"20240206_132112","title":""}]
+  
+遊戲活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/SJ98cmy6T.jpg","alt":"20240205_195634","title":""},{"url":"https://hackmd.io/_uploads/SyGu9XyTp.jpg","alt":"20240206_194936","title":""},{"url":"https://hackmd.io/_uploads/HJGucQy6p.jpg","alt":"20240206_195113","title":""},{"url":"https://hackmd.io/_uploads/HyfO5m166.jpg","alt":"20240206_195918","title":""},{"url":"https://hackmd.io/_uploads/HkGu5mJpp.jpg","alt":"20240206_200137","title":""},{"url":"https://hackmd.io/_uploads/rkf_cQJT6.jpg","alt":"20240206_200804","title":""},{"url":"https://hackmd.io/_uploads/r1fdcmy66.jpg","alt":"20240206_200805","title":""},{"url":"https://hackmd.io/_uploads/HJhK5XyaT.jpg","alt":"DSC_3475","title":""},{"url":"https://hackmd.io/_uploads/S1e2Yq7JTa.jpg","alt":"DSC_3480","title":""},{"url":"https://hackmd.io/_uploads/ryxhF5XJ6T.jpg","alt":"DSC_3653","title":""},{"url":"https://hackmd.io/_uploads/SJnY5mypT.jpg","alt":"DSC_3854","title":""},{"url":"https://hackmd.io/_uploads/r1hY9mJpp.jpg","alt":"IMG_7110","title":""},{"url":"https://hackmd.io/_uploads/S16Yq7k6T.jpg","alt":"IMG_7114","title":""},{"url":"https://hackmd.io/_uploads/HkhtcmypT.jpg","alt":"IMG_7117","title":""},{"url":"https://hackmd.io/_uploads/S1hK9Q1pT.jpg","alt":"IMG_7120","title":""},{"url":"https://hackmd.io/_uploads/HynFqQyTp.jpg","alt":"IMG_7122","title":""},{"url":"https://hackmd.io/_uploads/rknK5Q1pp.jpg","alt":"IMG_7125","title":""},{"url":"https://hackmd.io/_uploads/HJ3Ycm1a6.jpg","alt":"IMG_7127","title":""},{"url":"https://hackmd.io/_uploads/r1htcQ1p6.jpg","alt":"IMG_7133","title":""},{"url":"https://hackmd.io/_uploads/SJnYc716p.jpg","alt":"IMG_7136","title":""},{"url":"https://hackmd.io/_uploads/ry3F9XyTp.jpg","alt":"IMG_7139","title":""},{"url":"https://hackmd.io/_uploads/rJg2Yq7k6T.jpg","alt":"IMG_7141","title":""},{"url":"https://hackmd.io/_uploads/ryght57ypp.jpg","alt":"IMG_7143","title":""},{"url":"https://hackmd.io/_uploads/SJe3K5mJpa.jpg","alt":"IMG_7144","title":""},{"url":"https://hackmd.io/_uploads/S12Y9X1TT.jpg","alt":"IMG_7146","title":""},{"url":"https://hackmd.io/_uploads/rJ3Y5QyTp.jpg","alt":"IMG_7171","title":""},{"url":"https://hackmd.io/_uploads/HkehF5my6p.jpg","alt":"IMG_7186","title":""},{"url":"https://hackmd.io/_uploads/By3YqXJap.jpg","alt":"IMG_7196","title":""},{"url":"https://hackmd.io/_uploads/HkxnF571pp.jpg","alt":"IMG_7224","title":""},{"url":"https://hackmd.io/_uploads/SJg3Kq7kaT.jpg","alt":"IMG_7225","title":""},{"url":"https://hackmd.io/_uploads/SknKq7kTT.jpg","alt":"IMG_7227","title":""},{"url":"https://hackmd.io/_uploads/r13K57Jpa.jpg","alt":"IMG_7228","title":""},{"url":"https://hackmd.io/_uploads/rJe3KqQ1aT.jpg","alt":"IMG_7246","title":""},{"url":"https://hackmd.io/_uploads/rJhF5XyTa.jpg","alt":"IMG_7247","title":""},{"url":"https://hackmd.io/_uploads/H1hY97ypa.jpg","alt":"IMG_7395","title":""},{"url":"https://hackmd.io/_uploads/Skl2FcXJ6a.jpg","alt":"IMG_7401","title":""},{"url":"https://hackmd.io/_uploads/ByAO5XyTT.jpg","alt":"IMG_9050","title":""}]
+  
+晚會 🔗
+
+闖關活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/ryUD3m1aT.jpg","alt":"20240207_091051","title":""},{"url":"https://hackmd.io/_uploads/BkrwhQypa.jpg","alt":"20240207_092117","title":""},{"url":"https://hackmd.io/_uploads/H1rvnXyaT.jpg","alt":"20240207_104938","title":""},{"url":"https://hackmd.io/_uploads/ByLv2m1aa.jpg","alt":"DSC_3856","title":""},{"url":"https://hackmd.io/_uploads/S1Lv3Xkaa.jpg","alt":"DSC_3875","title":""},{"url":"https://hackmd.io/_uploads/SJLD37Jap.jpg","alt":"DSC_3880","title":""},{"url":"https://hackmd.io/_uploads/S1Dvh7kTT.jpg","alt":"DSC_3881","title":""},{"url":"https://hackmd.io/_uploads/H1vw2mk6T.jpg","alt":"DSC_3883","title":""},{"url":"https://hackmd.io/_uploads/r18wh716T.jpg","alt":"DSC_3884","title":""},{"url":"https://hackmd.io/_uploads/Sywvh7JT6.jpg","alt":"DSC_3887","title":""},{"url":"https://hackmd.io/_uploads/By8PhQ1a6.jpg","alt":"DSC_3901","title":""},{"url":"https://hackmd.io/_uploads/ry8PhQkpp.jpg","alt":"DSC_3910","title":""},{"url":"https://hackmd.io/_uploads/rk8v3m1ap.jpg","alt":"DSC_3911","title":""},{"url":"https://hackmd.io/_uploads/B1LDnXkpp.jpg","alt":"DSC_3915","title":""},{"url":"https://hackmd.io/_uploads/BkLwnmy66.jpg","alt":"DSC_3916","title":""},{"url":"https://hackmd.io/_uploads/BJvD2QkT6.jpg","alt":"DSC_3921","title":""},{"url":"https://hackmd.io/_uploads/SJwD27ypT.jpg","alt":"DSC_3924","title":""},{"url":"https://hackmd.io/_uploads/BkgIvnQypa.jpg","alt":"DSC_3928","title":""},{"url":"https://hackmd.io/_uploads/rJIvhmypT.jpg","alt":"DSC_3948","title":""},{"url":"https://hackmd.io/_uploads/SJvv2m1TT.jpg","alt":"DSC_3951","title":""},{"url":"https://hackmd.io/_uploads/B1eIv2QJ66.jpg","alt":"DSC_3961","title":""},{"url":"https://hackmd.io/_uploads/H1xUP37JTa.jpg","alt":"DSC_3979","title":""},{"url":"https://hackmd.io/_uploads/SJlIvh7Jap.jpg","alt":"DSC_3994","title":""},{"url":"https://hackmd.io/_uploads/HyIw3QyTa.jpg","alt":"DSC_4010","title":""},{"url":"https://hackmd.io/_uploads/ryUD2Xkpa.jpg","alt":"DSC_4019","title":""},{"url":"https://hackmd.io/_uploads/r1LDhQkaT.jpg","alt":"DSC_4029","title":""},{"url":"https://hackmd.io/_uploads/B1xIP2mJTp.jpg","alt":"DSC_4040","title":""},{"url":"https://hackmd.io/_uploads/HyxUv3Q1a6.jpg","alt":"DSC_4048","title":""},{"url":"https://hackmd.io/_uploads/ByxIvnXk6T.jpg","alt":"DSC_4113","title":""},{"url":"https://hackmd.io/_uploads/HJl8v3mJTp.jpg","alt":"DSC_4125","title":""},{"url":"https://hackmd.io/_uploads/BkgLDhm16T.jpg","alt":"DSC_4131","title":""},{"url":"https://hackmd.io/_uploads/rkeUPnQyTT.jpg","alt":"DSC_4160","title":""},{"url":"https://hackmd.io/_uploads/BygDD27kTa.jpg","alt":"IMG_7522","title":""},{"url":"https://hackmd.io/_uploads/ryvP3my6a.jpg","alt":"IMG_7529","title":""},{"url":"https://hackmd.io/_uploads/SyPw271p6.jpg","alt":"IMG_7530","title":""},{"url":"https://hackmd.io/_uploads/Hk8PhQJap.jpg","alt":"IMG_7532","title":""}]
+  
+經驗分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/rJS9jQkTp.jpg","alt":"DSC_4264","title":""},{"url":"https://hackmd.io/_uploads/SyS5j71aa.jpg","alt":"DSC_4255","title":""},{"url":"https://hackmd.io/_uploads/rkH5iQkaa.jpg","alt":"DSC_4240","title":""},{"url":"https://hackmd.io/_uploads/rkr5s7kpT.jpg","alt":"DSC_4247","title":""},{"url":"https://hackmd.io/_uploads/Bkrco7kT6.jpg","alt":"DSC_4226","title":""},{"url":"https://hackmd.io/_uploads/BkB9oXk6a.jpg","alt":"DSC_4215","title":""},{"url":"https://hackmd.io/_uploads/SkH5j7JaT.jpg","alt":"DSC_4220","title":""},{"url":"https://hackmd.io/_uploads/S1BqsXkpa.jpg","alt":"DSC_4214","title":""},{"url":"https://hackmd.io/_uploads/SkBciXypT.jpg","alt":"20240207_135837","title":""},{"url":"https://hackmd.io/_uploads/BJS9s7k6a.jpg","alt":"DSC_4209","title":""},{"url":"https://hackmd.io/_uploads/SJr5o7yaT.jpg","alt":"20240207_135437","title":""},{"url":"https://hackmd.io/_uploads/rkHqj7J66.jpg","alt":"20240207_135238","title":""},{"url":"https://hackmd.io/_uploads/S1S9jm1Tp.jpg","alt":"20240207_135221","title":""},{"url":"https://hackmd.io/_uploads/Syrcom1T6.jpg","alt":"20240207_134445","title":""},{"url":"https://hackmd.io/_uploads/rkHco716T.jpg","alt":"20240207_134024","title":""}]
+  
+頒獎與閉幕 🔗
+
+    []
+  
+大合照 🔗
+
+回饋 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1Uq5TQj6.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/SJFyo6Qja.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/S1Ylspmjp.png","alt":"image","title":""}]
+  
+檢討與反思 🔗
+照片整理了很久，等我有空再來回補文字
+未來展望 🔗
+待更新…
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>營隊</category>
+      </categories>
+      <tags>
+        <tag>資訊社</tag>
+        <tag>成大資工</tag>
+        <tag>SCIST</tag>
+        <tag>寒訓</tag>
+        <tag>營隊</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 中央大學</title>
+    <url>/post/SPC-NCU/</url>
+    <content><![CDATA[人數 🔗
+
+錄取名額：3
+
+一般組：2
+資安組：1
+採聯招方式
+
+
+符合報名資格人數：56
+過書審進面試人數：15
+
+時程 🔗
+
+簡章公告：09/20
+報名：10/04 ~ 10/09
+面試名單：10/22
+面試：10/29
+放榜：11/19
+
+
+面試前 🔗
+我早起從臺南趕高鐵去桃園，然後坐計程車到中央準時報到，門口滿壯觀的是一個上坡跟中央校徽
+
+面試地點在工程五館
+
+我們先在二樓特選生休息室等待，冰川超社牛問其他人要不要加入 Discord 群
+
+由於那教室裡面網路超爛，所以我就出去走廊陽台透氣滑手機，wifecake 走過來跟我聊天（那時還不知道他是誰）
+面試順序是照書審分數由高到低排序的，我是第五位，前一個是 Eason，後一個是冰川，輪到我時有一個酷酷的學長帶上去三樓門口等待，他人超好一直跟我聊天，然後發現他也是臺南人，更巧的是他姐高中跟我同一間，另一個姐跟 Eason 同一間
+
+面試過程 🔗
+👨🏻‍🏫：教授（有五個，只有中間那個有講話）
+🤡：我
+（學長開門，Eason 走出來，我走進去跟教授打個招呼，然後開簡報）
+🤡：（介紹申請動機與家庭背景）
+🤡：（介紹檢定成績）
+👨🏻‍🏫：（打斷我介紹 直接開問）你是怎麼自學的
+🤡：（回答內容摘要：SCIST 線上資源、網路教材）
+👨🏻‍🏫：你為什麼會想考大學生在考的 CPE
+🤡：（回答內容摘要：檢驗自身程式能力、訓練英文閱讀能力，看看自己在大學生中的排名）（👨🏻‍🏫 轉過去對右邊的教授點頭微笑一下）
+（介紹程式競賽與資安領域的表現）
+👨🏻‍🏫：如何維持大學的學業
+🤡：（回答內容摘要：先修、時間管理）
+🤡：（介紹其他特殊經歷）
+👨🏻‍🏫：進大學後的研究方向
+🤡：（回答內容摘要：深度學習）
+🤡：（未來展望與結尾）
+🤡：請問教授還有問答環節嗎
+👩🏻‍🏫（最右邊的女教授）：因為時間滿久的剛剛問題有問完了
+中央原本公告：
+實際上：教授在自我介紹時打斷直接開問，中間因為還沒介紹完簡報我怕時間不夠用所以回答的沒有很完整就繼續介紹了，最後用了大概 10 分鐘左右
+
+面試後 🔗
+面試完後跟 冰川、Eason、隨風（Eason 的學長 之前的中央資工特選生）一起走去學校外面吃一間不錯的漢堡
+
+路途一直飄雨感覺中央這地理位置真的很潮濕，後來還去咖啡廳，有聊到他們都沒有被打斷介紹直接問問題，他們覺得是教授是對內容有興趣才會打斷，但我覺得讓我在介紹完簡報後再提問我會回答的更好一點
+
+結果 🔗
+雖然中央資工分成兩組，但是因為採聯招方式，所以報名時可以兩組都選而且只要繳費一次，面試也是只要一次，放榜之後會依照志願序分配組別
+放榜結果：
+
+一般組：備取 1（正取 2 人、備取 7 人）遞補錄取
+資安組：正取（正取 1 人、備取 3 人）
+
+中央放榜之後，我心中放下一塊大石，因為第一間就正取了，後面幾間面試時我其實都沒什麼壓力了，個人認為中央資工教授比較喜歡有接觸 AI 的人（一般組正取兩個都是做 AI 專題的旺宏金牌）還有多方面發展的人，太專精在競程反而會給比較低分，因為教授可能已經覺得這人會錄取特別喜歡競程的清大（實例：今年跟去年都有是清大正取且進過 TOI 選訓營一階的人在中央是備取很後面或未錄取），不過我是沒特別專精在某個領域但有很多特殊經歷的，所以在這裡對我來說會比較有優勢，但在其他學校就不一定了
+
+點擊回到特選心得彙整 🔗
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中央大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 臺灣師範大學</title>
+    <url>/post/SPC-NTNU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+一般組
+資安組
+
+
+
+
+報名人數
+83
+48
+
+
+過書審進面試人數
+17
+16
+
+
+錄取名額
+5
+3
+
+
+
+時程 🔗
+
+簡章公告：09/20
+報名：10/01 ~ 10/09
+面試名單：11/12
+面試：11/15
+放榜：12/05
+
+
+面試前 🔗
+臺師大把我這個臺南人排在第二個面試，我必須要超早起搭第一班高鐵才能趕得上，第一次在外面等高鐵站開門，還好有 Eason 陪我一起。之前一日資訊營我有來臺師大公館校區當助教所以路途有熟悉的感覺。
+
+
+面試過程 🔗
+臺師大的面試是最特別的，分為三間教室各一個教授，第一間是 3 分鐘自我介紹並要接受提問，第二間是專業問答，有幾個不同主題選兩個並回答問題，第三間是最輕鬆的聊天，有很多卡片可以選擇跟教授聊哪些主題，因為我一般組跟資安組都有進複試所以要面試兩輪
+第一輪面試 🔗
+第一間：自我介紹 🔗
+可使用簡報，我有準備也有在報到時用那邊的電腦上傳到他們給的資料夾，但不知道為什麼進到第一間面試時沒有同步過去導致我是沒有簡報直接講完的
+🤡：我
+👨🏻‍🏫：陳教授
+
+🤡：（自我介紹）
+👨🏻‍🏫：Supervised learning 跟 Unsupervised learning 的差別
+🤡：差別在於訓練時有沒有 Label，監督式學習資料與標籤之間的關係可以用來預測新資料，
+非監督式學習是要找出資料之間隱藏的內部結構
+👨🏻‍🏫：你的強化學習專案是用什麼算法
+🤡：有用過 DQN 和 PPO
+👨🏻‍🏫：Loss Function 有什麼不同
+🤡：DQN 是透過最小化誤差來學習 Q 值，PPO 比較像是學習一個策略
+👨🏻‍🏫：有考英文檢定嗎
+🤡：目前正在準備多益
+聊到外面學長敲門才出去，問到的都有回答出來，感覺第一間自我介紹的提問比第二間專業問題的提問還要更專業，還有很多人說在第一間被全英文問答，教授口音又很重，他們感覺滿慌的，我最後一題回答完後剛好學長敲門我才沒被用英文問，後來去查臺師大教授名單找了才知道原來專長是機器學習還在國外留學過難怪會這樣
+第二間：專業問答 🔗
+🤡：我
+👨🏻‍🏫：紀教授
+
+🤡：（進去先簡單自我介紹了一分鐘）
+👨🏻‍🏫：螢幕上的主題選兩個，可以不用選資安，因為你這次面完要接著考筆試
+
+
+
+
+
+
+
+
+
+
+演算法
+資料結構
+程式設計
+
+
+?
+?
+?
+
+
+資訊安全
+人工智慧
+?
+
+
+X
+其他
+X
+
+
+
+
+我忘記 ? 的是什麼了
+
+🤡：人工智慧 和 資料結構
+👨🏻‍🏫：解釋 圖靈測試
+🤡：由艾倫圖靈提出的思想實驗，目的是在測驗電腦能不能讓人類分辨不出來是在跟人還是電腦對話
+👨🏻‍🏫：解釋 K-NN
+🤡：K 近鄰算法，機器學習裡面預測一個新資料是哪個類別時，看看離它最近的 K 個資料是什麼類別來決定答案
+
+然後就開始聊我的強化學習專案技術細節：Reward Funtion 是如何設計之類的
+
+👨🏻‍🏫：好先換資料結構 解釋 stack 特性與應用
+🤡：特性是先進後出，像堆疊盤子一樣，先想到應用的是括號匹配的題目，還有維護單調隊列之類的
+👨🏻‍🏫：BST 最佳 / 最差情況 &amp; 如何解決
+🤡：最佳情況的話 BST 是平衡的 O(log N)，最差會變成一條鏈 O(N)，解決方法就是用像 set 這種底層是紅黑樹之類的資料結構
+第三間：卡片閒聊 🔗
+🤡：我
+👨🏻‍🏫：蔣教授
+
+👨🏻‍🏫：應該知道第三關要做什麼吧
+🤡：有先上網看過別人心得，結果真的是卡片
+👨🏻‍🏫：四張主要卡片選幾張介紹自己：
+
+可複選所以我選擇全部都講一次
+
+
+高中生活：描述高中生活
+🤡：高一開始考 APCS 並創了校內資訊社團，高二經營社團、到處打比賽、參與社群、擔任各種課程講師、高三擔任社群總召、準備特選，因為一直都有目標而且想持續進步所以過得滿精彩的
+特殊之處：與其他特選生的不同之處
+🤡：除了刷題精進自己能力以外，還有創社、講課、投入社群等不同的多元表現
+特殊選才：為何投入特殊選才、何時開始的、做了什麼準備
+🤡：因為有這些特殊經歷讓我想嘗試、高二暑假、調整心態和規劃未來
+未來展望：希望進大學後成為一個怎樣的人
+🤡：成為自己想要的樣子，為了目標努力，充實自己大學生活的人
+
+👨🏻‍🏫：選 3 張卡片描述未來想做的事
+
+社團領導
+師資培育
+學術研究
+海外留學
+程式競賽
+企業培訓
+
+
+我其實也想每張都選，但最後選了 3 張能讓我結合自身經歷的
+
+
+社團領導：對應我創社當社長和擔任社群總召的經歷
+師資培育：對應擔任課程講師、助教的經歷
+程式競賽：可以組隊打 ICPC 之類的競賽
+
+
+講完之後教授翻開卡片背面，每張背面都有台師大歷屆學生的相關成果，有點宣傳的效果
+
+整個過程滿輕鬆的，教授全程笑笑的，感覺真的是想透過卡片與聊天過程認識一個人的經歷與特質，我回答的時候有下意識地挑一些對我比較有優勢的地方特別提出來講，所以第一輪面試很順利也還滿有把握的
+
+資安組筆試 🔗
+資安組除了面試之外還有筆試，我甚至當天到現場才知道這件事，根本完全沒準備 🤡，而且時間超級緊迫，我第一輪面試完要馬上衝去別棟筆試完再回來面試第二輪
+一、程式設計 🔗
+
+ans = ?
+
+#include&lt;stdio.h&gt;int main()&#123;    int ans=0;    for(int i=0,j=0;i&lt;5;j+=(i++))        ans+=j;    printf(&quot;%d&quot;,ans);&#125;
+
+ans = ?
+
+#include&lt;stdio.h&gt;int f(int x,int y)&#123;    return x | (1 &lt;&lt;y);&#125;int main()&#123;    int ans = f(2,7);    printf(&quot;%d&quot; , ans);&#125;
+
+當輸入 50 時
+
+為何會印出 50 0 0？
+為何會印出stack smashing detected？
+
+
+
+#include&lt;stdio.h&gt;int main()&#123;    int8_t a=10 ,b=23, c=44;    scanf(&quot;%d&quot;,&amp;a);    printf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);&#125;
+二、系統安全 🔗
+
+linux 檔案權限中的 s 是什麼意思？
+proc/version 為何佔用 0 byte
+如果要將 test.pdf 隱藏起來，那該要怎麼去打 linux command
+
+三、網路 🔗
+
+ping 的原理
+家中的ip分享器原理
+為何網頁有時會顯示不安全，至少寫出3個原因
+
+四、密碼學 🔗
+
+手算凱撒密碼（密文忘了）
+在 1～124 中取一個數乘以 17，再除以 125 要餘 1，1～143 中與 143 互質的數有幾個
+證明 16 bits 的 key 不安全
+
+
+感謝 yih 背出來的題目 Orz
+
+寫完之後回到原本那棟的地下一樓休息室等第二輪面試，遇到很多認識的人，大家一起聊天，OsGa 好兄弟剛好在台北還特別過來師大陪我們一起，也遇到了 Ricky，他想從臺科大重特到臺師大，詳細過程可以看 這篇文章 真心滿佩服他的勇氣的，然後因為第一間自我介紹我有準備簡報但用不了就去找行政人員問了一下，發現另一個女生也跟我遇到同樣問題一起來問，我覺得他滿眼熟的感覺是我當某一場課程講師教過的學員。後來我重新上傳了一次在第二輪終於有簡報可以用了
+
+第二輪面試 🔗
+第一間 🔗
+
+用簡報快速帶過第一輪介紹過的經歷，因為是資安組面試所以最後有詳細補充我在 AIS3 Junior 2024 拿到最佳專題獎的實作內容
+
+👨🏻‍🏫：LLaMA 是什麼
+
+他的反應讓我感覺不是要我解釋 LLM，而是他真的不知道有 LLaMA，直到我說類似 GPT 他才懂）
+
+👨🏻‍🏫：AI 想的漏洞攻擊方法有比人類更好、更快嗎，如果沒有的話，你們專案有 AI 跟沒 AI 有什麼差別
+
+顯然完全放錯重點，我們專案是模擬駭客利用購物網站上的 AI 客服助手透過 Prompt Injection 的方式攻擊網站漏洞，而不是讓 AI 想出攻擊方法，反正他一直重複問類似的問題，我不管回答什麼他都跳針到最後時間結束，感覺他自己不太接觸資安領域，所以隨便想了個問題來一直問，出去之後覺得心情滿差的
+
+第二間：專業問答 🔗
+教授看到我又來一次，就不考專業問題了，直接開始聊天
+👨🏻‍🏫：你覺得剛剛考資安筆試的題目如何
+
+因為這份題目是他出的
+
+👨🏻‍🏫：有什麼問題想問嗎
+🤡：我想問關於 APCS 改制的問題，因為看到網路上有消息透露 APCS 要改成類似英檢那樣分級的新制度，這是假消息還是已經確定了
+👨🏻‍🏫：你們消息傳好快，是有這件事不過我是不太清楚詳細內容，而且負責的教授現在人在國外。時間還很多還有想問的嗎
+🤡：那我想了解一下師資培育的一些細節
+👨🏻‍🏫：校內有指定要修師培的課，然後要考核通過才行，我自己也是負責師資培育的，看過外面很多不太合格的資訊老師，所以對臺師大的學生滿有信心的
+🤡：那臺師大有什麼資源可以先修或需要提前準備什麼事情
+👨🏻‍🏫：我有開 TouTube 頻道：Neokent 的線上課程 可以去按讚訂閱分享開啟小鈴鐺。不然你之前是透過什麼資源學程式的
+🤡：之前學程式是參加 SCIST 演算法培訓課程 ，我現在擔任 S5 的總召
+👨🏻‍🏫：每年都會有 SCIST 的人上來這裡面試，印象滿深刻的
+第三間：專業問答 🔗
+
+教授看到我又來了就說不用翻卡牌了 直接開始閒聊
+
+👨🏻‍🏫：上面的教授都問了什麼
+👨🏻‍🏫：想問你們考生對目前 APCS 的看法
+👨🏻‍🏫：為什麼會想投資安組 還是想說順便投的
+🤡：雖然資安經歷比較沒有競程經歷多，但對資安和 AI 領域都有興趣
+
+教授看了桌上的表，上面有大家的主要經歷
+👨🏻‍🏫：你會兩組都進是因為有其他特殊經歷是別人沒有的所以加了不少分
+👨🏻‍🏫：你有 AIS3 最佳專題獎，今天很多人也都有，想知道為什麼
+🤡：除了不同年度之外，還分為 AIS3 和 AIS3 Junior，AIS3 有不同類別的主題，每個主題都有最佳專題獎，AIS3 Junior 則是只有前兩名有，所以今天才會有那麼多人有最佳專題獎。
+
+
+面試後 🔗
+面試後跟一群人（OsGa、Ricky、yih、soar）一起去吃師大學餐，自助餐價格跟菜色都還算可以，但是餐廳滿熱的，吃完就跟 Eason 逛北車地下街，最後搭客運還差點趕不上，因為我們不知道上車的地方在五樓，總之就是行程很趕很累的一天
+
+結果 🔗
+一般組：正取（正取 5 人、備取 9 人） 🔗
+資安組：未錄取（正取 3 人、備取 7 人） 🔗
+
+心得 🔗
+待更新 🔗
+
+點擊回到特選心得彙整 🔗
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>臺灣師範大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NFIRC 南附資研社 - 從零開始的社團經營之路</title>
+    <url>/post/NFIRC/</url>
+    <content><![CDATA[創社計畫 🔗
+創社歷程、成果、心得與反思 🔗
+撰寫中 … 🔗
+第一屆年報 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>社團</category>
+      </categories>
+      <tags>
+        <tag>南附資研社</tag>
+        <tag>NFIRC 1st</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資料結構 進階實作（C++）</title>
+    <url>/post/Data-Structures/</url>
+    <content><![CDATA[本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗
+Intro 🔗
+此篇文章使用 C++ 來實作各種從基礎到進階的資料結構
+可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續
+STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作
+內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改
+
+實作資料結構 🔗
+本篇包含以下資料結構的實作
+
+前綴和 &amp; 差分數列
+樹狀數組 BIT
+稀疏表 Sparse Table
+線段樹 Segment Tree
+鏈結串列 Linked-list
+並查集 DSU
+二元搜尋樹 BST
+樹堆 Treap
+伸展樹 Splay Tree
+字典樹 Trie
+rope
+pbds
+
+
+前綴和 &amp; 差分數列 🔗
+本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧
+前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值
+
+建出前綴和數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0
+
+Input 🔗
+51 2 3 4 5
+Output 🔗
+0 1 3 6 10 15 
+快速查詢區間和 🔗
+要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加
+int sum = 0;for(int i=l;i&lt;=r;++i) sum += p[i];
+有了前綴和後，每次查詢使用一次減法 第 r+1 項 - 第 l 項 即可快速取得區間和，直接將時間複雜度從 O(n)O(n) 降到 O(1)O(1)
+
+int q,l,r; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r;    cout &lt;&lt; p[r+1] - p[l] &lt;&lt; &#x27;\n&#x27;;&#125;
+內建函數 🔗
+std 內建了可以建立前綴和的函數 partial_sum(原數列起點, 原數列終點, 新數列起點)，使用方法如下：
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    for(auto &amp;i:v) cin &gt;&gt; i;    partial_sum(v.begin(), v.end(), p.begin()+1);    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+前綴和能快速取得區間和，而快速取得區間的最大/最小值則會用到本篇內容之一的 稀疏表 Sparse Table
+
+
+補充：後綴和（Suffix Sum）
+會前綴和就知道後綴和就是由後往前累加的值，可以自己試著建看看
+
+二維前綴和 🔗
+二維前綴和是前綴和概念在二維空間的擴展，可快速查詢二維平面上任意子矩形的數值總和
+
+首先要先了解排容原理
+A∪B=A+B−A∩BA \cup B = A + B - A \cap B
+
+而二維前綴和也運用了這個原理
+
+建出二維前綴和 🔗
+#include &lt;bits/stdc++.h&gt;#define RPT(i,n) for(int i=1;i&lt;=n;++i)using namespace std;const int N = 100;int tb[N][N], pre[N][N];signed main() &#123;    int r,c; cin &gt;&gt; r &gt;&gt; c;    RPT(i,r) RPT(j,c)    &#123;        cin &gt;&gt; tb[i][j];        pre[i][j] = pre[i-1][j] + pre[i][j-1]                   - pre[i-1][j-1] + tb[i][j];    &#125;    RPT(i,r) RPT(j,c) cout &lt;&lt; pre[i][j] &lt;&lt; &quot; \n&quot;[j == c];&#125;
+Input 🔗
+3 31 2 34 5 67 8 9
+Output 🔗
+1 3 65 12 2112 27 45
+查詢子矩形總和 🔗
+建完二維前綴和後每個子矩形皆會在右下角的點形成總和
+查詢任意子矩形都可以用排容原理計算出來
+不用使用雙重迴圈一個一個加起來
+以下示範計算 (x1,y1) 到 (x2,y2) 的子矩形總和
+
+int q; cin &gt;&gt; q;while(q--)&#123;    int x1,x2,y1,y2;    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;    x1--; y1--;    int sum = pre[x2][y2] - pre[x1][y2]             - pre[x2][y1] + pre[x1][y1];    cout &lt;&lt; ans &lt;&lt; &#x27;\n&#x27;;&#125;
+差分數列 🔗
+與前綴和相反的概念，差分數列為原數列相鄰元素的差值
+建出差分數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), d(n);    cin &gt;&gt; v[0]; d[0] = v[0];    for(int i=1;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        d[i] = v[i] - v[i-1];    &#125;    for(auto i:d) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+我們要解決以下問題：
+在區間 [l,r] 加上 x，經過多次不同的操作後，求最後的數列
+有了差分數列我們就不用每次操作都用迴圈在原數列上從 l 到 r 逐個加上 x
+只需在差分數列上做以下兩步操作：
+
+第 l 項 + x（相當於將原數列第 l 項開始以後的數都 + x）
+第 r+1 項 - x（相當於將原數列第 r+1 項開始以後的數停止 + x）
+
+所以不管區間 [l,r] 多大，都只用兩次加減法操作就能達成在區間 [l,r] 加上 x
+所有操作結束後對差分數列做一次前綴和即可得到最後的數列結果，也成功降低了時間複雜度
+int q,l,r,x; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;    d[l] += x;    d[r+1] -= x;&#125;int sum = 0;for(int i=0;i&lt;n;++i)&#123;    sum += d[i];    cout &lt;&lt; sum &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：此方法只適用於不需要中途詢問的情況，前綴和 &amp; 差分如果要帶修改則會用到本篇內容之一的 BIT 樹狀數組
+
+
+補充：二維差分數列
+可以自行試著建看看，能有效地處理二維矩形區域更新的操作
+
+小結 🔗
+這兩種資料結構在處理區間操作時非常有用，特別是在需要頻繁進行區間求和或區間更新的問題中
+差分和前綴和互為逆運算
+對差分數列做前綴和 或 對前綴和數列作差分 都會獲得 原陣列
+
+本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗
+
+樹狀數組 BIT 🔗
+
+
+稀疏表 Sparse Table 🔗
+
+線段樹 Segment Tree 🔗
+
+鏈結串列 Linked-list 🔗
+
+並查集 DSU 🔗
+
+
+二元搜尋樹 BST 🔗
+
+樹堆 Treap 🔗
+
+伸展樹 Splay Tree 🔗
+
+動態樹 Link-Cut Tree 🔗
+
+字典樹 Trie 🔗
+
+rope 🔗
+
+
+pbds 🔗
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>程式</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資料結構 Data Structures</tag>
+        <tag>前綴和 &amp; 差分數列</tag>
+        <tag>樹狀數組 BIT</tag>
+        <tag>稀疏表 Sparse Table</tag>
+        <tag>線段樹 Segment Tree</tag>
+        <tag>鏈結串列 Linked-list</tag>
+        <tag>並查集 DSU</tag>
+        <tag>二元搜尋樹 BST</tag>
+        <tag>樹堆 Treap</tag>
+        <tag>伸展樹 Splay Tree</tag>
+        <tag>動態樹 Link-Cut Tree</tag>
+        <tag>字典樹 Trie</tag>
+        <tag>rope</tag>
+        <tag>pbds</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資訊學科能力競賽 參賽心得</title>
+    <url>/post/NHSPC/</url>
+    <content><![CDATA[競賽資訊 🔗
+
+名稱：112 學年度學科能力競賽 複賽 資訊科
+賽區：國教署負責區第四區（台南）
+時間：2023/11/2
+地點：台南女中
+比賽人數：50 人（資訊科）
+獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作
+當天詳細時程：
+
+
+前言 🔗
+這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽
+南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了
+南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的
+我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說
+此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討
+如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了
+對你來說可能是一篇廢文 沒什麼參考價值
+上午場 🔗
+報到抽籤後 發現只有我們學校沒有領隊…
+到了我們學校的座位 被排在最後一排
+我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈
+
+我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的
+可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃
+到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說
+來寫一下解題過程
+p1 🔗
+第 1 題明顯滿難的 我看到就先跳過了
+p2 🔗
+
+題意
+
+有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數
+
+Input
+
+21126
+
+Output
+
+413
+
+解題想法
+
+3 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code
+
+AC Code
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;=n; ++i)signed main(void)&#123;    ShiYu;    int t; cin &gt;&gt; t;    int n;    while(t--)    &#123;        cin &gt;&gt; n;        int ans = 0;        FOR(i, n / 50)        &#123;            FOR(j, (n - i*50) / 25)            &#123;                FOR(k, (n - i*50 - j*25) / 10)                &#123;                    ans += (n - i*50 - j*25 - k*10) / 5 + 1;                &#125;            &#125;        &#125;        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;    &#125;&#125;
+p3 疊蛋餅 🔗
+
+題意
+
+要疊 n 層圓形蛋餅 最底層的蛋餅半徑是 1每層的半徑都不能比下面整疊的最大半徑多出 1 以上求有幾種可能
+
+解題想法
+
+一開始就先寫出 1 2 3 4 層的可能性
+我用樹狀圖來畫出每層的可能性 然後試著尋找規律
+
+後來觀察出會有重複計算的地方
+
+但就算這樣我還是不知道該如何用程式去計算出所有可能
+因為有會重複計算到的數值 所以不能用暴力枚舉的方法 我猜應該是用動態規劃 DP 把算完的東西記下來 不過在賽中我沒有解出來
+後來跟新化高中的 Eason 與 Silv 討論
+他們也覺得這題很難讀懂題目意思
+p4 最大矩形面積 🔗
+
+題意
+
+給一張大小為 n x m 且由 0 與 1 所組成的二維陣列1 是有種樹, 0 是沒樹求沒種樹的最大面積
+
+Input
+
+6 7001010001000011010000110000100100010110101
+
+Output
+
+12
+顯然是找出中間這塊算出面積就好
+
+我在賽中不知道該如何用程式實作出來
+聽 Silv 說這是 CSES 的經典題 用二維前綴和就能解出來了
+但我學會的沒有很多而且練習的題目太少了 不知道能這樣做
+p5 🔗
+
+題意
+
+有人把一條方程式中的 + 與 * 寫反了所以給整數 a求有幾組整數 b , c 能滿足 a + (b * c) = a * (b + c)若有無限解 則輸出 -1
+
+解題想法
+一看就是個數學題
+我把式子移項後變成 b×c=a×(b+c−1)b \times c = a \times (b + c - 1)
+腦中馬上想到了算幾不等式 a+b2≥ab\frac{a+b}{2} \ge \sqrt{ab} 感覺解法會往這個方向走
+但因為題目說可能會有無限解 所以我在賽中想不到如何判斷是否有無限解的方法就沒解出來了
+
+p6 p7 🔗
+不在我能力範圍內 跳過
+p8 🔗
+
+題意
+
+給 n 個整數若選擇了第 i 個整數 則 i+1 與 i-1 （前後兩數）都不能選求最大總和
+
+解題想法
+我原本用 Greedy 來做 每次都選最大的數字
+後來發現如果第 i 個數字最大 我選了 i
+但前後兩數加起來比 i 大我卻不能選 這樣就不是最大總和了
+所以這題要用 DP 來做 聽說 CSES 也有這種題目
+我真的練太少題目了 連這種簡單經典題都寫不出來
+
+p9 🔗
+
+題意
+
+有 n 人要分組給 i = 0 ~ n-1ai 為 i 的組員求每組成員及組數
+
+Input
+
+62 4 3 5 1 0
+把輸入做成表格
+
+
+
+人的編號
+0
+1
+2
+3
+4
+5
+
+
+
+
+他的組員的編號
+2
+4
+3
+5
+1
+0
+
+
+
+
+Output
+
+0 2 3 51 42
+把輸出做成表格
+
+
+
+組別
+組員
+
+
+
+
+第一組
+0 2 3 5
+
+
+第二組
+1 4
+
+
+
+
+
+解題想法
+來自 SCIST 總召 Fishhh 的梗
+
+
+
+AC Code
+
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    int a[n]; FOR(i,n) cin &gt;&gt; a[i];    vector&lt;vector&lt;int&gt; &gt; v;    FOR(i,n)    &#123;        if(a[i] == -1) continue;        vector&lt;int&gt; t;        t.push_back(i);        int next = a[i], b = i;        while(a[next] != -1)        &#123;            t.push_back(next);            a[b] = -1;            b = next;            next = a[next];        &#125;        a[b] = -1;        v.push_back(t);       &#125;    FOR(i,v.size())    &#123;        FOR(j,v[i].size())        &#123;            cout &lt;&lt; v[i][j] &lt;&lt; &quot; &quot;;        &#125;        cout &lt;&lt; &quot;\n&quot;;    &#125;    cout &lt;&lt; v.size() &lt;&lt; &quot;\n&quot;;&#125;
+
+下午場 2 小時 2 / 6 🔗
+p1 🔗
+
+題意
+
+每天有 10 小時可以用給很多組活動的 起始時間 與 結束時間求如何安排才能在 10 小時中舉辦最多活動
+這題感覺很簡單不過一樣的我也沒有寫過類似的題目所以跳過
+後來聽 Silv 說只要過濾較多時間的活動
+然後依結束時間排序活動 再依開始時間挑選活動就可以了
+p2 🔗
+我把下午的比賽時間都砸在這題上了
+
+題意
+
+給 n 間糖果店每間不同的店花 1 塊錢可以買到不同的 a 顆糖果且每間店都會額外贈送 b 顆糖果有 q 筆操作分為兩類1. 把第 x 間店 移動到 第 y 個位置2. 詢問在 L 與 R 間店中 可以選擇「一間」買糖果 有 x 塊錢可以買 求糖果最大值
+
+Input
+
+52 24 51 33 61 732 2 3 31 2 42 2 3 3
+
+Output
+
+1715
+
+AC Code
+
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define vpii vector&lt;pair&lt;int,int&gt; &gt;signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vpii v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(a,b));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vpii vt;            pair&lt;int,int&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1;            for(int i=l-1; i&lt;r; ++i)            &#123;                int sum = v[i].first * x + v[i].second;                if(sum &gt; maxn) maxn = sum;            &#125;            cout &lt;&lt; maxn &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
+一開始以為第 1 種操作是交換兩間店的位置
+後來才知道是把第 x 間店抽掉後 插入到 第 y 個位置 其餘的順延補上
+但寫完還是錯 因為後來這題題目在賽中被主辦方改過題目意思
+害我原本照著原題目意思寫的程式碼都要改掉
+上面的版本是已經重新寫過而且在最後幾分鐘通過的
+原版意思是可以去「任何」糖果店買糖果 後來才改成只能去「一間」買
+這個題目意思改動浪費了我超級多時間修改程式碼＝＝
+原版程式碼多用了 bool 記錄每間糖果店有沒有去買過
+用了 vector&lt; pair&lt; pair&lt;int,int&gt;,bool &gt; &gt;
+（事後感覺用 tuple 或 struct 會比較好）
+也判斷了每塊硬幣要去哪間糖果店買才會得到最多糖果
+寫完比上面的程式碼還要多了整整 20 行
+原版 Code：
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)#define  signed main(void)&#123;    ShiYu;    int n; cin &gt;&gt; n;    vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; v;    int a,b;    while(n--)    &#123;        cin &gt;&gt; a &gt;&gt; b;        v.push_back(make_pair(make_pair(a,b),true));    &#125;    int q; cin &gt;&gt; q;    int t;    while(q--)    &#123;        cin &gt;&gt; t;        if(t == 1)        &#123;            int x, y; cin &gt;&gt; x &gt;&gt; y;            vector&lt;pair&lt;pair&lt;int,int&gt;,bool&gt; &gt; vt;            pair&lt;pair&lt;int,int&gt;,bool&gt; p;            FOR(i,v.size())            &#123;                if(i + 1 == x)                &#123;                    p = v[i];                    continue;                &#125;                else if(i == y)                &#123;                    vt.push_back(p);                &#125;                vt.push_back(v[i]);            &#125;            v = vt;        &#125;        else if(t == 2)        &#123;            int l, r, x; cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;            int maxn = -1,now=-1,sum = 0;            while(x--)            &#123;                for(int i=l-1; i&lt;r; ++i)                &#123;                    if(v[i].second == true)                    &#123;                        if(v[i].first.first + v[i].first.second &gt; maxn)                        &#123;                            maxn = v[i].first.first + v[i].first.second;                            now = i;                        &#125;                    &#125;                    else if(v[i].second == false)                    &#123;                        if(v[i].first.first &gt; maxn)                        &#123;                            maxn = v[i].first.first;                            now = i;                        &#125;                    &#125;                &#125;                sum += maxn;                v[now].second = false;            &#125;            cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;        &#125;    &#125;&#125;
+p3 ~ p5 🔗
+由於花太多時間在 p2 了 根本來不及想這 3 題要怎麼做
+p6 🔗
+
+題意
+這題題目超長 花了一整頁的文字在介紹 2 進制如何進位  根本素養題 所以我直接濃縮成兩句話
+
+給 a b 兩正整數求相乘後的 2 進制與 10 進制
+
+Input
+
+3126
+
+Output
+
+1100100110806
+
+解題想法
+
+先直接 a * b 求 10 進位後用字串的方法換成 2 進位這題 Eason 用位元左移右移來做 但我太笨了不會那種方法
+#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for(int i=0; i&lt;n; ++i)signed main(void)&#123;    ShiYu;    int a, b; cin &gt;&gt; a &gt;&gt; b;    int n = a * b, t = n;    string s = &quot;&quot;;    while(t != 0)    &#123;        if(t % 2) s = &quot;1&quot; + s;        else s = &quot;0&quot; + s;        t /= 2;    &#125;    cout &lt;&lt; s &lt;&lt; &quot;\n&quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;&#125;
+
+抱怨區 可跳過或忽視這裡詳細講一下主辦方這次競賽發生的一堆錯誤
+
+賽前測試沒有把系統用好 導致大家上傳測試題的程式碼時都發生 SE（系統錯誤）主辦卻說這不影響正式比賽 延誤了很久才開始
+正式開始之後 評測系統又掛掉了 大家都沒辦法登進去提交程式碼 於是主辦就開始做起超荒謬的事：人工評測 我當下是超級傻眼 都 2023 年了還在人工 Judge
+人工評測只是叫你執行程式然後輸入範例測資看有沒有跟範例輸出一樣 然後簡單看了一下程式碼就直接算你通過 我認為這喪失了公平性因為人工評測是直接用範例測資來看輸出是否正確 但正常比賽用的線上評測是由很多筆測試資料測試你的程式碼是否通過 如果用人工評測範例測資輸出正確 但程式碼錯誤 卻沒被檢查到呢？
+在系統正常後 我提交了剛剛人工評測通過的題目程式碼看看是否在評測平台也能通過 雖然成功通過 但主辦方過了一陣子才出來說：人工評測通過的人不用傳線上評測 又說上傳的話會影響原本人工評測時紀錄的時間 我都已經在平台正常的那刻上傳通過了之後才說不用傳＝＝ 而且重點是不傳怎麼知道程式碼通過或不通過？那如果有人人工評測正確但程式碼錯誤卻又不用上傳線上評測 是不是就多賺別人一題？
+主辦出題感覺真的很不用心 不知道有沒有認真審題 題目很多數字都沒給範圍 然後很多題都需要在賽中出來大聲講解補充題目意思 很多題都是在比賽時改了又改 還有重新拿一張題目給我們的 一堆題目連範例側資都是錯的 還叫我們整個打叉不要看 然後我都已經照著原版題目意思寫完程式碼了 才出來把題目意思改掉讓我重新修改程式碼
+
+
+
+心得 &amp; 檢討 🔗
+這次比賽總共 15 題 我只解出 4 題
+有很多都是出自 CSES 的簡單經典題
+而我卻因為練太少題目 都想不出解法
+這場比賽集結了很多電神 整個比賽會場都充滿著高壓電
+全場最強第一名的自學生趙翊佑（聽說是陳水扁的孫子）
+還有前幾名有進全國賽的郭育愷、葉智揚、陳秉宏、鄭柏軒 都南一中的
+還有因為 SCIST 而認識新化高中的 Eason 跟 Silv 他們都有得佳作
+我看到些人就會覺得我自己超級弱
+我本身實力與其他選手相比實在差太多了
+最後雖然跟 silv 一樣都是解出 4 題 但他有佳作我卻沒有
+我認為可能真的是被主辦方說的上傳線上評測的時間影響到成績
+或是他有解到第一題會多一分 或是我最後花的時間確實比較多
+心裡其實滿沮喪的 一直在想為什麼會這樣 也一直很想抱怨主辦方
+但又覺得我實力比不上別人 好像也沒什麼資格抱怨的
+總而言之 見識到有那麼多人都比我更厲害而且比我更努力
+我會多多練題 持續精進自己
+
+11/03 更新 我得佳作了？！ 🔗
+廢話不多說 直接附上得獎名單
+
+明明現場沒喊到我的名字
+今天公布的得獎名單裡佳作竟然有我？？？
+心中滿滿問號與懷疑
+不過後來猜測是因為主辦方重新整理過分數與解題時間
+調整了名次 讓我成功獲得佳作
+心情慢慢轉變為喜悅
+我把這次的成績視為對自己的一種肯定
+作為我之後的動力
+高二的一堆比賽 讓我心裡也不知道該怎麼平衡課業與競賽
+一直在擔心如果把時間花在比賽 卻沒有比出成績的話怎麼辦
+我的段考分數也因為社團與競賽 相比高一真的變差太多了
+身邊的同學也一直在問為什麼我成績變得不好
+但我真的無法解釋 只能做好我該做的事 做我想做的事
+希望我能漸漸學會如何分配我自己的時間
+我相信我能越來越好的
+特別感謝 🔗
+Yudong 每次比賽的搭檔 沒有你我也不會有佳作 感謝你常常陪我打線上程式競賽到半夜 每天討論程式題目怎麼解 讓我們一起進步 最後也謝謝賽前給我加油打氣的老師與同學朋友們
+延伸閱讀 🔗
+競賽心得 @Yudong
+競賽心得 @tw20000807
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>競賽</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資訊競賽</tag>
+        <tag>競程</tag>
+        <tag>題解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello, World.</title>
+    <url>/post/Hello-World/</url>
+    <content><![CDATA[歡迎來到士育的部落格！ 🔗
+網頁介紹 🔗
+此網頁使用了 Hexo 靜態網頁框架
+部署在 Github pages 上
+我使用的 Theme 主題是 Butterfly
+創建日期為 2022/12/01（高一）版本使用 4.5.1（已在 2025/07/06 升級為 5.4.1）
+網頁用途 🔗
+這裡是我的程式筆記網頁
+內容包括我所學到的 資料結構 演算法
+不會有程式語言基礎語法 因為網路上資源多且詳細
+筆記中的內容或許會有小錯誤或不完整 所以我會不斷的更新修改
+我也會不定期的發佈 程式解題 知識筆記 還有各種心得紀錄 …
+有興趣的人可以參閱其他文章或到上方其他頁面看看
+如果你對文章有任何想法或建議 歡迎在文章下方評論區登入 Github 帳號 留下你的看法
+或是可以直接使用右下角的 線上聊天室功能 傳訊息給我 我會盡快回覆你的訊息
+若你想開始學程式 請到上方 link 連結 的頁面 我有放許多資源可以提供你學習
+提供的資源涵蓋 各種程式語言的基礎語法 以及各種程式相關平台 工具…
+以及各個程式社群的 Discord 伺服器
+希望能對你有所幫助 ！
+本網站網址 🔗
+https://4yu.dev
+
+點擊回到導覽頁面 🔗
+
+]]></content>
   </entry>
 </search>
