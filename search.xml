@@ -1782,6 +1782,779 @@ ping 的原理
       </tags>
   </entry>
   <entry>
+    <title>C++ STL 大全</title>
+    <url>/post/STL/</url>
+    <content><![CDATA[Intro 🔗
+學完 C++ 基礎語法之後，接著就該進入資料結構的世界了！
+本篇筆記要介紹的是 C++ STL，彙整了許多基礎資料結構的概念與用法，文章內容較多，部分內容為收集資料擷取後並經過修改整理而成，文章內容若有任何錯誤或需要補充的地方都歡迎使用右側聊天室傳送訊息給我，我將會儘速修改，謝謝
+先備知識 🔗
+標準模板庫(Standard Template Library)，簡稱 STL 為 C++ 內建的函式庫
+為了應對各種資料型態，因此採用 模板 template 來實作，分為六大部分：
+
+容器 Containers
+演算法 Algotithm
+迭代器 Iterator
+適配器 Adaptor
+仿函數 Function object
+空間配置器 allocator
+
+
+本篇文章內容著重於前四大部分
+
+符號解釋 🔗
+對於本篇文章中各種符號的解釋
+
+C：某種容器(container)
+T：某種資料型態(type)
+S：長度(size)
+i：索引(index)
+val：值(value)
+K：鍵值(key)
+it：迭代器(iterator)
+
+迭代器(iterator) 🔗
+C++ STL 為每個容器提供一個成員型別：迭代器 Iterator，我們可以用 指標 pointer 的概念來理解迭代器(實際上，指標算是一種迭代器)
+假設現在有個迭代器 it，如果要存取 it 所指向的內容，那就是在前面加上星號 *it，與指標相同
+以下有迭代器的三種分類：
+
+隨機存取迭代器：這種迭代器能夠和整數的加減法，往 後移 x 項、往 前移 x 項 皆可，也可以 遞增 (++) 和 遞減 (−−)，可以把指標當作這種迭代器
+雙向迭代器：只能做 遞增 (++) 和 遞減 (−−) 的運算，也就是 後一項 和 前一項
+單向迭代器：只能做 遞增 (++) 的運算，也就是 後一項
+
+利用迭代器可遍歷容器中的元素，分為 iterator 和 reverse_iterator（反向迭代器）
+可用 C.begin(), C.end() 取得容器的 起始 和 尾端
+而 reverse_iterator 則是 C.rbegin(), C.rend()
+iterator 示意圖 (圖片來源)
+
+
+資料結構的詳細介紹 🔗
+本篇介紹以下 C++ STL 內建基礎資料結構：
+
+動態陣列 vector
+字串 string
+數對 pair
+數組 tuple
+堆疊 stack
+佇列 queue
+雙端佇列 deque
+優先佇列 priority_queue
+集合 set
+映射 map
+多重集合 multiset
+多重映射 multimap
+無序集合 unordered_set
+無序映射 unordered_map
+bitset
+
+vector 動態陣列 🔗
+像是 C++ 陣列 array 的升級版，可動態新增元素且能改變長度，不用事先宣告固定大小，且能支援原有的操作，基本上學完 vector 可直接取代 array
+可支援的操作方法 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+v[i]
+讀取 v 的第 i 項，複雜度 O(1)O(1)
+
+
+v.empty()
+回傳一個 bool，表示 v 是否為空的，複雜度 O(1)O(1)
+
+
+v.clear()
+清空 v，但原本的空間不會被釋放掉，複雜度 O(n)O(n)
+
+
+v.size()
+回傳 v 目前的長度，複雜度 O(1)O(1)
+
+
+v.resize(S,val)
+強制將 v 的長度變為 S，若比原本長，則後面加 val 直到長度為 S，若比原本短則將多出的部分捨去，複雜度 O(n)O(n)
+
+
+v.reserve(S)
+預留 S 個空間，若 S  &gt; v.size()，此函數不造成任何影響
+
+
+v.capacity()
+取得容量（預分配的內存空間）
+
+
+v.insert(it,val)
+在 it 位置插入 val，必須向後搬動其餘元素，複雜度 O(n)O(n)
+
+
+v.erase(it)
+刪除 it 位置元素，也須向前搬動其餘元素，複雜度 O(n)O(n)
+
+
+v.front() / v.back()
+容器的首個元素或最後一個元素
+
+
+v.push_back(val) / v.emplace_back(val)
+在 v 的結尾加一個 val，均攤複雜度 O(1)O(1)
+
+
+v.pop_back()
+刪除 v 的最末項，若 v 為空，會發生無法預期的結果，複雜度 O(1)O(1)
+
+
+v.begin() / v.end()
+首個元素或最後一個元素的 iterator
+
+
+v.shrink_to_fit()
+將 v 的容量縮成剛好 size 的大小
+
+
+
+可支援的演算法函數 🔗
+
+
+
+演算法函數
+功能介紹
+
+
+
+
+swap(v1,v2) / v1.swap(v2)
+交換兩 vector
+
+
+find(v.begin(), v.end(), val)
+在 v 中查找 val，找到返回指定元素的迭代器，找不到返回结束迭代器 end()
+
+
+count(v.begin(), v.end(), val)
+計算 v 中 val 出現的次數
+
+
+replace(v.begin(), v.end(), val, new_val)
+將 v 中的 val 全部替換成 new_val
+
+
+sort(v.begin(), v.end())
+排序 v
+
+
+reverse(v.begin(), v.end())
+反轉 v
+
+
+merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin())
+將 v1 與 v2 合併到 v3
+
+
+binary_search(v.begin(), v.end(), val)
+二分搜，如果在 v 中有找到 val 回傳 1，否則回傳 0
+
+
+lower_bound(v.begin(), v.end(), val)
+回傳在 v.begin() 位置(包含)到 v.end() 位置(不含)之間第一個 &gt;= val 的元素的位置
+
+
+upper_bound(v.begin(), v.end(), val)
+回傳在 v.begin() 位置(包含)到 v.end() 位置(不含)之間第一個 &gt; val 的元素的位置
+
+
+next_permutation(v.begin(),v.end())
+下一个排列组合
+
+
+prev_permutation(v.begin(),v.end())
+上一个排列组合
+
+
+
+
+lower_bound / upper_bound 可透過 * 取值，需在由小到大排列好的陣列中才可使用，若回傳的值是 v.end()，代表沒有符合的元素
+
+常用基本操作 Code 🔗
+// 宣告vector&lt;int&gt; v;    // 長度為 0 的空 vectorvector&lt;int&gt; v(5); // 長度為 5 的 vectorvector&lt;int&gt; v(5,10); // 長度為 5 且每個元素皆被初始化為 10 的 vector，複雜度為 O(n)vector&lt;int&gt; v = &#123;1,2,3&#125;;// 宣告雙層 vectorvector&lt; vector&lt;int&gt; &gt; vv;// 可想像成二維陣列，但每一列長度可以不一樣// 取值int n = v[0];// 與陣列一樣可使用 index 取值// 取得長度int s = v.size();// 更改大小v.resize(5);    // 將 v 的長度更改為 5// 在尾端加入元素int n = 10;v.push_back(n);v.emplace_back(n);// 移除尾端元素v.pop_back();// 尋找vector&lt;int&gt; v = &#123;1,3,5,7,9&#125;;int val; cin &gt;&gt; valif(find(v.begin(), v.end(), val) == v.end()) &#123;    cout &lt;&lt; &quot;Not find\n&quot;;&#125; else cout &lt;&lt; &quot;Find!&quot;;// input : 5 , output : Find!// input : 6 , output : Not Find// 排序(升序 由小到大)sort(v.begin(), v.end());sort(v, v+v.size());// 排序(降序 由大到小)sort(v.rbegin(), v.rend());sort(v.begin(), v.end(),greater&lt;int&gt;());// 反轉reverse(v.begin(), v.end());// 二分搜binary_search(v.begin(), v.end(), val)upper_bound(v.begin(), v.end(), val);lower_bound(v.begin(), v.end(), val);// 合併vector&lt;int&gt; v1 = &#123;1,3,5&#125;,            v2 = &#123;2,4,6&#125;,            v3(6);merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin());for(auto i : v3) cout &lt;&lt; i &lt;&lt; &quot; &quot;;// output : 1 2 3 4 5 6// 全排列vector&lt;int&gt; v = &#123;1,3,5&#125;;while(next_permutation(v.begin(),v.end())) &#123;    for(auto i : v) cout &lt;&lt; i &lt;&lt; &quot; &quot;;    cout &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 5 3 // 3 1 5 // 3 5 1 // 5 1 3 // 5 3 1
+
+注意：vector 不支援對前端元素使用 新增 或 刪除 的操作
+
+補充 🔗
+
+push_back() 與 emplace_back() 功能相同，但如果以效能為優先，emplace_back() 通常比 push_back() 更快一點，因為是直接呼叫 constructor 不會複製 object，所以有時候執行效率會比較快。
+延伸閱讀：codingninjas - emplace_back() vs push_back() in C++ Vectors
+
+
+
+在知道需要多少元素後，可以先對 vector 做 reserve() 擴充 capacity 再 emplece_back() ，會比 空 vector 慢慢 emplece_back() 快
+延伸閱讀：ping 不見路 - STL vector 效率小記
+示意圖 (圖片來源)
+
+
+string 字串 🔗
+由連續的字元組成，其實就是 vector&lt;char&gt;，非常方便使用
+可支援的操作方法 🔗
+vector 有的 string 幾乎都有
+常用基本操作 Code 🔗
+// 宣告string s;    // 預設為空字串string s1 = &quot;ABC&quot;;// 賦值cin &gt;&gt; s;        // 以空白作為輸入分隔getline(cin,s);  // 以換行作為輸入分隔s = &quot;ShiYu&quot;;s = s1;// 串接s = &quot;ShiYu&quot;;s1 = &quot;ABC&quot;;s += s1;cout &lt;&lt; s;// output : ShiYuABC// 刪除最後一個字元s.pop_back();// 讀取cout &lt;&lt; s[3];// output : Y// 擷取子字串cout &lt;&lt; s.substr(0,3);// output : Shi// 取得長度cout &lt;&lt; s1.size();// output : 5
+
+注意：取得字串長度請不要用 strlen()，應該要用 size()，因為前者複雜度為 O(n)，後者為 O(1)
+
+pair 數對 🔗
+可將兩個型態的資料合併，透過成員 first 和 second 來存取元素，pair 也可以元素字典序來比較或排序，以 first 為優先
+常用基本操作 Code 🔗
+// 宣告pair&lt;int, double&gt; p;// 賦值p = &#123;1, 2.5&#125;;p = make_pair(1, 2.5);// 取值int f = p.first();    // 1double s = p.second();// 2.5// 比較pair&lt;int, double&gt; a, b;a = &#123;1, 2.5&#125;;b = &#123;1, 2.6&#125;;cout &lt;&lt; (a &lt; b) &lt;&lt; &quot;\n&quot;; // output : 1 (true)// 交換兩 pairpair&lt;int, int&gt; a,b;a = &#123;1, 3&#125;;b = &#123;2, 4&#125;;swap(a, b); // or a.swap(b)cout &lt;&lt; a.first &lt;&lt; &quot; &quot; &lt;&lt; a.second &lt;&lt; &quot;\n&quot;; // output : 2 4// pair 搭配 vector 新增元素vector&lt; pair&lt;int,int&gt; &gt; vp;vp.push_back(make_pair(1,2));vp.emplace_back(3,4); // 用 emplace_back 可以不用 make_pairfor(auto i : vp) &#123;    cout &lt;&lt; i.first &lt;&lt; &quot; &quot; &lt;&lt; i.second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 3 4// 使用 vector 排序多個 pairpair&lt;int,int&gt; a = &#123;1,3&#125;,              b = &#123;2,4&#125;,              c = &#123;1,2&#125;;vector&lt; pair&lt;int, int&gt; &gt; v&#123;a, b, c&#125;;sort(v.begin(), v.end());for(auto i : v) &#123;    cout &lt;&lt; v[i].first &lt;&lt; &quot; &quot; &lt;&lt; v[i].second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 1 3// 2 4
+tuple 數組 🔗
+與 pair 相似，但可以同時組合多個不同型別的元素( pair 只能 2 個)
+常用基本操作 Code 🔗
+// 宣告tuple&lt;string, int, bool&gt; tp;// 初始化tuple&lt;string, int, bool&gt; tp(&quot;ShiYu&quot;, 16, true); // 賦值tp = &#123;&quot;ShiYu&quot;, 16, true&#125;;tp = make_tuple(&quot;ShiYu&quot;, 16, true);tie(&quot;ShiYu&quot;, 16, true) = tp;// 取值int age = get&lt;1&gt;(tp); // 16// 修改值get&lt;2&gt;(tp) = false;// 取得元素個數cout &lt;&lt; tuple_size&lt;decltype(tp)&gt;::value &lt;&lt; &quot;\n&quot;; // output : 3// tuple 搭配 vector 新增元素vector&lt; tuple&lt;int, int, int&gt; &gt; vt;vt.push_back(make_tuple(1, 2, 3));vt.emplace_back(4, 5, 6); // 用 emplace_back 可以不用 make_tuplefor(auto&amp; [a,b,c] : s) &#123;    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2 3// 4 5 6
+stack 堆疊 🔗
+可以想像成一疊書本，每次只能在最上面 放置 或 拿走 一本書
+有著 後進先出 Last In First Out 的規則
+預設以 Deque 為基底的 容器適配器 Container Adaptors
+可支援的操作方法 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+s.size()
+取得 s 大小
+
+
+s.empty()
+回傳 s 是否為空
+
+
+s.top()
+取得 s 頂端元素
+
+
+s.push(val) / s.emplace(val)
+將 val 放入 s 頂端
+
+
+s.pop()
+移除 s 頂端元素
+
+
+
+
+複雜度皆為 O(1)
+
+示意圖 🔗
+
+(圖片來源)
+常用基本操作 Code 🔗
+依照示意圖實作
+stack&lt;int&gt; stk;for(int i=1;i&lt;=3;++i) &#123;    stk.push(i);&#125;while(!stk.empty()) &#123;    cout &lt;&lt; stk.top() &lt;&lt; &quot;\n&quot;;    stk.pop();&#125;// output : // 3// 2// 1
+常見應用 🔗
+維護單調序列
+queue 佇列 🔗
+可以想像為排隊的人群，有可能是新的一個人來排在隊伍的尾端，或是最前面一個人結完帳離開隊伍
+有著 先進先出 First In First Out 的規則
+可支援的操作方法 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+q.size()
+取得 q 長度
+
+
+q.empty()
+回傳 q 是否為空
+
+
+q.front()
+取得 q 最前端(第一個加入的)元素
+
+
+q.back()
+取得 q 最尾端(最後加入的)元素
+
+
+q.push(val) / q.emplace(val)
+將 val 加入  q 尾端
+
+
+q.pop()
+移除 q 最前端元素
+
+
+
+
+複雜度皆為 O(1)
+
+示意圖 🔗
+
+(圖片來源)
+常用基本操作 Code 🔗
+queue&lt;int&gt; q;q.emplace(1);q.emplace(2);q.emplace(3);while(!q.empty()) &#123;    cout &lt;&lt; q.size() &lt;&lt; &quot; &quot; &lt;&lt; q.front() &lt;&lt; &quot; &quot; &lt;&lt; q.back() &lt;&lt; &quot;\n&quot;;    q.pop();&#125;// output : // 3 1 3// 2 2 3// 1 3 3
+常見應用 🔗
+圖論中的 BFS
+deque 雙端佇列 🔗
+為 double ended queue 的縮寫，唸作 deck 而非 de-queue，一般的 queue 只能從尾端加入元素、從前端移除元素，而 deque 的前後都可以使用加入和移除的操作，基本上就是多了 emplace_front()、pop_front() 的 vector，雖然方便但由於常數較大，程式競技比賽中非必要不會去使用
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+deque 與 vector 相比只是多了針對 front 的操作，少了針對記憶體的操作（因為 vector 記憶體連續，deque 則是分段儲存），不過 deque 也支援隨機讀取 dq[i]
+
+
+
+操作方法
+功能介紹
+
+
+
+
+dq.push_front(val) / dq.emplace_front(val)
+將 val 加入  dq 前端
+
+
+dq.push_back(val) / dq.emplace_back(val)
+將 val 加入  dq 尾端
+
+
+dq.pop_front()
+移除 dq 最前端元素
+
+
+dq.pop_back()
+移除 dq 最尾端元素
+
+
+
+
+複雜度皆為 O(1)
+
+常用基本操作 Code 🔗
+deque&lt;int&gt; dq;dq.emplace_front(1);dq.emplace_back(2);for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;dq.pop_front();for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;dq.pop_back();cout &lt;&lt; dq.size() &lt;&lt; &quot;\n&quot;;// output : // 1 2 // 2 // 0
+priority_queue 優先佇列 🔗
+priority_queue 利用幾個內建函式實現 堆積 heap 結構，它可以維持最頂端的元素永遠是最大或最小的，所以可以很方便快速的存取極值
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+pq.size(),pq.empty()
+同 vector，複雜度 O(1)O(1)
+
+
+pq.top()
+回傳 pq 中最大或最小的元素，複雜度 O(1)O(1)
+
+
+pq.push(val) / pq.emplace(val)
+將 val 加入 pq 中，複雜度 O(log⁡n)O(\log n)
+
+
+pq.pop()
+將 pq 中最大或最小的元素移除，複雜度 O(log⁡n)O(\log n)
+
+
+
+常用基本操作 Code 🔗
+priority_queue&lt;int&gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 9priority_queue&lt; int, vector&lt;int&gt;, greater&lt;int&gt; &gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 3
+補充 🔗
+
+priority_queue 有三個型別參數 T、C、Cmp
+T 是內容物的型別，C 是所採用的容器，Cmp 是比大小的依據
+priority_queue 能使用的容器有 vector 和 deque
+Cmp 的預設值是 less&lt;T&gt;，此時的 priority_queue 是最大堆 max heap
+若改成 greater&lt;T&gt;，則 priority_queue 為 最小堆 min heap
+建構式如上方 Code 第 8 行，而 output 為最小值
+
+延伸閱讀 🔗
+
+Binary Heap 的排序原理
+資料結構大便當： Binary Heap
+
+set 集合 🔗
+set 實現了 紅黑樹(二元平衡樹) RB tree，也就是說可以用 O(log n) 的複雜度插入、刪除或查詢一個值是否在其中
+內部自動有序且與數學的集合概念一樣不含重複元素，具有很方便地去重功能，且通常會稱元素的值為 鍵值 Key
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+s.size() / s.empty()
+同 vector
+
+
+s.insert(K)
+在 s 中放入一個鍵值為 k 的元素，若本來就有，則什麼事都不會做，複雜度 O(log⁡n)O(\log n)
+
+
+s.erase(K)
+刪除鍵值為 k 的元素，並回傳刪除的個數。複雜度 O(log⁡n)O(\log n)
+
+
+s.erase(it first,it last)
+刪除 [first,last)，若沒有指定 last 則只刪除 first，複雜度與刪除的個數呈線性
+
+
+s.find(K)
+回傳指向鍵值為 k 的迭代器，若 k 值不存在，則回傳 s.end()。複雜度 O(log⁡n)O(\log n)
+
+
+s.count(K)
+回傳有幾個鍵值為 k 的元素，複雜度 O(log⁡n)O(\log n)
+
+
+s.lower_bound(K)
+回傳迭代器指向第一個鍵值大於等於 k 的項。複雜度 O(log⁡n)O(\log n)
+
+
+s.upper_bound(K)
+回傳迭代器指向第一個鍵值大於 k 的項。複雜度 O(log⁡n)O(\log n)
+
+
+
+常用基本操作 Code 🔗
+// 宣告set&lt;int&gt; s;// 插入s.insert(10);// 刪除s.erase(10);s.erase(s.begin());// 回傳該元素的 iterator，若 set 內部無該元素，則回傳 end()s.find(10);// 問一個元素在不在 set 裡。可透過 find 的 return 值，或使用 s.countif(s.find(10) != s.end()) cout &lt;&lt; &quot;In!\n&quot;;if(s.count(10)) cout &lt;&lt; &quot;In!\n&quot;;// 遍歷 set 元素for(auto &amp;i : s) cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+延伸閱讀 🔗
+
+資料結構 — 紅黑樹(Red-Black Tree)
+Shengyuu - 紅黑樹 - HackMD
+hwdong - 最好懂的红黑树教程 - Youtube
+
+map 映射 🔗
+類似於 python 中的 字典 dict，內部為 鍵值對 key-value，所以 map 中每一個元素其實是 pair，可以修改 value 值，但不能修改 key 值
+map 可以用 O(log n) 的複雜度插入、刪除或查詢一個鍵值對應的值
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+set 有的 map 幾乎都有
+
+
+
+操作方法
+功能介紹
+
+
+
+
+m[k]
+存取鍵值 k 對應的值，若 k 沒有對應的值，會插入一個元素，使 k 對應到預設值並回傳之，複雜度 O(log⁡n)O(\log n)
+
+
+m.insert(pair&lt;K,T&gt; k)
+若沒有鍵值為 k.first 的值，插入一個鍵值為 k.first 的值對應到 k.second，並回傳一個 pair，first 是指向剛插入的元素的迭代器、second 是 true；若已經有了，回傳一個 pair，first 是指向鍵值為 k.first 的元素的迭代器，second 是 false。
+
+
+
+multiset 多重集合 &amp; multimap 多重映射 🔗
+兩者用法與 set、map 用法一樣，但允許有重複元素，且 multimap 中一個鍵值可能對應到不同的值，所以不支援下標
+示意圖 🔗
+
+(圖片來源)
+unordered_set 無序集合 &amp; unordered_map 無序映射 🔗
+兩者用法也與 set、map 用法一樣，但利用 雜湊表 hash table 實作，內部不排序，因為沒有排序，所以當然沒有 lower_bound()、upper_bound()
+插入、搜尋都是 O(1)，但常數大，不常使用
+示意圖 🔗
+
+(圖片來源)
+延伸閱讀 🔗
+
+資料結構 - 雜湊表 Hash Table
+雜湊表（Hash Table）- 拉爾夫的技術隨筆
+示意圖(圖片來源)
+
+
+unordered_multiset 無序多重集合 &amp; unordered_multimap 無序多重映射 🔗
+依名稱即可知道為前兩者的結合，內部不排序且可允許重複元素
+bitset 🔗
+可以將 bitset 當成是一個效率很快的 bool 陣列，因為 bool 這個型別明明只能表示 true 或 false，但通常卻佔了 1 byte 的記憶體空間，用 bitset 可以宣告固定長度的 bits，可以想像為一堆 0 和 1 的陣列，並且 bitset 的位元運算是被優化過的，對常數優化及空間壓縮有不錯的效用，速度大約是 bool 的 32 倍
+可支援的操作函數 🔗
+
+
+
+操作方法
+功能介紹
+
+
+
+
+b[i]
+存取第 i 位。複雜度 O(1)O(1)
+
+
+b.count()
+回傳 b 有幾個位元是 1。複雜度 O(N)O(N)
+
+
+b.size()
+回傳 b 有幾個位元。複雜度 O(1)O(1)
+
+
+b.set()
+將所有位元設為 1。複雜度 O(N)O(N)
+
+
+b.reset()
+將所有位元設為 0。複雜度 O(N)O(N)
+
+
+b.flip()
+將所有位元的 0、1 互換 (反白)。複雜度 O(N)O(N)
+
+
+b.any() / b.none()
+檢查 b 中全 0 的情況，若 b 全 0，any() 返回 false、b.none() 返回 true，若 b 至少有一個 1，則結果相反
+
+
+b.to_string()
+回傳一個字串和 b 的內容一樣。複雜度 O(N)O(N)
+
+
+b.to_ulong()
+回傳一個 unsigned long 和 b 的內容一樣 (在沒有溢位的範圍內)。複雜度 O(N)O(N)
+
+
+
+常用基本操作 Code 🔗
+// 宣告bitset&lt;5&gt; b; // 大小為 5，初始值 00000// 賦值b[0] = 1; // 00001 以右邊為低位// 設置b.set();	// 11111b.reset();  // 00000// 計數b.count(); // 計算 b 裡有幾個 1
+
+題單 🔗
+看完這篇教學相信大家對 STL 有一定的瞭解了，不過還是要實際練習才能掌握，所以我把曾經寫過的題目整理成資料庫，來自各大 Online Judge，有依照不同的難度及不同資料結構分類好，歡迎大家自行運用，能讓你更加熟練。
+STL 題單連結 - Notion 🔗
+
+Outro 🔗
+這篇文章只用了兩天的時間，從收集資料、整理資訊、規劃架構，再來開始寫每個資料結構的內容，製作表格、寫 Code、找圖片(每張圖片皆有附上來源)、找補充資料，到最後不斷地重複新增和修改內容，直到整篇文章逐漸完整，我從中學習到的不只有這篇文章所呈現的知識，還有很多重要的能力，也感受到了學習的快樂，日後會不斷地學習新知識，也會針對各主題寫成一篇筆記發佈，感謝大家的閱讀
+下回預告：點擊前往 C++ 實作資料結構 🔗
+
+參考資料 🔗
+
+The C++ Standard Template Library (STL)
+
+STL 容器 (一) - 基本介紹 - Jason note
+從零開始的演算法競賽入門教學 - STL
+Ian Shih - STL Containers - HackMD
+C++ 中 STL 用法超詳細總結 - Github
+進階 C++ STL 迭代器 - HackMD
+C++ STL 常用容器以及操作簡介
+C++標準模板庫容器的常見用法
+C++ STL 學習總結(全面)
+STL in C++ - Youtube
+cplusplus reference
+cppreference
+
+
+點擊回到導覽頁面 🔗
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>程式</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資料結構 Data Structures</tag>
+        <tag>動態陣列 vector</tag>
+        <tag>字串 string</tag>
+        <tag>數對 pair</tag>
+        <tag>數組 tuple</tag>
+        <tag>堆疊 stack</tag>
+        <tag>佇列 queue</tag>
+        <tag>雙端佇列 deque</tag>
+        <tag>優先佇列 priority_queue</tag>
+        <tag>集合 set</tag>
+        <tag>映射 map</tag>
+        <tag>多重集合 multiset</tag>
+        <tag>多重映射 multimap</tag>
+        <tag>無序集合 unordered_set</tag>
+        <tag>無序映射 unordered_map</tag>
+        <tag>bitset</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>網站頁面導覽</title>
+    <url>/post/Sitemap/</url>
+    <content><![CDATA[歡迎來到 4yu Blog 🔗
+可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁
+導覽 🔗
+
+
+點擊前往 自我介紹 About me 
+
+
+點擊前往 第一篇文章 Hello, World. 
+
+
+DSA 系列 🔗
+皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章
+
+(修改中…即將發布) 複雜度分析 Complexity Analysis
+
+點擊前往 C++ STL 大全
+
+
+點擊前往 排序演算法 Sort Algorithm (C++) 
+
+(修改中…即將發布) 搜尋演算法 - 線性、二分搜、三分搜、Upper &amp; Lower bound
+(修改中…即將發布) 圖論 I - 基礎名詞、BFS &amp; DFS
+(撰寫中…) Greedy
+(撰寫中…) DP 動態規劃 I - 基本、背包、Kadane、LCS &amp; LIS、bitmask
+
+點擊前往 資料結構 進階實作（C++）
+
+(規劃中…) DP 動態規劃 II - 區間 DP、樹 DP、DAG DP
+(規劃中…) DP 動態規劃 III - 各種優化（滾動、單調性、分治、斜率、狀壓、四邊形）
+(規劃中…) 分治 I - 逆序數對、矩陣快速冪、最近點對
+(規劃中…) 分治 II - CDQ、FFT/NTT、Master Theorem
+(規劃中…) 圖論 II - 最小生成樹 MST、拓墣排序、最短路徑
+(規劃中…) 樹論 - LCA、Tree DP、輕重鏈剖分
+(規劃中…) 圖論 III - 聯通分量（SCC &amp; BCC）、Tarjan、2-SAT
+(規劃中…) 圖論 IV - Flow &amp; Cut、Dinic、二分匹配
+(規劃中…) 計算幾何 - 基本、凸包、掃描線、最近點對
+(規劃中…) 數論
+(規劃中…) 字串演算法 - Manacher、Trie、KMP、Z-algorithm
+(規劃中…) 分塊 &amp; 莫隊
+(規劃中…) 其他雜項技巧
+(規劃中…) 賽局理論
+(規劃中…) 計算複雜度類別 - P / NP / NP-Hard / NP-Complete、歸約
+(規劃中…) 隨機算法、啟發算法、近似算法
+
+AI/ML 系列 🔗
+
+(持續撰寫補充中…) AI/ML 概論 &amp; 實作筆記
+
+點擊前往 訓練神經網路計算過程
+
+(撰寫中…) RL 專案分享
+(規劃中…) n8n + MCP
+
+量子計算 Quantum Computer 系列 🔗
+
+(持續撰寫補充中…) 量子計算概論 &amp; IBM Qiskit 實作筆記
+(學習中…) 量子計算數學基礎
+(規劃中…) 量子演算法（Deutsch-Jozsa、Grover、Shor &amp; Simon）
+(撰寫中…) QUBO 二進位二次式最佳化
+(撰寫中…) 量子退火演算法（Quantum Annealing）
+(規劃中…) QNN 量子機器學習
+
+其他待開發的系列 🔗
+以下是我除了程式以外的技能，但這些系列在我文章發佈的 priority_queue 最末端，可能需要等非常久之後才會開始撰寫。。。
+
+Figma
+Blender
+FL Studio
+
+心得系列 🔗
+文筆沒有很好，純粹紀錄當下心情，提供自己回顧
+
+
+點擊前往 資訊學科能力競賽 心得
+
+
+點擊前往 NFIRC 南附資研社 - 從零開始的社團經營之路
+
+
+點擊前往 SCIST Camp 2024 籌辦心得
+
+(補充照片中…即將發布) SCIST Camp 2025 籌辦心得
+(補充照片中…即將發布) FunAI Winter Camp 2024 &amp; 2025 參與心得
+(修改中…即將發布) AI/ML 課程講師心得
+(修改中…即將發布) 演算法競賽出題心得 - SCIST x NHDK
+
+點擊前往 特殊選才資訊工程學系 心得彙整
+
+(撰寫中…) SCIST S5 總召心得
+(規劃中…) SITCON 2026 行銷組心得
+(規劃中…) GDG @ NCU AI PM 心得
+(規劃中…) 大一心得
+
+
+網頁架構 🔗
+本網頁組成架構
+主頁 Home
+
+網頁封面
+側邊資訊欄
+文章推薦
+
+
+文章 Posts
+
+此網頁所有文章
+
+
+標籤 Tags
+
+所有文章所提及的標籤、關鍵字
+
+
+分類 Categories
+
+針對特定主題分類文章
+
+
+音樂
+
+分享我的網易雲歌單
+
+
+連結 Link
+
+聯繫資訊
+友站
+NFIRC
+SCIST
+Discord Server
+學習資源
+程式平台
+軟體工具
+Blogs
+相關技術
+
+
+關於
+
+自我介紹
+經歷
+
+
+
+
+感謝閱覽此網頁！ 🔗
+
+]]></content>
+      <tags>
+        <tag>網頁導覽 Site map</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>排序演算法 Sort Algorithm</title>
     <url>/post/Sort-Algorithm/</url>
     <content><![CDATA[現今社會，資料量不斷地增加，因此排序演算法的重要性日益提升，從大數據排序到網路搜尋引擎排序，排序演算法在我們日常生活中扮演了重要的角色。
@@ -2420,779 +3193,6 @@ Sorting algorithms on GeeksforGeeks
         <tag>計數排序 Counting Sort</tag>
         <tag>桶排序 Bucket Sort</tag>
         <tag>基數排序 Radix Sort</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>網站頁面導覽</title>
-    <url>/post/Sitemap/</url>
-    <content><![CDATA[歡迎來到 4yu Blog 🔗
-可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁
-導覽 🔗
-
-
-點擊前往 自我介紹 About me 
-
-
-點擊前往 第一篇文章 Hello, World. 
-
-
-DSA 系列 🔗
-皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章
-
-(修改中…即將發布) 複雜度分析 Complexity Analysis
-
-點擊前往 C++ STL 大全
-
-
-點擊前往 排序演算法 Sort Algorithm (C++) 
-
-(修改中…即將發布) 搜尋演算法 - 線性、二分搜、三分搜、Upper &amp; Lower bound
-(修改中…即將發布) 圖論 I - 基礎名詞、BFS &amp; DFS
-(撰寫中…) Greedy
-(撰寫中…) DP 動態規劃 I - 基本、背包、Kadane、LCS &amp; LIS、bitmask
-
-點擊前往 資料結構 進階實作（C++）
-
-(規劃中…) DP 動態規劃 II - 區間 DP、樹 DP、DAG DP
-(規劃中…) DP 動態規劃 III - 各種優化（滾動、單調性、分治、斜率、狀壓、四邊形）
-(規劃中…) 分治 I - 逆序數對、矩陣快速冪、最近點對
-(規劃中…) 分治 II - CDQ、FFT/NTT、Master Theorem
-(規劃中…) 圖論 II - 最小生成樹 MST、拓墣排序、最短路徑
-(規劃中…) 樹論 - LCA、Tree DP、輕重鏈剖分
-(規劃中…) 圖論 III - 聯通分量（SCC &amp; BCC）、Tarjan、2-SAT
-(規劃中…) 圖論 IV - Flow &amp; Cut、Dinic、二分匹配
-(規劃中…) 計算幾何 - 基本、凸包、掃描線、最近點對
-(規劃中…) 數論
-(規劃中…) 字串演算法 - Manacher、Trie、KMP、Z-algorithm
-(規劃中…) 分塊 &amp; 莫隊
-(規劃中…) 其他雜項技巧
-(規劃中…) 賽局理論
-(規劃中…) 計算複雜度類別 - P / NP / NP-Hard / NP-Complete、歸約
-(規劃中…) 隨機算法、啟發算法、近似算法
-
-AI/ML 系列 🔗
-
-(持續撰寫補充中…) AI/ML 概論 &amp; 實作筆記
-
-點擊前往 訓練神經網路計算過程
-
-(撰寫中…) RL 專案分享
-(規劃中…) n8n + MCP
-
-量子計算 Quantum Computer 系列 🔗
-
-(持續撰寫補充中…) 量子計算概論 &amp; IBM Qiskit 實作筆記
-(學習中…) 量子計算數學基礎
-(規劃中…) 量子演算法（Deutsch-Jozsa、Grover、Shor &amp; Simon）
-(撰寫中…) QUBO 二進位二次式最佳化
-(撰寫中…) 量子退火演算法（Quantum Annealing）
-(規劃中…) QNN 量子機器學習
-
-其他待開發的系列 🔗
-以下是我除了程式以外的技能，但這些系列在我文章發佈的 priority_queue 最末端，可能需要等非常久之後才會開始撰寫。。。
-
-Figma
-Blender
-FL Studio
-
-心得系列 🔗
-文筆沒有很好，純粹紀錄當下心情，提供自己回顧
-
-
-點擊前往 資訊學科能力競賽 心得
-
-
-點擊前往 NFIRC 南附資研社 - 從零開始的社團經營之路
-
-
-點擊前往 SCIST Camp 2024 籌辦心得
-
-(補充照片中…即將發布) SCIST Camp 2025 籌辦心得
-(補充照片中…即將發布) FunAI Winter Camp 2024 &amp; 2025 參與心得
-(修改中…即將發布) AI/ML 課程講師心得
-(修改中…即將發布) 演算法競賽出題心得 - SCIST x NHDK
-
-點擊前往 特殊選才資訊工程學系 心得彙整
-
-(撰寫中…) SCIST S5 總召心得
-(規劃中…) SITCON 2026 行銷組心得
-(規劃中…) GDG @ NCU AI PM 心得
-(規劃中…) 大一心得
-
-
-網頁架構 🔗
-本網頁組成架構
-主頁 Home
-
-網頁封面
-側邊資訊欄
-文章推薦
-
-
-文章 Posts
-
-此網頁所有文章
-
-
-標籤 Tags
-
-所有文章所提及的標籤、關鍵字
-
-
-分類 Categories
-
-針對特定主題分類文章
-
-
-音樂
-
-分享我的網易雲歌單
-
-
-連結 Link
-
-聯繫資訊
-友站
-NFIRC
-SCIST
-Discord Server
-學習資源
-程式平台
-軟體工具
-Blogs
-相關技術
-
-
-關於
-
-自我介紹
-經歷
-
-
-
-
-感謝閱覽此網頁！ 🔗
-
-]]></content>
-      <tags>
-        <tag>網頁導覽 Site map</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ STL 大全</title>
-    <url>/post/STL/</url>
-    <content><![CDATA[Intro 🔗
-學完 C++ 基礎語法之後，接著就該進入資料結構的世界了！
-本篇筆記要介紹的是 C++ STL，彙整了許多基礎資料結構的概念與用法，文章內容較多，部分內容為收集資料擷取後並經過修改整理而成，文章內容若有任何錯誤或需要補充的地方都歡迎使用右側聊天室傳送訊息給我，我將會儘速修改，謝謝
-先備知識 🔗
-標準模板庫(Standard Template Library)，簡稱 STL 為 C++ 內建的函式庫
-為了應對各種資料型態，因此採用 模板 template 來實作，分為六大部分：
-
-容器 Containers
-演算法 Algotithm
-迭代器 Iterator
-適配器 Adaptor
-仿函數 Function object
-空間配置器 allocator
-
-
-本篇文章內容著重於前四大部分
-
-符號解釋 🔗
-對於本篇文章中各種符號的解釋
-
-C：某種容器(container)
-T：某種資料型態(type)
-S：長度(size)
-i：索引(index)
-val：值(value)
-K：鍵值(key)
-it：迭代器(iterator)
-
-迭代器(iterator) 🔗
-C++ STL 為每個容器提供一個成員型別：迭代器 Iterator，我們可以用 指標 pointer 的概念來理解迭代器(實際上，指標算是一種迭代器)
-假設現在有個迭代器 it，如果要存取 it 所指向的內容，那就是在前面加上星號 *it，與指標相同
-以下有迭代器的三種分類：
-
-隨機存取迭代器：這種迭代器能夠和整數的加減法，往 後移 x 項、往 前移 x 項 皆可，也可以 遞增 (++) 和 遞減 (−−)，可以把指標當作這種迭代器
-雙向迭代器：只能做 遞增 (++) 和 遞減 (−−) 的運算，也就是 後一項 和 前一項
-單向迭代器：只能做 遞增 (++) 的運算，也就是 後一項
-
-利用迭代器可遍歷容器中的元素，分為 iterator 和 reverse_iterator（反向迭代器）
-可用 C.begin(), C.end() 取得容器的 起始 和 尾端
-而 reverse_iterator 則是 C.rbegin(), C.rend()
-iterator 示意圖 (圖片來源)
-
-
-資料結構的詳細介紹 🔗
-本篇介紹以下 C++ STL 內建基礎資料結構：
-
-動態陣列 vector
-字串 string
-數對 pair
-數組 tuple
-堆疊 stack
-佇列 queue
-雙端佇列 deque
-優先佇列 priority_queue
-集合 set
-映射 map
-多重集合 multiset
-多重映射 multimap
-無序集合 unordered_set
-無序映射 unordered_map
-bitset
-
-vector 動態陣列 🔗
-像是 C++ 陣列 array 的升級版，可動態新增元素且能改變長度，不用事先宣告固定大小，且能支援原有的操作，基本上學完 vector 可直接取代 array
-可支援的操作方法 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-v[i]
-讀取 v 的第 i 項，複雜度 O(1)O(1)
-
-
-v.empty()
-回傳一個 bool，表示 v 是否為空的，複雜度 O(1)O(1)
-
-
-v.clear()
-清空 v，但原本的空間不會被釋放掉，複雜度 O(n)O(n)
-
-
-v.size()
-回傳 v 目前的長度，複雜度 O(1)O(1)
-
-
-v.resize(S,val)
-強制將 v 的長度變為 S，若比原本長，則後面加 val 直到長度為 S，若比原本短則將多出的部分捨去，複雜度 O(n)O(n)
-
-
-v.reserve(S)
-預留 S 個空間，若 S  &gt; v.size()，此函數不造成任何影響
-
-
-v.capacity()
-取得容量（預分配的內存空間）
-
-
-v.insert(it,val)
-在 it 位置插入 val，必須向後搬動其餘元素，複雜度 O(n)O(n)
-
-
-v.erase(it)
-刪除 it 位置元素，也須向前搬動其餘元素，複雜度 O(n)O(n)
-
-
-v.front() / v.back()
-容器的首個元素或最後一個元素
-
-
-v.push_back(val) / v.emplace_back(val)
-在 v 的結尾加一個 val，均攤複雜度 O(1)O(1)
-
-
-v.pop_back()
-刪除 v 的最末項，若 v 為空，會發生無法預期的結果，複雜度 O(1)O(1)
-
-
-v.begin() / v.end()
-首個元素或最後一個元素的 iterator
-
-
-v.shrink_to_fit()
-將 v 的容量縮成剛好 size 的大小
-
-
-
-可支援的演算法函數 🔗
-
-
-
-演算法函數
-功能介紹
-
-
-
-
-swap(v1,v2) / v1.swap(v2)
-交換兩 vector
-
-
-find(v.begin(), v.end(), val)
-在 v 中查找 val，找到返回指定元素的迭代器，找不到返回结束迭代器 end()
-
-
-count(v.begin(), v.end(), val)
-計算 v 中 val 出現的次數
-
-
-replace(v.begin(), v.end(), val, new_val)
-將 v 中的 val 全部替換成 new_val
-
-
-sort(v.begin(), v.end())
-排序 v
-
-
-reverse(v.begin(), v.end())
-反轉 v
-
-
-merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin())
-將 v1 與 v2 合併到 v3
-
-
-binary_search(v.begin(), v.end(), val)
-二分搜，如果在 v 中有找到 val 回傳 1，否則回傳 0
-
-
-lower_bound(v.begin(), v.end(), val)
-回傳在 v.begin() 位置(包含)到 v.end() 位置(不含)之間第一個 &gt;= val 的元素的位置
-
-
-upper_bound(v.begin(), v.end(), val)
-回傳在 v.begin() 位置(包含)到 v.end() 位置(不含)之間第一個 &gt; val 的元素的位置
-
-
-next_permutation(v.begin(),v.end())
-下一个排列组合
-
-
-prev_permutation(v.begin(),v.end())
-上一个排列组合
-
-
-
-
-lower_bound / upper_bound 可透過 * 取值，需在由小到大排列好的陣列中才可使用，若回傳的值是 v.end()，代表沒有符合的元素
-
-常用基本操作 Code 🔗
-// 宣告vector&lt;int&gt; v;    // 長度為 0 的空 vectorvector&lt;int&gt; v(5); // 長度為 5 的 vectorvector&lt;int&gt; v(5,10); // 長度為 5 且每個元素皆被初始化為 10 的 vector，複雜度為 O(n)vector&lt;int&gt; v = &#123;1,2,3&#125;;// 宣告雙層 vectorvector&lt; vector&lt;int&gt; &gt; vv;// 可想像成二維陣列，但每一列長度可以不一樣// 取值int n = v[0];// 與陣列一樣可使用 index 取值// 取得長度int s = v.size();// 更改大小v.resize(5);    // 將 v 的長度更改為 5// 在尾端加入元素int n = 10;v.push_back(n);v.emplace_back(n);// 移除尾端元素v.pop_back();// 尋找vector&lt;int&gt; v = &#123;1,3,5,7,9&#125;;int val; cin &gt;&gt; valif(find(v.begin(), v.end(), val) == v.end()) &#123;    cout &lt;&lt; &quot;Not find\n&quot;;&#125; else cout &lt;&lt; &quot;Find!&quot;;// input : 5 , output : Find!// input : 6 , output : Not Find// 排序(升序 由小到大)sort(v.begin(), v.end());sort(v, v+v.size());// 排序(降序 由大到小)sort(v.rbegin(), v.rend());sort(v.begin(), v.end(),greater&lt;int&gt;());// 反轉reverse(v.begin(), v.end());// 二分搜binary_search(v.begin(), v.end(), val)upper_bound(v.begin(), v.end(), val);lower_bound(v.begin(), v.end(), val);// 合併vector&lt;int&gt; v1 = &#123;1,3,5&#125;,            v2 = &#123;2,4,6&#125;,            v3(6);merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin());for(auto i : v3) cout &lt;&lt; i &lt;&lt; &quot; &quot;;// output : 1 2 3 4 5 6// 全排列vector&lt;int&gt; v = &#123;1,3,5&#125;;while(next_permutation(v.begin(),v.end())) &#123;    for(auto i : v) cout &lt;&lt; i &lt;&lt; &quot; &quot;;    cout &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 5 3 // 3 1 5 // 3 5 1 // 5 1 3 // 5 3 1
-
-注意：vector 不支援對前端元素使用 新增 或 刪除 的操作
-
-補充 🔗
-
-push_back() 與 emplace_back() 功能相同，但如果以效能為優先，emplace_back() 通常比 push_back() 更快一點，因為是直接呼叫 constructor 不會複製 object，所以有時候執行效率會比較快。
-延伸閱讀：codingninjas - emplace_back() vs push_back() in C++ Vectors
-
-
-
-在知道需要多少元素後，可以先對 vector 做 reserve() 擴充 capacity 再 emplece_back() ，會比 空 vector 慢慢 emplece_back() 快
-延伸閱讀：ping 不見路 - STL vector 效率小記
-示意圖 (圖片來源)
-
-
-string 字串 🔗
-由連續的字元組成，其實就是 vector&lt;char&gt;，非常方便使用
-可支援的操作方法 🔗
-vector 有的 string 幾乎都有
-常用基本操作 Code 🔗
-// 宣告string s;    // 預設為空字串string s1 = &quot;ABC&quot;;// 賦值cin &gt;&gt; s;        // 以空白作為輸入分隔getline(cin,s);  // 以換行作為輸入分隔s = &quot;ShiYu&quot;;s = s1;// 串接s = &quot;ShiYu&quot;;s1 = &quot;ABC&quot;;s += s1;cout &lt;&lt; s;// output : ShiYuABC// 刪除最後一個字元s.pop_back();// 讀取cout &lt;&lt; s[3];// output : Y// 擷取子字串cout &lt;&lt; s.substr(0,3);// output : Shi// 取得長度cout &lt;&lt; s1.size();// output : 5
-
-注意：取得字串長度請不要用 strlen()，應該要用 size()，因為前者複雜度為 O(n)，後者為 O(1)
-
-pair 數對 🔗
-可將兩個型態的資料合併，透過成員 first 和 second 來存取元素，pair 也可以元素字典序來比較或排序，以 first 為優先
-常用基本操作 Code 🔗
-// 宣告pair&lt;int, double&gt; p;// 賦值p = &#123;1, 2.5&#125;;p = make_pair(1, 2.5);// 取值int f = p.first();    // 1double s = p.second();// 2.5// 比較pair&lt;int, double&gt; a, b;a = &#123;1, 2.5&#125;;b = &#123;1, 2.6&#125;;cout &lt;&lt; (a &lt; b) &lt;&lt; &quot;\n&quot;; // output : 1 (true)// 交換兩 pairpair&lt;int, int&gt; a,b;a = &#123;1, 3&#125;;b = &#123;2, 4&#125;;swap(a, b); // or a.swap(b)cout &lt;&lt; a.first &lt;&lt; &quot; &quot; &lt;&lt; a.second &lt;&lt; &quot;\n&quot;; // output : 2 4// pair 搭配 vector 新增元素vector&lt; pair&lt;int,int&gt; &gt; vp;vp.push_back(make_pair(1,2));vp.emplace_back(3,4); // 用 emplace_back 可以不用 make_pairfor(auto i : vp) &#123;    cout &lt;&lt; i.first &lt;&lt; &quot; &quot; &lt;&lt; i.second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 3 4// 使用 vector 排序多個 pairpair&lt;int,int&gt; a = &#123;1,3&#125;,              b = &#123;2,4&#125;,              c = &#123;1,2&#125;;vector&lt; pair&lt;int, int&gt; &gt; v&#123;a, b, c&#125;;sort(v.begin(), v.end());for(auto i : v) &#123;    cout &lt;&lt; v[i].first &lt;&lt; &quot; &quot; &lt;&lt; v[i].second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 1 3// 2 4
-tuple 數組 🔗
-與 pair 相似，但可以同時組合多個不同型別的元素( pair 只能 2 個)
-常用基本操作 Code 🔗
-// 宣告tuple&lt;string, int, bool&gt; tp;// 初始化tuple&lt;string, int, bool&gt; tp(&quot;ShiYu&quot;, 16, true); // 賦值tp = &#123;&quot;ShiYu&quot;, 16, true&#125;;tp = make_tuple(&quot;ShiYu&quot;, 16, true);tie(&quot;ShiYu&quot;, 16, true) = tp;// 取值int age = get&lt;1&gt;(tp); // 16// 修改值get&lt;2&gt;(tp) = false;// 取得元素個數cout &lt;&lt; tuple_size&lt;decltype(tp)&gt;::value &lt;&lt; &quot;\n&quot;; // output : 3// tuple 搭配 vector 新增元素vector&lt; tuple&lt;int, int, int&gt; &gt; vt;vt.push_back(make_tuple(1, 2, 3));vt.emplace_back(4, 5, 6); // 用 emplace_back 可以不用 make_tuplefor(auto&amp; [a,b,c] : s) &#123;    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2 3// 4 5 6
-stack 堆疊 🔗
-可以想像成一疊書本，每次只能在最上面 放置 或 拿走 一本書
-有著 後進先出 Last In First Out 的規則
-預設以 Deque 為基底的 容器適配器 Container Adaptors
-可支援的操作方法 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-s.size()
-取得 s 大小
-
-
-s.empty()
-回傳 s 是否為空
-
-
-s.top()
-取得 s 頂端元素
-
-
-s.push(val) / s.emplace(val)
-將 val 放入 s 頂端
-
-
-s.pop()
-移除 s 頂端元素
-
-
-
-
-複雜度皆為 O(1)
-
-示意圖 🔗
-
-(圖片來源)
-常用基本操作 Code 🔗
-依照示意圖實作
-stack&lt;int&gt; stk;for(int i=1;i&lt;=3;++i) &#123;    stk.push(i);&#125;while(!stk.empty()) &#123;    cout &lt;&lt; stk.top() &lt;&lt; &quot;\n&quot;;    stk.pop();&#125;// output : // 3// 2// 1
-常見應用 🔗
-維護單調序列
-queue 佇列 🔗
-可以想像為排隊的人群，有可能是新的一個人來排在隊伍的尾端，或是最前面一個人結完帳離開隊伍
-有著 先進先出 First In First Out 的規則
-可支援的操作方法 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-q.size()
-取得 q 長度
-
-
-q.empty()
-回傳 q 是否為空
-
-
-q.front()
-取得 q 最前端(第一個加入的)元素
-
-
-q.back()
-取得 q 最尾端(最後加入的)元素
-
-
-q.push(val) / q.emplace(val)
-將 val 加入  q 尾端
-
-
-q.pop()
-移除 q 最前端元素
-
-
-
-
-複雜度皆為 O(1)
-
-示意圖 🔗
-
-(圖片來源)
-常用基本操作 Code 🔗
-queue&lt;int&gt; q;q.emplace(1);q.emplace(2);q.emplace(3);while(!q.empty()) &#123;    cout &lt;&lt; q.size() &lt;&lt; &quot; &quot; &lt;&lt; q.front() &lt;&lt; &quot; &quot; &lt;&lt; q.back() &lt;&lt; &quot;\n&quot;;    q.pop();&#125;// output : // 3 1 3// 2 2 3// 1 3 3
-常見應用 🔗
-圖論中的 BFS
-deque 雙端佇列 🔗
-為 double ended queue 的縮寫，唸作 deck 而非 de-queue，一般的 queue 只能從尾端加入元素、從前端移除元素，而 deque 的前後都可以使用加入和移除的操作，基本上就是多了 emplace_front()、pop_front() 的 vector，雖然方便但由於常數較大，程式競技比賽中非必要不會去使用
-示意圖 🔗
-
-(圖片來源)
-可支援的操作方法 🔗
-deque 與 vector 相比只是多了針對 front 的操作，少了針對記憶體的操作（因為 vector 記憶體連續，deque 則是分段儲存），不過 deque 也支援隨機讀取 dq[i]
-
-
-
-操作方法
-功能介紹
-
-
-
-
-dq.push_front(val) / dq.emplace_front(val)
-將 val 加入  dq 前端
-
-
-dq.push_back(val) / dq.emplace_back(val)
-將 val 加入  dq 尾端
-
-
-dq.pop_front()
-移除 dq 最前端元素
-
-
-dq.pop_back()
-移除 dq 最尾端元素
-
-
-
-
-複雜度皆為 O(1)
-
-常用基本操作 Code 🔗
-deque&lt;int&gt; dq;dq.emplace_front(1);dq.emplace_back(2);for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;dq.pop_front();for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;dq.pop_back();cout &lt;&lt; dq.size() &lt;&lt; &quot;\n&quot;;// output : // 1 2 // 2 // 0
-priority_queue 優先佇列 🔗
-priority_queue 利用幾個內建函式實現 堆積 heap 結構，它可以維持最頂端的元素永遠是最大或最小的，所以可以很方便快速的存取極值
-示意圖 🔗
-
-(圖片來源)
-可支援的操作方法 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-pq.size(),pq.empty()
-同 vector，複雜度 O(1)O(1)
-
-
-pq.top()
-回傳 pq 中最大或最小的元素，複雜度 O(1)O(1)
-
-
-pq.push(val) / pq.emplace(val)
-將 val 加入 pq 中，複雜度 O(log⁡n)O(\log n)
-
-
-pq.pop()
-將 pq 中最大或最小的元素移除，複雜度 O(log⁡n)O(\log n)
-
-
-
-常用基本操作 Code 🔗
-priority_queue&lt;int&gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 9priority_queue&lt; int, vector&lt;int&gt;, greater&lt;int&gt; &gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 3
-補充 🔗
-
-priority_queue 有三個型別參數 T、C、Cmp
-T 是內容物的型別，C 是所採用的容器，Cmp 是比大小的依據
-priority_queue 能使用的容器有 vector 和 deque
-Cmp 的預設值是 less&lt;T&gt;，此時的 priority_queue 是最大堆 max heap
-若改成 greater&lt;T&gt;，則 priority_queue 為 最小堆 min heap
-建構式如上方 Code 第 8 行，而 output 為最小值
-
-延伸閱讀 🔗
-
-Binary Heap 的排序原理
-資料結構大便當： Binary Heap
-
-set 集合 🔗
-set 實現了 紅黑樹(二元平衡樹) RB tree，也就是說可以用 O(log n) 的複雜度插入、刪除或查詢一個值是否在其中
-內部自動有序且與數學的集合概念一樣不含重複元素，具有很方便地去重功能，且通常會稱元素的值為 鍵值 Key
-示意圖 🔗
-
-(圖片來源)
-可支援的操作方法 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-s.size() / s.empty()
-同 vector
-
-
-s.insert(K)
-在 s 中放入一個鍵值為 k 的元素，若本來就有，則什麼事都不會做，複雜度 O(log⁡n)O(\log n)
-
-
-s.erase(K)
-刪除鍵值為 k 的元素，並回傳刪除的個數。複雜度 O(log⁡n)O(\log n)
-
-
-s.erase(it first,it last)
-刪除 [first,last)，若沒有指定 last 則只刪除 first，複雜度與刪除的個數呈線性
-
-
-s.find(K)
-回傳指向鍵值為 k 的迭代器，若 k 值不存在，則回傳 s.end()。複雜度 O(log⁡n)O(\log n)
-
-
-s.count(K)
-回傳有幾個鍵值為 k 的元素，複雜度 O(log⁡n)O(\log n)
-
-
-s.lower_bound(K)
-回傳迭代器指向第一個鍵值大於等於 k 的項。複雜度 O(log⁡n)O(\log n)
-
-
-s.upper_bound(K)
-回傳迭代器指向第一個鍵值大於 k 的項。複雜度 O(log⁡n)O(\log n)
-
-
-
-常用基本操作 Code 🔗
-// 宣告set&lt;int&gt; s;// 插入s.insert(10);// 刪除s.erase(10);s.erase(s.begin());// 回傳該元素的 iterator，若 set 內部無該元素，則回傳 end()s.find(10);// 問一個元素在不在 set 裡。可透過 find 的 return 值，或使用 s.countif(s.find(10) != s.end()) cout &lt;&lt; &quot;In!\n&quot;;if(s.count(10)) cout &lt;&lt; &quot;In!\n&quot;;// 遍歷 set 元素for(auto &amp;i : s) cout &lt;&lt; i &lt;&lt; &quot; &quot;;
-延伸閱讀 🔗
-
-資料結構 — 紅黑樹(Red-Black Tree)
-Shengyuu - 紅黑樹 - HackMD
-hwdong - 最好懂的红黑树教程 - Youtube
-
-map 映射 🔗
-類似於 python 中的 字典 dict，內部為 鍵值對 key-value，所以 map 中每一個元素其實是 pair，可以修改 value 值，但不能修改 key 值
-map 可以用 O(log n) 的複雜度插入、刪除或查詢一個鍵值對應的值
-示意圖 🔗
-
-(圖片來源)
-可支援的操作方法 🔗
-set 有的 map 幾乎都有
-
-
-
-操作方法
-功能介紹
-
-
-
-
-m[k]
-存取鍵值 k 對應的值，若 k 沒有對應的值，會插入一個元素，使 k 對應到預設值並回傳之，複雜度 O(log⁡n)O(\log n)
-
-
-m.insert(pair&lt;K,T&gt; k)
-若沒有鍵值為 k.first 的值，插入一個鍵值為 k.first 的值對應到 k.second，並回傳一個 pair，first 是指向剛插入的元素的迭代器、second 是 true；若已經有了，回傳一個 pair，first 是指向鍵值為 k.first 的元素的迭代器，second 是 false。
-
-
-
-multiset 多重集合 &amp; multimap 多重映射 🔗
-兩者用法與 set、map 用法一樣，但允許有重複元素，且 multimap 中一個鍵值可能對應到不同的值，所以不支援下標
-示意圖 🔗
-
-(圖片來源)
-unordered_set 無序集合 &amp; unordered_map 無序映射 🔗
-兩者用法也與 set、map 用法一樣，但利用 雜湊表 hash table 實作，內部不排序，因為沒有排序，所以當然沒有 lower_bound()、upper_bound()
-插入、搜尋都是 O(1)，但常數大，不常使用
-示意圖 🔗
-
-(圖片來源)
-延伸閱讀 🔗
-
-資料結構 - 雜湊表 Hash Table
-雜湊表（Hash Table）- 拉爾夫的技術隨筆
-示意圖(圖片來源)
-
-
-unordered_multiset 無序多重集合 &amp; unordered_multimap 無序多重映射 🔗
-依名稱即可知道為前兩者的結合，內部不排序且可允許重複元素
-bitset 🔗
-可以將 bitset 當成是一個效率很快的 bool 陣列，因為 bool 這個型別明明只能表示 true 或 false，但通常卻佔了 1 byte 的記憶體空間，用 bitset 可以宣告固定長度的 bits，可以想像為一堆 0 和 1 的陣列，並且 bitset 的位元運算是被優化過的，對常數優化及空間壓縮有不錯的效用，速度大約是 bool 的 32 倍
-可支援的操作函數 🔗
-
-
-
-操作方法
-功能介紹
-
-
-
-
-b[i]
-存取第 i 位。複雜度 O(1)O(1)
-
-
-b.count()
-回傳 b 有幾個位元是 1。複雜度 O(N)O(N)
-
-
-b.size()
-回傳 b 有幾個位元。複雜度 O(1)O(1)
-
-
-b.set()
-將所有位元設為 1。複雜度 O(N)O(N)
-
-
-b.reset()
-將所有位元設為 0。複雜度 O(N)O(N)
-
-
-b.flip()
-將所有位元的 0、1 互換 (反白)。複雜度 O(N)O(N)
-
-
-b.any() / b.none()
-檢查 b 中全 0 的情況，若 b 全 0，any() 返回 false、b.none() 返回 true，若 b 至少有一個 1，則結果相反
-
-
-b.to_string()
-回傳一個字串和 b 的內容一樣。複雜度 O(N)O(N)
-
-
-b.to_ulong()
-回傳一個 unsigned long 和 b 的內容一樣 (在沒有溢位的範圍內)。複雜度 O(N)O(N)
-
-
-
-常用基本操作 Code 🔗
-// 宣告bitset&lt;5&gt; b; // 大小為 5，初始值 00000// 賦值b[0] = 1; // 00001 以右邊為低位// 設置b.set();	// 11111b.reset();  // 00000// 計數b.count(); // 計算 b 裡有幾個 1
-
-題單 🔗
-看完這篇教學相信大家對 STL 有一定的瞭解了，不過還是要實際練習才能掌握，所以我把曾經寫過的題目整理成資料庫，來自各大 Online Judge，有依照不同的難度及不同資料結構分類好，歡迎大家自行運用，能讓你更加熟練。
-STL 題單連結 - Notion 🔗
-
-Outro 🔗
-這篇文章只用了兩天的時間，從收集資料、整理資訊、規劃架構，再來開始寫每個資料結構的內容，製作表格、寫 Code、找圖片(每張圖片皆有附上來源)、找補充資料，到最後不斷地重複新增和修改內容，直到整篇文章逐漸完整，我從中學習到的不只有這篇文章所呈現的知識，還有很多重要的能力，也感受到了學習的快樂，日後會不斷地學習新知識，也會針對各主題寫成一篇筆記發佈，感謝大家的閱讀
-下回預告：點擊前往 C++ 實作資料結構 🔗
-
-參考資料 🔗
-
-The C++ Standard Template Library (STL)
-
-STL 容器 (一) - 基本介紹 - Jason note
-從零開始的演算法競賽入門教學 - STL
-Ian Shih - STL Containers - HackMD
-C++ 中 STL 用法超詳細總結 - Github
-進階 C++ STL 迭代器 - HackMD
-C++ STL 常用容器以及操作簡介
-C++標準模板庫容器的常見用法
-C++ STL 學習總結(全面)
-STL in C++ - Youtube
-cplusplus reference
-cppreference
-
-
-點擊回到導覽頁面 🔗
-
-]]></content>
-      <categories>
-        <category>筆記</category>
-        <category>程式</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>資料結構 Data Structures</tag>
-        <tag>動態陣列 vector</tag>
-        <tag>字串 string</tag>
-        <tag>數對 pair</tag>
-        <tag>數組 tuple</tag>
-        <tag>堆疊 stack</tag>
-        <tag>佇列 queue</tag>
-        <tag>雙端佇列 deque</tag>
-        <tag>優先佇列 priority_queue</tag>
-        <tag>集合 set</tag>
-        <tag>映射 map</tag>
-        <tag>多重集合 multiset</tag>
-        <tag>多重映射 multimap</tag>
-        <tag>無序集合 unordered_set</tag>
-        <tag>無序映射 unordered_map</tag>
-        <tag>bitset</tag>
       </tags>
   </entry>
 </search>
