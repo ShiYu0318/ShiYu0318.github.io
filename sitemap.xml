@@ -704,13 +704,6 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
-    <lastmod>2025-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
     <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -718,7 +711,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/</loc>
+    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
     <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -726,6 +719,13 @@
   
   <url>
     <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
+    <lastmod>2025-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/</loc>
     <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
