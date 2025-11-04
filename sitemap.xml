@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://4yu.dev/post/SPC-NTNU/</loc>
+    <loc>https://4yu.dev/post/SPC-CSIE/</loc>
     
     <lastmod>2025-11-04</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/post/SPC-NCU/</loc>
+    <loc>https://4yu.dev/post/SPC-NCHU/</loc>
     
     <lastmod>2025-11-04</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/post/SPC-NCHU/</loc>
+    <loc>https://4yu.dev/post/SPC-NCU/</loc>
     
     <lastmod>2025-11-04</lastmod>
     
@@ -48,6 +48,15 @@
   
   <url>
     <loc>https://4yu.dev/post/SPC-NTHU/</loc>
+    
+    <lastmod>2025-11-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/post/SPC-NTNU/</loc>
     
     <lastmod>2025-11-04</lastmod>
     
@@ -111,15 +120,6 @@
   
   <url>
     <loc>https://4yu.dev/post/Sort-Algorithm/</loc>
-    
-    <lastmod>2025-11-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/SPC-CSIE/</loc>
     
     <lastmod>2025-11-04</lastmod>
     
@@ -319,6 +319,48 @@
   </url>
   
   <url>
+    <loc>https://4yu.dev/tags/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF-Neural-Network/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E6%90%8D%E5%A4%B1%E5%87%BD%E6%95%B8-Loss-func/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E7%9F%A9%E9%99%A3-Matrix/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B8/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/tags/%E8%B3%87%E8%A8%8A%E7%AB%B6%E8%B3%BD/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -439,48 +481,6 @@
   
   <url>
     <loc>https://4yu.dev/tags/%E9%99%BD%E6%98%8E%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%B8/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF-Neural-Network/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E6%90%8D%E5%A4%B1%E5%87%BD%E6%95%B8-Loss-func/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E7%9F%A9%E9%99%A3-Matrix/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B8/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -706,6 +706,13 @@
   </url>
   
   <url>
+    <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <lastmod>2025-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/%E7%A8%8B%E5%BC%8F/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -713,7 +720,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -727,7 +734,7 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <loc>https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -735,13 +742,6 @@
   
   <url>
     <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/</loc>
-    <lastmod>2025-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
