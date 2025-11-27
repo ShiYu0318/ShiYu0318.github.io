@@ -2387,16 +2387,13 @@ figure.highlight pre .javascript .function {
 #recent-posts .recent-post-item .post_cover {
   overflow: hidden;
   width: 100%;
-  height: 17em;
+  height: 230px;
 }
-#recent-posts .recent-post-item .post_cover:before {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(18,18,18,0.4);
-  content: '';
-  backdrop-filter: blur(3px);
+@media screen and (max-width: 768px) {
+  #recent-posts .recent-post-item .post_cover {
+    width: 100%;
+    height: 230px;
+  }
 }
 #recent-posts .recent-post-item .post_cover .post-bg {
   z-index: -4;
@@ -2409,20 +2406,6 @@ figure.highlight pre .javascript .function {
     padding: 20px 20px 30px;
     width: 100%;
   }
-}
-#recent-posts .recent-post-item >.recent-post-info:not(.no-cover) {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  width: 100%;
-  color: var(--text-highlight-color);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  --text-highlight-color: #fff;
-  --card-meta: rgba(255,255,255,0.7);
 }
 #recent-posts .recent-post-item >.recent-post-info.no-cover {
   padding: 35px 30px;
