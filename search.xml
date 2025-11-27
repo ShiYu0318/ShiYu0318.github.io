@@ -1671,7 +1671,7 @@ cppreference
 ]]></content>
       <categories>
         <category>筆記</category>
-        <category>程式</category>
+        <category>DSA</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -2324,7 +2324,7 @@ Sorting algorithms on GeeksforGeeks
 ]]></content>
       <categories>
         <category>筆記</category>
-        <category>程式</category>
+        <category>DSA</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -3332,61 +3332,6 @@ ping 的原理
       </tags>
   </entry>
   <entry>
-    <title>資工特選 - 成功大學</title>
-    <url>/post/SPC-NCKU/</url>
-    <content><![CDATA[人數 🔗
-
-
-
-人數
-甲組（競程）
-乙組（開發）
-
-
-
-
-報名人數
-?
-?
-
-
-過書審進面試人數
-28
-42
-
-
-錄取名額
-4
-4
-
-
-
-時程 🔗
-
-報名：10/17 ~ 10/23
-面試名單：11/08
-面試：11/16
-放榜：12/11
-
-
-成大沒有面試只有上機考，分為甲組（競程）和乙組（開發），甲組就是考一些 DSU、Greedy、快速冪、LCA+倍增法、歐拉定理之類的東西，詳細題目忘記了沒背出來，我當天超級燒雞，打不贏那些全國賽競程選手，最後當然是沒上，然後我們這屆是成大資工最後一屆特選甲組，蘇文鈺教授說 115 就會把甲組名額給乙組了，乙組的話是考模擬無人車協作之類的專案，好像是要 debug 或寫新功能吧，然後要會用 Docker + GitLab CI/CD，優勢是乙組可以用 AI 協助，所以有人上機考前付費訂閱了 Claude 丟問題上去就能拿到分數了超好笑
-
-
-
-回到特選心得彙整
-回到導覽頁面
-
-]]></content>
-      <categories>
-        <category>特殊選才</category>
-      </categories>
-      <tags>
-        <tag>資訊工程學系</tag>
-        <tag>特殊選才</tag>
-        <tag>成功大學</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>資工特選 - 中興大學</title>
     <url>/post/SPC-NCHU/</url>
     <content><![CDATA[人數 🔗
@@ -3485,6 +3430,61 @@ ping 的原理
         <tag>資訊工程學系</tag>
         <tag>特殊選才</tag>
         <tag>中興大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 成功大學</title>
+    <url>/post/SPC-NCKU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+甲組（競程）
+乙組（開發）
+
+
+
+
+報名人數
+?
+?
+
+
+過書審進面試人數
+28
+42
+
+
+錄取名額
+4
+4
+
+
+
+時程 🔗
+
+報名：10/17 ~ 10/23
+面試名單：11/08
+面試：11/16
+放榜：12/11
+
+
+成大沒有面試只有上機考，分為甲組（競程）和乙組（開發），甲組就是考一些 DSU、Greedy、快速冪、LCA+倍增法、歐拉定理之類的東西，詳細題目忘記了沒背出來，我當天超級燒雞，打不贏那些全國賽競程選手，最後當然是沒上，然後我們這屆是成大資工最後一屆特選甲組，蘇文鈺教授說 115 就會把甲組名額給乙組了，乙組的話是考模擬無人車協作之類的專案，好像是要 debug 或寫新功能吧，然後要會用 Docker + GitLab CI/CD，優勢是乙組可以用 AI 協助，所以有人上機考前付費訂閱了 Claude 丟問題上去就能拿到分數了超好笑
+
+
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>成功大學</tag>
       </tags>
   </entry>
   <entry>
@@ -3816,7 +3816,7 @@ pbds 🔗
 ]]></content>
       <categories>
         <category>筆記</category>
-        <category>程式</category>
+        <category>DSA</category>
       </categories>
       <tags>
         <tag>C++</tag>
