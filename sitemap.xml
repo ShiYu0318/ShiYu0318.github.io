@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://4yu.dev/post/AI/</loc>
+    
+    <lastmod>2025-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/post/STL/</loc>
     
     <lastmod>2025-11-27</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>https://4yu.dev/post/Data-Structures/</loc>
-    
-    <lastmod>2025-11-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/AI/</loc>
     
     <lastmod>2025-11-27</lastmod>
     
@@ -1281,6 +1281,13 @@
   
   <url>
     <loc>https://4yu.dev/tags/%E5%9F%BA%E6%95%B8%E6%8E%92%E5%BA%8F-Radix-Sort/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-DL/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
