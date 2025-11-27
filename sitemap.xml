@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://4yu.dev/post/Sitemap/</loc>
+    
+    <lastmod>2025-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/post/AI/</loc>
     
     <lastmod>2025-11-27</lastmod>
@@ -50,15 +59,6 @@
     <loc>https://4yu.dev/about/index.html</loc>
     
     <lastmod>2025-11-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/post/Sitemap/</loc>
-    
-    <lastmod>2025-11-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
