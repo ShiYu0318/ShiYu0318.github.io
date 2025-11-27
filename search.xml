@@ -480,6 +480,8 @@ Email：shiyu@scist.org
 https://slides.com/shiyu/ai 🔗
 
 
+
+
 回到導覽頁面
 
 ]]></content>
@@ -487,6 +489,95 @@ https://slides.com/shiyu/ai 🔗
         <category>筆記</category>
         <category>AI</category>
       </categories>
+      <tags>
+        <tag>機器學習 ML</tag>
+        <tag>擬合函數 Fitting Function</tag>
+        <tag>感知器 Perceptron</tag>
+        <tag>多層感知器 MLP</tag>
+        <tag>神經網路 Neural Network</tag>
+        <tag>全局最小值 Global Minima</tag>
+        <tag>損失函數 Loss Function</tag>
+        <tag>梯度下降演算法 Gradient Descent</tag>
+        <tag>學習率 Learning Rate</tag>
+        <tag>偏微分 Partial Derivative</tag>
+        <tag>超參數 Hyperparameter</tag>
+        <tag>激活函數 Activity Function</tag>
+        <tag>反向傳播演算法 Backward Propagation</tag>
+        <tag>鏈式法則 Chain Rule</tag>
+        <tag>監督式學習 Supervised Learning</tag>
+        <tag>強化學習 Reinforcement Learning</tag>
+        <tag>均方誤差 MSE</tag>
+        <tag>均方根誤差 RMSE</tag>
+        <tag>平均絕對值誤差 MAE</tag>
+        <tag>交叉熵 Cross-Entropy</tag>
+        <tag>模擬退火演算法 Simulated Annealing</tag>
+        <tag>遺傳演算法 Genetic Algorithm</tag>
+        <tag>粒子群演算法 PSO</tag>
+        <tag>隨機梯度下降 SGD</tag>
+        <tag>優化器 Optimizer</tag>
+        <tag>Newton’s Method</tag>
+        <tag>Momentum</tag>
+        <tag>Nesterov (NAG)</tag>
+        <tag>AdaGrad</tag>
+        <tag>RMSprop</tag>
+        <tag>Adam</tag>
+        <tag>Nadam</tag>
+        <tag>過擬合 Overfiting</tag>
+        <tag>Dropout</tag>
+        <tag>線性迴歸</tag>
+        <tag>邏輯迴歸</tag>
+        <tag>決策樹</tag>
+        <tag>決策森林</tag>
+        <tag>KNN</tag>
+        <tag>SVM</tag>
+        <tag>DQN</tag>
+        <tag>Policy-based</tag>
+        <tag>Actor-Critic</tag>
+        <tag>PPO</tag>
+        <tag>TD-Learning</tag>
+        <tag>A2C</tag>
+        <tag>Baseline</tag>
+        <tag>卷積神經網路 CNN</tag>
+        <tag>Softmax</tag>
+        <tag>U-Net</tag>
+        <tag>殘差網路 ResNet</tag>
+        <tag>RNN</tag>
+        <tag>LSTM</tag>
+        <tag>GRU</tag>
+        <tag>Transformer</tag>
+        <tag>GPT</tag>
+        <tag>BERT</tag>
+        <tag>詞嵌入 Embedding</tag>
+        <tag>注意力機制 Attention</tag>
+        <tag>Fine-Tuning</tag>
+        <tag>LoRA</tag>
+        <tag>RLHF</tag>
+        <tag>Hallucination</tag>
+        <tag>檢索增強生成 RAG</tag>
+        <tag>Prompt Engineering</tag>
+        <tag>CoT</tag>
+        <tag>ViT</tag>
+        <tag>Positional Encoding</tag>
+        <tag>生成對抗網路 GAN</tag>
+        <tag>AutoEncoder</tag>
+        <tag>VAE</tag>
+        <tag>Diffusion 擴散模型</tag>
+        <tag>評分函數 Score Function</tag>
+        <tag>Stable Diffusion</tag>
+        <tag>Sora</tag>
+        <tag>AlphaGO</tag>
+        <tag>AlphaFold</tag>
+        <tag>FSD</tag>
+        <tag>AGI</tag>
+        <tag>對抗樣本攻擊 Adversarial Attack</tag>
+        <tag>提示詞注入攻擊 Prompt Injection Attack</tag>
+        <tag>Jailbreaking</tag>
+        <tag>NVQLink</tag>
+        <tag>量子退火 Quantum Annealing</tag>
+        <tag>Vibe Coding</tag>
+        <tag>AI Agent</tag>
+        <tag>MCP</tag>
+      </tags>
   </entry>
   <entry>
     <title>C++ STL 大全</title>
@@ -2763,12 +2854,12 @@ W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.
         <category>AI</category>
       </categories>
       <tags>
-        <tag>AI 人工智慧</tag>
         <tag>神經網路 Neural Network</tag>
-        <tag>梯度下降演算法</tag>
-        <tag>損失函數 Loss func</tag>
+        <tag>損失函數 Loss Function</tag>
+        <tag>梯度下降演算法 Gradient Descent</tag>
+        <tag>激活函數 Activity Function</tag>
+        <tag>AI 人工智慧</tag>
         <tag>矩陣 Matrix</tag>
-        <tag>激活函數</tag>
       </tags>
   </entry>
   <entry>
