@@ -923,20 +923,6 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/%E5%8D%97%E9%99%84%E8%B3%87%E7%A0%94%E7%A4%BE/</loc>
-    <lastmod>2025-11-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/tags/NFIRC-1st/</loc>
-    <lastmod>2025-11-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://4yu.dev/tags/%E8%B3%87%E8%A8%8A%E7%AB%B6%E8%B3%BD/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -958,14 +944,14 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <loc>https://4yu.dev/tags/%E5%8D%97%E9%99%84%E8%B3%87%E7%A0%94%E7%A4%BE/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://4yu.dev/tags/%E7%9F%A9%E9%99%A3-Matrix/</loc>
+    <loc>https://4yu.dev/tags/NFIRC-1st/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1071,6 +1057,20 @@
   
   <url>
     <loc>https://4yu.dev/tags/%E9%99%BD%E6%98%8E%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%B8/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/AI-%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://4yu.dev/tags/%E7%9F%A9%E9%99%A3-Matrix/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1324,14 +1324,14 @@
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/</loc>
+    <loc>https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
