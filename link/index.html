@@ -1,0 +1,1386 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>link | 4yu Blog</title><meta name="author" content="ShiYu Huang"><meta name="copyright" content="ShiYu Huang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta property="og:type" content="website">
+<meta property="og:title" content="link">
+<meta property="og:url" content="https://4yu.dev/link/index.html">
+<meta property="og:site_name" content="4yu Blog">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://4yu.dev/img/avatar.webp">
+<meta property="article:published_time" content="2026-02-10T11:35:38.156Z">
+<meta property="article:modified_time" content="2024-04-25T12:46:35.587Z">
+<meta property="article:author" content="ShiYu Huang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://4yu.dev/img/avatar.webp"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/4yublog.png"><link rel="canonical" href="https://4yu.dev/link/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=6506400853"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', '6506400853')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', '6506400853', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: ShiYu Huang","link":"連結: ","source":"來源: 4yu Blog","info":"著作權歸作者所有。如需商業轉載，請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#222297","bgDark":"#222297","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'link',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">載入中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/loading.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">160</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div></div></div><div class="page type-link" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/link.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/4yublog.png" alt="Logo"><span class="site-name">4yu Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">link</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="container" id="article-container"><div class="flink"><h2 id="聯繫資訊">聯繫資訊<a class="header-anchor" href="#聯繫資訊"> 🔗</a></h2>
+<div class="flink-desc">以下連結都可以找到我。 Gmail > shiyu@scist.org</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://github.com/ShiYu0318" rel="external nofollow noreferrer" title="Github" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/Pk2cVOO.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Github" />
+      </div>
+      <div class="flink-item-name">Github</div>
+      <div class="flink-item-desc" title="ShiYu0318">ShiYu0318</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.instagram.com/4yu.dev.318" rel="external nofollow noreferrer" title="Instagram" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://imgur.com/Z7dlics.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Instagram" />
+      </div>
+      <div class="flink-item-name">Instagram</div>
+      <div class="flink-item-desc" title="4yu.dev.318">4yu.dev.318</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discordapp.com/users/shiyu0318" rel="external nofollow noreferrer" title="Discord" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Discord" />
+      </div>
+      <div class="flink-item-name">Discord</div>
+      <div class="flink-item-desc" title="shiyu0318">shiyu0318</div>
+    </a>
+  </div></div><h2 id="友站">友站<a class="header-anchor" href="#友站"> 🔗</a></h2>
+<div class="flink-desc">資訊圈認識的人的網站，想加入可以使用右下角聊天室傳送連結給我</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://yudong-0222.github.io/" rel="external nofollow noreferrer" title="Yudong's Daily" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="null" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Yudong's Daily" />
+      </div>
+      <div class="flink-item-name">Yudong's Daily</div>
+      <div class="flink-item-desc" title="諧咖">諧咖</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.osga.dev/" rel="external nofollow noreferrer" title="OsGa" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://www.osga.dev/_next/image?url=%2Favatar.png&w=1080&q=75" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="OsGa" />
+      </div>
+      <div class="flink-item-name">OsGa</div>
+      <div class="flink-item-desc" title="OsGay 雲科資安佬">OsGay 雲科資安佬</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://youtong0826.github.io/" rel="external nofollow noreferrer" title="Youtong" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://youtong0826.github.io/images/avatar.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Youtong" />
+      </div>
+      <div class="flink-item-name">Youtong</div>
+      <div class="flink-item-desc" title="董郵筒">董郵筒</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://cbjsprogramdiary.com/" rel="external nofollow noreferrer" title="CBJ's 程式日記" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i0.wp.com/cbjsprogramdiary.com/wp-content/uploads/2022/10/digital.jpg?fit=1200%2C900&ssl=1" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CBJ's 程式日記" />
+      </div>
+      <div class="flink-item-name">CBJ's 程式日記</div>
+      <div class="flink-item-desc" title="~~我被鍾秉鈞 Chung 了~~">~~我被鍾秉鈞 Chung 了~~</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://dada878.com/" rel="external nofollow noreferrer" title="冰川的網站" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://dada878.com/logo-circle.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="冰川的網站" />
+      </div>
+      <div class="flink-item-name">冰川的網站</div>
+      <div class="flink-item-desc" title="CWD">CWD</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://yih-0118.github.io/" rel="external nofollow noreferrer" title="此情吳計可消除" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="null" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="此情吳計可消除" />
+      </div>
+      <div class="flink-item-name">此情吳計可消除</div>
+      <div class="flink-item-desc" title="港仔">港仔</div>
+    </a>
+  </div></div><h2 id="scist-南臺灣資訊學生社群">SCIST 南臺灣資訊學生社群<a class="header-anchor" href="#scist-南臺灣資訊學生社群"> 🔗</a></h2>
+ <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://discord.gg/vpqgyJJVKM" rel="external nofollow noreferrer" title="Discord" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Discord" />
+      </div>
+      <div class="flink-item-name">Discord</div>
+      <div class="flink-item-desc" title="加入 DC 社群獲取更多學習資源">加入 DC 社群獲取更多學習資源</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://scist.org" rel="external nofollow noreferrer" title="官方網站" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://imgur.com/zgKFEfv.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="官方網站" />
+      </div>
+      <div class="flink-item-name">官方網站</div>
+      <div class="flink-item-desc" title="官網">官網</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.youtube.com/c/OfficialSCIST" rel="external nofollow noreferrer" title="Youtube" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i0.wp.com/socialkings.online/wp-content/uploads/2021/04/Artboard-1yt.png?fit=650%2C534&ssl=1" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Youtube" />
+      </div>
+      <div class="flink-item-name">Youtube</div>
+      <div class="flink-item-desc" title="課程直播 & 精華影片">課程直播 & 精華影片</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.facebook.com/scist.tw" rel="external nofollow noreferrer" title="Facebook" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://www.facebook.com/images/fb_icon_325x325.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Facebook" />
+      </div>
+      <div class="flink-item-name">Facebook</div>
+      <div class="flink-item-desc" title="追蹤 FB 獲取最新消息">追蹤 FB 獲取最新消息</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.instagram.com/scist.tw/" rel="external nofollow noreferrer" title="Instagram" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://imgur.com/Z7dlics.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Instagram" />
+      </div>
+      <div class="flink-item-name">Instagram</div>
+      <div class="flink-item-desc" title="scist.tw">scist.tw</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@SCIST/" rel="external nofollow noreferrer" title="HackMD" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="HackMD" />
+      </div>
+      <div class="flink-item-name">HackMD</div>
+      <div class="flink-item-desc" title="所有 SCIST 的公開筆記">所有 SCIST 的公開筆記</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@SCIST/S5_ALL" rel="external nofollow noreferrer" title="S5 培訓課程學習資源大全" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="S5 培訓課程學習資源大全" />
+      </div>
+      <div class="flink-item-name">S5 培訓課程學習資源大全</div>
+      <div class="flink-item-desc" title="所有學習資源彙整">所有學習資源彙整</div>
+    </a>
+  </div></div><h2 id="discord-資訊相關社群伺服器">Discord 資訊相關社群伺服器<a class="header-anchor" href="#discord-資訊相關社群伺服器"> 🔗</a></h2>
+<div class="flink-desc">推薦加入 DC 伺服器 參與社群討論</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://discord.gg/67uVqs9jAU" rel="external nofollow noreferrer" title="南附資研社討論群" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/NFIRC_LOGO.webp" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="南附資研社討論群" />
+      </div>
+      <div class="flink-item-name">南附資研社討論群</div>
+      <div class="flink-item-desc" title="本校社團的討論群">本校社團的討論群</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.gg/cisc" rel="external nofollow noreferrer" title="CISC 中學資訊討論群" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/D13ZjuT.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CISC 中學資訊討論群" />
+      </div>
+      <div class="flink-item-name">CISC 中學資訊討論群</div>
+      <div class="flink-item-desc" title="議程 聊天互動 教學討論 程式解題 資訊分享">議程 聊天互動 教學討論 程式解題 資訊分享</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.gg/RnhATqeMtd" rel="external nofollow noreferrer" title="APCS 模擬測驗 DC" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://uploads-public.hackmd.io/upload_eb50e156436e0a1783302d70fdd7d070.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="APCS 模擬測驗 DC" />
+      </div>
+      <div class="flink-item-name">APCS 模擬測驗 DC</div>
+      <div class="flink-item-desc" title="由 Chung 創辦的團隊">由 Chung 創辦的團隊</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.gg/g6qfD4Wk9j" rel="external nofollow noreferrer" title="SCIST 南臺灣學生資訊社群" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/PsvhCT9.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="SCIST 南臺灣學生資訊社群" />
+      </div>
+      <div class="flink-item-name">SCIST 南臺灣學生資訊社群</div>
+      <div class="flink-item-desc" title="演算法 & 資安課程">演算法 & 資安課程</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.scint.org" rel="external nofollow noreferrer" title="SCINT 北臺灣學生資訊社群" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/SCINT.webp" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="SCINT 北臺灣學生資訊社群" />
+      </div>
+      <div class="flink-item-name">SCINT 北臺灣學生資訊社群</div>
+      <div class="flink-item-desc" title="討論 交流">討論 交流</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://dc.scaict.org/" rel="external nofollow noreferrer" title="SCAICT 中部高中電資社團聯合會議" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://uploads-public.hackmd.io/p7YfXro.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="SCAICT 中部高中電資社團聯合會議" />
+      </div>
+      <div class="flink-item-name">SCAICT 中部高中電資社團聯合會議</div>
+      <div class="flink-item-desc" title="課程 活動">課程 活動</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.gg/2GySgBD5py" rel="external nofollow noreferrer" title="NHDK 四校聯合初學者程式設計練習賽" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/AIyh2LD.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="NHDK 四校聯合初學者程式設計練習賽" />
+      </div>
+      <div class="flink-item-name">NHDK 四校聯合初學者程式設計練習賽</div>
+      <div class="flink-item-desc" title="線上程式練習賽">線上程式練習賽</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://discord.gg/KjWMRewQB2" rel="external nofollow noreferrer" title="SQCS 學生量子電腦交流會" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://yt3.googleusercontent.com/ytc/AOPolaRK9NMAyE5KHTBodUFVMv09RmsbLeA2yHMrvQDH=s900-c-k-c0x00ffffff-no-rj" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="SQCS 學生量子電腦交流會" />
+      </div>
+      <div class="flink-item-name">SQCS 學生量子電腦交流會</div>
+      <div class="flink-item-desc" title="量子電腦相關資源交流討論">量子電腦相關資源交流討論</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://4yu.dev/link/" title="新增其他伺服器" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/yfid516.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="新增其他伺服器" />
+      </div>
+      <div class="flink-item-name">新增其他伺服器</div>
+      <div class="flink-item-desc" title="使用右方聊天室傳給我連結">使用右方聊天室傳給我連結</div>
+    </a>
+  </div></div><h2 id="學習資源">學習資源<a class="header-anchor" href="#學習資源"> 🔗</a></h2>
+<div class="flink-desc">以下程式學習資源，推薦給想自學的你(未逐一介紹，出現 null 為正常，等我有時間會從入門到進階按照難度排序整理)</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@sa072686/cp/%2F%40sa072686%2FBkTJ0imPB" rel="external nofollow noreferrer" title="SA 流 C++ 競程修練心法" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="SA 流 C++ 競程修練心法" />
+      </div>
+      <div class="flink-item-name">SA 流 C++ 競程修練心法</div>
+      <div class="flink-item-desc" title="SA 老師寫的 C++ 競程講義">SA 老師寫的 C++ 競程講義</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@CLKO/B18yT_i5Z?type=view" rel="external nofollow noreferrer" title="新竹實中 C++ 教學講義" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="新竹實中 C++ 教學講義" />
+      </div>
+      <div class="flink-item-name">新竹實中 C++ 教學講義</div>
+      <div class="flink-item-desc" title="新竹實驗中學 C++ 程式語言教學講義">新竹實驗中學 C++ 程式語言教學講義</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://emanlaicepsa.github.io/" rel="external nofollow noreferrer" title="從零開始的演算法競賽入門教學" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="從零開始的演算法競賽入門教學" />
+      </div>
+      <div class="flink-item-name">從零開始的演算法競賽入門教學</div>
+      <div class="flink-item-desc" title="由國際資訊奧林匹亞銀牌得主親自編寫">由國際資訊奧林匹亞銀牌得主親自編寫</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://drive.google.com/drive/folders/10hZCMHH0YgsfguVZCHU7EYiG8qJE5f-m" rel="external nofollow noreferrer" title="AP325 講義" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="AP325 講義" />
+      </div>
+      <div class="flink-item-name">AP325 講義</div>
+      <div class="flink-item-desc" title="by 吳邦一教授">by 吳邦一教授</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.youtube.com/c/papayaclass" rel="external nofollow noreferrer" title="PAPAYA 電腦教室" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://yt3.googleusercontent.com/ytc/AOPolaQgLXvwvk1RollDegbq-27E931Vupwav19tfPS3ZA=s176-c-k-c0x00ffffff-no-rj" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="PAPAYA 電腦教室" />
+      </div>
+      <div class="flink-item-name">PAPAYA 電腦教室</div>
+      <div class="flink-item-desc" title="各種電腦軟體教學">各種電腦軟體教學</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.youtube.com/@cwpeng-course/featured" rel="external nofollow noreferrer" title="彭彭的課程" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://yt3.googleusercontent.com/ytc/AOPolaRpWdeSP4wCE_9j6a68crx7Yx9fOmRZSz0n5-Pv=s176-c-k-c0x00ffffff-no-rj" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="彭彭的課程" />
+      </div>
+      <div class="flink-item-name">彭彭的課程</div>
+      <div class="flink-item-desc" title="各種程式語言教學">各種程式語言教學</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://yuihuang.com/" rel="external nofollow noreferrer" title="Yui Huang 演算法學習筆記" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Yui Huang 演算法學習筆記" />
+      </div>
+      <div class="flink-item-name">Yui Huang 演算法學習筆記</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://cp.wiwiho.me/" rel="external nofollow noreferrer" title="WiwiHo 的競程筆記" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://cp.wiwiho.me/redblocksorzzz.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="WiwiHo 的競程筆記" />
+      </div>
+      <div class="flink-item-name">WiwiHo 的競程筆記</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://ithelp.ithome.com.tw/users/20121027/articles" rel="external nofollow noreferrer" title="Frank 演算法文章" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Frank 演算法文章" />
+      </div>
+      <div class="flink-item-name">Frank 演算法文章</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@kspgc/ByHuNkmYw" rel="external nofollow noreferrer" title="APCS 準備方向及練習" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="APCS 準備方向及練習" />
+      </div>
+      <div class="flink-item-name">APCS 準備方向及練習</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://ithelp.ithome.com.tw/articles/10236528" rel="external nofollow noreferrer" title="小菜的 IT 鐵人賽文章" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="小菜的 IT 鐵人賽文章" />
+      </div>
+      <div class="flink-item-name">小菜的 IT 鐵人賽文章</div>
+      <div class="flink-item-desc" title="擁抱「資料結構」的「演算法」">擁抱「資料結構」的「演算法」</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://web.ntnu.edu.tw/~algo/" rel="external nofollow noreferrer" title="演算法筆記" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="演算法筆記" />
+      </div>
+      <div class="flink-item-name">演算法筆記</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://e-tutor.itsa.org.tw/e-Tutor/" rel="external nofollow noreferrer" title="程式自學平臺" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://portal.itsa.org.tw//img/logo1.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="程式自學平臺" />
+      </div>
+      <div class="flink-item-name">程式自學平臺</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.youtube.com/@bangyewu/featured" rel="external nofollow noreferrer" title="吳邦一教授的YT" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i0.wp.com/socialkings.online/wp-content/uploads/2021/04/Artboard-1yt.png?fit=650%2C534&ssl=1" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="吳邦一教授的YT" />
+      </div>
+      <div class="flink-item-name">吳邦一教授的YT</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://sites.google.com/view/zsgititit/home?authuser=0" rel="external nofollow noreferrer" title="黃建庭的教學網站" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="黃建庭的教學網站" />
+      </div>
+      <div class="flink-item-name">黃建庭的教學網站</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://tioj.ck.tp.edu.tw/articles/27" rel="external nofollow noreferrer" title="建中培訓講義" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/BkCCj05.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="建中培訓講義" />
+      </div>
+      <div class="flink-item-name">建中培訓講義</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://tw-csie-sprout.github.io/c2023/#!slides.md" rel="external nofollow noreferrer" title="2023 資訊之芽 語法班" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.ytimg.com/vi/_r7cfVrn28c/hqdefault.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="2023 資訊之芽 語法班" />
+      </div>
+      <div class="flink-item-name">2023 資訊之芽 語法班</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.csie.ntu.edu.tw/~sprout/algo2023/" rel="external nofollow noreferrer" title="2023 資訊之芽 算法班" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.ytimg.com/vi/_r7cfVrn28c/hqdefault.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="2023 資訊之芽 算法班" />
+      </div>
+      <div class="flink-item-name">2023 資訊之芽 算法班</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.youtube.com/@sprouttw/featured" rel="external nofollow noreferrer" title="資訊之芽 YT" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.ytimg.com/vi/_r7cfVrn28c/hqdefault.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="資訊之芽 YT" />
+      </div>
+      <div class="flink-item-name">資訊之芽 YT</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@nckuacm/ryLIV6BYI" rel="external nofollow noreferrer" title="NCKU 2020 競技程設教材" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="NCKU 2020 競技程設教材" />
+      </div>
+      <div class="flink-item-name">NCKU 2020 競技程設教材</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@howard60308/SJFpICQdP/https%3A%2F%2Fhackmd.io%2F%40howard60308%2FS1sZwObSP" rel="external nofollow noreferrer" title="中一中電研講義" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/AKM2Elq.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="中一中電研講義" />
+      </div>
+      <div class="flink-item-name">中一中電研講義</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://nckuacm.github.io/2021/" rel="external nofollow noreferrer" title="2021 NCKU ACM" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://nckuacm.github.io/2021/images/nckuacm_banner.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="2021 NCKU ACM" />
+      </div>
+      <div class="flink-item-name">2021 NCKU ACM</div>
+      <div class="flink-item-desc" title="成功大學ACM-ICPC程式競賽培訓隊">成功大學ACM-ICPC程式競賽培訓隊</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://github.com/wenyan-lang/wenyan" rel="external nofollow noreferrer" title="文言文 程式語言" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://github.com/wenyan-lang/wenyan/raw/master/screenshots/logo.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="文言文 程式語言" />
+      </div>
+      <div class="flink-item-name">文言文 程式語言</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://sites.google.com/mail.pcsh.ntpc.edu.tw/info/" rel="external nofollow noreferrer" title="板橋高中資訊科" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://upload.wikimedia.org/wikipedia/zh/2/2f/PCSH_Logo.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="板橋高中資訊科" />
+      </div>
+      <div class="flink-item-name">板橋高中資訊科</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/@nehs-iced-7th/Hk9_m5KH_/https%3A%2F%2Fhackmd.io%2F%40nehs-iced-7th%2FH1encpdgK" rel="external nofollow noreferrer" title="實中資研" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="實中資研" />
+      </div>
+      <div class="flink-item-name">實中資研</div>
+      <div class="flink-item-desc" title="null">null</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.itread01.com/" rel="external nofollow noreferrer" title="ITREAD" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/eZe2G9o.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="ITREAD" />
+      </div>
+      <div class="flink-item-name">ITREAD</div>
+      <div class="flink-item-desc" title="前後端開發 資料庫...完整程式入門教學">前後端開發 資料庫...完整程式入門教學</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://openhome.cc/Gossip/" rel="external nofollow noreferrer" title="OpenHome" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/xzLnzWx.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="OpenHome" />
+      </div>
+      <div class="flink-item-name">OpenHome</div>
+      <div class="flink-item-desc" title="靜態 動態語言 API 框架">靜態 動態語言 API 框架</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://steam.oxxostudio.tw/" rel="external nofollow noreferrer" title="STEAM 教育學習網" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/HvSY6TN.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="STEAM 教育學習網" />
+      </div>
+      <div class="flink-item-name">STEAM 教育學習網</div>
+      <div class="flink-item-desc" title="Python HTML micro:bit GIMP Scratch">Python HTML micro:bit GIMP Scratch</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.csie.ntu.edu.tw/~b98902112/cpp_and_algo/" rel="external nofollow noreferrer" title="C++ 與 演算法" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/Hdp6gTu.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="C++ 與 演算法" />
+      </div>
+      <div class="flink-item-name">C++ 與 演算法</div>
+      <div class="flink-item-desc" title="C++ 基本語法 演算法 題目">C++ 基本語法 演算法 題目</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.programiz.com/" rel="external nofollow noreferrer" title="Programiz" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/M06kjiq.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Programiz" />
+      </div>
+      <div class="flink-item-name">Programiz</div>
+      <div class="flink-item-desc" title="多種程式語言教程(英文網站)">多種程式語言教程(英文網站)</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://4yu.dev/link/" title="新增其他學習資源" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/yfid516.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="新增其他學習資源" />
+      </div>
+      <div class="flink-item-name">新增其他學習資源</div>
+      <div class="flink-item-desc" title="使用右方聊天室傳給我連結">使用右方聊天室傳給我連結</div>
+    </a>
+  </div></div><h2 id="程式平台">程式平台<a class="header-anchor" href="#程式平台"> 🔗</a></h2>
+<div class="flink-desc">Online Judge 程式解題評測系統 & 競賽平台 & 題庫</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://zerojudge.tw/" rel="external nofollow noreferrer" title="ZJ 高中生程式解題系統" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/epzCYSO.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="ZJ 高中生程式解題系統" />
+      </div>
+      <div class="flink-item-name">ZJ 高中生程式解題系統</div>
+      <div class="flink-item-desc" title="題庫 解題 測試 討論 競賽">題庫 解題 測試 討論 競賽</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://codeforces.com/" rel="external nofollow noreferrer" title="Codeforces" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/f6qgVDl.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Codeforces" />
+      </div>
+      <div class="flink-item-name">Codeforces</div>
+      <div class="flink-item-desc" title="俄羅斯的線上解題競賽系統">俄羅斯的線上解題競賽系統</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://atcoder.jp/" rel="external nofollow noreferrer" title="AtCoder" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/87um4QW.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="AtCoder" />
+      </div>
+      <div class="flink-item-name">AtCoder</div>
+      <div class="flink-item-desc" title="程式競賽系統">程式競賽系統</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://tioj.ck.tp.edu.tw/" rel="external nofollow noreferrer" title="TIOJ" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/BkCCj05.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="TIOJ" />
+      </div>
+      <div class="flink-item-name">TIOJ</div>
+      <div class="flink-item-desc" title="建中的Online Judge">建中的Online Judge</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://toj.tfcis.org/oj/info/" rel="external nofollow noreferrer" title="TOJ" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/ZQGFqRE.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="TOJ" />
+      </div>
+      <div class="flink-item-name">TOJ</div>
+      <div class="flink-item-desc" title="南一中的Online Judge">南一中的Online Judge</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://judge.tcirc.tw/" rel="external nofollow noreferrer" title="TCFSH CIRC Judge" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/AKM2Elq.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="TCFSH CIRC Judge" />
+      </div>
+      <div class="flink-item-name">TCFSH CIRC Judge</div>
+      <div class="flink-item-desc" title="中一中的Online Judge">中一中的Online Judge</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://cses.fi/" rel="external nofollow noreferrer" title="CSES" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/wQnzPTv.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CSES" />
+      </div>
+      <div class="flink-item-name">CSES</div>
+      <div class="flink-item-desc" title="優質題庫 程式競賽">優質題庫 程式競賽</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://oj.openedu.tw/problem" rel="external nofollow noreferrer" title="Openedu OJ" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/WPj1d3c.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Openedu OJ" />
+      </div>
+      <div class="flink-item-name">Openedu OJ</div>
+      <div class="flink-item-desc" title="中華開放教育平台的Online Judge">中華開放教育平台的Online Judge</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://leetcode.com/" rel="external nofollow noreferrer" title="LeetCode" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/HSm7SC5.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="LeetCode" />
+      </div>
+      <div class="flink-item-name">LeetCode</div>
+      <div class="flink-item-desc" title="刷題 面試 考古">刷題 面試 考古</div>
+    </a>
+  </div></div><h2 id="軟體工具">軟體工具<a class="header-anchor" href="#軟體工具"> 🔗</a></h2>
+<div class="flink-desc">分享一些個人常用的軟體工具</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://code.visualstudio.com/" rel="external nofollow noreferrer" title="VS Code" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/d0kKoDE.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="VS Code" />
+      </div>
+      <div class="flink-item-name">VS Code</div>
+      <div class="flink-item-desc" title="微軟開發且跨平台的免費原始碼編輯器">微軟開發且跨平台的免費原始碼編輯器</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://github.dev/" rel="external nofollow noreferrer" title="Github.Dev" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/Pk2cVOO.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Github.Dev" />
+      </div>
+      <div class="flink-item-name">Github.Dev</div>
+      <div class="flink-item-desc" title="線上版 VS Code">線上版 VS Code</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://replit.com" rel="external nofollow noreferrer" title="Replit" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/mm09fZk.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Replit" />
+      </div>
+      <div class="flink-item-name">Replit</div>
+      <div class="flink-item-desc" title="線上多種語言開發環境">線上多種語言開發環境</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://cpeditor.org/" rel="external nofollow noreferrer" title="CP Editor" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/MeYv8yv.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CP Editor" />
+      </div>
+      <div class="flink-item-name">CP Editor</div>
+      <div class="flink-item-desc" title="適合競程的編輯器 可獲取測資提交CF">適合競程的編輯器 可獲取測資提交CF</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.jetbrains.com/clion/" rel="external nofollow noreferrer" title="CLion" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/5bOED2F.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CLion" />
+      </div>
+      <div class="flink-item-name">CLion</div>
+      <div class="flink-item-desc" title="JetBrains的 C/C++ IDE">JetBrains的 C/C++ IDE</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.jetbrains.com/pycharm/" rel="external nofollow noreferrer" title="Pycharm" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/QunPnzL.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Pycharm" />
+      </div>
+      <div class="flink-item-name">Pycharm</div>
+      <div class="flink-item-desc" title="JetBrains的 Python IDE">JetBrains的 Python IDE</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://www.programiz.com/" rel="external nofollow noreferrer" title="Programiz" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/M06kjiq.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Programiz" />
+      </div>
+      <div class="flink-item-name">Programiz</div>
+      <div class="flink-item-desc" title="多種語言線上編譯器">多種語言線上編譯器</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://codepen.io/" rel="external nofollow noreferrer" title="CodePen" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/E0b6okg.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="CodePen" />
+      </div>
+      <div class="flink-item-name">CodePen</div>
+      <div class="flink-item-desc" title="線上測試、呈現前端程式碼">線上測試、呈現前端程式碼</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://jupyter.org/" rel="external nofollow noreferrer" title="Jupyter" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/ZPwWdMr.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Jupyter" />
+      </div>
+      <div class="flink-item-name">Jupyter</div>
+      <div class="flink-item-desc" title="程式語言的互動式計算開發開源軟體">程式語言的互動式計算開發開源軟體</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://chat.openai.com/chat" rel="external nofollow noreferrer" title="ChatGPT" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/XcT3uHY.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="ChatGPT" />
+      </div>
+      <div class="flink-item-name">ChatGPT</div>
+      <div class="flink-item-desc" title="由OpenAI開發的AI語言模型">由OpenAI開發的AI語言模型</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://hackmd.io/" rel="external nofollow noreferrer" title="HackMD" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="/img/HackMD.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="HackMD" />
+      </div>
+      <div class="flink-item-name">HackMD</div>
+      <div class="flink-item-desc" title="跨平台的Markdown即時協作筆記">跨平台的Markdown即時協作筆記</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://imgur.com/" rel="external nofollow noreferrer" title="Imgur" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/pyhR0Ha.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Imgur" />
+      </div>
+      <div class="flink-item-name">Imgur</div>
+      <div class="flink-item-desc" title="提供免費服務的網路相簿網站">提供免費服務的網路相簿網站</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://csacademy.com/app/graph_editor/" rel="external nofollow noreferrer" title="Graph Editor" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/xDcHymY.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Graph Editor" />
+      </div>
+      <div class="flink-item-name">Graph Editor</div>
+      <div class="flink-item-desc" title="圖">圖</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://appinventor.mit.edu/explore/ai2" rel="external nofollow noreferrer" title="MIT App Inventor 2" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/tGwScyu.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="MIT App Inventor 2" />
+      </div>
+      <div class="flink-item-name">MIT App Inventor 2</div>
+      <div class="flink-item-desc" title="由MIT提供的Android App開發軟體">由MIT提供的Android App開發軟體</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://classifier.appinventor.mit.edu/" rel="external nofollow noreferrer" title="Personal Image Classifier" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/2mN4FxV.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Personal Image Classifier" />
+      </div>
+      <div class="flink-item-name">Personal Image Classifier</div>
+      <div class="flink-item-desc" title="神經網路辨識模型">神經網路辨識模型</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://4yu.dev/link/" title="新增實用的軟體工具" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/yfid516.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="新增實用的軟體工具" />
+      </div>
+      <div class="flink-item-name">新增實用的軟體工具</div>
+      <div class="flink-item-desc" title="使用右方聊天室傳給我連結">使用右方聊天室傳給我連結</div>
+    </a>
+  </div></div><h2 id="相關技術">相關技術<a class="header-anchor" href="#相關技術"> 🔗</a></h2>
+<div class="flink-desc">此網頁的相關技術</div> <div class="flink-list">
+  <div class="flink-list-item">
+    <a href="https://hexo.io/zh-tw/" rel="external nofollow noreferrer" title="Hexo" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Hexo" />
+      </div>
+      <div class="flink-item-name">Hexo</div>
+      <div class="flink-item-desc" title="靜態網頁框架">靜態網頁框架</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://butterfly.js.org/" rel="external nofollow noreferrer" title="butterfly" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/rJeIDgW.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="butterfly" />
+      </div>
+      <div class="flink-item-name">butterfly</div>
+      <div class="flink-item-desc" title="Hexo theme(主題)">Hexo theme(主題)</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://pages.github.com/" rel="external nofollow noreferrer" title="Github Pages" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/HTJljil.jpg" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Github Pages" />
+      </div>
+      <div class="flink-item-name">Github Pages</div>
+      <div class="flink-item-desc" title="GitHub提供 可存放靜態網頁">GitHub提供 可存放靜態網頁</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://chatra.com/cn/" rel="external nofollow noreferrer" title="Chatra" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/K0F3FfT.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Chatra" />
+      </div>
+      <div class="flink-item-name">Chatra</div>
+      <div class="flink-item-desc" title="網頁即時聊天室插件">網頁即時聊天室插件</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://github.com/gitalk/gitalk" rel="external nofollow noreferrer" title="Gitalk" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://i.imgur.com/Pk2cVOO.png" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Gitalk" />
+      </div>
+      <div class="flink-item-name">Gitalk</div>
+      <div class="flink-item-desc" title="基於GitHub Issue的留言插件">基於GitHub Issue的留言插件</div>
+    </a>
+  </div>
+  <div class="flink-list-item">
+    <a href="https://wordcount.com/" rel="external nofollow noreferrer" title="Word Count" target="_blank">
+      <div class="flink-item-icon">
+        <img class="no-lightbox" src="https://addons.mozilla.org/user-media/previews/thumbs/189/189816.jpg?modified=1622132788" onerror='this.onerror=null;this.src="/img/loading.gif"' alt="Word Count" />
+      </div>
+      <div class="flink-item-name">Word Count</div>
+      <div class="flink-item-desc" title="網頁資訊字數統計">網頁資訊字數統計</div>
+    </a>
+  </div></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/link.webp);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2022 - 2026 By ShiYu Huang</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.1</a></span></div><div class="footer_custom_text">Hope you can learn something from this <a href="https://4yu.dev/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="chat-btn" type="button" title="聊天" style="display:none"><i class="fas fa-message"></i></button><a id="to_comment" href="#post-comment" title="前往評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: '00b71ed70ef8fddbb291',
+      clientSecret: 'c65b4a8a79a864a01f9ebf89991c6dab6ab50102',
+      repo: 'ShiYu0318.github.io',
+      owner: 'ShiYu0318',
+      admin: ['ShiYu0318'],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || '223e9fa6c38c6b0fc1aaefe7ed37fdfd'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[圖片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[連結]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[程式碼]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[程式碼]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '尚無評論'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'github-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const findTrueUrl = (array, ele) => {
+    Promise.all(array.map(item =>
+      fetch(item.url).then(resp => resp.json()).then(data => {
+        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+        if (!Array.isArray(urlArray) || urlArray.length === 0) {
+          urlArray = [`${data.html_url}`]
+        }
+        if (data.user.login === 'utterances-bot') {
+          return urlArray.pop()
+        } else {
+          return urlArray.shift()
+        }
+      })
+    )).then(res => {
+        array = array.map((i,index)=> {
+          return {
+            ...i,
+            url: res[index]
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(array), 30/(60*24))
+        generateHtml(array, ele)
+    });
+  }
+
+  const getComment = ele => {
+    fetch('https://api.github.com/repos/ShiYu0318/ShiYu0318.github.io/issues/comments?sort=updated&direction=desc&per_page=10&page=1',{
+      "headers": {
+        Accept: 'application/vnd.github.v3.html+json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const githubArray = data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.issue_url,
+            'date': item.updated_at
+          }
+        })
+        findTrueUrl(githubArray, ele)
+      }).catch(e => {
+        console.error(e)
+        ele.textContent= "無法獲取評論，請確認相關配置是否正確"
+      })
+  }
+  run(keyName, getComment)
+})</script><div class="aplayer no-destroy" data-id="7218222301" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-theme="#2828FF" data-loop="none" data-order="random" data-mini="true" data-mutex="true" data-volume="1.0"> </div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  window.ChatraID = 'NxXNSWTTNGbjfwQGi'
+  window.Chatra = window.Chatra || function() {
+    (window.Chatra.q = window.Chatra.q || []).push(arguments)
+  }
+
+  btf.getScript('https://call.chatra.io/chatra.js').then(() => {
+    const isChatBtn = true
+    const isChatHideShow = false
+
+    if (isChatBtn) {
+      const close = () => {
+        Chatra('minimizeWidget')
+        Chatra('hide')
+      }
+
+      const open = () => {
+        Chatra('openChat', true)
+        Chatra('show')
+      }
+
+      window.ChatraSetup = { startHidden: true }
+    
+      window.chatBtnFn = () => document.getElementById('chatra').classList.contains('chatra--expanded') ? close() : open()
+
+      document.getElementById('chat-btn').style.display = 'block'
+    } else if (isChatHideShow) {
+      window.chatBtn = {
+        hide: () => Chatra('hide'),
+        show: () => Chatra('show')
+      }
+    }
+  })
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: true,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

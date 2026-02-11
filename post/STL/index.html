@@ -1,0 +1,1721 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C++ STL 大全 | 4yu Blog</title><meta name="author" content="ShiYu Huang"><meta name="copyright" content="ShiYu Huang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="完整的基礎資料結構教學筆記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ STL 大全">
+<meta property="og:url" content="https://4yu.dev/post/STL/index.html">
+<meta property="og:site_name" content="4yu Blog">
+<meta property="og:description" content="完整的基礎資料結構教學筆記">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://4yu.dev/img/data_structure_basic.webp">
+<meta property="article:published_time" content="2023-12-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-05T14:03:48.352Z">
+<meta property="article:author" content="ShiYu Huang">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="資料結構 Data Structures">
+<meta property="article:tag" content="動態陣列 vector">
+<meta property="article:tag" content="串列 list">
+<meta property="article:tag" content="字串 string">
+<meta property="article:tag" content="數對 pair">
+<meta property="article:tag" content="數組 tuple">
+<meta property="article:tag" content="堆疊 stack">
+<meta property="article:tag" content="佇列 queue">
+<meta property="article:tag" content="雙端佇列 deque">
+<meta property="article:tag" content="優先佇列 priority_queue">
+<meta property="article:tag" content="集合 set">
+<meta property="article:tag" content="映射 map">
+<meta property="article:tag" content="多重集合 multiset">
+<meta property="article:tag" content="多重映射 multimap">
+<meta property="article:tag" content="無序集合 unordered_set">
+<meta property="article:tag" content="無序映射 unordered_map">
+<meta property="article:tag" content="位集 bitset">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://4yu.dev/img/data_structure_basic.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C++ STL 大全",
+  "url": "https://4yu.dev/post/STL/",
+  "image": "https://4yu.dev/img/data_structure_basic.webp",
+  "datePublished": "2023-12-30T16:00:00.000Z",
+  "dateModified": "2026-02-05T14:03:48.352Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ShiYu Huang",
+      "url": "https://4yu.dev/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/4yublog.png"><link rel="canonical" href="https://4yu.dev/post/STL/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=6506400853"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', '6506400853')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', '6506400853', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: ShiYu Huang","link":"連結: ","source":"來源: 4yu Blog","info":"著作權歸作者所有。如需商業轉載，請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#222297","bgDark":"#222297","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++ STL 大全',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">載入中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/loading.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">160</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/data_structure_basic.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/4yublog.png" alt="Logo"><span class="site-name">4yu Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">C++ STL 大全</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">C++ STL 大全</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-12-30T16:00:00.000Z" title="發表於 2023-12-31 00:00:00">2023-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2026-02-05T14:03:48.352Z" title="更新於 2026-02-05 22:03:48">2026-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AD%86%E8%A8%98/DSA/">DSA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">總字數:</span><span class="word-count">7.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時間:</span><span>30分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">瀏覽量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">評論數:</span><a href="/post/STL/#post-comment"><span class="gitalk-comment-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>本篇文章連結：<a href="https://4yu.dev/post/STL/">https://4yu.dev/post/STL/</a><br>
+公開發布日期：2023/12/31</p>
+</blockquote>
+<h1 id="intro">Intro<a class="header-anchor" href="#intro"> 🔗</a></h1>
+<p>學完 C++ 基礎語法之後，接著就該進入資料結構的世界了！<br>
+本篇筆記要介紹的是 C++ STL，彙整了許多基礎資料結構的概念與用法<br>
+文章內容較多，大部分內容為自行收集資料後經過整理而成<br>
+若有任何錯誤或需要補充的地方都歡迎使用右側聊天室傳送訊息給我<br>
+我將會儘速修改，謝謝</p>
+<h1 id="先備知識">先備知識<a class="header-anchor" href="#先備知識"> 🔗</a></h1>
+<p>標準模板庫（Standard Template Library），簡稱 <strong>STL</strong>，為 C++ 內建的函式庫<br>
+為了應對各種資料型態，因此 STL 內部採用 <code>模板 template</code> 來實作，分為六大部分：</p>
+<ol>
+<li>容器（Containers）</li>
+<li>演算法（Algorithm）</li>
+<li>迭代器（Iterator）</li>
+<li>適配器（Adaptor）</li>
+<li>仿函數（Function object）</li>
+<li>空間配置器（allocator）</li>
+</ol>
+<blockquote>
+<p>本篇文章內容著重於前四大部分</p>
+</blockquote>
+<h2 id="符號解釋">符號解釋<a class="header-anchor" href="#符號解釋"> 🔗</a></h2>
+<p>對於本篇文章中各種符號的解釋</p>
+<ul>
+<li>C：某種容器（container）</li>
+<li>T：某種資料型態（type）</li>
+<li>S：長度（size）</li>
+<li>i：索引（index）</li>
+<li>K：鍵（key）</li>
+<li>val：值（value）</li>
+<li>it：迭代器（iterator）</li>
+</ul>
+<h2 id="迭代器（iterator）">迭代器（iterator）<a class="header-anchor" href="#迭代器（iterator）"> 🔗</a></h2>
+<p>C++ STL 為每個容器提供一個成員型別：<code>迭代器 Iterator</code>，我們可以用 <code>指標 pointer</code> 的概念來理解迭代器</p>
+<p>迭代器透過運算子重載，為不同資料結構定義「如何走訪下一步」，模擬出指標的走訪功能，但能在移動前進行安全判斷或執行額外功能，解決了指標走訪時容易發生越界或亂指的問題</p>
+<p>假設現在有個迭代器 <code>it</code>，如果要存取 <code>it</code> 所指向的內容，就在前面加上星號 <code>*it</code>，與指標相同</p>
+<p>迭代器有以下三種類型：</p>
+<ol>
+<li>隨機存取迭代器：能夠作整數的加減法，往 <code>後移 x 項</code>、往 <code>前移 x 項</code> 皆可，也能 <code>遞增 (++)</code> 和 <code>遞減 (−−)</code>，可以把指標當作這種迭代器</li>
+<li>雙向迭代器：只能做 <code>遞增 (++)</code> 和 <code>遞減 (−−)</code> 的運算，也就是 <code>後一項</code> 和 <code>前一項</code></li>
+<li>單向迭代器：只能做 <code>遞增 (++)</code> 的運算，也就是 <code>後一項</code></li>
+</ol>
+<p>利用迭代器可<strong>遍歷容器中的元素</strong>，又分為 <code>iterator</code> 和 <code>reverse_iterator</code>（反向迭代器）</p>
+<ul>
+<li>iterator
+<ul>
+<li>.begin()：指向容器的起始元素</li>
+<li>.end()：指向容器最後一個元素的下一個位置</li>
+</ul>
+</li>
+<li>reverse_iterator
+<ul>
+<li>.rbegin()：指向容器的最後一個元素</li>
+<li>.rend()：指向容器起始元素的前一個位置</li>
+</ul>
+</li>
+</ul>
+<p><code>iterator</code> 示意圖 (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://crmne0707.pixnet.net/blog/post/318479072-c%2B%2B-%E8%BF%AD%E4%BB%A3%E5%99%A8-iterator">圖片來源</a>)</p>
+<p><img src="https://hackmd.io/_uploads/HJbllasvp.png" alt="iterator 示意圖"></p>
+<hr>
+<h1 id="資料結構的詳細介紹">資料結構的詳細介紹<a class="header-anchor" href="#資料結構的詳細介紹"> 🔗</a></h1>
+<p>本篇介紹以下 C++ STL 內建基礎資料結構：</p>
+<ul>
+<li>動態陣列 vector</li>
+<li>串列 list</li>
+<li>字串 string</li>
+<li>數對 pair</li>
+<li>數組 tuple</li>
+<li>堆疊 stack</li>
+<li>佇列 queue</li>
+<li>雙端佇列 deque</li>
+<li>優先佇列 priority_queue</li>
+<li>集合 set</li>
+<li>映射 map</li>
+<li>多重集合 multiset</li>
+<li>多重映射 multimap</li>
+<li>無序集合 unordered_set</li>
+<li>無序映射 unordered_map</li>
+<li>多重無序集合 unordered_multiset</li>
+<li>多重無序映射 unordered_multimap</li>
+<li>位集 bitset</li>
+</ul>
+<h2 id="vector-動態陣列">vector 動態陣列<a class="header-anchor" href="#vector-動態陣列"> 🔗</a></h2>
+<p>可以當作是 C++ <code>陣列（array）</code> 的擴充版，能支援原有的操作，還可以<code>動態新增元素</code>且會自行改變長度，也就是說不用事先宣告固定大小，基本上學完 <code>vector</code> 大多數情況可以直接取代 <code>array</code></p>
+<h3 id="可支援的操作方法">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>v[i]</code></td>
+<td>支援下標讀取 <code>v</code> 的第 <code>i</code> 項（不做邊界檢查）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>v.empty()</code></td>
+<td>回傳一個 <code>bool</code>，表示 <code>v</code> 是否為空的</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>v.clear()</code></td>
+<td>清空 <code>v</code>，但原本的<strong>容量</strong>不會被釋放</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>v.size()</code></td>
+<td>回傳 <code>v</code> 目前的長度</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>v.resize(S, val)</code></td>
+<td>將 <code>v</code> 的長度變為 <code>S</code>：若比原本長，則在尾端添加 val 直到長度為 S；反之則將多餘的元素捨去</td>
+<td>平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>S</mi><mo>−</mo><msub><mi>S</mi><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(S - S_{old})</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>v.insert(it, val)</code></td>
+<td>在 <code>it</code> 位置插入 <code>val</code>，必須向後搬動其餘元素</td>
+<td>均攤 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>（尾端 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span>）</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>v.erase(it)</code></td>
+<td>刪除 it 位置元素，也須向前搬動其餘元素</td>
+<td>均攤 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>（尾端 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span>）</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>v.begin() / v.end()</code></td>
+<td>回傳首個元素或最後一個元素的 <code>iterator</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>v.front() / v.back()</code></td>
+<td>回傳容器的首個元素或最後一個元素（未檢查是否為空）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>v.push_back(val)</code> / <code>v.emplace_back(args...)</code></td>
+<td>在 <code>v</code> 的尾端加入 <code>val / args</code>（<code>push_back</code> 複製/移動 <code>val</code>；<code>emplace_back</code> 原地建構）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>v.pop_back()</code></td>
+<td>刪除 <code>v</code> 的最末項，若 <code>v</code> 為空則是未定義行為</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<!-- 
+| 12 | `v.reserve(S)` | 預留容量 `S`，若 `S > capacity()` 會重新配置 | $O(1)$（不重配置）or $O(n)$（重新配置） |
+| 13 | `v.capacity()` | 取得目前的容量（預分配的內存空間）  | $O(1)$ |
+| 14 | `v.shrink_to_fit()` | 請求將 `v` 的容量 `capacity()` 縮到剛好等於大小 `size()` | $O(n)$ or $O(1)$（若未執行） | 
+-->
+<h3 id="可支援的演算法函數">可支援的演算法函數<a class="header-anchor" href="#可支援的演算法函數"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>演算法函數</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>swap(v1, v2)</code> / <code>v1.swap(v2)</code></td>
+<td>交換兩 vector</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>find(v.begin(), v.end(), val)</code></td>
+<td>在 <code>v</code> 中搜尋 val，找到就返回對應元素的迭代器，否則返回 <code>v.end()</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>count(v.begin(), v.end(), val)</code></td>
+<td>計算 <code>v</code> 中 <code>val</code> 出現的次數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>replace(v.begin(), v.end(), val, new_val)</code></td>
+<td>將 <code>v</code> 中所有的 <code>val</code> 替換成 <code>new_val</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>sort(v.begin(), v.end())</code></td>
+<td>排序 <code>v</code> ，預設為遞增</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>reverse(v.begin(), v.end())</code></td>
+<td>反轉 <code>v</code> 內所有元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin())</code></td>
+<td><strong>將已排序</strong>的 <code>v1</code> 和 <code>v2</code> 合併至 <code>v3</code>（結果為已排序狀態）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>v</mi><mn>1</mn><mo>+</mo><mi>v</mi><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(v1 + v2)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>binary_search(v.begin(), v.end(), val)</code></td>
+<td>二分搜尋：若找到 <code>val</code> 回傳 <code>true</code>，否則回傳 <code>false</code>（v 須排序）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>lower_bound(v.begin(), v.end(), val)</code></td>
+<td>回傳在包含 <code>v.begin()</code> 到不含 <code>v.end()</code> 的區間中第一個 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><code>val</code> 的 iterator（<code>v</code> 須排序）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>upper_bound(v.begin(), v.end(), val)</code></td>
+<td>回傳在包含 <code>v.begin()</code> 到不含 <code>v.end()</code> 的區間中第一個 &gt;<code>val</code> 的 iterator（<code>v</code> 須排序）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>next_permutation(v.begin(), v.end())</code></td>
+<td>變成下一个排列</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>prev_permutation(v.begin(), v.end())</code></td>
+<td>變成上一个排列</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>unique(v.begin(), v.end())</code></td>
+<td>移除<strong>相鄰重複元素</strong>（保留第一個），回傳新結尾 iterator，需搭配 <code>erase</code> 真正刪除</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>max_element(v.begin(), v.end())</code> / <code>min_element(...)</code></td>
+<td>找出最大或最小值的 iterator</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>fill(v.begin(), v.end(), val)</code></td>
+<td>將整個區間都填上 <code>val</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>copy(v1.begin(), v1.end(), v2.begin())</code></td>
+<td>將 <code>v1</code> 的內容複製到 <code>v2</code>（須保證 <code>v2</code> 有足夠空間）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>equal(v1.begin(), v1.end(), v2.begin())</code></td>
+<td>比較 <code>v1</code> 和 <code>v2</code> 內容是否完全相等</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>lower_bound</code> / <code>upper_bound</code> 可透過 <code>*</code> 取值，需在<strong>由小到大排列好的陣列</strong>中才可使用，若回傳的值是 <code>v.end()</code>，代表沒有符合的元素</p>
+</blockquote>
+<h3 id="常用基本操作-code">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;    <span class="comment">// 長度為 0 的空 vector</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">5</span>)</span></span>; <span class="comment">// 長度為 5 的 vector</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">5</span>, <span class="number">10</span>)</span></span>; </span><br><span class="line"><span class="comment">// 長度為 5 且每個元素皆被初始化為 10 的 vector，複雜度為 O(n)</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 宣告雙層 vector</span></span><br><span class="line">vector&lt; vector&lt;<span class="type">int</span>&gt; &gt; vv;    <span class="comment">// 可想像成二維陣列，但每一列長度可以不一樣</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 宣告雙層 vector 同時初始化為大小為 10x10 且每個元素皆為 0</span></span><br><span class="line">vector&lt; vector&lt;<span class="type">int</span>&gt; &gt; <span class="built_in">vv</span>(<span class="number">10</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">10</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下標取值</span></span><br><span class="line"><span class="type">int</span> n = v[<span class="number">0</span>];    <span class="comment">// 與陣列一樣可使用 index 取值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得長度</span></span><br><span class="line"><span class="type">int</span> s = v.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改大小</span></span><br><span class="line">v.<span class="built_in">resize</span>(<span class="number">5</span>);    <span class="comment">// 將 v 的長度更改為 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在尾端加入元素</span></span><br><span class="line"><span class="type">int</span> n = <span class="number">10</span>;</span><br><span class="line">v.<span class="built_in">push_back</span>(n);</span><br><span class="line">v.<span class="built_in">emplace_back</span>(n);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除尾端元素</span></span><br><span class="line">v.<span class="built_in">pop_back</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尋找</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span> val; cin &gt;&gt; <span class="function">val</span></span><br><span class="line"><span class="function"><span class="title">if</span><span class="params">(find(v.begin(), v.end(), val) == v.end())</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Not find\n&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;Find!&quot;</span>;</span><br><span class="line"><span class="comment">// input : 5 , output : Find!</span></span><br><span class="line"><span class="comment">// input : 6 , output : Not Find</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 排序（預設升冪：由小到大）</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line"><span class="built_in">sort</span>(v, v+v.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 排序（降冪：由大到小）</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">rbegin</span>(), v.<span class="built_in">rend</span>());</span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 反轉</span></span><br><span class="line"><span class="built_in">reverse</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二分搜</span></span><br><span class="line"><span class="built_in">binary_search</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), val)</span><br><span class="line"><span class="built_in">upper_bound</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), val);</span><br><span class="line"><span class="built_in">lower_bound</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), val);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合併</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v1 = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>&#125;,</span><br><span class="line">            v2 = &#123;<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>&#125;,</span><br><span class="line">            <span class="built_in">v3</span>(<span class="number">6</span>);</span><br><span class="line"><span class="built_in">merge</span>(v<span class="number">1.</span><span class="built_in">begin</span>(), v<span class="number">1.</span><span class="built_in">end</span>(), v<span class="number">2.</span><span class="built_in">begin</span>(), v<span class="number">2.</span><span class="built_in">end</span>(), v<span class="number">3.</span><span class="built_in">begin</span>());</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : v3) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"><span class="comment">// output : 1 2 3 4 5 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 全排列</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">next_permutation</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>())) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 1 5 3 </span></span><br><span class="line"><span class="comment">// 3 1 5 </span></span><br><span class="line"><span class="comment">// 3 5 1 </span></span><br><span class="line"><span class="comment">// 5 1 3 </span></span><br><span class="line"><span class="comment">// 5 3 1</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>vector</code> <strong>不支援</strong>對<strong>前端元素</strong>使用 <code>新增</code> 或 <code>刪除</code> 的操作</p>
+</blockquote>
+<h3 id="補充">補充<a class="header-anchor" href="#補充"> 🔗</a></h3>
+<blockquote>
+<p><code>push_back()</code> 與 <code>emplace_back()</code> 功能相同，但如果以效能為優先，<code>emplace_back()</code> 通常比 <code>push_back()</code> 更快一點，因為是直接呼叫 constructor 不會複製 object，所以有時候執行效率會比較快。<br>
+<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.codingninjas.com/studio/library/vector-push_back-vs-emplace_back">延伸閱讀：codingninjas - emplace_back() vs push_back() in C++ Vectors<br>
+</a></p>
+</blockquote>
+<blockquote>
+<p>在知道需要多少元素後，可以先對 <code>vector</code> 做 <code>reserve()</code> 擴充 <code>capacity</code> 再 <code>emplace_back()</code> ，會比 <code>空 vector</code> 慢慢 <code>emplace_back()</code> 快<br>
+<a target="_blank" rel="noopener external nofollow noreferrer" href="https://arc.net/l/quote/tslhdeoj">延伸閱讀：ping 不見路 - STL vector 效率小記</a><br>
+示意圖 (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/JACKSONMHLK/article/details/114396650">圖片來源</a>)<br>
+<img src="https://hackmd.io/_uploads/H1CgPoTva.png" alt="vector 示意圖"></p>
+</blockquote>
+<h2 id="list-串列">list 串列<a class="header-anchor" href="#list-串列"> 🔗</a></h2>
+<p>list 是雙向鏈結串列（Doubly Linked List），每個節點包含前一個節點與下一個節點的指標，因此可以從任意位置快速插入或刪除元素，且不需要搬移其他元素。<br>
+不同於 vector，list 不支援下標，也就是不能使用 <code>[index]</code> 隨機存取</p>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>lt.size()</code></td>
+<td>取得元素個數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>lt.empty()</code></td>
+<td>判斷是否為空</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>lt.front()</code> / <code>lt.back()</code></td>
+<td>取得首尾元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>lt.push_front(val)</code> / <code>lt.push_back(val)</code></td>
+<td>在前/後加入元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>lt.pop_front()</code> / <code>lt.pop_back()</code></td>
+<td>移除前/後元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>lt.insert(it, val)</code></td>
+<td>在迭代器 <code>it</code> 前插入 <code>val</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>lt.erase(it)</code></td>
+<td>刪除迭代器 <code>it</code> 指向的元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>lt.clear()</code></td>
+<td>清空整個 list</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>lt.sort()</code></td>
+<td>對 list 元素排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>lt.reverse()</code></td>
+<td>反轉 list</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>lt.merge(lt2)</code></td>
+<td>合併另一個已排序 list，結果為排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用基本操作-code-2">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-2"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">list&lt;<span class="type">int</span>&gt; lt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尾端加入元素</span></span><br><span class="line">lt.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">lt.<span class="built_in">push_back</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前端加入元素</span></span><br><span class="line">lt.<span class="built_in">push_front</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍歷</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : lt) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 0 1 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入</span></span><br><span class="line"><span class="keyword">auto</span> it = lt.<span class="built_in">begin</span>();</span><br><span class="line"><span class="built_in">advance</span>(it, <span class="number">2</span>); <span class="comment">// 移動到 index 2</span></span><br><span class="line">lt.<span class="built_in">insert</span>(it, <span class="number">5</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : lt) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 0 1 5 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除</span></span><br><span class="line">lt.<span class="built_in">pop_front</span>();</span><br><span class="line">lt.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : lt) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 1 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 反轉</span></span><br><span class="line">lt.<span class="built_in">reverse</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> x : lt) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 5 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="string-字串">string 字串<a class="header-anchor" href="#string-字串"> 🔗</a></h2>
+<p>雖然 string 不在 STL 裡，但是由<strong>連續的字元</strong>組成，實際上就是 <code>vector&lt;char&gt;</code>，加上有一些字串的操作，所以我就順便放進來了</p>
+<h3 id="可支援的操作方法-2">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-2"> 🔗</a></h3>
+<p><code>vector</code> 有的 <code>string</code> 幾乎都有</p>
+<h3 id="常用基本操作-code-3">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-3"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">string s;    <span class="comment">// 預設為空字串</span></span><br><span class="line">string s1 = <span class="string">&quot;ABC&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 賦值</span></span><br><span class="line">cin &gt;&gt; s;        <span class="comment">// 以空白作為輸入分隔</span></span><br><span class="line"><span class="built_in">getline</span>(cin,s);  <span class="comment">// 以換行作為輸入分隔</span></span><br><span class="line">s = <span class="string">&quot;ShiYu&quot;</span>;</span><br><span class="line">s = s1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 串接</span></span><br><span class="line">s = <span class="string">&quot;ShiYu&quot;</span>;</span><br><span class="line">s1 = <span class="string">&quot;ABC&quot;</span>;</span><br><span class="line">s += s1;</span><br><span class="line">cout &lt;&lt; s;</span><br><span class="line"><span class="comment">// output : ShiYuABC</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字串轉數字</span></span><br><span class="line"><span class="type">int</span> a = <span class="built_in">stoi</span>(<span class="string">&quot;123&quot;</span>);            <span class="comment">// stoi : string to int</span></span><br><span class="line"><span class="type">long</span> b = <span class="built_in">stol</span>(<span class="string">&quot;12345678900&quot;</span>);   <span class="comment">// stol : string to long</span></span><br><span class="line"><span class="type">double</span> c = <span class="built_in">stod</span>(<span class="string">&quot;3.14159&quot;</span>);     <span class="comment">// stod : string to double</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字串轉數字</span></span><br><span class="line"><span class="type">int</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">3.14159</span>;</span><br><span class="line">string sa = <span class="built_in">to_string</span>(a);</span><br><span class="line">string sb = <span class="built_in">to_string</span>(b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除最後一個字元</span></span><br><span class="line">s.<span class="built_in">pop_back</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下標讀取字元</span></span><br><span class="line">cout &lt;&lt; s[<span class="number">3</span>];</span><br><span class="line"><span class="comment">// output : Y</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 擷取子字串</span></span><br><span class="line">cout &lt;&lt; s.<span class="built_in">substr</span>(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">// output : Shi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得長度</span></span><br><span class="line">cout &lt;&lt; s<span class="number">1.</span><span class="built_in">size</span>();</span><br><span class="line"><span class="comment">// output : 5</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：取得字串長度請不要用 <code>strlen()</code>，應該要用 <code>.size()</code>，因為前者複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>，後者為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></p>
+</blockquote>
+<h2 id="pair-數對">pair 數對<a class="header-anchor" href="#pair-數對"> 🔗</a></h2>
+<p><strong>可將兩個型態的資料合併</strong>，透過成員變數 <code>first</code> 和 <code>second</code> 來存取元素，<code>pair</code> 支援以<strong>元素字典序</strong>來比較或排序，以 <code>first</code> 為優先</p>
+<h3 id="常用基本操作-code-4">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-4"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">pair&lt;<span class="type">int</span>, <span class="type">double</span>&gt; p;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 賦值</span></span><br><span class="line">p = &#123;<span class="number">1</span>, <span class="number">2.5</span>&#125;;</span><br><span class="line">p = <span class="built_in">make_pair</span>(<span class="number">1</span>, <span class="number">2.5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取值</span></span><br><span class="line"><span class="type">int</span> f = p.first;    <span class="comment">// 1</span></span><br><span class="line"><span class="type">double</span> s = p.second;<span class="comment">// 2.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 比較</span></span><br><span class="line">pair&lt;<span class="type">int</span>, <span class="type">double</span>&gt; a, b;</span><br><span class="line">a = &#123;<span class="number">1</span>, <span class="number">2.5</span>&#125;;</span><br><span class="line">b = &#123;<span class="number">1</span>, <span class="number">2.6</span>&#125;;</span><br><span class="line">cout &lt;&lt; (a &lt; b) &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 1 (true)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交換兩 pair</span></span><br><span class="line">pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a,b;</span><br><span class="line">a = &#123;<span class="number">1</span>, <span class="number">3</span>&#125;;</span><br><span class="line">b = &#123;<span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="built_in">swap</span>(a, b); <span class="comment">// or a.swap(b)</span></span><br><span class="line">cout &lt;&lt; a.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; a.second &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 2 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// pair 搭配 vector 新增元素</span></span><br><span class="line">vector&lt; pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; &gt; vp;</span><br><span class="line">vp.<span class="built_in">push_back</span>(<span class="built_in">make_pair</span>(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line">vp.<span class="built_in">emplace_back</span>(<span class="number">3</span>,<span class="number">4</span>); <span class="comment">// 用 emplace_back 可以不用 make_pair</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : vp) &#123;</span><br><span class="line">    cout &lt;&lt; i.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; i.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 1 2</span></span><br><span class="line"><span class="comment">// 3 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 vector 排序多個 pair</span></span><br><span class="line">pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; a = &#123;<span class="number">1</span>,<span class="number">3</span>&#125;,</span><br><span class="line">              b = &#123;<span class="number">2</span>,<span class="number">4</span>&#125;,</span><br><span class="line">              c = &#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">vector&lt; pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; &gt; v&#123;a, b, c&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : v) &#123;</span><br><span class="line">    cout &lt;&lt; i.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; i.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 1 2</span></span><br><span class="line"><span class="comment">// 1 3</span></span><br><span class="line"><span class="comment">// 2 4</span></span><br></pre></td></tr></table></figure>
+<h2 id="tuple-數組">tuple 數組<a class="header-anchor" href="#tuple-數組"> 🔗</a></h2>
+<p>與 <code>pair</code> 相似，但可以<strong>同時組合多個不同型別的元素</strong>( <code>pair</code> 只能 2 個)</p>
+<h3 id="常用基本操作-code-5">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-5"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">tuple&lt;string, <span class="type">int</span>, <span class="type">bool</span>&gt; tp;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function">tuple&lt;string, <span class="type">int</span>, <span class="type">bool</span>&gt; <span class="title">tp</span><span class="params">(<span class="string">&quot;ShiYu&quot;</span>, <span class="number">16</span>, <span class="literal">true</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 賦值</span></span><br><span class="line">tp = &#123;<span class="string">&quot;ShiYu&quot;</span>, <span class="number">16</span>, <span class="literal">true</span>&#125;;</span><br><span class="line">tp = <span class="built_in">make_tuple</span>(<span class="string">&quot;ShiYu&quot;</span>, <span class="number">16</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 賦值（使用 tie，須放變數）</span></span><br><span class="line">string name = <span class="string">&quot;ShiYu&quot;</span>; </span><br><span class="line"><span class="type">int</span> age = <span class="number">16</span>;</span><br><span class="line"><span class="type">bool</span> b = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">tie</span>(name, age, b) = tp;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取值</span></span><br><span class="line"><span class="type">int</span> age = <span class="built_in">get</span>&lt;<span class="number">1</span>&gt;(tp); <span class="comment">// 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改值</span></span><br><span class="line"><span class="built_in">get</span>&lt;<span class="number">2</span>&gt;(tp) = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得元素個數</span></span><br><span class="line">cout &lt;&lt; tuple_size&lt;<span class="keyword">decltype</span>(tp)&gt;::value &lt;&lt; <span class="string">&quot;\n&quot;</span>; </span><br><span class="line"><span class="comment">// output : 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tuple 搭配 vector 新增元素</span></span><br><span class="line">vector&lt; tuple&lt;<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>&gt; &gt; vt;</span><br><span class="line">vt.<span class="built_in">push_back</span>(<span class="built_in">make_tuple</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">vt.<span class="built_in">emplace_back</span>(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>); <span class="comment">// 用 emplace_back 可以不用 make_tuple</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp; [a,b,c] : vt) &#123;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; c &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 1 2 3</span></span><br><span class="line"><span class="comment">// 4 5 6</span></span><br></pre></td></tr></table></figure>
+<h2 id="stack-堆疊">stack 堆疊<a class="header-anchor" href="#stack-堆疊"> 🔗</a></h2>
+<p>可以想像成<strong>一疊盤子</strong>，每次只能在<strong>最上面</strong> <code>放置</code> 或 <code>拿走</code> 一個盤子<br>
+有著 <code>後進先出 Last In First Out (LIFO)</code> 的規則</p>
+<blockquote>
+<p>C++ 的 <code>stack</code> 是 <code>容器適配器（Container Adapter）</code>，預設以 <code>deque</code> 為底層容器，也可使用 <code>vector</code> 或 <code>list</code></p>
+</blockquote>
+<h3 id="可支援的操作方法-3">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-3"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>s.size()</code></td>
+<td>取得 s 大小</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>s.empty()</code></td>
+<td>回傳 s 是否為空</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>s.top()</code></td>
+<td>取得 s 頂端元素</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>s.push(val) / s.emplace(val)</code></td>
+<td>將 val 放入 s 頂端</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>s.pop()</code></td>
+<td>移除 s 頂端元素</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>複雜度皆為 <code>O(1)</code><br>
+stack 不支援隨機存取，只能操作頂端元素，也不支援迭代器，無法直接遍歷<br>
+注意：.top() 與 .pop() 不會檢查 stack 是否為空，若 stack 為空則是未定義行為，使用前須自行以 .empty() 檢查確保不會出錯</p>
+</blockquote>
+<h3 id="示意圖">示意圖<a class="header-anchor" href="#示意圖"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/S1U5nn0wT.png" alt="stack 示意圖"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.programiz.com/dsa/stack">圖片來源</a>)</p>
+<h3 id="常用基本操作-code-6">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-6"> 🔗</a></h3>
+<p>依照示意圖實作</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;<span class="type">int</span>&gt; stk;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3</span>;++i) &#123;</span><br><span class="line">    stk.<span class="built_in">push</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(!stk.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    cout &lt;&lt; stk.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    stk.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="常見應用">常見應用<a class="header-anchor" href="#常見應用"> 🔗</a></h3>
+<ul>
+<li>表達式求值</li>
+<li>括號匹配</li>
+<li>維護單調序列</li>
+</ul>
+<h2 id="queue-佇列">queue 佇列<a class="header-anchor" href="#queue-佇列"> 🔗</a></h2>
+<p>可以想像為<strong>排隊的人群</strong>：新來的人排在隊伍的尾端，最前面的人結完帳離開隊伍<br>
+有著 <code>先進先出 First In First Out (FIFO)</code> 的規則</p>
+<blockquote>
+<p>C++ 的 queue 是 <code>容器適配器（Container Adapter）</code>，預設以 <code>deque</code> 為底層容器，也可以使用 <code>list</code></p>
+</blockquote>
+<h3 id="可支援的操作方法-4">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-4"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>q.size()</code></td>
+<td>取得 q 長度</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>q.empty()</code></td>
+<td>回傳 q 是否為空</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>q.front()</code></td>
+<td>取得 q 最前端（最早加入）的元素</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>q.back()</code></td>
+<td>取得 q 最尾端（最後加入）的元素</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>q.push(val) / q.emplace(val)</code></td>
+<td>將 val 加入  q 尾端</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>q.pop()</code></td>
+<td>移除 q 最前端元素</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>複雜度皆為 <code>O(1)</code><br>
+queue 不支援隨機存取，只能操作前端元素，也不支援迭代器，無法直接遍歷<br>
+注意：.front() 與 .pop() 不會檢查 queue 是否為空，若 queue 為空則是未定義行為，使用前須自行以 .empty() 檢查確保不會出錯</p>
+</blockquote>
+<h3 id="示意圖-2">示意圖<a class="header-anchor" href="#示意圖-2"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/HytPb6RDp.png" alt="queue 示意圖"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.boardinfinity.com/blog/working-of-queue-using-stl">圖片來源</a>)</p>
+<h3 id="常用基本操作-code-7">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-7"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">q.<span class="built_in">emplace</span>(<span class="number">1</span>);</span><br><span class="line">q.<span class="built_in">emplace</span>(<span class="number">2</span>);</span><br><span class="line">q.<span class="built_in">emplace</span>(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    cout &lt;&lt; q.<span class="built_in">size</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; q.<span class="built_in">front</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; q.<span class="built_in">back</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 3 1 3</span></span><br><span class="line"><span class="comment">// 2 2 3</span></span><br><span class="line"><span class="comment">// 1 3 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="常見應用-2">常見應用<a class="header-anchor" href="#常見應用-2"> 🔗</a></h3>
+<ul>
+<li>BFS</li>
+<li>拓墣排序</li>
+<li>任務排程</li>
+</ul>
+<h2 id="deque-雙端佇列">deque 雙端佇列<a class="header-anchor" href="#deque-雙端佇列"> 🔗</a></h2>
+<p>為 <code>double ended queue</code> 的縮寫，唸作 <code>deck</code> 而非 <code>de-queue</code><br>
+一般的 <code>queue</code> 只能從尾端新增元素、從前端刪除元素，而 <code>deque</code> 的<strong>前後</strong>都可以使用<strong>新增</strong>和<strong>刪除</strong>的操作，<br>
+也支援下標隨機讀取 <code>dq[i]</code>，基本上就是多了 <code>emplace_front()</code>、<code>pop_front()</code> 的 <code>vector</code><br>
+雖然功能方便但由於<strong>常數較大</strong>，在程式競技比賽中非必要不會去使用</p>
+<h3 id="示意圖-3">示意圖<a class="header-anchor" href="#示意圖-3"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/SkmEUT0v6.png" alt="deque 示意圖"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.codingninjas.com/studio/library/difference-between-queue-and-deque-in-c">圖片來源</a>)</p>
+<h3 id="可支援的操作方法-5">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-5"> 🔗</a></h3>
+<p><code>deque</code> 與 <code>vector</code> 相比只是多了針對 <code>front</code> 的操作，少了針對記憶體的操作，因為 <code>vector</code> 記憶體連續，<code>deque</code> 則是分段儲存</p>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>dq[i]</code></td>
+<td>隨機讀取第 i 個元素</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>dq.size()</code></td>
+<td>取得元素個數</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>dq.empty()</code></td>
+<td>判斷是否為空</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>dq.push_front(val) / dq.emplace_front(val)</code></td>
+<td>將 val 加入  dq 前端</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>dq.push_back(val) / dq.emplace_back(val)</code></td>
+<td>將 val 加入  dq 尾端</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code> dq.pop_front()</code></td>
+<td>移除 dq 最前端元素</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>dq.pop_back()</code></td>
+<td>移除 dq 最尾端元素</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>複雜度皆為 <code>O(1)</code></p>
+</blockquote>
+<h3 id="常用基本操作-code-8">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-8"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">deque&lt;<span class="type">int</span>&gt; dq;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前後新增元素</span></span><br><span class="line">dq.<span class="built_in">emplace_front</span>(<span class="number">1</span>);</span><br><span class="line">dq.<span class="built_in">emplace_back</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : dq) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除前端元素</span></span><br><span class="line">dq.<span class="built_in">pop_front</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : dq) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除尾端元素</span></span><br><span class="line">dq.<span class="built_in">pop_back</span>();</span><br><span class="line">cout &lt;&lt; dq.<span class="built_in">size</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output : </span></span><br><span class="line"><span class="comment">// 1 2 </span></span><br><span class="line"><span class="comment">// 2 </span></span><br><span class="line"><span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<h3 id="常見應用-3">常見應用<a class="header-anchor" href="#常見應用-3"> 🔗</a></h3>
+<ul>
+<li>滑動窗口</li>
+<li>0-1 BFS</li>
+</ul>
+<h2 id="priority-queue-優先佇列">priority_queue 優先佇列<a class="header-anchor" href="#priority-queue-優先佇列"> 🔗</a></h2>
+<p><code>priority_queue</code> 是基於<code>堆積（heap）</code>結構實作的容器適配器，它可以維持最頂端的元素永遠是最大或最小的，所以可以很方便且<strong>快速地存取極值</strong></p>
+<h3 id="示意圖-4">示意圖<a class="header-anchor" href="#示意圖-4"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/rJqPcT0PT.png" alt="priority queue 示意圖"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.programiz.com/dsa/priority-queue">圖片來源</a>)</p>
+<h3 id="可支援的操作方法-6">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-6"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>pq.size()</code></td>
+<td>取得元素個數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>pq.empty()</code></td>
+<td>判斷是否為空</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>pq.top()</code></td>
+<td>回傳 pq 中最大或最小的元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>pq.push(val)</code> / pq.emplace(val)</td>
+<td>將 val 加入 pq 中</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>pq.pop()</code></td>
+<td>將 pq 中最大或最小的元素移除</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用基本操作-code-9">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-9"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="type">int</span>&gt; pq;</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">3</span>);</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">5</span>);</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">9</span>);</span><br><span class="line">cout &lt;&lt; pq.<span class="built_in">top</span>();</span><br><span class="line"><span class="comment">// output : 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 最小堆</span></span><br><span class="line">priority_queue&lt; <span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt; &gt; pq;</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">3</span>);</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">5</span>);</span><br><span class="line">pq.<span class="built_in">emplace</span>(<span class="number">9</span>);</span><br><span class="line">cout &lt;&lt; pq.<span class="built_in">top</span>();</span><br><span class="line"><span class="comment">// output : 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="補充-2">補充<a class="header-anchor" href="#補充-2"> 🔗</a></h3>
+<blockquote>
+<p><code>priority_queue</code> 有三個型別參數 <code>T</code>、<code>C</code>、<code>Cmp</code><br>
+<code>T</code> 是<strong>內容物的型別</strong>，<code>C</code> 是<strong>所採用的容器</strong>，<code>Cmp</code> 是<strong>比大小的依據</strong><br>
+<code>priority_queue</code> 能使用的容器有 <code>vector</code> 和 <code>deque</code><br>
+<code>Cmp</code> 的預設值是 <code>less&lt;T&gt;</code>，此時的 <code>priority_queue</code> 是<strong>最大堆 max heap</strong><br>
+若改成 <code>greater&lt;T&gt;</code>，則 <code>priority_queue</code> 為 <strong>最小堆 min heap</strong><br>
+建構式如上方 Code 第 8 行，而 output 為最小值</p>
+</blockquote>
+<h3 id="延伸閱讀">延伸閱讀<a class="header-anchor" href="#延伸閱讀"> 🔗</a></h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/starbugs/%E4%BE%86%E5%BE%81%E6%9C%8D%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E6%BC%94%E7%AE%97%E6%B3%95%E5%90%A7-%E6%90%9E%E6%87%82-binary-heap-%E7%9A%84%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86-96768ea30d3f">Binary Heap 的排序原理</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://arc.net/l/quote/asrwfvnj">資料結構大便當： Binary Heap</a></li>
+</ul>
+<h3 id="常見應用-4">常見應用<a class="header-anchor" href="#常見應用-4"> 🔗</a></h3>
+<ul>
+<li>動態維護極值</li>
+<li>動態第 K 大</li>
+<li>最短路徑演算法（Dijkstra）</li>
+</ul>
+<h2 id="set-集合">set 集合<a class="header-anchor" href="#set-集合"> 🔗</a></h2>
+<p><code>set</code> 是一個平衡二元搜尋樹容器，底層使用 紅黑樹（Red-Black Tree）實作<br>
+主要的特性為以下三種：</p>
+<ol>
+<li>內部元素自動排序（從小到大）</li>
+<li>沒有重複元素（方便去重）</li>
+<li>插入、刪除和查詢的時間複雜度皆為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></li>
+</ol>
+<h3 id="示意圖-5">示意圖<a class="header-anchor" href="#示意圖-5"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/SyYmoACPT.png" alt="image"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.ccplusplus.com/2014/01/std-set-example-c.html">圖片來源</a>)</p>
+<h3 id="可支援的操作方法-7">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-7"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>s.size()</code></td>
+<td>取得元素個數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>s.empty()</code></td>
+<td>判斷是否為空</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>s.insert(K)</code></td>
+<td>插入元素 K，若已存在則忽略</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>s.erase(K)</code></td>
+<td>刪除鍵為 K 的元素，回傳刪除數量（0 或 1）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>s.erase(it)</code></td>
+<td>刪除迭代器指向元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>s.erase(it_first, it_last)</code></td>
+<td>刪除區間 <code>[first,last)</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k \log n)</annotation></semantics></math></span>，k = 刪除數量</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>s.find(K)</code></td>
+<td>尋找 K，回傳迭代器，找不到則回傳 <code>s.end()</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>s.count(K)</code></td>
+<td>回傳鍵為 K 的個數（0 或 1）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>s.lower_bound(K)</code></td>
+<td>回傳第一個大於等於 K 的元素迭代器</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>s.upper_bound(K)</code></td>
+<td>回傳第一個大於 K 的元素迭代器</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用基本操作-code-10">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-10"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入</span></span><br><span class="line">s.<span class="built_in">insert</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除</span></span><br><span class="line">s.<span class="built_in">erase</span>(<span class="number">10</span>);</span><br><span class="line">s.<span class="built_in">erase</span>(s.<span class="built_in">begin</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳該元素的 iterator，若 set 內部無該元素，則回傳 end()</span></span><br><span class="line">s.<span class="built_in">find</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問一個元素在不在 set 裡。可透過 find 的 return 值，或使用 s.count</span></span><br><span class="line"><span class="keyword">if</span>(s.<span class="built_in">find</span>(<span class="number">10</span>) != s.<span class="built_in">end</span>()) cout &lt;&lt; <span class="string">&quot;In!\n&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(s.<span class="built_in">count</span>(<span class="number">10</span>)) cout &lt;&lt; <span class="string">&quot;In!\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍歷 set 元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : s) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="延伸閱讀-2">延伸閱讀<a class="header-anchor" href="#延伸閱讀-2"> 🔗</a></h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/m/articles/10333136">資料結構 — 紅黑樹(Red-Black Tree)</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hackmd.io/@_01X9rimQmWH33Djf8QhoA/Bkm3enQ8N">Shengyuu - 紅黑樹 - HackMD</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=Ij8-xX3PreE">hwdong - 最好懂的红黑树教程 - Youtube</a><img src="https://hackmd.io/_uploads/rk4_5RRw6.png" alt="紅黑樹 示意圖"></li>
+</ul>
+<h2 id="map-映射">map 映射<a class="header-anchor" href="#map-映射"> 🔗</a></h2>
+<p>類似於 python 中的 <code>字典 dict</code>，內部為 <code>鍵值對 key-value pair</code>，<br>
+主要的特性為以下三種：</p>
+<ol>
+<li>每個元素都是 <code>pair&lt;key, value&gt;</code></li>
+<li>內部依 <code>鍵 key</code> 自動排序</li>
+<li>可以修改 <code>值 value</code> ，但不能修改 <code>鍵 key</code> （因為會破壞排序）</li>
+<li>插入/刪除/查詢鍵的值，時間複雜度皆為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></li>
+</ol>
+<h3 id="示意圖-6">示意圖<a class="header-anchor" href="#示意圖-6"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/HkrI0A0Dp.png" alt="image"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.mropengate.com/2015/12/cc-map-stl.html">圖片來源</a>)</p>
+<h3 id="可支援的操作方法-8">可支援的操作方法<a class="header-anchor" href="#可支援的操作方法-8"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>m[k]</code></td>
+<td>存取鍵值 k 對應的 value，若不存在則插入預設值</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>m.size()</code></td>
+<td>取得元素數量</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>m.empty()</code></td>
+<td>判斷是否為空</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>m.insert(pair&lt;K,T&gt; p)</code></td>
+<td>插入鍵值對 p，若 key 已存在則不修改 value；回傳 pair（first=迭代器，second=是否插入成功）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>m.erase(k)</code></td>
+<td>刪除 key 為 k 的元素，回傳刪除數量（0 或 1）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>m.erase(it)</code></td>
+<td>刪除迭代器指向的元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>m.erase(it_first, it_last)</code></td>
+<td>刪除區間 <code>[first,last)</code> 的元素</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k \log n)</annotation></semantics></math></span>，k=刪除數量</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>m.find(k)</code></td>
+<td>查找 key=k，回傳指向元素的迭代器，找不到回傳 <code>m.end()</code></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>m.count(k)</code></td>
+<td>回傳 key=k 的元素數量（map 中 0 或 1）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>m.lower_bound(k)</code></td>
+<td>回傳第一個 key &gt;= k 的元素迭代器</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>m.upper_bound(k)</code></td>
+<td>回傳第一個 key &gt; k 的元素迭代器</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>m.clear()</code></td>
+<td>清空 map</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用基本操作-code-11">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-11"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>, string&gt; m;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 讀取指定 key 的 value</span></span><br><span class="line">cout &lt;&lt; m[<span class="number">1</span>] &lt;&lt; <span class="string">&quot;\n&quot;</span>;        <span class="comment">// output: one</span></span><br><span class="line">cout &lt;&lt; m[<span class="number">2</span>] &lt;&lt; <span class="string">&quot;\n&quot;</span>;        <span class="comment">// output: two</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入元素</span></span><br><span class="line">m[<span class="number">1</span>] = <span class="string">&quot;one&quot;</span>;                <span class="comment">// 使用 operator[]</span></span><br><span class="line">m.<span class="built_in">insert</span>(&#123;<span class="number">2</span>, <span class="string">&quot;two&quot;</span>&#125;);        <span class="comment">// 使用 insert</span></span><br><span class="line">m.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(<span class="number">3</span>, <span class="string">&quot;three&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刪除元素</span></span><br><span class="line">m.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br><span class="line">m.<span class="built_in">erase</span>(m.<span class="built_in">begin</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查詢 key 是否存在</span></span><br><span class="line"><span class="keyword">if</span>(m.<span class="built_in">find</span>(<span class="number">3</span>) != m.<span class="built_in">end</span>()) cout &lt;&lt; <span class="string">&quot;3 in map\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍歷 map</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;p : m) cout &lt;&lt; p.first &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; p.second &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="multiset-多重集合-multimap-多重映射">multiset 多重集合 &amp; multimap 多重映射<a class="header-anchor" href="#multiset-多重集合-multimap-多重映射"> 🔗</a></h2>
+<p>兩者為 <code>set</code>、<code>map</code> 的延伸，用法相似但<strong>允許有重複元素</strong>，且 <code>multimap</code> 中一個鍵值可能對應到不同的值，所以<strong>不支援下標</strong></p>
+<h3 id="示意圖-7">示意圖<a class="header-anchor" href="#示意圖-7"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/SJrLqACwa.png" alt="multiset 示意圖"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.ccplusplus.com/2014/01/std-set-example-c.html">圖片來源</a>)</p>
+<h2 id="unordered-set-無序集合-unordered-map-無序映射">unordered_set 無序集合 &amp; unordered_map 無序映射<a class="header-anchor" href="#unordered-set-無序集合-unordered-map-無序映射"> 🔗</a></h2>
+<p>兩者為 <code>set</code>、<code>map</code> 的延伸，用法相似但因為底層使用 <code>雜湊表 Hash Table</code> 實作，所以<strong>內部不排序</strong><br>
+因為無序，所以當然沒有 <code>lower_bound()</code>、<code>upper_bound()</code>，<code>unordered_map</code> 支援下標<br>
+插入/刪除/查詢的時間複雜度平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span>，最壞 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>（Hash 碰撞）<br>
+常數較大，競賽中非必要時不常用</p>
+<h3 id="示意圖-8">示意圖<a class="header-anchor" href="#示意圖-8"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/Hy_gSk1uT.png" alt="image"></p>
+<p>(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://conglang.github.io/2015/01/01/stl-unordered-container/">圖片來源</a>)</p>
+<h3 id="延伸閱讀-3">延伸閱讀<a class="header-anchor" href="#延伸閱讀-3"> 🔗</a></h3>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/articles/10268077?sc=iThelpR">資料結構 - 雜湊表 Hash Table</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/@ralph-tech/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E9%9B%9C%E6%B9%8A%E8%A1%A8-hash-table-15f490f8ede6">雜湊表（Hash Table）- 拉爾夫的技術隨筆</a><br>
+示意圖(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://conglang.github.io/2015/01/01/stl-unordered-container/">圖片來源</a>)<br>
+<img src="https://hackmd.io/_uploads/Hk_j4ykda.png" alt="image"></li>
+</ul>
+<h2 id="unordered-multiset-無序多重集合-unordered-multimap-無序多重映射">unordered_multiset 無序多重集合 &amp; unordered_multimap 無序多重映射<a class="header-anchor" href="#unordered-multiset-無序多重集合-unordered-multimap-無序多重映射"> 🔗</a></h2>
+<p>依名稱即可知道為前兩者的結合，<strong>內部不排序且可允許重複元素</strong></p>
+<h3 id="set-map-延伸容器對照表">set / map 延伸容器對照表<a class="header-anchor" href="#set-map-延伸容器對照表"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>容器</th>
+<th>是否排序</th>
+<th>是否允許重複</th>
+<th>下標支援</th>
+<th>插入/刪除/查找平均時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>map</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>multiset</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>multimap</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>unordered_set</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>unordered_map</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>unordered_multiset</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>unordered_multimap</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>平均 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bitset-位集">bitset 位集<a class="header-anchor" href="#bitset-位集"> 🔗</a></h2>
+<p><code>bitset</code> 為固定長度的位元集合，可以視為一個<strong>效率很快的 bool 陣列</strong><br>
+因為 <code>bool</code> 這個型別明明只能表示 <code>true</code> 或 <code>false</code>，但通常卻佔了 <code>1 byte</code> 的記憶體空間<br>
+用 <code>bitset</code> 可以<strong>宣告固定長度的 bits</strong>，可以想像為一堆 0 和 1 的陣列<br>
+並且 <code>bitset</code> 的<strong>位元運算</strong>是被優化過的，對常數優化及空間壓縮有不錯的效果，速度大約是 <strong>bool 的 32 倍</strong></p>
+<h3 id="可支援的操作函數">可支援的操作函數<a class="header-anchor" href="#可支援的操作函數"> 🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>操作方法</th>
+<th>功能介紹</th>
+<th>時間複雜度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>b[i]</code></td>
+<td>存取第 i 位</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>b.size()</code></td>
+<td>回傳 b 的總位數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>b.count()</code></td>
+<td>計算 b 中為 1 的位數</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>b.set()</code></td>
+<td>將所有位元設為 1</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>b.reset()</code></td>
+<td>將所有位元設為 0</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>b.flip()</code></td>
+<td>將所有位元取反（0 ↔ 1）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>b.any()</code> / <code>b.none()</code></td>
+<td>檢查是否有至少一個位元為 1 / 全部為 0</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>b.to_string()</code></td>
+<td>將 bitset 轉為字串</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>b.to_ulong()</code></td>
+<td>將 bitset 轉為 unsigned long（注意溢位）</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用基本操作-code-12">常用基本操作 Code<a class="header-anchor" href="#常用基本操作-code-12"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告</span></span><br><span class="line">bitset&lt;5&gt; b; <span class="comment">// 大小為 5，初始值 00000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 賦值</span></span><br><span class="line">b[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// 00001 以右邊為低位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 設置</span></span><br><span class="line">b.<span class="built_in">set</span>();	<span class="comment">// 11111</span></span><br><span class="line">b.<span class="built_in">reset</span>();  <span class="comment">// 00000</span></span><br><span class="line">b.<span class="built_in">flip</span>();   <span class="comment">// 11111</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 計數與檢查</span></span><br><span class="line">cout &lt;&lt; b.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 5</span></span><br><span class="line">cout &lt;&lt; b.<span class="built_in">any</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;   <span class="comment">// 1 (true)</span></span><br><span class="line">cout &lt;&lt; b.<span class="built_in">none</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;  <span class="comment">// 0 (false)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉換</span></span><br><span class="line">cout &lt;&lt; b.<span class="built_in">to_string</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;  <span class="comment">// &quot;11111&quot;</span></span><br><span class="line">cout &lt;&lt; b.<span class="built_in">to_ulong</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;   <span class="comment">// 31</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 位元運算</span></span><br><span class="line"><span class="function">bitset&lt;5&gt; <span class="title">a</span><span class="params">(<span class="string">&quot;10101&quot;</span>)</span>, <span class="title">b</span><span class="params">(<span class="string">&quot;01110&quot;</span>)</span></span>;</span><br><span class="line">cout &lt;&lt; (a &amp; b) &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 00100</span></span><br><span class="line">cout &lt;&lt; (a | b) &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 11111</span></span><br><span class="line">cout &lt;&lt; (a ^ b) &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// 11011</span></span><br></pre></td></tr></table></figure>
+<h3 id="常見應用-5">常見應用<a class="header-anchor" href="#常見應用-5"> 🔗</a></h3>
+<ul>
+<li>空間優化</li>
+<li>狀態壓縮 DP</li>
+</ul>
+<hr>
+<h1 id="容器分類表格">容器分類表格<a class="header-anchor" href="#容器分類表格"> 🔗</a></h1>
+<table>
+<thead>
+<tr>
+<th>類別分類</th>
+<th>主要容器</th>
+<th>用途 / 特點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>序列式容器</strong></td>
+<td><code>vector</code>, <code>deque</code>, <code>list</code></td>
+<td>存放有序元素，支援迭代器操作；<code>vector</code> 隨機存取快，<code>deque</code> 前後操作靈活，<code>list</code> 雙向鏈結串列，插入刪除快</td>
+</tr>
+<tr>
+<td><strong>容器適配器</strong></td>
+<td><code>stack</code>, <code>queue</code>, <code>priority_queue</code></td>
+<td>封裝序列式容器，提供特定操作：<code>stack</code>（後進先出）、<code>queue</code>（先進先出）、<code>priority_queue</code>（依優先權排序）</td>
+</tr>
+<tr>
+<td><strong>關聯容器</strong></td>
+<td><code>set</code>, <code>map</code>, <code>multiset</code>, <code>multimap</code></td>
+<td>自動排序，快速查找、插入、刪除；<code>set</code> 存唯一元素，<code>map</code> 存 key-value；<code>multiset</code>/<code>multimap</code> 允許重複</td>
+</tr>
+<tr>
+<td><strong>無序容器</strong></td>
+<td><code>unordered_set</code>, <code>unordered_map</code>, <code>unordered_multiset</code>, <code>unordered_multimap</code></td>
+<td>基於 Hash 表，平均 O(1) 查找、插入；最壞情況 O(n)；元素無序</td>
+</tr>
+<tr>
+<td><strong>工具型容器</strong></td>
+<td><code>pair</code>, <code>tuple</code>, <code>bitset</code></td>
+<td>儲存固定數量元素或位元資訊；<code>pair</code> 兩個元素，<code>tuple</code> 多個元素，<code>bitset</code> 二進位操作與狀態壓縮</td>
+</tr>
+</tbody>
+</table>
+<h1 id="題單">題單<a class="header-anchor" href="#題單"> 🔗</a></h1>
+<p>看完這篇筆記相信大家對 STL 有一定的瞭解了，不過還是要實際練習才能掌握，所以我把曾經寫過的題目整理成資料庫，來自各大 Online Judge，有依照不同的難度及不同資料結構分類好，歡迎大家自行運用，多練習才能讓你更加熟練。</p>
+<h2 id="stl-題單連結-notion"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shiyu0318.notion.site/C-STL-ShiYu-s-Blog-c2ed8c6b22fb4118bab30b62dbad5299?pvs=4">STL 題單連結 - Notion</a><a class="header-anchor" href="#stl-題單連結-notion"> 🔗</a></h2>
+<hr>
+<h1 id="outro">Outro<a class="header-anchor" href="#outro"> 🔗</a></h1>
+<p>這篇文章只用了兩天的時間，從收集資料、整理資訊、規劃架構，再來開始寫每個資料結構的內容，製作表格、寫 Code、找圖片（每張圖片皆有附上來源）、找補充資料，到最後不斷地重複新增和修改內容，直到整篇文章逐漸完整，我從中學習到的不只有這篇文章所呈現的知識，還有很多重要的能力，也感受到了學習的快樂，日後會不斷地學習新知識，也會針對各主題寫成一篇筆記發佈，感謝大家的閱讀</p>
+<h2 id="下回預告：-swig￼12-c-實作資料結構">下回預告：<a class="btn-beautify blue" href="/post/Data-Structures/" title="點擊前往"><i class="fa-solid fa-hand-point-right"></i><span>點擊前往</span></a> C++ 實作資料結構<a class="header-anchor" href="#下回預告：-swig￼12-c-實作資料結構"> 🔗</a></h2>
+<hr>
+<h1 id="參考資料">參考資料<a class="header-anchor" href="#參考資料"> 🔗</a></h1>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.geeksforgeeks.org/the-c-standard-template-library-stl/">The C++ Standard Template Library (STL)<br>
+</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://emanlaicepsa.github.io/2020/11/30/0-16/">從零開始的演算法競賽入門教學 - STL</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hackmd.io/@konchin/BkGVGVd9I">Ian Shih - STL Containers - HackMD</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/0voice/cpp_backend_awsome_blog/blob/main/%E3%80%90NO.19%E3%80%91C++%E4%B8%ADSTL%E7%94%A8%E6%B3%95%E8%B6%85%E8%AF%A6%E7%BB%86%E6%80%BB%E7%BB%93%EF%BC%88%E6%94%B6%E8%97%8F%E7%BA%A7%EF%BC%89.md">C++ 中 STL 用法超詳細總結 - Github</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hackmd.io/@Greenleaf/advanced_cpp">進階 C++ STL 迭代器 - HackMD</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/zygood_/article/details/122457444">C++ STL 常用容器以及操作簡介</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://jasonblog.github.io/note/c++/c++_stl_xue_xi_zong_7d5028_quan_976229.html">C++ STL 學習總結(全面)</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://youtube.com/playlist?list=PLk6CEY9XxSIA-xo3HRYC3M0Aitzdut7AA&amp;si=q5I7ppldSRGBKsKq">STL in C++ - Youtube</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://cplusplus.com/reference/">cplusplus reference</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.cppreference.com/w/">cppreference</a></li>
+</ul>
+<hr>
+<a class="btn-beautify blue block center larger" href="/post/Sitemap/" title="回到導覽頁面"><i class="far fa-hand-point-right"></i><span>回到導覽頁面</span></a>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://4yu.dev/">ShiYu Huang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://4yu.dev/post/STL/">https://4yu.dev/post/STL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://4yu.dev" target="_blank">4yu Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B-Data-Structures/">資料結構 Data Structures</a><a class="post-meta__tags" href="/tags/%E5%8B%95%E6%85%8B%E9%99%A3%E5%88%97-vector/">動態陣列 vector</a><a class="post-meta__tags" href="/tags/%E4%B8%B2%E5%88%97-list/">串列 list</a><a class="post-meta__tags" href="/tags/%E5%AD%97%E4%B8%B2-string/">字串 string</a><a class="post-meta__tags" href="/tags/%E6%95%B8%E5%B0%8D-pair/">數對 pair</a><a class="post-meta__tags" href="/tags/%E6%95%B8%E7%B5%84-tuple/">數組 tuple</a><a class="post-meta__tags" href="/tags/%E5%A0%86%E7%96%8A-stack/">堆疊 stack</a><a class="post-meta__tags" href="/tags/%E4%BD%87%E5%88%97-queue/">佇列 queue</a><a class="post-meta__tags" href="/tags/%E9%9B%99%E7%AB%AF%E4%BD%87%E5%88%97-deque/">雙端佇列 deque</a><a class="post-meta__tags" href="/tags/%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97-priority-queue/">優先佇列 priority_queue</a><a class="post-meta__tags" href="/tags/%E9%9B%86%E5%90%88-set/">集合 set</a><a class="post-meta__tags" href="/tags/%E6%98%A0%E5%B0%84-map/">映射 map</a><a class="post-meta__tags" href="/tags/%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88-multiset/">多重集合 multiset</a><a class="post-meta__tags" href="/tags/%E5%A4%9A%E9%87%8D%E6%98%A0%E5%B0%84-multimap/">多重映射 multimap</a><a class="post-meta__tags" href="/tags/%E7%84%A1%E5%BA%8F%E9%9B%86%E5%90%88-unordered-set/">無序集合 unordered_set</a><a class="post-meta__tags" href="/tags/%E7%84%A1%E5%BA%8F%E6%98%A0%E5%B0%84-unordered-map/">無序映射 unordered_map</a><a class="post-meta__tags" href="/tags/%E4%BD%8D%E9%9B%86-bitset/">位集 bitset</a></div><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_copy_link"></a><a class="a2a_button_email"></a><a class="a2a_button_facebook"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_line"></a><a class="a2a_button_whatsapp"></a><a class="a2a_button_threads"></a><a class="a2a_button_x"></a><a class="a2a_button_google_classroom"></a><a class="a2a_button_blogger"></a><a class="a2a_button_google_gmail"></a><a class="a2a_dd" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/Neural-Network/" title="訓練神經網路計算過程"><img class="cover" src="/img/AI-computer.webp" onerror="onerror=null;src='/img/loading.gif'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">訓練神經網路計算過程</div></div><div class="info-2"><div class="info-item-1">這是一個具有一層隱藏層的神經網路：  假設 🔗  輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：  X=[1202−32−1−13],Y=[12−3]    X =          \begin{bmatrix}             1 &amp; 2 &amp; 0   \\             2 &amp; -3 &amp; 2  \\             -1 &amp; -1 &amp; 3 \\         \end{bmatrix},     Y =          \begin{bmatrix}             1  \\             2  \\             -3 \\         \end{bmatrix}  W1=[−10−111−1]    W_1 =          \begin{bmatrix}             -1 &amp; 0 \\             -1 &amp; 1 \\             1 &amp; -1 \\         \end{bmatrix}   隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1， 經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z) 另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0) 輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2  W2=[1−2]    W_2 =          \begin{bmatrix}             1  \\             -2 \\         \end{bmatrix}   將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失  J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2)   此時，已知輸出層梯度： Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y   隱藏層梯度：  G2=∂J∂W2=∂J∂O∂O∂W...</div></div></div></a><a class="pagination-related" href="/post/AI/" title="AI 概論與 ML 實作入門"><img class="cover" src="/img/ai-note.webp" onerror="onerror=null;src='/img/loading.gif'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">AI 概論與 ML 實作入門</div></div><div class="info-2"><div class="info-item-1"> 本篇文章連結：https://4yu.dev/post/AI  目前尚未整理成筆記文章，僅有簡報版本，可搭配課程錄影觀看。 課程簡報 🔗 https://slides.com/shiyu/ai 🔗 課程錄影 🔗 https://www.youtube.com/watch?v=IMVLUpGYMjA 🔗     回到導覽頁面  </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/post/Data-Structures/" title="資料結構 進階實作（C++）"><img class="cover" src="/img/data_structure_advan.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-01</div><div class="info-item-2">資料結構 進階實作（C++）</div></div><div class="info-2"><div class="info-item-1">本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗  本篇文章連結：https://4yu.dev/post/Data-Structures/  Intro 🔗 此篇文章使用 C++ 來實作各種從基礎到進階的資料結構 可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續 STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作 內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改  實作資料結構 🔗 本篇包含以下資料結構的實作  前綴和 &amp; 差分數列 樹狀數組 BIT 稀疏表 Sparse Table 線段樹 Segment Tree 鏈結串列 Linked-list 並查集 DSU 二元搜尋樹 BST 樹堆 Treap 伸展樹 Splay Tree 字典樹 Trie rope pbds   前綴和 &amp; 差分數列 🔗 本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧 前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值  建出前綴和數列 🔗 123456789101112131415#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;  注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0  Input 🔗 1251 2 3 4 5 Output 🔗 10 1 3 6 10 15  快速查詢區間和 🔗 要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加 12int sum = 0;for(int i=l;i&lt;...</div></div></div></a><a class="pagination-related" href="/post/Sort-Algorithm/" title="排序演算法 Sort Algorithm"><img class="cover" src="/img/Sort_cover.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-25</div><div class="info-item-2">排序演算法 Sort Algorithm</div></div><div class="info-2"><div class="info-item-1"> 本篇文章連結：https://4yu.dev/post/Sort-Algorithm/ 公開發布日期：2023/02/25   本文架構 🔗 線性排序演算法種類 🔗  氣泡排序 Bubble Sort 選擇排序 Selection Sort 插入排序 Insertion Sort 快速排序 Quick Sort 合併排序 Merge Sort 堆排序 Heap Sort 希爾排序 Shell Sort 計數排序 Counting Sort 桶排序 Bucket Sort 基數排序 Radix Sort  每個排序演算法的內容 🔗  排序介紹 動畫演示 實作步驟 C++ 程式碼 注意事項 時間複雜度 總結  測試模板 🔗 本文介紹的 10 種排序演算法都會附上寫好的函式，這裡提供可 EOF 輸入的測試模版，請在區塊中加上各種排序演算法函式，若沒有指定呼叫方法則直接呼叫函式名稱即可運作 123456789101112131415161718192021222324252627#include &lt;bits/stdc++.h&gt;using namespace std;vector&lt;int&gt; v;// 可以將底下的某個排序演算法函式複製起來放進來這個區塊// ----------------------------------------------// ----------------------------------------------int main(void)&#123;    int n;    while (cin &gt;&gt; n) v.emplace_back(n);    // 這行放入某個排序演算法函式名稱用來呼叫 例如：BubbleSort();    // ------------------------------------------    // ------------------------------------------        for (auto &amp;i : v) cout &lt;&lt; v[i] &lt;&lt; &quot; &quot;;    return 0;&#125;  排序演算法的詳細介紹 🔗 氣泡排序 Bubble Sort 🔗 氣泡排序是一種簡單的...</div></div></div></a><a class="pagination-related" href="/post/NHSPC/" title="資訊學科能力競賽 參賽心得"><img class="cover" src="/img/NHSPC.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-03</div><div class="info-item-2">資訊學科能力競賽 參賽心得</div></div><div class="info-2"><div class="info-item-1">競賽資訊 🔗  名稱：112 學年度學科能力競賽 複賽 資訊科 賽區：國教署負責區第四區（台南） 時間：2023/11/2 地點：台南女中 比賽人數：50 人（資訊科） 獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作 當天詳細時程：   前言 🔗 這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽 南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了 南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的 我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說 此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討 純粹記錄自己這個時候有多菜 讓自己幾年後可以回顧一下 如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了 因為對你來說可能是一篇廢文 沒什麼參考價值 上午場 🔗 報到抽籤後 發現只有我們學校沒有領隊… 到了我們學校的座位 被排在最後一排 我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈  我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的 可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃 到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說 來寫一下解題過程 p1 🔗 第 1 題明顯滿難的 我看到就先跳過了 p2 🔗  題意  12有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數  Input  12321126  Output  12413  解題想法  1233 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code  AC Code  123456789101112131415161718192021222324252627#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#intro"><span class="toc-number">1.</span> <span class="toc-text">Intro 🔗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%88%E5%82%99%E7%9F%A5%E8%AD%98"><span class="toc-number">2.</span> <span class="toc-text">先備知識 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%A6%E8%99%9F%E8%A7%A3%E9%87%8B"><span class="toc-number">2.1.</span> <span class="toc-text">符號解釋 🔗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88iterator%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">迭代器（iterator） 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E7%9A%84%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9"><span class="toc-number">3.</span> <span class="toc-text">資料結構的詳細介紹 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vector-%E5%8B%95%E6%85%8B%E9%99%A3%E5%88%97"><span class="toc-number">3.1.</span> <span class="toc-text">vector 動態陣列 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%BC%94%E7%AE%97%E6%B3%95%E5%87%BD%E6%95%B8"><span class="toc-number">3.1.2.</span> <span class="toc-text">可支援的演算法函數 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%9C%E5%85%85"><span class="toc-number">3.1.4.</span> <span class="toc-text">補充 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list-%E4%B8%B2%E5%88%97"><span class="toc-number">3.2.</span> <span class="toc-text">list 串列 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string-%E5%AD%97%E4%B8%B2"><span class="toc-number">3.3.</span> <span class="toc-text">string 字串 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-3"><span class="toc-number">3.3.2.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pair-%E6%95%B8%E5%B0%8D"><span class="toc-number">3.4.</span> <span class="toc-text">pair 數對 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-4"><span class="toc-number">3.4.1.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-%E6%95%B8%E7%B5%84"><span class="toc-number">3.5.</span> <span class="toc-text">tuple 數組 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-5"><span class="toc-number">3.5.1.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stack-%E5%A0%86%E7%96%8A"><span class="toc-number">3.6.</span> <span class="toc-text">stack 堆疊 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-3"><span class="toc-number">3.6.1.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96"><span class="toc-number">3.6.2.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-6"><span class="toc-number">3.6.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8"><span class="toc-number">3.6.4.</span> <span class="toc-text">常見應用 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#queue-%E4%BD%87%E5%88%97"><span class="toc-number">3.7.</span> <span class="toc-text">queue 佇列 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-4"><span class="toc-number">3.7.1.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-2"><span class="toc-number">3.7.2.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-7"><span class="toc-number">3.7.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8-2"><span class="toc-number">3.7.4.</span> <span class="toc-text">常見應用 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deque-%E9%9B%99%E7%AB%AF%E4%BD%87%E5%88%97"><span class="toc-number">3.8.</span> <span class="toc-text">deque 雙端佇列 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-3"><span class="toc-number">3.8.1.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-5"><span class="toc-number">3.8.2.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-8"><span class="toc-number">3.8.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8-3"><span class="toc-number">3.8.4.</span> <span class="toc-text">常見應用 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#priority-queue-%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97"><span class="toc-number">3.9.</span> <span class="toc-text">priority_queue 優先佇列 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-4"><span class="toc-number">3.9.1.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-6"><span class="toc-number">3.9.2.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-9"><span class="toc-number">3.9.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-2"><span class="toc-number">3.9.4.</span> <span class="toc-text">補充 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80"><span class="toc-number">3.9.5.</span> <span class="toc-text">延伸閱讀 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8-4"><span class="toc-number">3.9.6.</span> <span class="toc-text">常見應用 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-%E9%9B%86%E5%90%88"><span class="toc-number">3.10.</span> <span class="toc-text">set 集合 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-5"><span class="toc-number">3.10.1.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-7"><span class="toc-number">3.10.2.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-10"><span class="toc-number">3.10.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80-2"><span class="toc-number">3.10.4.</span> <span class="toc-text">延伸閱讀 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-%E6%98%A0%E5%B0%84"><span class="toc-number">3.11.</span> <span class="toc-text">map 映射 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-6"><span class="toc-number">3.11.1.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95-8"><span class="toc-number">3.11.2.</span> <span class="toc-text">可支援的操作方法 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-11"><span class="toc-number">3.11.3.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiset-%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88-multimap-%E5%A4%9A%E9%87%8D%E6%98%A0%E5%B0%84"><span class="toc-number">3.12.</span> <span class="toc-text">multiset 多重集合 &amp; multimap 多重映射 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-7"><span class="toc-number">3.12.1.</span> <span class="toc-text">示意圖 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unordered-set-%E7%84%A1%E5%BA%8F%E9%9B%86%E5%90%88-unordered-map-%E7%84%A1%E5%BA%8F%E6%98%A0%E5%B0%84"><span class="toc-number">3.13.</span> <span class="toc-text">unordered_set 無序集合 &amp; unordered_map 無序映射 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9C%96-8"><span class="toc-number">3.13.1.</span> <span class="toc-text">示意圖 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%96%B1%E8%AE%80-3"><span class="toc-number">3.13.2.</span> <span class="toc-text">延伸閱讀 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unordered-multiset-%E7%84%A1%E5%BA%8F%E5%A4%9A%E9%87%8D%E9%9B%86%E5%90%88-unordered-multimap-%E7%84%A1%E5%BA%8F%E5%A4%9A%E9%87%8D%E6%98%A0%E5%B0%84"><span class="toc-number">3.14.</span> <span class="toc-text">unordered_multiset 無序多重集合 &amp; unordered_multimap 無序多重映射 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set-map-%E5%BB%B6%E4%BC%B8%E5%AE%B9%E5%99%A8%E5%B0%8D%E7%85%A7%E8%A1%A8"><span class="toc-number">3.14.1.</span> <span class="toc-text">set &#x2F; map 延伸容器對照表 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bitset-%E4%BD%8D%E9%9B%86"><span class="toc-number">3.15.</span> <span class="toc-text">bitset 位集 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%94%AF%E6%8F%B4%E7%9A%84%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B8"><span class="toc-number">3.15.1.</span> <span class="toc-text">可支援的操作函數 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-code-12"><span class="toc-number">3.15.2.</span> <span class="toc-text">常用基本操作 Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8-5"><span class="toc-number">3.15.3.</span> <span class="toc-text">常見應用 🔗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%88%86%E9%A1%9E%E8%A1%A8%E6%A0%BC"><span class="toc-number">4.</span> <span class="toc-text">容器分類表格 🔗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%8C%E5%96%AE"><span class="toc-number">5.</span> <span class="toc-text">題單 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#stl-%E9%A1%8C%E5%96%AE%E9%80%A3%E7%B5%90-notion"><span class="toc-number">5.1.</span> <span class="toc-text">STL 題單連結 - Notion 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#outro"><span class="toc-number">6.</span> <span class="toc-text">Outro 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E5%9B%9E%E9%A0%90%E5%91%8A%EF%BC%9A-swig%EF%BF%BC12-c-%E5%AF%A6%E4%BD%9C%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="toc-number">6.1.</span> <span class="toc-text">下回預告：點擊前往 C++ 實作資料結構 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-number">7.</span> <span class="toc-text">參考資料 🔗</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/data_structure_basic.webp);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2022 - 2026 By ShiYu Huang</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.1</a></span></div><div class="footer_custom_text">Hope you can learn something from this <a href="https://4yu.dev/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天" style="display:none"><i class="fas fa-message"></i></button><a id="to_comment" href="#post-comment" title="前往評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: '00b71ed70ef8fddbb291',
+      clientSecret: 'c65b4a8a79a864a01f9ebf89991c6dab6ab50102',
+      repo: 'ShiYu0318.github.io',
+      owner: 'ShiYu0318',
+      admin: ['ShiYu0318'],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || '1df47023a74044a8d96e90f28f185ebd'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[圖片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[連結]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[程式碼]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[程式碼]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '尚無評論'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'github-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const findTrueUrl = (array, ele) => {
+    Promise.all(array.map(item =>
+      fetch(item.url).then(resp => resp.json()).then(data => {
+        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+        if (!Array.isArray(urlArray) || urlArray.length === 0) {
+          urlArray = [`${data.html_url}`]
+        }
+        if (data.user.login === 'utterances-bot') {
+          return urlArray.pop()
+        } else {
+          return urlArray.shift()
+        }
+      })
+    )).then(res => {
+        array = array.map((i,index)=> {
+          return {
+            ...i,
+            url: res[index]
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(array), 30/(60*24))
+        generateHtml(array, ele)
+    });
+  }
+
+  const getComment = ele => {
+    fetch('https://api.github.com/repos/ShiYu0318/ShiYu0318.github.io/issues/comments?sort=updated&direction=desc&per_page=10&page=1',{
+      "headers": {
+        Accept: 'application/vnd.github.v3.html+json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const githubArray = data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.issue_url,
+            'date': item.updated_at
+          }
+        })
+        findTrueUrl(githubArray, ele)
+      }).catch(e => {
+        console.error(e)
+        ele.textContent= "無法獲取評論，請確認相關配置是否正確"
+      })
+  }
+  run(keyName, getComment)
+})</script><div class="aplayer no-destroy" data-id="7218222301" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-theme="#2828FF" data-loop="none" data-order="random" data-mini="true" data-mutex="true" data-volume="1.0"> </div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  window.ChatraID = 'NxXNSWTTNGbjfwQGi'
+  window.Chatra = window.Chatra || function() {
+    (window.Chatra.q = window.Chatra.q || []).push(arguments)
+  }
+
+  btf.getScript('https://call.chatra.io/chatra.js').then(() => {
+    const isChatBtn = true
+    const isChatHideShow = false
+
+    if (isChatBtn) {
+      const close = () => {
+        Chatra('minimizeWidget')
+        Chatra('hide')
+      }
+
+      const open = () => {
+        Chatra('openChat', true)
+        Chatra('show')
+      }
+
+      window.ChatraSetup = { startHidden: true }
+    
+      window.chatBtnFn = () => document.getElementById('chatra').classList.contains('chatra--expanded') ? close() : open()
+
+      document.getElementById('chat-btn').style.display = 'block'
+    } else if (isChatHideShow) {
+      window.chatBtn = {
+        hide: () => Chatra('hide'),
+        show: () => Chatra('show')
+      }
+    }
+  })
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: true,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

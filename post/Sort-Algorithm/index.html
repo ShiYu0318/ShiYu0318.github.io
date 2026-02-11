@@ -1,0 +1,1251 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>排序演算法 Sort Algorithm | 4yu Blog</title><meta name="author" content="ShiYu Huang"><meta name="copyright" content="ShiYu Huang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="本篇文章連結：https:&#x2F;&#x2F;4yu.dev&#x2F;post&#x2F;Sort-Algorithm&#x2F; 公開發布日期：2023&#x2F;02&#x2F;25   本文架構 🔗 線性排序演算法種類 🔗  氣泡排序 Bubble Sort 選擇排序 Selection Sort 插入排序 Insertion Sort 快速排序 Quick Sort 合併排序 Merge Sort 堆排序 Heap Sort 希爾排序 Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序演算法 Sort Algorithm">
+<meta property="og:url" content="https://4yu.dev/post/Sort-Algorithm/index.html">
+<meta property="og:site_name" content="4yu Blog">
+<meta property="og:description" content="本篇文章連結：https:&#x2F;&#x2F;4yu.dev&#x2F;post&#x2F;Sort-Algorithm&#x2F; 公開發布日期：2023&#x2F;02&#x2F;25   本文架構 🔗 線性排序演算法種類 🔗  氣泡排序 Bubble Sort 選擇排序 Selection Sort 插入排序 Insertion Sort 快速排序 Quick Sort 合併排序 Merge Sort 堆排序 Heap Sort 希爾排序 Shell">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://4yu.dev/img/Sort_cover.webp">
+<meta property="article:published_time" content="2023-02-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-05T14:03:29.677Z">
+<meta property="article:author" content="ShiYu Huang">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="實作">
+<meta property="article:tag" content="時間 &amp; 空間複雜度">
+<meta property="article:tag" content="排序演算法 Sort Algorithm">
+<meta property="article:tag" content="氣泡排序 Bubble Sort">
+<meta property="article:tag" content="選擇排序 Selection Sort">
+<meta property="article:tag" content="插入排序 Insertion Sort">
+<meta property="article:tag" content="合併排序 Merge Sort">
+<meta property="article:tag" content="快速排序 Quick Sort">
+<meta property="article:tag" content="堆積排序 Heap Sort">
+<meta property="article:tag" content="希爾排序 Shell Sort">
+<meta property="article:tag" content="計數排序 Counting Sort">
+<meta property="article:tag" content="桶排序 Bucket Sort">
+<meta property="article:tag" content="基數排序 Radix Sort">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://4yu.dev/img/Sort_cover.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "排序演算法 Sort Algorithm",
+  "url": "https://4yu.dev/post/Sort-Algorithm/",
+  "image": "https://4yu.dev/img/Sort_cover.webp",
+  "datePublished": "2023-02-24T16:00:00.000Z",
+  "dateModified": "2026-02-05T14:03:29.677Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ShiYu Huang",
+      "url": "https://4yu.dev/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/4yublog.png"><link rel="canonical" href="https://4yu.dev/post/Sort-Algorithm/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=6506400853"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', '6506400853')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', '6506400853', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: ShiYu Huang","link":"連結: ","source":"來源: 4yu Blog","info":"著作權歸作者所有。如需商業轉載，請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切換為繁體中文","cht_to_chs":"已切換為簡體中文","day_to_night":"已切換為深色模式","night_to_day":"已切換為淺色模式","bgLight":"#222297","bgDark":"#222297","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '排序演算法 Sort Algorithm',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">載入中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/loading.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">160</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/Sort_cover.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/4yublog.png" alt="Logo"><span class="site-name">4yu Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">排序演算法 Sort Algorithm</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-file-lines"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 連結</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa-solid fa-headphones"></i><span> 音樂</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">排序演算法 Sort Algorithm</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-02-24T16:00:00.000Z" title="發表於 2023-02-25 00:00:00">2023-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2026-02-05T14:03:29.677Z" title="更新於 2026-02-05 22:03:29">2026-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AD%86%E8%A8%98/DSA/">DSA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">總字數:</span><span class="word-count">9.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時間:</span><span>32分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">瀏覽量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">評論數:</span><a href="/post/Sort-Algorithm/#post-comment"><span class="gitalk-comment-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>本篇文章連結：<a href="https://4yu.dev/post/Sort-Algorithm/">https://4yu.dev/post/Sort-Algorithm/</a><br>
+公開發布日期：2023/02/25</p>
+</blockquote>
+<hr>
+<h1 id="本文架構">本文架構<a class="header-anchor" href="#本文架構"> 🔗</a></h1>
+<h2 id="線性排序演算法種類">線性排序演算法種類<a class="header-anchor" href="#線性排序演算法種類"> 🔗</a></h2>
+<ol>
+<li>氣泡排序 Bubble Sort</li>
+<li>選擇排序 Selection Sort</li>
+<li>插入排序 Insertion Sort</li>
+<li>快速排序 Quick Sort</li>
+<li>合併排序 Merge Sort</li>
+<li>堆排序 Heap Sort</li>
+<li>希爾排序 Shell Sort</li>
+<li>計數排序 Counting Sort</li>
+<li>桶排序 Bucket Sort</li>
+<li>基數排序 Radix Sort</li>
+</ol>
+<h2 id="每個排序演算法的內容">每個排序演算法的內容<a class="header-anchor" href="#每個排序演算法的內容"> 🔗</a></h2>
+<ul>
+<li>排序介紹</li>
+<li>動畫演示</li>
+<li>實作步驟</li>
+<li>C++ 程式碼</li>
+<li>注意事項</li>
+<li>時間複雜度</li>
+<li>總結</li>
+</ul>
+<h2 id="測試模板">測試模板<a class="header-anchor" href="#測試模板"> 🔗</a></h2>
+<p>本文介紹的 10 種排序演算法都會附上寫好的函式，這裡提供可 EOF 輸入的測試模版，請在區塊中加上各種排序演算法函式，若沒有指定呼叫方法則直接呼叫函式名稱即可運作</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以將底下的某個排序演算法函式複製起來放進來這個區塊</span></span><br><span class="line"><span class="comment">// ----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ----------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n) v.<span class="built_in">emplace_back</span>(n);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 這行放入某個排序演算法函式名稱用來呼叫 例如：BubbleSort();</span></span><br><span class="line">    <span class="comment">// ------------------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ------------------------------------------</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : v) cout &lt;&lt; v[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="排序演算法的詳細介紹">排序演算法的詳細介紹<a class="header-anchor" href="#排序演算法的詳細介紹"> 🔗</a></h1>
+<h2 id="氣泡排序-bubble-sort">氣泡排序 Bubble Sort<a class="header-anchor" href="#氣泡排序-bubble-sort"> 🔗</a></h2>
+<p>氣泡排序是一種簡單的排序演算法，原理是依序比較相鄰的兩個元素，如果前一個元素大於後一個元素，就交換它們的位置，重複進行直到排序完成。<br>
+因為排序過程中較大的元素會像氣泡一樣慢慢浮到數列的右端，所以叫氣泡排序。</p>
+<h3 id="動畫演示">動畫演示<a class="header-anchor" href="#動畫演示"> 🔗</a></h3>
+<p><img src="https://hackmd.io/_uploads/HJMv3OadT.gif" alt="BubbleSort 動畫演示"></p>
+<h3 id="實作步驟">實作步驟<a class="header-anchor" href="#實作步驟"> 🔗</a></h3>
+<ol>
+<li>外層 for 迴圈控制待排序的數量，每一輪會減少一個，直到排序完成</li>
+<li>內層 for 迴圈表示每輪需要比較的次數</li>
+<li>如果前一個數大於後一個數，則使用 swap() 交換</li>
+</ol>
+<h3 id="c-code">C++ Code<a class="header-anchor" href="#c-code"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=n; i&gt;<span class="number">1</span>; --i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;i<span class="number">-1</span>; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (v[j] &gt; v[j<span class="number">+1</span>]) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">swap</span>(v[j],v[j<span class="number">+1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="優化">優化<a class="header-anchor" href="#優化"> 🔗</a></h3>
+<p>如果某輪沒有發生交換，就代表數列已經排好了可以提前結束，這樣可以減少後面發生不必要的比較</p>
+<h3 id="c-code-2">C++ Code<a class="header-anchor" href="#c-code-2"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=n; i&gt;<span class="number">1</span>; --i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">bool</span> check = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;i<span class="number">-1</span>; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (v[j] &gt; v[j<span class="number">+1</span>]) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">swap</span>(v[j],v[j<span class="number">+1</span>]);</span><br><span class="line">                check = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!check) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間複雜度">時間複雜度<a class="header-anchor" href="#時間複雜度"> 🔗</a></h3>
+<ul>
+<li>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>
+<blockquote>
+<p>每一輪排序都需要進行 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">n-i</annotation></semantics></math></span> 次比較，而最多需要進行 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span> 輪排序。<br>
+因此，總的比較次數為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mn>2</mn><mo>+</mo><mn>1</mn><mo>=</mo><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>−</mo><mi>n</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(n-1)+(n-2)+...+2+1=(n^2-n)/2</annotation></semantics></math></span><br>
+取最高次項所以時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結">總結<a class="header-anchor" href="#總結"> 🔗</a></h3>
+<p>氣泡排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序。</p>
+<h2 id="選擇排序-selection-sort">選擇排序 Selection Sort<a class="header-anchor" href="#選擇排序-selection-sort"> 🔗</a></h2>
+<p>選擇排序是一種簡單的排序演算法，它的原理是選擇最小的元素，與第一個元素交換位置，然後在剩下的元素中選擇最小的元素，與第二個元素交換位置，以此類推，重複直到排序完成。</p>
+<h3 id="動畫演示-2">動畫演示<a class="header-anchor" href="#動畫演示-2"> 🔗</a></h3>
+<p><img src="https://i.imgur.com/VGRenb7.gif" alt="Selection Sort 動畫演示"></p>
+<h3 id="實作步驟-2">實作步驟<a class="header-anchor" href="#實作步驟-2"> 🔗</a></h3>
+<ol>
+<li>外層 for 迴圈遍歷 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \to n-1</annotation></semantics></math></span> 個元素</li>
+<li>每輪設最小值為第 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span> 個元素</li>
+<li>內層迴圈從 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span> 開始往後遍歷到底，更新最小值位置</li>
+<li>交換第 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span> 個元素與最小值</li>
+</ol>
+<h3 id="c-code-3">C++ Code<a class="header-anchor" href="#c-code-3"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">SelectionSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mini = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=i; j&lt;n; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (v[j] &lt; v[mini])</span><br><span class="line">            &#123;</span><br><span class="line">                mini = j;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(v[i], v[mini]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間複雜度-2">時間複雜度<a class="header-anchor" href="#時間複雜度-2"> 🔗</a></h3>
+<ul>
+<li>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>
+<blockquote>
+<p>選擇排序的核心操作是選擇最小元素，將其與當前位置交換，而選擇最小元素需要在未排序的序列中進行線性搜索，因此需要執行 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span> 次循環和 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span> 次內層循環，時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-2">總結<a class="header-anchor" href="#總結-2"> 🔗</a></h3>
+<p>選擇排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序，且較不穩定，如當元素相等時，彼此順序還是會改變。</p>
+<h2 id="插入排序-insertion-sort">插入排序 Insertion Sort<a class="header-anchor" href="#插入排序-insertion-sort"> 🔗</a></h2>
+<p>將未排序的資料依次插入已排序序列中，形成新的已排序序列。</p>
+<h3 id="動畫演示-3">動畫演示<a class="header-anchor" href="#動畫演示-3"> 🔗</a></h3>
+<p><img src="https://i.imgur.com/5F2355M.gif" alt="Insertion Sort 動畫演示"></p>
+<h3 id="實作步驟-3">實作步驟<a class="header-anchor" href="#實作步驟-3"> 🔗</a></h3>
+<ol>
+<li>for 遍歷 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \to n-1</annotation></semantics></math></span> 個元素</li>
+<li>暫時取出 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">v[i]</annotation></semantics></math></span> 為待插入元素 設 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span> 為插入點 初始為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span></li>
+<li>用 while 迴圈開始由後往前掃描 確認在範圍內且待插入元素小於掃到的元素</li>
+<li>把掃過的元素往後面搬 且 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span> 遞減</li>
+<li>若碰到最前面了或是遇到比待插入元素還要大的就退出 while 迴圈</li>
+<li>將 插入點 設為待插入元素 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">v[i]</annotation></semantics></math></span></li>
+</ol>
+<h3 id="c-code-4">C++ Code<a class="header-anchor" href="#c-code-4"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">InsertSort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> temp = v[i], j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; temp &lt; v[j])</span><br><span class="line">        &#123;</span><br><span class="line">            v[j<span class="number">+1</span>] = v[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        v[j<span class="number">+1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事項">注意事項<a class="header-anchor" href="#注意事項"> 🔗</a></h3>
+<ul>
+<li>while 迴圈條件要設定邊界，插入點須 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge 0</annotation></semantics></math></span>。</li>
+</ul>
+<h3 id="時間複雜度-3">時間複雜度<a class="header-anchor" href="#時間複雜度-3"> 🔗</a></h3>
+<ul>
+<li>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>
+<blockquote>
+<p>要遍歷 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span> 個元素，每次要往前掃瞄並搬動元素</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-3">總結<a class="header-anchor" href="#總結-3"> 🔗</a></h3>
+<p>插入排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序。</p>
+<h2 id="合併排序-merge-sort">合併排序 Merge Sort<a class="header-anchor" href="#合併排序-merge-sort"> 🔗</a></h2>
+<p>合併排序 Merge Sort 是一種基於分治法的排序演算法，也是一種比較經典且常用的排序演算法之一。</p>
+<p>合併排序的主要流程包括分解、排序和合併三個步驟。<br>
+首先將要排序的序列分成兩部分，分別對這兩部分進行排序，最後將排好序的兩個部分合併起來即可得到排序後的序列。<br>
+在排序的過程中，通過遞歸地將序列分解成小問題，再利用合併操作將小問題的解合併成原問題的解。</p>
+<h3 id="動畫演示-4">動畫演示<a class="header-anchor" href="#動畫演示-4"> 🔗</a></h3>
+<p><img src="https://i.imgur.com/cGkLdI8.gif" alt="Merge Sort 動畫演示"></p>
+<h3 id="實作步驟-4">實作步驟<a class="header-anchor" href="#實作步驟-4"> 🔗</a></h3>
+<ol>
+<li>定義 MergeSort() 將 l、r 作為參數</li>
+<li>算出 mid 拆成兩半 當 l == r 代表已排好可以返回，否則分別遞迴做拆分</li>
+<li>呼叫 merge() 帶入 l,r 將 [l,r] 區間中兩個已排序的數列合併成一個已排序的數列</li>
+<li>merge() 先算出 mid 以及建立一個暫存的數列，長度設為合併後的數列長度</li>
+<li>for 用兩個指針分別從 l 和 mid 開始遍歷，哪個較小就先放入暫存數列中（注意邊界）</li>
+<li>將排序好的暫存數列全部更新至原數列中</li>
+</ol>
+<h3 id="c-code-5">C++ Code<a class="header-anchor" href="#c-code-5"> 🔗</a></h3>
+<p>呼叫時請用 <code>MergeSort(0, v.size());</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> mid = (l+r)/<span class="number">2</span>, tmp[r-l<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=l, j=mid<span class="number">+1</span>, k=<span class="number">0</span>; i&lt;=mid || j&lt;=r; ++k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((v[i] &lt;= v[j] &amp;&amp; i &lt;= mid) || j &gt; r) tmp[k] = v[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k] = v[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=l, j=<span class="number">0</span>; i&lt;=r; ++i, ++j) v[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">MergeSort</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">MergeSort</span>(l, mid); <span class="built_in">MergeSort</span>(mid<span class="number">+1</span>, r);</span><br><span class="line">    <span class="built_in">merge</span>(l, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事項-2">注意事項<a class="header-anchor" href="#注意事項-2"> 🔗</a></h3>
+<ul>
+<li>注意邊界 在 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">merge()</annotation></semantics></math></span> 中 確保 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span> 兩指針不會跑出兩數列</li>
+<li>注意分割遞迴終止條件 是 <code>l == r</code></li>
+<li><code>tmp</code> 的長度是 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mi>l</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r-l+1</annotation></semantics></math></span></li>
+<li>for 的 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span> 從 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span> 開始 取左時 <code>++i</code> 取右時 <code>++j</code></li>
+<li>比大小時注意要多加上邊界條件 且若右數列取完了就直接取左列元素</li>
+<li>最後要把暫存元素更新到原數列中時 注意初始位置</li>
+</ul>
+<h3 id="時間＆空間複雜度">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度"> 🔗</a></h3>
+<ul>
+<li>
+<p>平均時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span></p>
+<blockquote>
+<p>在平均情況下，合併排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span>。這是因為在合併排序的過程中，每個元素都需要進行一次比較，而且每個元素都需要被移動到新數組中的正確位置，這樣每個元素都需要進行 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span> 級別的操作。</p>
+</blockquote>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></p>
+<blockquote>
+<p>合併排序需要額外的空間來存儲排序過程中的元素，這些儲存空間的大小與待排序數列的大小相同。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-4">總結<a class="header-anchor" href="#總結-4"> 🔗</a></h3>
+<p>合併排序是一種高效穩定的排序算法，通過分治的思想，先拆分問題再合併解決。其時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span>，在處理大量資料時表現良好。在實作時需要注意指針的起始值、合併區間的邊界問題等細節。</p>
+<h2 id="快速排序-quick-sort">快速排序 Quick Sort<a class="header-anchor" href="#快速排序-quick-sort"> 🔗</a></h2>
+<p>快速排序 Quick Sort 是一種常見的分治演算法，被認為是最快的排序演算法之一。<br>
+它是選擇一個基準元素（通常是中間點），通過一趟排序將待排序列分為兩部分，<br>
+其中一部分的所有元素都比基準元素小，另一部分的所有元素都比基準元素大，<br>
+然後再按照此方法對這兩部分分別進行快速排序，直到整個序列有序。</p>
+<h3 id="動畫演示-5">動畫演示<a class="header-anchor" href="#動畫演示-5"> 🔗</a></h3>
+<p>本動畫以左邊當基準點<br>
+<img src="https://i.imgur.com/0WcpwyB.gif" alt="Quick Sort 動畫演示"></p>
+<h3 id="實作步驟-5">實作步驟<a class="header-anchor" href="#實作步驟-5"> 🔗</a></h3>
+<ol>
+<li>選擇中間點為基準點元素 pivot</li>
+<li>找到左邊大於等於基準點的元素以及右邊小於等於基準點的元素</li>
+<li>如果左邊大於等於右邊，交換它們</li>
+<li>遞迴排序左半部分以及右半部分</li>
+</ol>
+<h3 id="c-code-6">C++ Code<a class="header-anchor" href="#c-code-6"> 🔗</a></h3>
+<p>呼叫時請用 <code>QuickSort(0, v.size());</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">QuickSort</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i = l, j = r, pivot = v[(l + r) / <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= j) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (v[i] &lt; pivot) i++;</span><br><span class="line">        <span class="keyword">while</span> (v[j] &gt; pivot) j--;</span><br><span class="line">        <span class="keyword">if</span> (i &lt;= j) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">swap</span>(v[i], v[j]);</span><br><span class="line">            i++; j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">QuickSort</span>(l, j); <span class="built_in">QuickSort</span>(i, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間複雜度-4">時間複雜度<a class="header-anchor" href="#時間複雜度-4"> 🔗</a></h3>
+<ul>
+<li>
+<p>平均時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span></p>
+<blockquote>
+<p>在平均情況下，每次切分都能將數列分為近似相等的兩個子數列，快速排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span>。</p>
+</blockquote>
+</li>
+<li>
+<p>最壞時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></p>
+<blockquote>
+<p>當數列已經排好序或接近排好序時，選擇第一個或最後一個元素作為基準元素，時間複雜度會退化為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意事項-3">注意事項<a class="header-anchor" href="#注意事項-3"> 🔗</a></h3>
+<ul>
+<li>需要注意邊界條件，例如遞迴結束的條件。</li>
+<li>快速排序是一個不穩定的排序演算法，相同元素的相對位置可能會在排序後發生變化。</li>
+<li>在選擇 pivot 時，可以選擇任意一個元素作為 pivot，但選擇哪個 pivot 會影響到排序的效率。如果每次都選擇最小或最大的元素作為 pivot，就會導致最壞情況下的時間複雜度從 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span> 暴增為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span>。因此，為了避免這種情況，可以選擇隨機的 pivot，通常選擇數列的中間元素作為 pivot，這樣可以確保每次排序的平均時間複雜度都是 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span>。</li>
+</ul>
+<h3 id="總結-5">總結<a class="header-anchor" href="#總結-5"> 🔗</a></h3>
+<p>快速排序演算法是透過分治，達成高效率的排序演算法。它可以在短時間內對大型資料進行排序。儘管最壞情況下的時間複雜度較高，但在大多數情況下，它的表現都很優秀。</p>
+<h2 id="堆積排序-heap-sort">堆積排序 Heap Sort<a class="header-anchor" href="#堆積排序-heap-sort"> 🔗</a></h2>
+<p>堆積排序 Heap Sort 是一種使用二元樹 Binary Tree 資料結構的排序演算法。</p>
+<p>堆可以看作是一個完全二元樹，它具有以下兩個性質：</p>
+<ol>
+<li>父節點的值永遠大於或等於（小於或等於）子節點的值。</li>
+<li>堆中任意節點的子樹都符合上述特點。</li>
+</ol>
+<h3 id="實作步驟-6">實作步驟<a class="header-anchor" href="#實作步驟-6"> 🔗</a></h3>
+<ol>
+<li>建立堆：將待排序的數列轉換成一個堆。這一步可以通過從最後一個非葉子節點開始，對每個節點進行調整來實現。具體來說，對於一個父節點，如果它的子節點的值比它的值大（或小），就交換它們，直到子樹也是一個堆，調整完成後就得到了一個初始的大根堆。</li>
+<li>排序：從堆的尾部開始，每次取出堆頂元素與堆尾元素交換位置。交換後，堆的長度減1，重複此操作直到堆的大小為1，由於每次都是取出堆頂元素，所以得到的數列就是有序的，以保證元素依然構成一個大根堆。</li>
+</ol>
+<h3 id="c-code-7">C++ Code<a class="header-anchor" href="#c-code-7"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapify</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> i)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> mx = i; <span class="comment">// 初始化最大值為根節點</span></span><br><span class="line">    <span class="type">int</span> lt = <span class="number">2</span> * i + <span class="number">1</span>; <span class="comment">// 找到左子節點的索引</span></span><br><span class="line">    <span class="type">int</span> rt = <span class="number">2</span> * i + <span class="number">2</span>; <span class="comment">// 找到右子節點的索引</span></span><br><span class="line">    <span class="keyword">if</span> (lt &lt; n &amp;&amp; v[lt] &gt; v[mx]) <span class="comment">// 如果左子節點的值比最大值還要大</span></span><br><span class="line">    &#123; </span><br><span class="line">        mx = lt; <span class="comment">// 更新最大值的索引為左子節點的索引</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rt &lt; n &amp;&amp; v[rt] &gt; v[mx]) <span class="comment">// 如果右子節點的值比最大值還要大</span></span><br><span class="line">    &#123; </span><br><span class="line">        mx = rt; <span class="comment">// 更新最大值的索引為右子節點的索引</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (mx != i) <span class="comment">// 如果最大值不是根節點</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">swap</span>(v[i], v[mx]); <span class="comment">// 把最大值交換到根節點</span></span><br><span class="line">        <span class="built_in">heapify</span>(n, mx); <span class="comment">// 遞迴對以最大值為根的子樹進行heapify操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">HeapSort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 建立最大堆</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">heapify</span>(n, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) <span class="comment">// 進行堆排序</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">swap</span>(v[<span class="number">0</span>], v[i]); <span class="comment">// 把最大值與根節點交換</span></span><br><span class="line">        <span class="built_in">heapify</span>(i, <span class="number">0</span>); <span class="comment">// 對剩餘元素進行 heapify 操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間＆空間複雜度-2">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度-2"> 🔗</a></h3>
+<ul>
+<li>
+<p>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span></p>
+<blockquote>
+<p>在堆積排序中，排序的主要操作是下潛，即將堆頂元素下潛到合適的位置，這個操作的時間複雜度是 O(logn)。在排序過程中，需要執行 n 次下潛操作，因此排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span>。</p>
+</blockquote>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></p>
+<blockquote>
+<p>由於堆積排序是一種原地排序算法，因此它的空間複雜度是 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span>，即不需要額外的空間。在堆排序中，只需要用到常數個變量作為中間變量，不需要額外的數組或其他資料結構。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意事項-4">注意事項<a class="header-anchor" href="#注意事項-4"> 🔗</a></h3>
+<ol>
+<li>記得使用交換操作來實現堆的調整和排序。</li>
+<li>調整堆的時候，要先找到子節點中的最大值，然後再和父節點比較，如果子節點的值比父節點大，就將子節點的值上移。</li>
+<li>調整堆的時候，要特別注意邊界情況，例如在定位左右子節點的時候，要判斷右子節點是否存在。</li>
+</ol>
+<h3 id="總結-6">總結<a class="header-anchor" href="#總結-6"> 🔗</a></h3>
+<p>堆排序是一種高效的排序算法，它具有良好的時間複雜度和空間複雜度，並且它只需要一個輔助空間來存儲堆，可以實現原地排序，因此堆排序在排序大資料時非常有效。但是在實際應用中，由於堆排序的常數因子比較大，因此實際運行速度可能不如快速排序和插入排序等算法。</p>
+<h2 id="希爾排序（shell-sort）">希爾排序（Shell Sort）<a class="header-anchor" href="#希爾排序（shell-sort）"> 🔗</a></h2>
+<p>希爾排序（Shell Sort）是一種插入排序的改進版，其基本思想是先將待排序的序列按照一定間隔分成幾個子序列，然後對每個子序列進行插入排序。接著逐步縮小間隔，重複進行上述操作，直到間隔縮小到1時，最後對整個序列進行一次插入排序，完成排序。</p>
+<p>希爾排序的主要優點是在比較次數和移動次數上都有所改進，因為希爾排序採用分組的方式進行插入排序，每次排序可以使得一定程度上有序，因此在進行後面的排序時就可以利用前面排序時建立的有序性，減少比較次數和移動次數，此外希爾排序不需要額外的儲存空間。</p>
+<h3 id="實作步驟-7">實作步驟<a class="header-anchor" href="#實作步驟-7"> 🔗</a></h3>
+<ol>
+<li>首先選擇一個增量序列，這個序列的選擇可以影響希爾排序的效率。</li>
+<li>將待排序的序列按照增量序列分成幾個子序列，對每個子序列進行插入排序。</li>
+<li>逐步縮小增量序列，重複上述操作，直到增量為 1 時，最後對整個序列進行一次插入排序，完成排序。</li>
+</ol>
+<h3 id="c-code-8">C++ Code<a class="header-anchor" href="#c-code-8"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ShellSort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="comment">// 初始化增量 gap，設為 n/2、n/4、n/8、...直到 1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> gap = n / <span class="number">2</span>; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 以 gap 為間隔，對每個子序列進行插入排序</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = gap; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> temp = v[i], j;</span><br><span class="line">            <span class="keyword">for</span> (j = i; j &gt;= gap &amp;&amp; v[j - gap] &gt; temp; j -= gap) </span><br><span class="line">            &#123;</span><br><span class="line">                v[j] = v[j - gap];</span><br><span class="line">            &#125;</span><br><span class="line">            v[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="時間＆空間複雜度-3">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度-3"> 🔗</a></h3>
+<ul>
+<li>
+<p>時間複雜度：</p>
+<blockquote>
+<p>希爾排序的時間複雜度取決於子序列的間隔序列（Increment sequence），一般會使用 Hibbard 增量序列（Hibbard’s increment sequence），其公式為：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>k</mi></msub><mo>=</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h_k = 2^k - 1</annotation></semantics></math></span>，其中 k 為子序列的索引，h_k 為對應的增量。</p>
+</blockquote>
+<ul>
+<li>平均時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n(logn)^2)</annotation></semantics></math></span></li>
+<li>最壞時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n(logn)^2)</annotation></semantics></math></span></li>
+<li>最佳時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></li>
+</ul>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></p>
+<blockquote>
+<p>希爾排序是一種原地排序算法，只需要一個輔助變量來進行元素交換，因此空間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意事項-5">注意事項<a class="header-anchor" href="#注意事項-5"> 🔗</a></h3>
+<ol>
+<li>在實際應用中，希爾排序的實現需要根據具體情況進行優化，選擇合適的增量序列，以及在實現中注意避免不必要的交換和比較操作，從而提高排序的效率。</li>
+<li>增量序列的選擇很重要，通常建議使用 Shell 提出的增量序列（1, 4, 13, 40, …），但也可以根據具體情況進行調整。</li>
+<li>插入排序可以使用直接插入排序或折半插入排序，具體選擇哪種排序算法可以根據實際情況進行選擇。</li>
+<li>希爾排序的實現比較複雜，需要較好的理解和熟練的實現技巧。此外，在某些特殊情況下，希爾排序的效率可能會比其他排序算法低，因此在實際應用中需要仔細選擇排序算法。</li>
+</ol>
+<h3 id="總結-7">總結<a class="header-anchor" href="#總結-7"> 🔗</a></h3>
+<p>希爾排序是一種高效的排序算法，它通常比傳統的插入排序要快很多，特別是對於大型資料集。希爾排序采用分組的方式進行插入排序，每次排序可以使得一定程度上有序，因此在進行後面的排序時就可以利用前面排序時建立的有序性，減少比較次數和移動次數。</p>
+<h2 id="計數排序（counting-sort）">計數排序（Counting Sort）<a class="header-anchor" href="#計數排序（counting-sort）"> 🔗</a></h2>
+<p>計數排序（Counting Sort）是一種線性時間的排序算法，它可以用於排序一定範圍內的整數。計數排序的核心思想是先統計每個元素出現的次數，然後根據元素出現的次數，將元素排列成有序序列。</p>
+<h3 id="動畫演示-6">動畫演示<a class="header-anchor" href="#動畫演示-6"> 🔗</a></h3>
+<p><img src="https://i.imgur.com/5iGCVc1.gif" alt="計數排序動畫演示"></p>
+<h3 id="實作步驟-8">實作步驟<a class="header-anchor" href="#實作步驟-8"> 🔗</a></h3>
+<ol>
+<li>計算待排序數組中每個元素出現的次數。假設待排序的元素範圍為 [0, k]，則可以創建一個長度為 k+1 的計數數組，對於每個出現的元素值，在計數數組中相應的位置上加一。</li>
+<li>對計數數組進行遍歷，依次累加前面所有元素的值，得到每個元素在有序序列中的位置。從計數數組的第二個元素開始，依次將前一個元素的值加到當前元素上，最終得到一個每個元素在有序序列中的位置的累加數組。</li>
+<li>根據計數數組和有序序列的位置信息，將元素依次放入有序序列中。從原數組末尾開始，對每個元素值，從累加數組中取得對應的位置，把該元素放入有序序列中的該位置。每放入一個元素，該位置在累加數組中的值就需要減一。</li>
+<li>將有序序列返回到原數組中。</li>
+</ol>
+<h3 id="c-code-9">C++ Code<a class="header-anchor" href="#c-code-9"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CountingSort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line">    <span class="type">int</span> max_val = <span class="number">100</span>;  <span class="comment">// 假設元素的範圍為[0,100]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 計算元素出現的次數，初始化計數數組為0</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">count</span><span class="params">(max_val + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        count[v[i]]++;  <span class="comment">// 計算v[i]出現的次數</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 累加前面所有元素的值，得到每個元素在有序序列中的位置</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= max_val; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        count[i] += count[i - <span class="number">1</span>];  <span class="comment">// 累加前面所有元素的值</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根據計數數組和有序序列的位置信息，將元素依次放入有序序列中</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">result</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">    &#123;</span><br><span class="line">        result[count[v[i]] - <span class="number">1</span>] = v[i];  <span class="comment">// 將v[i]放到有序序列的對應位置上</span></span><br><span class="line">        count[v[i]]--;  <span class="comment">// 將計數數組中對應元素的值減1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將結果返回到原數組中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        v[i] = result[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事項-6">注意事項<a class="header-anchor" href="#注意事項-6"> 🔗</a></h3>
+<ul>
+<li>計數排序只適用於元素範圍較小的情況。如果元素範圍過大，則需要創建過大的計數數組，進而影響排序的效率和空間複雜度。</li>
+<li>計數排序是一種穩定的排序演算法。如果待排序數組中有相等的元素，排序後相等元素的相對位置不會改變。</li>
+<li>計數排序對於浮點數和負整數排序的支援不好。</li>
+</ul>
+<h3 id="時間＆空間複雜度-4">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度-4"> 🔗</a></h3>
+<ul>
+<li>
+<p>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></p>
+<blockquote>
+<p>計數排序的時間複雜度可以分為兩部分：計數過程和排序過程。首先是計數過程，需要對整個序列進行一次遍歷，把每個元素出現的次數記錄在計數數組中。由於計數數組的大小等於待排序序列的範圍，因此計數過程的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>，其中 n 是序列的長度，k 是序列中元素的範圍。接下來是排序過程，需要遍歷待排序序列，根據計數數組中的信息將每個元素放置到排序好的位置上。由於只需要遍歷一次待排序序列，因此排序過程的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>。因此，計數排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>，其中 n 為待排序元素的數量，k 為待排序元素的最大值。需要注意的是，當範圍 k 比較大時，計數排序的效率可能會比較低。</p>
+</blockquote>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span></p>
+<blockquote>
+<p>計數排序的空間複雜度主要取決於計數數組的大小 k。因此，計數排序的空間複雜度為 O(k)。需要注意的是，當範圍 k 比較大時，計數排序的空間複雜度也會相應增加。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-8">總結<a class="header-anchor" href="#總結-8"> 🔗</a></h3>
+<p>計數排序是一種高效的排序算法，適用於元素範圍較小的場景，在各種應用中都有著廣泛的應用，例如對於年齡、成績等數值型資料的排序。</p>
+<p>儘管它的時間複雜度比其他常用排序算法（如快速排序和合併排序）更小，但是它的應用受到了很大的限制，因為它需要在內存中創建一個大小為k的計數數組，如果k太大，計數數組將占用大量內存。此外，計數排序也不適用於具有負值元素的數組。</p>
+<h2 id="桶排序（bucket-sort）">桶排序（Bucket Sort）<a class="header-anchor" href="#桶排序（bucket-sort）"> 🔗</a></h2>
+<p>桶排序（Bucket Sort）是一種非常簡單的排序演算法，它的基本思想是將要排序的資料分為幾個桶，每個桶裡的資料都有一定的範圍。然後，對每個桶中的資料進行排序，最後按照桶的順序將所有桶中的資料合併起來。</p>
+<h3 id="實作步驟-9">實作步驟<a class="header-anchor" href="#實作步驟-9"> 🔗</a></h3>
+<ol>
+<li>建立一個 vector 來儲存待排序數列。</li>
+<li>找出數列中的最大值和最小值，並算出每個桶的範圍。</li>
+<li>建立桶(bucket)的數量，這裡以 10 個桶作為範例，並建立一個 vector，裡面包含了 10 個子 vector，分別代表每個桶的元素。</li>
+<li>將資料分配到對應的桶中，具體的方法是透過取整和乘法來判斷資料應該放在哪個桶中。</li>
+<li>對每個桶中的資料進行排序，可以使用 std::sort 函式。</li>
+<li>將排序後的資料依次放回原數組中。</li>
+</ol>
+<h3 id="c-code-10">C++ Code<a class="header-anchor" href="#c-code-10"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bucketSort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = v.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立桶（bucket）的數量，這裡以 10 個桶作為範例</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> bucket_num = <span class="number">10</span>;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">buckets</span>(bucket_num);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將資料分配到對應的桶中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> index = v[i] / bucket_num;</span><br><span class="line">        buckets[index].<span class="built_in">push_back</span>(v[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 對每個桶中的資料進行排序</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; bucket_num; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">sort</span>(buckets[i].<span class="built_in">begin</span>(), buckets[i].<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 將排序後的資料依次放回原數組中</span></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; bucket_num; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; buckets[i].<span class="built_in">size</span>(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            v[k] = buckets[i][j];</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事項-7">注意事項<a class="header-anchor" href="#注意事項-7"> 🔗</a></h3>
+<ul>
+<li>桶的大小設置：桶的大小應當選擇適中的值，太小會增加排序的時間複雜度，太大會佔用過多的空間。</li>
+<li>桶的數量：桶的數量應當根據資料的範圍和桶的大小進行設置。桶的數量不夠，會造成資料的堆積；桶的數量太多，會浪費空間。</li>
+<li>將資料分配到桶(bucket)中時，要注意取整和乘法的方法，避免產生錯誤。</li>
+<li>桶內部排序算法的選擇：桶內部的排序算法可以是任何一種穩定的排序算法，例如插入排序、冒泡排序等等。需要根據具體的應用場景選擇最優的算法。</li>
+</ul>
+<h3 id="時間＆空間複雜度-5">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度-5"> 🔗</a></h3>
+<ul>
+<li>
+<p>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></p>
+<blockquote>
+<p>計數排序的時間複雜度可以分為兩部分：計數過程和排序過程。首先是計數過程，需要對整個序列進行一次遍歷，把每個元素出現的次數記錄在計數數組中。由於計數數組的大小等於待排序序列的範圍，因此計數過程的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>，其中 n 是序列的長度，k 是序列中元素的範圍。接下來是排序過程，需要遍歷待排序序列，根據計數數組中的信息將每個元素放置到排序好的位置上。由於只需要遍歷一次待排序序列，因此排序過程的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>。因此，計數排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>，其中 n 為待排序元素的數量，k 為待排序元素的最大值。需要注意的是，當範圍 k 比較大時，計數排序的效率可能會比較低。</p>
+</blockquote>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></p>
+<blockquote>
+<p>桶排序的空間複雜度取決於桶的數量和每個桶內部元素的個數。由於每個桶內部的元素個數都不超過n/k，因此每個桶所需的空間是 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n/k)</annotation></semantics></math></span>。總空間複雜度就是 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n + k)</annotation></semantics></math></span>。如果k接近n，則空間複雜度就會接近 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span>。需要注意的是，當k比較大時，可能會出現空間浪費的情況，因此需要根據具體情況來選擇適當的桶數量。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-9">總結<a class="header-anchor" href="#總結-9"> 🔗</a></h3>
+<p>桶排序是一種簡單但有效的線性時間複雜度排序算法，優點是簡單易懂，而且比較容易實現。桶排序在資料分佈比較集中的情況下效果較好，但當資料分佈比較分散時，則會產生較多的桶(bucket)。適用於待排序資料分布範圍有限的情況。</p>
+<h2 id="基數排序（radix-sort）">基數排序（Radix Sort）<a class="header-anchor" href="#基數排序（radix-sort）"> 🔗</a></h2>
+<p>基數排序是一種非比較排序算法，適用於整數排序。基本思想是根據排序元素的位數，將整數按照位數從低到高或者從高到低進行排序，可以使用桶排序或計數排序等算法來實現。它的排序過程是先從最低有效位開始，依次對每一位進行排序，直到最高有效位。</p>
+<p>例如，將一個整數序列按照個位、十位、百位的順序來排序。首先，按照個位進行排序，將序列中所有數字根據個位數分成10個桶，分別把它們放進對應的桶中。然後，按照桶的順序把數字放回原序列中。接下來，再按照十位進行排序，以此類推，直到按照最高有效位進行排序為止。</p>
+<h3 id="動畫演示-7">動畫演示<a class="header-anchor" href="#動畫演示-7"> 🔗</a></h3>
+<p><img src="https://i.imgur.com/Gn1kHX9.gif" alt="基數排序動畫演示"></p>
+<h3 id="實作步驟-10">實作步驟<a class="header-anchor" href="#實作步驟-10"> 🔗</a></h3>
+<ol>
+<li>找出數組中最大的元素，確定最高位數，用變數 digit 記錄；</li>
+<li>從最低位數開始，將數組中的元素按照該位數的值放入相應的桶子（桶子數量為 10，分別代表 0~9）中，並計算每個桶子中的元素個數；</li>
+<li>計算每個桶子中元素在暫存陣列中的結束位置；</li>
+<li>把元素按照桶子中的順序放入暫存陣列中；</li>
+<li>把暫存陣列中的元素放回原陣列；</li>
+<li>重複步驟 2~5 直到排序完成。</li>
+</ol>
+<h3 id="c-code-11">C++ Code<a class="header-anchor" href="#c-code-11"> 🔗</a></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">RadixSort</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> max = *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()); <span class="comment">// 找出最大值</span></span><br><span class="line">    <span class="type">int</span> digit = <span class="number">1</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">tmp</span><span class="params">(v.size())</span></span>; <span class="comment">// 建立暫存的 vector</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (max / digit &gt; <span class="number">0</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">count</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 計數排序用的計數陣列</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 計算每個桶子中的元素個數</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> bucket = (v[i] / digit) % <span class="number">10</span>;</span><br><span class="line">            count[bucket]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 計算每個桶子中元素在暫存陣列中的結束位置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; count.<span class="built_in">size</span>(); i++) </span><br><span class="line">        &#123;</span><br><span class="line">            count[i] += count[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 把元素放入暫存陣列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = v.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> bucket = (v[i] / digit) % <span class="number">10</span>;</span><br><span class="line">            tmp[count[bucket] - <span class="number">1</span>] = v[i];</span><br><span class="line">            count[bucket]--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 把暫存陣列中的元素放回原陣列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) </span><br><span class="line">        &#123;</span><br><span class="line">            v[i] = tmp[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        digit *= <span class="number">10</span>; <span class="comment">// 到下一個數位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事項-8">注意事項<a class="header-anchor" href="#注意事項-8"> 🔗</a></h3>
+<ul>
+<li>基數排序適用於位數相同的數列排序，如果位數不同，需將所有數字補齊至相同位數。</li>
+<li>每個位數的排序需要使用穩定排序算法，以保證相同位數上的數字相對位置不變。</li>
+<li>實作時需要用到桶來存儲數字，桶的數量與基數相同，這將需要額外的空間開銷。</li>
+</ul>
+<h3 id="時間＆空間複雜度-6">時間＆空間複雜度<a class="header-anchor" href="#時間＆空間複雜度-6"> 🔗</a></h3>
+<ul>
+<li>
+<p>時間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(d(n+k))</annotation></semantics></math></span></p>
+<blockquote>
+<p>其中 d 為最大位數，n 為數組大小，k 為桶子數量，通常為 10（代表數字 0~9）。因為每一位數都要進行一次計數排序，計數排序的時間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>，所以時間複雜度為 O(d(n+k))。</p>
+</blockquote>
+</li>
+<li>
+<p>空間複雜度：<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></p>
+<blockquote>
+<p>基數排序的空間複雜度主要由暫存陣列和計數陣列決定，因此空間複雜度為 <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span>。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="總結-10">總結<a class="header-anchor" href="#總結-10"> 🔗</a></h3>
+<p>總結來說，基數排序是一種穩定性較好且時間複雜度為線性的排序算法，但對於數字位數較大的情況下，其空間複雜度較高，可能需要額外的存儲空間。基數排序的優點是能夠處理不同長度的數字，且在數字大小範圍有限的情況下，表現優於快速排序和堆排序。但是，它需要額外的空間儲存桶，且當數字大小範圍非常大時，需要大量的額外空間，並且其時間複雜度也會增加。</p>
+<h1 id="排序演算法的分類">排序演算法的分類<a class="header-anchor" href="#排序演算法的分類"> 🔗</a></h1>
+<h2 id="比較排序-comparison-sort">比較排序 Comparison Sort<a class="header-anchor" href="#比較排序-comparison-sort"> 🔗</a></h2>
+<ul>
+<li>交換類排序 Exchange Sort
+<ul>
+<li>氣泡排序</li>
+<li>快速排序</li>
+</ul>
+</li>
+<li>選擇類排序 Selection Sort
+<ul>
+<li>選擇排序</li>
+<li>堆積排序</li>
+</ul>
+</li>
+<li>插入類排序 Insertion Sort
+<ul>
+<li>插入排序</li>
+<li>希爾排序</li>
+</ul>
+</li>
+<li>合併類排序 Merge Sort
+<ul>
+<li>合併排序</li>
+</ul>
+</li>
+</ul>
+<h2 id="非比較排序-non-comparison-sort">非比較排序 Non-Comparison Sort<a class="header-anchor" href="#非比較排序-non-comparison-sort"> 🔗</a></h2>
+<ul>
+<li>計數排序</li>
+<li>桶排序</li>
+<li>基數排序</li>
+</ul>
+<h1 id="排序演算法的比較">排序演算法的比較<a class="header-anchor" href="#排序演算法的比較"> 🔗</a></h1>
+<table>
+<thead>
+<tr>
+<th>排序演算法</th>
+<th>最差時間複雜度</th>
+<th>平均時間複雜度</th>
+<th>最佳時間複雜度</th>
+<th>空間複雜度</th>
+<th>方式</th>
+<th>穩定度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氣泡排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>選擇排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>合併排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n \log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span></td>
+<td>Out-place</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>堆積排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>希爾排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msup><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log^2 n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n\log n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><msup><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n \log^2 n)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span></td>
+<td>In-place</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>計數排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n+k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n+k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span></td>
+<td>Out-place</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n+k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n+k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></td>
+<td>Out-place</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>基數排序</td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>×</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \times k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo stretchy="false">(</mo><mi>n</mi><mo>×</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta(n \times k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo stretchy="false">(</mo><mi>n</mi><mo>×</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\omega(n \times k)</annotation></semantics></math></span></td>
+<td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+k)</annotation></semantics></math></span></td>
+<td>Out-place</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h2 id="特點與優缺點">特點與優缺點<a class="header-anchor" href="#特點與優缺點"> 🔗</a></h2>
+<table>
+<thead>
+<tr>
+<th>排序演算法</th>
+<th>主要特點</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氣泡排序</td>
+<td>一種簡單的交換排序演算法，每次將相鄰的元素進行比較和交換</td>
+<td>實現簡單，程式易懂</td>
+<td>時間複雜度較高，效率低</td>
+</tr>
+<tr>
+<td>選擇排序</td>
+<td>每次選出最小（大）的元素放到已排序序列的末尾</td>
+<td>實現簡單，程式易懂，穩定</td>
+<td>時間複雜度較高，效率低</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>將未排序元素逐個插入到已排序的序列中，從後往前比較</td>
+<td>實現簡單，對小規模資料排序效率高</td>
+<td>時間複雜度較高，對大規模資料排序效率較低</td>
+</tr>
+<tr>
+<td>合併排序</td>
+<td>分治策略，將序列遞迴划分為子序列，然後將子序列合併</td>
+<td>時間複雜度較低，效率較高，穩定</td>
+<td>需要較大的輔助空間</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>分治策略，選定一個基準元素，將序列分為左右兩部分，遞迴排序</td>
+<td>時間複雜度較低，效率較高，適用於大規模資料排序</td>
+<td>不穩定，最壞情況下時間複雜度較高</td>
+</tr>
+<tr>
+<td>堆積排序</td>
+<td>將序列構建成大根堆（小根堆），每次將堆頂元素與末尾元素交換，重新調整堆</td>
+<td>時間複雜度較低，效率較高，適用於大規模資料排序</td>
+<td>不穩定</td>
+</tr>
+<tr>
+<td>希爾排序</td>
+<td>插入排序的改進版本，設定一個增量，將序列劃分為若干子序列進行排序</td>
+<td>對於中等規模資料排序效率較高</td>
+<td>不穩定</td>
+</tr>
+<tr>
+<td>計數排序</td>
+<td>統計序列中各元素的出現次數，根據出現次數和元素值的關係排序</td>
+<td>時間複雜度較低，適用於資料範圍較小的整數排序</td>
+<td>對於資料範圍較大的情況需要較大的輔助空間</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>將元素劃分到不同的桶中，對每個桶中的元素進行排序，最後合併</td>
+<td>適用於元素值分佈較均勻的情況，時間複雜度較低</td>
+<td>對於元素值分佈不均勻的情況效率較低</td>
+</tr>
+<tr>
+<td>基數排序</td>
+<td>按照元素的位數進行排序，從低位到高位進行排序，每一位使用穩定排序演算法進行排序</td>
+<td>適用於大規模資料排序且穩定，可以處理多關鍵字排序</td>
+<td>需要額外的記憶體空間且時間複雜度高，效率較低</td>
+</tr>
+</tbody>
+</table>
+<h1 id="文章總結">文章總結<a class="header-anchor" href="#文章總結"> 🔗</a></h1>
+<p>在本文中，我們介紹了 10 種常見的排序演算法，每種演算法都有其優點和缺點。<br>
+在實際應用中，需要根據具體的情況選擇最適合的排序演算法。<br>
+如果你想學習排序演算法，我建議利用本文章及網路上各種資源，理解各個演算法中的原理，並且嘗試自己實作出這些演算法。<br>
+通過不斷的練習，你將能更深入地理解這些排序演算法的原理和應用，或許能夠應用來解決現實中的問題，希望此篇文章能讓你有所收穫！</p>
+<p><img src="https://i.imgur.com/rvpFvDt.gif" alt="All 排序動畫"></p>
+<h1 id="參考資料">參考資料<a class="header-anchor" href="#參考資料"> 🔗</a></h1>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">維基百科：排序算法</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.csie.ntu.edu.tw/~b98902112/cpp_and_algo/index.html">資料結構和演算法：排序演算法</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.runoob.com/w3cnote/sort-algorithm-summary.html">菜鳥教程：排序算法</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.toptal.com/developers/sorting-algorithms">排序算法動畫</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.freecodecamp.org/news/sorting-algorithms-explained-with-examples-in-python-java-and-c/">Sorting Algorithm</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.geeksforgeeks.org/sorting-algorithms/?ref=lbp">Sorting algorithms on GeeksforGeeks</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=kPRA0W1kECg">15 Sorting Algorithms in 6 Minutes - YT</a></li>
+</ul>
+<blockquote>
+<p>此篇文章因內容繁多，所以在整理資料及撰寫上，可能會有些錯誤，也請大家多留言或善用右側聊天室提出問題，我會馬上勘誤修正，謝謝。</p>
+</blockquote>
+<hr>
+<a class="btn-beautify blue block center larger" href="/post/Sitemap/" title="回到導覽頁面"><i class="far fa-hand-point-right"></i><span>回到導覽頁面</span></a>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://4yu.dev/">ShiYu Huang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://4yu.dev/post/Sort-Algorithm/">https://4yu.dev/post/Sort-Algorithm/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://4yu.dev" target="_blank">4yu Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E5%AF%A6%E4%BD%9C/">實作</a><a class="post-meta__tags" href="/tags/%E6%99%82%E9%96%93-%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6/">時間 &amp; 空間複雜度</a><a class="post-meta__tags" href="/tags/%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95-Sort-Algorithm/">排序演算法 Sort Algorithm</a><a class="post-meta__tags" href="/tags/%E6%B0%A3%E6%B3%A1%E6%8E%92%E5%BA%8F-Bubble-Sort/">氣泡排序 Bubble Sort</a><a class="post-meta__tags" href="/tags/%E9%81%B8%E6%93%87%E6%8E%92%E5%BA%8F-Selection-Sort/">選擇排序 Selection Sort</a><a class="post-meta__tags" href="/tags/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F-Insertion-Sort/">插入排序 Insertion Sort</a><a class="post-meta__tags" href="/tags/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-Merge-Sort/">合併排序 Merge Sort</a><a class="post-meta__tags" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-Quick-Sort/">快速排序 Quick Sort</a><a class="post-meta__tags" href="/tags/%E5%A0%86%E7%A9%8D%E6%8E%92%E5%BA%8F-Heap-Sort/">堆積排序 Heap Sort</a><a class="post-meta__tags" href="/tags/%E5%B8%8C%E7%88%BE%E6%8E%92%E5%BA%8F-Shell-Sort/">希爾排序 Shell Sort</a><a class="post-meta__tags" href="/tags/%E8%A8%88%E6%95%B8%E6%8E%92%E5%BA%8F-Counting-Sort/">計數排序 Counting Sort</a><a class="post-meta__tags" href="/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F-Bucket-Sort/">桶排序 Bucket Sort</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E6%95%B8%E6%8E%92%E5%BA%8F-Radix-Sort/">基數排序 Radix Sort</a></div><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_copy_link"></a><a class="a2a_button_email"></a><a class="a2a_button_facebook"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_line"></a><a class="a2a_button_whatsapp"></a><a class="a2a_button_threads"></a><a class="a2a_button_x"></a><a class="a2a_button_google_classroom"></a><a class="a2a_button_blogger"></a><a class="a2a_button_google_gmail"></a><a class="a2a_dd" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/Sitemap/" title="網站頁面導覽"><img class="cover" src="/img/sitemap.webp" onerror="onerror=null;src='/img/loading.gif'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">網站頁面導覽</div></div><div class="info-2"><div class="info-item-1">歡迎來到 4yu Blog 🔗 可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁 導覽 🔗   點擊前往 自我介紹 About me    點擊前往 第一篇文章 Hello, World.    DSA 系列 🔗 皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章  (修改中…即將發布) 複雜度分析（Complexity Analysis）  點擊前往 C++ STL 大全  (修改中…即將發布) 暴力＆枚舉演算法  點擊前往 排序演算法（Sort Algorithm）  (修改中…即將發布) 搜尋演算法：線性、二分搜、三分搜、Upper &amp; Lower bound (修改中…即將發布) 圖論 I：基礎名詞、BFS &amp; DFS (撰寫中…) Greedy：思想、證明、經典題 (撰寫中…) DP 動態規劃 I：基本、背包、Kadane、LCS &amp; LIS、bitmask  點擊前往 資料結構 進階實作（C++）  (規劃中…) DP 動態規劃 II：區間 DP、樹 DP、DAG DP (規劃中…) DP 動態規劃 III：各種優化（滾動、單調性、分治、斜率、狀壓、四邊形） (規劃中…) 分治 I：逆序數對、(矩陣)快速冪、最近點對 (規劃中…) 分治 II：CDQ、FFT/NTT、Master Theorem (規劃中…) 圖論 II：最小生成樹 MST、拓墣排序、最短路徑 (規劃中…) 樹論：LCA、Tree DP、輕重鏈剖分 (規劃中…) 圖論 III：聯通分量（SCC &amp; BCC）、Tarjan、2-SAT (規劃中…) 圖論 IV：最大流＆最小割（Flow &amp; Cut）、Dinic、二分匹配 (規劃中…) 計算幾何：基本、凸包、掃描線、最近點對 (規劃中…) 數論：質數篩、費馬小定理、歐拉定理、CRT、EGCD (規劃中…) 字串演算法：Manacher、Trie、KMP、Z-algorithm (規劃中…) 分塊 &amp; 莫隊 (規劃中…) 其他雜項技巧 (規劃中…) 賽局理論 (規劃中…) 計算複雜度類別：P/NP/NP-Hard/NP-Complete、歸約 (規劃中…) 隨機算法、啟發算法、近似...</div></div></div></a><a class="pagination-related" href="/post/NHSPC/" title="資訊學科能力競賽 參賽心得"><img class="cover" src="/img/NHSPC.webp" onerror="onerror=null;src='/img/loading.gif'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">資訊學科能力競賽 參賽心得</div></div><div class="info-2"><div class="info-item-1">競賽資訊 🔗  名稱：112 學年度學科能力競賽 複賽 資訊科 賽區：國教署負責區第四區（台南） 時間：2023/11/2 地點：台南女中 比賽人數：50 人（資訊科） 獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作 當天詳細時程：   前言 🔗 這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽 南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了 南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的 我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說 此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討 純粹記錄自己這個時候有多菜 讓自己幾年後可以回顧一下 如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了 因為對你來說可能是一篇廢文 沒什麼參考價值 上午場 🔗 報到抽籤後 發現只有我們學校沒有領隊… 到了我們學校的座位 被排在最後一排 我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈  我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的 可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃 到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說 來寫一下解題過程 p1 🔗 第 1 題明顯滿難的 我看到就先跳過了 p2 🔗  題意  12有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數  Input  12321126  Output  12413  解題想法  1233 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code  AC Code  123456789101112131415161718192021222324252627#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/post/STL/" title="C++ STL 大全"><img class="cover" src="/img/data_structure_basic.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-31</div><div class="info-item-2">C++ STL 大全</div></div><div class="info-2"><div class="info-item-1"> 本篇文章連結：https://4yu.dev/post/STL/ 公開發布日期：2023/12/31  Intro 🔗 學完 C++ 基礎語法之後，接著就該進入資料結構的世界了！ 本篇筆記要介紹的是 C++ STL，彙整了許多基礎資料結構的概念與用法 文章內容較多，大部分內容為自行收集資料後經過整理而成 若有任何錯誤或需要補充的地方都歡迎使用右側聊天室傳送訊息給我 我將會儘速修改，謝謝 先備知識 🔗 標準模板庫（Standard Template Library），簡稱 STL，為 C++ 內建的函式庫 為了應對各種資料型態，因此 STL 內部採用 模板 template 來實作，分為六大部分：  容器（Containers） 演算法（Algorithm） 迭代器（Iterator） 適配器（Adaptor） 仿函數（Function object） 空間配置器（allocator）   本篇文章內容著重於前四大部分  符號解釋 🔗 對於本篇文章中各種符號的解釋  C：某種容器（container） T：某種資料型態（type） S：長度（size） i：索引（index） K：鍵（key） val：值（value） it：迭代器（iterator）  迭代器（iterator） 🔗 C++ STL 為每個容器提供一個成員型別：迭代器 Iterator，我們可以用 指標 pointer 的概念來理解迭代器 迭代器透過運算子重載，為不同資料結構定義「如何走訪下一步」，模擬出指標的走訪功能，但能在移動前進行安全判斷或執行額外功能，解決了指標走訪時容易發生越界或亂指的問題 假設現在有個迭代器 it，如果要存取 it 所指向的內容，就在前面加上星號 *it，與指標相同 迭代器有以下三種類型：  隨機存取迭代器：能夠作整數的加減法，往 後移 x 項、往 前移 x 項 皆可，也能 遞增 (++) 和 遞減 (−−)，可以把指標當作這種迭代器 雙向迭代器：只能做 遞增 (++) 和 遞減 (−−) 的運算，也就是 後一項 和 前一項 單向迭代器：只能做 遞增 (++) 的運算，也就是 後一項  利用迭代器可遍歷容器中的元素，又分為 iterator 和 reverse_iterator（反向迭代器）  iterator  .begin()：指向容器的起始元素 .e...</div></div></div></a><a class="pagination-related" href="/post/Data-Structures/" title="資料結構 進階實作（C++）"><img class="cover" src="/img/data_structure_advan.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-01</div><div class="info-item-2">資料結構 進階實作（C++）</div></div><div class="info-2"><div class="info-item-1">本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗  本篇文章連結：https://4yu.dev/post/Data-Structures/  Intro 🔗 此篇文章使用 C++ 來實作各種從基礎到進階的資料結構 可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續 STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作 內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改  實作資料結構 🔗 本篇包含以下資料結構的實作  前綴和 &amp; 差分數列 樹狀數組 BIT 稀疏表 Sparse Table 線段樹 Segment Tree 鏈結串列 Linked-list 並查集 DSU 二元搜尋樹 BST 樹堆 Treap 伸展樹 Splay Tree 字典樹 Trie rope pbds   前綴和 &amp; 差分數列 🔗 本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧 前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值  建出前綴和數列 🔗 123456789101112131415#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;  注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0  Input 🔗 1251 2 3 4 5 Output 🔗 10 1 3 6 10 15  快速查詢區間和 🔗 要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加 12int sum = 0;for(int i=l;i&lt;...</div></div></div></a><a class="pagination-related" href="/post/NHSPC/" title="資訊學科能力競賽 參賽心得"><img class="cover" src="/img/NHSPC.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-03</div><div class="info-item-2">資訊學科能力競賽 參賽心得</div></div><div class="info-2"><div class="info-item-1">競賽資訊 🔗  名稱：112 學年度學科能力競賽 複賽 資訊科 賽區：國教署負責區第四區（台南） 時間：2023/11/2 地點：台南女中 比賽人數：50 人（資訊科） 獲獎人數：1 ~ 5 名進全國賽 再大約取前三分之一的人獲得佳作 當天詳細時程：   前言 🔗 這是我第一次比資訊學科能力競賽 高一時不知道在幹嘛 那時不太關注資訊比賽 南大附中好像也沒什麼人比過資訊能競 所以我跟 @Yudong 不用校內初選就直接進複賽了 南區去年只有選 3 名進全國賽 今年因為去年的南一中有人全國賽一等二等獎 所以新增了 2 個 總共有 5 個名額 賽前猜測沒意外應該都是南一中的 我們第一次比賽就遇到主辦方各種出錯 這個留到文章最後再說 此篇文章就是寫我參加此競賽的過程、解題程式碼、心得、和檢討 純粹記錄自己這個時候有多菜 讓自己幾年後可以回顧一下 如果你也是資訊選手或打競程的 那這篇其實可以滑掉不用看了 因為對你來說可能是一篇廢文 沒什麼參考價值 上午場 🔗 報到抽籤後 發現只有我們學校沒有領隊… 到了我們學校的座位 被排在最後一排 我跟 Yudong 在猜這座位配置是不是依照學校的得獎次數排的哈哈  我在活動中心其實滿緊張的 雖然前幾個禮拜也有參加比賽：CodeWars、金盾獎 但都是抱持著輕鬆愉快的心情比的 可能是因為這場能競對我來說算是滿重要的比賽 整個狀態有點緊繃 到了電腦教室測試時 主辦就開始出現錯誤了 我先跳過這部分最後再說 來寫一下解題過程 p1 🔗 第 1 題明顯滿難的 我看到就先跳過了 p2 🔗  題意  12有各不同的分數種類： 50 25 10 5 1 求總和為 N 分的組合數  Input  12321126  Output  12413  解題想法  1233 層 for 迴圈枚舉每種分數各取幾次因為取完 前幾種分數 剩餘的都可以用 1 分來湊看了數字範圍 確認此做法不會超時後開始寫 Code  AC Code  123456789101112131415161718192021222324252627#include &lt;bits/stdc++.h&gt;using namespace std;#define ShiYu ios::sync_with_stdio(0),cin.tie(0)#define FOR(i,n) for...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E6%9E%B6%E6%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">本文架構 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B7%9A%E6%80%A7%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95%E7%A8%AE%E9%A1%9E"><span class="toc-number">1.1.</span> <span class="toc-text">線性排序演算法種類 🔗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%8F%E5%80%8B%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95%E7%9A%84%E5%85%A7%E5%AE%B9"><span class="toc-number">1.2.</span> <span class="toc-text">每個排序演算法的內容 🔗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.3.</span> <span class="toc-text">測試模板 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95%E7%9A%84%E8%A9%B3%E7%B4%B0%E4%BB%8B%E7%B4%B9"><span class="toc-number">2.</span> <span class="toc-text">排序演算法的詳細介紹 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%A3%E6%B3%A1%E6%8E%92%E5%BA%8F-bubble-sort"><span class="toc-number">2.1.</span> <span class="toc-text">氣泡排序 Bubble Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F"><span class="toc-number">2.1.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code"><span class="toc-number">2.1.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%84%AA%E5%8C%96"><span class="toc-number">2.1.4.</span> <span class="toc-text">優化 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-2"><span class="toc-number">2.1.5.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="toc-number">2.1.6.</span> <span class="toc-text">時間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-number">2.1.7.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87%E6%8E%92%E5%BA%8F-selection-sort"><span class="toc-number">2.2.</span> <span class="toc-text">選擇排序 Selection Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-2"><span class="toc-number">2.2.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-2"><span class="toc-number">2.2.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-3"><span class="toc-number">2.2.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-2"><span class="toc-number">2.2.4.</span> <span class="toc-text">時間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-2"><span class="toc-number">2.2.5.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F-insertion-sort"><span class="toc-number">2.3.</span> <span class="toc-text">插入排序 Insertion Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-3"><span class="toc-number">2.3.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-3"><span class="toc-number">2.3.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-4"><span class="toc-number">2.3.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="toc-number">2.3.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-3"><span class="toc-number">2.3.5.</span> <span class="toc-text">時間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-3"><span class="toc-number">2.3.6.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort"><span class="toc-number">2.4.</span> <span class="toc-text">合併排序 Merge Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-4"><span class="toc-number">2.4.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-4"><span class="toc-number">2.4.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-5"><span class="toc-number">2.4.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-2"><span class="toc-number">2.4.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="toc-number">2.4.5.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-4"><span class="toc-number">2.4.6.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-quick-sort"><span class="toc-number">2.5.</span> <span class="toc-text">快速排序 Quick Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-5"><span class="toc-number">2.5.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-5"><span class="toc-number">2.5.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-6"><span class="toc-number">2.5.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-4"><span class="toc-number">2.5.4.</span> <span class="toc-text">時間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-3"><span class="toc-number">2.5.5.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-5"><span class="toc-number">2.5.6.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E7%A9%8D%E6%8E%92%E5%BA%8F-heap-sort"><span class="toc-number">2.6.</span> <span class="toc-text">堆積排序 Heap Sort 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-6"><span class="toc-number">2.6.1.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-7"><span class="toc-number">2.6.2.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-2"><span class="toc-number">2.6.3.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-4"><span class="toc-number">2.6.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-6"><span class="toc-number">2.6.5.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E7%88%BE%E6%8E%92%E5%BA%8F%EF%BC%88shell-sort%EF%BC%89"><span class="toc-number">2.7.</span> <span class="toc-text">希爾排序（Shell Sort） 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-7"><span class="toc-number">2.7.1.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-8"><span class="toc-number">2.7.2.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-3"><span class="toc-number">2.7.3.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-5"><span class="toc-number">2.7.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-7"><span class="toc-number">2.7.5.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%88%E6%95%B8%E6%8E%92%E5%BA%8F%EF%BC%88counting-sort%EF%BC%89"><span class="toc-number">2.8.</span> <span class="toc-text">計數排序（Counting Sort） 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-6"><span class="toc-number">2.8.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-8"><span class="toc-number">2.8.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-9"><span class="toc-number">2.8.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-6"><span class="toc-number">2.8.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-4"><span class="toc-number">2.8.5.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-8"><span class="toc-number">2.8.6.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F%EF%BC%88bucket-sort%EF%BC%89"><span class="toc-number">2.9.</span> <span class="toc-text">桶排序（Bucket Sort） 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-9"><span class="toc-number">2.9.1.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-10"><span class="toc-number">2.9.2.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-7"><span class="toc-number">2.9.3.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-5"><span class="toc-number">2.9.4.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-9"><span class="toc-number">2.9.5.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%95%B8%E6%8E%92%E5%BA%8F%EF%BC%88radix-sort%EF%BC%89"><span class="toc-number">2.10.</span> <span class="toc-text">基數排序（Radix Sort） 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%95%E7%95%AB%E6%BC%94%E7%A4%BA-7"><span class="toc-number">2.10.1.</span> <span class="toc-text">動畫演示 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E6%AD%A5%E9%A9%9F-10"><span class="toc-number">2.10.2.</span> <span class="toc-text">實作步驟 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-code-11"><span class="toc-number">2.10.3.</span> <span class="toc-text">C++ Code 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-8"><span class="toc-number">2.10.4.</span> <span class="toc-text">注意事項 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%82%E9%96%93%EF%BC%86%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-6"><span class="toc-number">2.10.5.</span> <span class="toc-text">時間＆空間複雜度 🔗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90-10"><span class="toc-number">2.10.6.</span> <span class="toc-text">總結 🔗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E9%A1%9E"><span class="toc-number">3.</span> <span class="toc-text">排序演算法的分類 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BC%83%E6%8E%92%E5%BA%8F-comparison-sort"><span class="toc-number">3.1.</span> <span class="toc-text">比較排序 Comparison Sort 🔗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E6%AF%94%E8%BC%83%E6%8E%92%E5%BA%8F-non-comparison-sort"><span class="toc-number">3.2.</span> <span class="toc-text">非比較排序 Non-Comparison Sort 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BC%83"><span class="toc-number">4.</span> <span class="toc-text">排序演算法的比較 🔗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E9%BB%9E%E8%88%87%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="toc-number">4.1.</span> <span class="toc-text">特點與優缺點 🔗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E7%B8%BD%E7%B5%90"><span class="toc-number">5.</span> <span class="toc-text">文章總結 🔗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-number">6.</span> <span class="toc-text">參考資料 🔗</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/Sort_cover.webp);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2022 - 2026 By ShiYu Huang</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.1</a></span></div><div class="footer_custom_text">Hope you can learn something from this <a href="https://4yu.dev/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天" style="display:none"><i class="fas fa-message"></i></button><a id="to_comment" href="#post-comment" title="前往評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const applyThemeDefaultsConfig = theme => {
+    if (theme === 'dark-mode') {
+      Chart.defaults.color = "rgba(255, 255, 255, 0.8)"
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.2)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    } else {
+      Chart.defaults.color = "rgba(0, 0, 0, 0.8)"
+      Chart.defaults.borderColor = "rgba(0, 0, 0, 0.1)"
+      Chart.defaults.scale.ticks.backdropColor = "transparent"
+    }
+  }
+
+  // Recursively traverse the config object and automatically apply theme-specific color schemes
+  const applyThemeConfig = (obj, theme) => {
+    if (typeof obj !== 'object' || obj === null) return
+
+    Object.keys(obj).forEach(key => {
+      const value = obj[key]
+      // If the property is an object and has theme-specific options, apply them
+      if (typeof value === 'object' && value !== null) {
+        if (value[theme]) {
+          obj[key] = value[theme] // Apply the value for the current theme
+        } else {
+          // Recursively process child objects
+          applyThemeConfig(value, theme)
+        }
+      }
+    })
+  }
+
+  const runChartJS = ele => {
+    window.loadChartJS = true
+
+    Array.from(ele).forEach((item, index) => {
+      const chartSrc = item.firstElementChild
+      const chartID = item.getAttribute('data-chartjs-id') || ('chartjs-' + index) // Use custom ID or default ID
+      const width = item.getAttribute('data-width')
+      const existingCanvas = document.getElementById(chartID)
+
+      // If a canvas already exists, remove it to avoid rendering duplicates
+      if (existingCanvas) {
+          existingCanvas.parentNode.remove()
+      }
+
+      const chartDefinition = chartSrc.textContent
+      const canvas = document.createElement('canvas')
+      canvas.id = chartID
+
+      const div = document.createElement('div')
+      div.className = 'chartjs-wrap'
+
+      if (width) {
+        div.style.width = width
+      }
+
+      div.appendChild(canvas)
+      chartSrc.insertAdjacentElement('afterend', div)
+
+      const ctx = document.getElementById(chartID).getContext('2d')
+
+      const config = JSON.parse(chartDefinition)
+
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark-mode' : 'light-mode'
+
+      // Set default styles (initial setup)
+      applyThemeDefaultsConfig(theme)
+
+      // Automatically traverse the config and apply dual-mode color schemes
+      applyThemeConfig(config, theme)
+
+      new Chart(ctx, config)
+    })
+  }
+
+  const loadChartJS = () => {
+    const chartJSEle = document.querySelectorAll('#article-container .chartjs-container')
+    if (chartJSEle.length === 0) return
+
+    window.loadChartJS ? runChartJS(chartJSEle) : btf.getScript('https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js').then(() => runChartJS(chartJSEle))
+  }
+
+  // Listen for theme change events
+  btf.addGlobalFn('themeChange', loadChartJS, 'chartjs')
+  btf.addGlobalFn('encrypt', loadChartJS, 'chartjs')
+
+  window.pjax ? loadChartJS() : document.addEventListener('DOMContentLoaded', loadChartJS)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: '00b71ed70ef8fddbb291',
+      clientSecret: 'c65b4a8a79a864a01f9ebf89991c6dab6ab50102',
+      repo: 'ShiYu0318.github.io',
+      owner: 'ShiYu0318',
+      admin: ['ShiYu0318'],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || '6ee489ecc9fecbe43736c116ac4e8963'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[圖片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[連結]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[程式碼]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[程式碼]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '尚無評論'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'github-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const findTrueUrl = (array, ele) => {
+    Promise.all(array.map(item =>
+      fetch(item.url).then(resp => resp.json()).then(data => {
+        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+        if (!Array.isArray(urlArray) || urlArray.length === 0) {
+          urlArray = [`${data.html_url}`]
+        }
+        if (data.user.login === 'utterances-bot') {
+          return urlArray.pop()
+        } else {
+          return urlArray.shift()
+        }
+      })
+    )).then(res => {
+        array = array.map((i,index)=> {
+          return {
+            ...i,
+            url: res[index]
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(array), 30/(60*24))
+        generateHtml(array, ele)
+    });
+  }
+
+  const getComment = ele => {
+    fetch('https://api.github.com/repos/ShiYu0318/ShiYu0318.github.io/issues/comments?sort=updated&direction=desc&per_page=10&page=1',{
+      "headers": {
+        Accept: 'application/vnd.github.v3.html+json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const githubArray = data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.issue_url,
+            'date': item.updated_at
+          }
+        })
+        findTrueUrl(githubArray, ele)
+      }).catch(e => {
+        console.error(e)
+        ele.textContent= "無法獲取評論，請確認相關配置是否正確"
+      })
+  }
+  run(keyName, getComment)
+})</script><div class="aplayer no-destroy" data-id="7218222301" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-theme="#2828FF" data-loop="none" data-order="random" data-mini="true" data-mutex="true" data-volume="1.0"> </div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  window.ChatraID = 'NxXNSWTTNGbjfwQGi'
+  window.Chatra = window.Chatra || function() {
+    (window.Chatra.q = window.Chatra.q || []).push(arguments)
+  }
+
+  btf.getScript('https://call.chatra.io/chatra.js').then(() => {
+    const isChatBtn = true
+    const isChatHideShow = false
+
+    if (isChatBtn) {
+      const close = () => {
+        Chatra('minimizeWidget')
+        Chatra('hide')
+      }
+
+      const open = () => {
+        Chatra('openChat', true)
+        Chatra('show')
+      }
+
+      window.ChatraSetup = { startHidden: true }
+    
+      window.chatBtnFn = () => document.getElementById('chatra').classList.contains('chatra--expanded') ? close() : open()
+
+      document.getElementById('chat-btn').style.display = 'block'
+    } else if (isChatHideShow) {
+      window.chatBtn = {
+        hide: () => Chatra('hide'),
+        show: () => Chatra('show')
+      }
+    }
+  })
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: true,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
