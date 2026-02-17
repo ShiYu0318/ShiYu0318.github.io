@@ -1,3 +1,4 @@
+https://4yu.dev/post/Unpublished/Profession-Interview/
 https://4yu.dev/music/index.html
 https://4yu.dev/post/SPC-CSIE/
 https://4yu.dev/post/SCIST-Camp-2026/
@@ -182,6 +183,8 @@ https://4yu.dev/tags/%E5%B8%8C%E7%88%BE%E6%8E%92%E5%BA%8F-Shell-Sort/
 https://4yu.dev/tags/%E8%A8%88%E6%95%B8%E6%8E%92%E5%BA%8F-Counting-Sort/
 https://4yu.dev/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F-Bucket-Sort/
 https://4yu.dev/tags/%E5%9F%BA%E6%95%B8%E6%8E%92%E5%BA%8F-Radix-Sort/
+https://4yu.dev/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/
+https://4yu.dev/tags/%E8%81%B7%E6%A5%AD%E8%A8%AA%E8%AB%87/
 https://4yu.dev/categories/%E7%AD%86%E8%A8%98/
 https://4yu.dev/categories/%E5%BF%83%E5%BE%97/
 https://4yu.dev/categories/%E7%AD%86%E8%A8%98/AI/
@@ -190,3 +193,4 @@ https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/
 https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/
 https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/
 https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/
+https://4yu.dev/categories/%E7%AD%86%E8%A8%98/%E5%A0%B1%E5%91%8A/
