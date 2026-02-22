@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://4yu.dev/about/index.html</loc>
+    
+    <lastmod>2026-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://4yu.dev/post/SPC-NCU/</loc>
     
     <lastmod>2026-02-19</lastmod>
@@ -113,15 +122,6 @@
     <loc>https://4yu.dev/post/STL/</loc>
     
     <lastmod>2026-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://4yu.dev/about/index.html</loc>
-    
-    <lastmod>2026-02-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
