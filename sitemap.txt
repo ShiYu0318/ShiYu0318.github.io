@@ -1,7 +1,9 @@
+https://4yu.dev/post/SPC-CSIE/
+https://4yu.dev/post/SCIST-Camp-2024/
+https://4yu.dev/post/Neural-Network/
 https://4yu.dev/about/index.html
 https://4yu.dev/post/Sitemap/
 https://4yu.dev/post/SPC-NCU/
-https://4yu.dev/post/SPC-CSIE/
 https://4yu.dev/post/SPC-NTNU/
 https://4yu.dev/post/Profession-Interview/
 https://4yu.dev/music/index.html
@@ -9,14 +11,11 @@ https://4yu.dev/post/SCIST-Camp-2026/
 https://4yu.dev/post/SPC-NTHU/
 https://4yu.dev/post/SPC-NCHU/
 https://4yu.dev/post/SPC-NSYSU/
-https://4yu.dev/post/NHSPC/
-https://4yu.dev/post/SCIST-Camp-2024/
 https://4yu.dev/post/Sort-Algorithm/
 https://4yu.dev/post/STL/
 https://4yu.dev/post/NFIRC/
 https://4yu.dev/post/Data-Structures/
 https://4yu.dev/post/SPC-NCKU/
-https://4yu.dev/post/Neural-Network/
 https://4yu.dev/post/Hello-World/
 https://4yu.dev/post/AI/
 https://4yu.dev/link/index.html
@@ -132,9 +131,6 @@ https://4yu.dev/tags/%E5%8D%97%E9%99%84%E8%B3%87%E7%A0%94%E7%A4%BE/
 https://4yu.dev/tags/NFIRC-1st/
 https://4yu.dev/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/
 https://4yu.dev/tags/%E8%81%B7%E6%A5%AD%E8%A8%AA%E8%AB%87/
-https://4yu.dev/tags/%E8%B3%87%E8%A8%8A%E7%AB%B6%E8%B3%BD/
-https://4yu.dev/tags/%E7%AB%B6%E7%A8%8B/
-https://4yu.dev/tags/%E9%A1%8C%E8%A7%A3/
 https://4yu.dev/tags/%E8%B3%87%E8%A8%8A%E7%A4%BE/
 https://4yu.dev/tags/%E6%88%90%E5%A4%A7%E8%B3%87%E5%B7%A5/
 https://4yu.dev/tags/SCIST/
@@ -192,5 +188,4 @@ https://4yu.dev/categories/%E7%AD%86%E8%A8%98/%E5%A0%B1%E5%91%8A/
 https://4yu.dev/categories/%E7%AD%86%E8%A8%98/DSA/
 https://4yu.dev/categories/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/
 https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%A4%BE%E5%9C%98/
-https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%AB%B6%E8%B3%BD/
 https://4yu.dev/categories/%E5%BF%83%E5%BE%97/%E7%87%9F%E9%9A%8A/
