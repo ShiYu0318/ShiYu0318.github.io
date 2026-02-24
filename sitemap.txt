@@ -1,3 +1,4 @@
+https://4yu.dev/post/NFIRC/
 https://4yu.dev/post/SPC-CSIE/
 https://4yu.dev/post/SCIST-Camp-2024/
 https://4yu.dev/post/Neural-Network/
@@ -13,7 +14,6 @@ https://4yu.dev/post/SPC-NCHU/
 https://4yu.dev/post/SPC-NSYSU/
 https://4yu.dev/post/Sort-Algorithm/
 https://4yu.dev/post/STL/
-https://4yu.dev/post/NFIRC/
 https://4yu.dev/post/Data-Structures/
 https://4yu.dev/post/SPC-NCKU/
 https://4yu.dev/post/Hello-World/
