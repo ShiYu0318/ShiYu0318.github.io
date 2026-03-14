@@ -1,0 +1,4114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>網站頁面導覽</title>
+    <url>/post/Sitemap/</url>
+    <content><![CDATA[歡迎來到 4yu Blog 🔗
+可自由探索整個網頁，也可依照以下導覽列表閱讀，每篇文章的最末端都可以導回此頁
+導覽 🔗
+
+
+點擊前往 自我介紹 About me 
+
+
+點擊前往 第一篇文章 Hello, World. 
+
+
+DSA 系列 🔗
+皆以 C++ 為主，有很多篇都是學過但還沒整理成筆記的（其實就是懶），請耐心等待發布，歡迎使用右側聊天室催更某篇你有興趣的文章
+
+(修改中…即將發布) 複雜度分析（Complexity Analysis）
+
+點擊前往 C++ STL 大全
+
+(修改中…即將發布) 暴力＆枚舉演算法
+
+點擊前往 排序演算法（Sort Algorithm）
+
+(修改中…即將發布) 搜尋演算法：線性、二分搜、三分搜、Upper &amp; Lower bound
+(修改中…即將發布) 圖論 I：基礎名詞、BFS &amp; DFS
+(撰寫中…) Greedy：思想、證明、經典題
+(撰寫中…) DP 動態規劃 I：基本、背包、Kadane、LCS &amp; LIS、bitmask
+
+點擊前往 資料結構 進階實作（C++）
+
+(規劃中…) DP 動態規劃 II：區間 DP、樹 DP、DAG DP
+(規劃中…) DP 動態規劃 III：各種優化（滾動、單調性、分治、斜率、狀壓、四邊形）
+(規劃中…) 分治 I：逆序數對、(矩陣)快速冪、最近點對
+(規劃中…) 分治 II：CDQ、FFT/NTT、Master Theorem
+(規劃中…) 圖論 II：最小生成樹 MST、拓墣排序、最短路徑
+(規劃中…) 樹論：LCA、Tree DP、輕重鏈剖分
+(規劃中…) 圖論 III：聯通分量（SCC &amp; BCC）、Tarjan、2-SAT
+(規劃中…) 圖論 IV：最大流＆最小割（Flow &amp; Cut）、Dinic、二分匹配
+(規劃中…) 計算幾何：基本、凸包、掃描線、最近點對
+(規劃中…) 數論：質數篩、費馬小定理、歐拉定理、CRT、EGCD
+(規劃中…) 字串演算法：Manacher、Trie、KMP、Z-algorithm
+(規劃中…) 分塊 &amp; 莫隊
+(規劃中…) 其他雜項技巧
+(規劃中…) 賽局理論
+(規劃中…) 計算複雜度類別：P/NP/NP-Hard/NP-Complete、歸約
+(規劃中…) 隨機算法、啟發算法、近似算法
+
+AI 系列 🔗
+
+
+點擊前往 AI 概論與實作入門
+
+(撰寫中…) ML 演算法
+(修改中…即將發布) 梯度下降演算法
+(規劃中…) Optimizers
+(規劃中…) Loss Functions
+(規劃中…) Activity Functions
+
+點擊前往 訓練神經網路計算過程
+
+(撰寫中…) DL Models
+(規劃中…) LoRA Fine-Tuning
+(規劃中…) RAG
+(撰寫中…) RL 專案分享
+
+量子計算 Quantum Computer 系列 🔗
+
+(持續撰寫補充中…) 量子計算概論 &amp; IBM Qiskit 實作筆記
+(學習中…) 量子計算數學基礎
+(規劃中…) 量子演算法（Deutsch-Jozsa、Grover、Shor &amp; Simon）
+(撰寫中…) QUBO 二進位二次式最佳化
+(撰寫中…) 量子退火演算法（Quantum Annealing）
+(規劃中…) QNN 量子機器學習
+
+其他待開發的系列 🔗
+以下是我除了程式以外的技能，但這些系列在我文章發佈的 priority_queue 最末端，可能需要等非常久之後才會開始撰寫。。。
+
+FL Studio
+Blender
+
+心得系列 🔗
+文筆沒有很好，純粹紀錄當下想法，提供自己幾年後能考古，回顧自己的心情
+
+
+點擊前往 NFIRC 南附資研社 - 從零開始的社團創辦與經營之路
+
+
+點擊前往 SCIST Camp 2024 籌辦心得
+
+(補充照片中…即將發布) SCIST Camp 2025 籌辦 &amp; 授課心得（過了一年還沒補完哈哈）
+(補充照片中…即將發布) FunAI Winter Camp 2024 &amp; 2025 參與心得
+(修改中…即將發布) SCIST x NHDK 演算法培訓課程 季中季末賽 競賽出題心得
+
+點擊前往 特殊選才資訊工程學系 心得彙整
+
+
+點擊前往 經驗分享演講 - 2025 南十校聯合迎新
+
+
+點擊前往 SCIST x SCAICT Camp 2026 聯合寒訓 - AI 系列課程 授課心得
+
+
+
+網頁架構 🔗
+
+
+本網頁組成架構
+主頁 Home
+
+網頁封面
+側邊資訊欄
+文章推薦
+
+
+文章 Posts
+
+此網頁所有文章
+
+
+標籤 Tags
+
+所有文章所提及的標籤、關鍵字
+
+
+分類 Categories
+
+針對特定主題分類文章
+
+
+音樂
+
+分享我的網易雲歌單
+
+
+連結 Link
+
+聯繫資訊
+友站
+SCIST
+Discord Server
+學習資源
+程式平台
+軟體工具
+Blogs
+相關技術
+
+
+關於
+
+自我介紹
+個人經歷
+
+
+
+
+
+
+感謝閱覽此網頁！ 🔗
+
+]]></content>
+      <tags>
+        <tag>網頁導覽 Site map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SCIST x SCAICT Camp 2026 聯合寒訓：AI 系列課程 - 授課心得</title>
+    <url>/post/SCIST-Camp-2026/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/SCIST-Camp-2026/
+公開發布日期：還不確定 等我有空
+
+撰寫中… 即將發佈 🔗
+
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>營隊</category>
+      </categories>
+      <tags>
+        <tag>SCIST</tag>
+        <tag>SCAICT</tag>
+        <tag>成大電機</tag>
+        <tag>資訊社</tag>
+        <tag>寒訓</tag>
+        <tag>營隊</tag>
+        <tag>AI</tag>
+        <tag>DC Bot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>特殊選才資訊工程學系 心得彙整 by 4yu（114 級）</title>
+    <url>/post/SPC-CSIE/</url>
+    <content><![CDATA[前言 🔗
+我報名的校系全部都是資訊工程學系，以下是我特選前主要的經歷（目前經歷請看 About）：
+
+SCIST 南臺灣學生資訊社群 S5 總召 &amp; 演算法助教
+NFIRC 創辦人 &amp; 社長 &amp; 講師
+APCS 4+4、CPE Professional 排名 176/2406 前 7.3 %
+高中學科能力競賽 資訊科 連續兩年複賽佳作
+AIS3 Junior 2024 最佳專題獎
+南四校聯合社課 - AI 人工智慧主題 講師
+南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 副召
+
+在報名之前有先透過 114 特選群 裡的調查表單搜集到約 130 筆資工特選生的經歷，因為我屬於競程、資安、AI 各領域都有碰的那種，並且還有很大一部份時間是花在創立社團、擔任社群總召、當課程講師…這些經歷上，所以我的檢定競賽成績與其他專注在刷題的人相比較沒那麼有優勢，但比別人多了一些特殊表現，對比各校系名額後評估自己大概的落點會在中字輩左右，並且多報了台師大與海大當作保底學校，我不會選擇再往下報更多來刷正取數量，太浪費錢浪費時間還會佔到別人名額
+
+結果總表 🔗
+
+以面試日期排序
+
+
+
+
+學校
+組別
+報名人數
+進複試
+面試人數
+錄取名額
+錄取率
+最終結果
+備取人數
+狀態
+
+
+
+
+中央大學
+聯招（一般組）
+56
+✅
+15
+2
+3.57%
+🔵 備取 1
+7
+遞補錄取，已報到
+
+
+中央大學
+聯招（資安組）
+56
+✅
+15
+1
+1.79%
+🟢 正取
+3
+已放棄
+
+
+臺灣師範大學
+一般組
+83
+✅
+17
+5
+6.02%
+🟢 正取
+9
+已放棄
+
+
+臺灣師範大學
+資安組
+48
+✅
+16
+3
+6.25%
+🔴
+7
+
+
+
+成功大學
+甲組（競程）
+28
+✅
+28
+4
+14.29%
+🔴
+10
+
+
+
+中山大學
+一般組
+70
+✅
+22
+3
+4.29%
+🔵 備取 4
+7
+遞補錄取，已放棄
+
+
+中興大學
+一般組
+57
+✅
+8
+1
+1.75%
+🔵 備取 4
+5
+
+
+
+中興大學
+資安組
+44
+✅
+19
+3
+6.82%
+🟢 正取
+10
+已放棄
+
+
+海洋大學
+一般組
+
+✅
+
+
+
+🔴 沒去面試
+
+
+
+
+清華大學
+A 組（一般組）
+87
+✅
+26
+6
+6.90%
+🔴
+
+
+
+
+陽明交通大學
+一般組
+109
+❌
+32
+10
+9.17%
+🔴
+
+
+
+
+
+最後中字輩全上（中正大學近幾年特選沒開資工系，詳細原因有興趣的人可以來問我），滿符合我當初預期的結果，也確定會就讀 國立中央大學 資訊工程學系，理由是中大資工系上有 90% 教授實驗室的研究方向都是 AI，還有舉辦 AI CUP 競賽的 AI 李白 – 蔡宗翰教授，完全符合我的領域。
+
+各校面試過程 🔗
+依面試日期排序，若只想看面試問答過程請自行忽略其他內容
+
+
+中央大學 
+
+
+臺灣師範大學
+
+
+成功大學
+
+
+中山大學
+
+
+中興大學
+
+
+清華大學
+
+
+
+特選心得 🔗
+
+長文潤飾中，請耐心等待更新
+
+
+Q &amp; A 🔗
+以下問題全部都是我從 Instagram 限時動態提問框蒐集到的問題
+
+Q：好奇你競程強，面資安組他會問競程為主還是資安為主 XD
+
+點擊查看回答
+A：我有面的資安組只有中興跟臺師大，可以去看那兩篇文裡面有詳細的提問與回答，這兩間我都面試兩輪，個人感覺第二輪都會變閒聊沒特別被問資安，都是以自我介紹提到的內容為主
+
+
+
+Q：想知道怎麼做書審資料😭
+
+點擊查看回答
+A：我自己是從升上高中就開始用 Notion 表格紀錄我的經歷，不管參加什麼比賽或活動都寫上去分類好並上傳獎狀，到特選前就不會忘記自己做過什麼事，也可以很快篩選出哪些經歷對特選是有利的就能寫進備審。備審我是先用 HackMD 寫好全部的文字後再開始排版，整體架構如下：
+
+備審架構
+自傳
+
+如何接觸資訊領域的
+把所有特殊經歷濃縮
+
+
+申請動機
+
+我為何投入特殊選才：寫自己哪裡特殊，投入原因
+我為何選擇資工系：寫自己有多適合
+我為何選擇 XX 大學：該大學特色與吸引點
+XX 大學資工系為何選擇我：寫自己優勢、與其他特選生不同之處
+
+
+讀書計畫
+
+近程：大學開學前要達到什麼目標
+中程：大一到大四期間的規劃與目標
+遠程：畢業後的想法
+
+
+其他有利資料
+
+檢定成績
+競賽表現
+社團經營
+社群貢獻
+活動參與
+特殊經歷
+
+
+推薦信
+
+
+
+Q：覺得最有用的經歷或作品是什麼
+
+點擊查看回答
+A：個人感覺在一群那麼強的特選生裡面，對我來說最有用的經歷是創社團 + 當社群總召，因為很少人有這種經驗；作品的話是關於 RL 的 Side Project，有被師大的紀教授深入聊到實作細節
+
+
+
+Q：是不是有人還沒把如何治好拖延症的書看完才會還沒寫完心得
+
+點擊查看回答
+A：真的，從 2024/12 說要寫特選心得拖到現在快一年了才全部寫完…懂油桐還一直催我，現在終於快補完了
+
+
+
+
+Q：會要求組織社團經驗嗎
+
+點擊查看回答
+A：不一定要有但說不定會加分，因為可以透過這個經歷展現出你的領導能力和規劃能力
+
+
+
+Q：我當時也有報特選然後貢龜（別的科系），有點好奇上榜者的經歷是不是有甚麼共同點，脫穎而出的關鍵？
+
+點擊查看回答
+A：特選生的共同點是自學能力都很強，目標明確且會自己找資源學習並持續進步，脫穎而出的關鍵是檢定或競賽成績特別好或是擁有別人沒有的特殊經歷
+
+
+以上都是挑一部分出來回答而已，其他的都是一堆膜拜或嘲諷，還有一些別的問題就不回答了🤣：可以分一間學校給我嗎、可以跟我組黃氏兄弟嗎。。。如果還有其他問題都歡迎用右側聊天室傳訊息給我，或是參考下方聯絡資訊
+
+聯絡資訊 🔗
+有任何疑問或想瞭解更多關於資訊領域、特殊選才相關的事情，甚至是想邀請我去經驗分享的話都歡迎透過以下管道聯絡我：
+
+Discord：shiyu0318
+Instagram：4yu.dev.318
+Email：shiyu@scist.org
+
+
+2025/10/26 Update: 南十校聯合迎新 - 經驗分享講座 簡報公開：https://slides.com/shiyu/share
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中興大學</tag>
+        <tag>成功大學</tag>
+        <tag>中央大學</tag>
+        <tag>臺灣師範大學</tag>
+        <tag>中山大學</tag>
+        <tag>海洋大學</tag>
+        <tag>清華大學</tag>
+        <tag>陽明交通大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI 概論與 ML 實作入門</title>
+    <url>/post/AI/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/AI
+
+目前尚未整理成筆記文章，僅有簡報版本，可搭配課程錄影觀看。
+課程簡報 🔗
+https://slides.com/shiyu/ai 🔗
+課程錄影 🔗
+https://www.youtube.com/watch?v=IMVLUpGYMjA 🔗
+
+
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>機器學習 ML</tag>
+        <tag>深度學習 DL</tag>
+        <tag>卷積神經網路 CNN</tag>
+        <tag>Transformer</tag>
+        <tag>GPT</tag>
+        <tag>強化學習 Reinforcement Learning</tag>
+        <tag>神經網路 Neural Network</tag>
+        <tag>損失函數 Loss Function</tag>
+        <tag>梯度下降演算法 Gradient Descent</tag>
+        <tag>擬合函數 Fitting Function</tag>
+        <tag>過擬合 Overfiting</tag>
+        <tag>感知器 Perceptron</tag>
+        <tag>多層感知器 MLP</tag>
+        <tag>全局最小值 Global Minima</tag>
+        <tag>學習率 Learning Rate</tag>
+        <tag>偏微分 Partial Derivative</tag>
+        <tag>超參數 Hyperparameter</tag>
+        <tag>激活函數 Activity Function</tag>
+        <tag>反向傳播演算法 Backward Propagation</tag>
+        <tag>鏈式法則 Chain Rule</tag>
+        <tag>監督式學習 Supervised Learning</tag>
+        <tag>均方誤差 MSE</tag>
+        <tag>均方根誤差 RMSE</tag>
+        <tag>平均絕對值誤差 MAE</tag>
+        <tag>交叉熵 Cross-Entropy</tag>
+        <tag>模擬退火演算法 Simulated Annealing</tag>
+        <tag>遺傳演算法 Genetic Algorithm</tag>
+        <tag>粒子群演算法 PSO</tag>
+        <tag>隨機梯度下降 SGD</tag>
+        <tag>優化器 Optimizer</tag>
+        <tag>Newton’s Method</tag>
+        <tag>Momentum</tag>
+        <tag>Nesterov (NAG)</tag>
+        <tag>AdaGrad</tag>
+        <tag>RMSprop</tag>
+        <tag>Adam</tag>
+        <tag>Nadam</tag>
+        <tag>Dropout</tag>
+        <tag>線性迴歸</tag>
+        <tag>邏輯迴歸</tag>
+        <tag>決策樹</tag>
+        <tag>決策森林</tag>
+        <tag>KNN</tag>
+        <tag>SVM</tag>
+        <tag>DQN</tag>
+        <tag>Policy-based</tag>
+        <tag>Actor-Critic</tag>
+        <tag>TD-Learning</tag>
+        <tag>PPO</tag>
+        <tag>A2C</tag>
+        <tag>Baseline</tag>
+        <tag>Softmax</tag>
+        <tag>U-Net</tag>
+        <tag>殘差網路 ResNet</tag>
+        <tag>RNN</tag>
+        <tag>LSTM</tag>
+        <tag>GRU</tag>
+        <tag>BERT</tag>
+        <tag>詞嵌入 Embedding</tag>
+        <tag>注意力機制 Attention</tag>
+        <tag>Fine-Tuning</tag>
+        <tag>LoRA</tag>
+        <tag>RLHF</tag>
+        <tag>Hallucination</tag>
+        <tag>檢索增強生成 RAG</tag>
+        <tag>Prompt Engineering</tag>
+        <tag>CoT</tag>
+        <tag>ViT</tag>
+        <tag>Positional Encoding</tag>
+        <tag>生成對抗網路 GAN</tag>
+        <tag>AutoEncoder</tag>
+        <tag>VAE</tag>
+        <tag>Diffusion 擴散模型</tag>
+        <tag>評分函數 Score Function</tag>
+        <tag>Stable Diffusion</tag>
+        <tag>Sora</tag>
+        <tag>AlphaGO</tag>
+        <tag>AlphaFold</tag>
+        <tag>FSD</tag>
+        <tag>AGI</tag>
+        <tag>對抗樣本攻擊 Adversarial Attack</tag>
+        <tag>提示詞注入攻擊 Prompt Injection Attack</tag>
+        <tag>Jailbreaking</tag>
+        <tag>NVQLink</tag>
+        <tag>量子退火 Quantum Annealing</tag>
+        <tag>AI Agent</tag>
+        <tag>MCP</tag>
+        <tag>Vibe Coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ STL 大全</title>
+    <url>/post/STL/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/STL/
+公開發布日期：2023/12/31
+
+Intro 🔗
+學完 C++ 基礎語法之後，接著就該進入資料結構的世界了！
+本篇筆記要介紹的是 C++ STL，彙整了許多基礎資料結構的概念與用法
+文章內容較多，大部分內容為自行收集資料後經過整理而成
+若有任何錯誤或需要補充的地方都歡迎使用右側聊天室傳送訊息給我
+我將會儘速修改，謝謝
+先備知識 🔗
+標準模板庫（Standard Template Library），簡稱 STL，為 C++ 內建的函式庫
+為了應對各種資料型態，因此 STL 內部採用 模板 template 來實作，分為六大部分：
+
+容器（Containers）
+演算法（Algorithm）
+迭代器（Iterator）
+適配器（Adaptor）
+仿函數（Function object）
+空間配置器（allocator）
+
+
+本篇文章內容著重於前四大部分
+
+符號解釋 🔗
+對於本篇文章中各種符號的解釋
+
+C：某種容器（container）
+T：某種資料型態（type）
+S：長度（size）
+i：索引（index）
+K：鍵（key）
+val：值（value）
+it：迭代器（iterator）
+
+迭代器（iterator） 🔗
+C++ STL 為每個容器提供一個成員型別：迭代器 Iterator，我們可以用 指標 pointer 的概念來理解迭代器
+迭代器透過運算子重載，為不同資料結構定義「如何走訪下一步」，模擬出指標的走訪功能，但能在移動前進行安全判斷或執行額外功能，解決了指標走訪時容易發生越界或亂指的問題
+假設現在有個迭代器 it，如果要存取 it 所指向的內容，就在前面加上星號 *it，與指標相同
+迭代器有以下三種類型：
+
+隨機存取迭代器：能夠作整數的加減法，往 後移 x 項、往 前移 x 項 皆可，也能 遞增 (++) 和 遞減 (−−)，可以把指標當作這種迭代器
+雙向迭代器：只能做 遞增 (++) 和 遞減 (−−) 的運算，也就是 後一項 和 前一項
+單向迭代器：只能做 遞增 (++) 的運算，也就是 後一項
+
+利用迭代器可遍歷容器中的元素，又分為 iterator 和 reverse_iterator（反向迭代器）
+
+iterator
+
+.begin()：指向容器的起始元素
+.end()：指向容器最後一個元素的下一個位置
+
+
+reverse_iterator
+
+.rbegin()：指向容器的最後一個元素
+.rend()：指向容器起始元素的前一個位置
+
+
+
+iterator 示意圖 (圖片來源)
+
+
+資料結構的詳細介紹 🔗
+本篇介紹以下 C++ STL 內建基礎資料結構：
+
+動態陣列 vector
+串列 list
+字串 string
+數對 pair
+數組 tuple
+堆疊 stack
+佇列 queue
+雙端佇列 deque
+優先佇列 priority_queue
+集合 set
+映射 map
+多重集合 multiset
+多重映射 multimap
+無序集合 unordered_set
+無序映射 unordered_map
+多重無序集合 unordered_multiset
+多重無序映射 unordered_multimap
+位集 bitset
+
+vector 動態陣列 🔗
+可以當作是 C++ 陣列（array） 的擴充版，能支援原有的操作，還可以動態新增元素且會自行改變長度，也就是說不用事先宣告固定大小，基本上學完 vector 大多數情況可以直接取代 array
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+v[i]
+支援下標讀取 v 的第 i 項（不做邊界檢查）
+O(1)O(1)
+
+
+2
+v.empty()
+回傳一個 bool，表示 v 是否為空的
+O(1)O(1)
+
+
+3
+v.clear()
+清空 v，但原本的容量不會被釋放
+O(n)O(n)
+
+
+4
+v.size()
+回傳 v 目前的長度
+O(1)O(1)
+
+
+5
+v.resize(S, val)
+將 v 的長度變為 S：若比原本長，則在尾端添加 val 直到長度為 S；反之則將多餘的元素捨去
+平均 O(S−Sold)O(S - S_{old})
+
+
+6
+v.insert(it, val)
+在 it 位置插入 val，必須向後搬動其餘元素
+均攤 O(n)O(n)（尾端 O(1)O(1)）
+
+
+7
+v.erase(it)
+刪除 it 位置元素，也須向前搬動其餘元素
+均攤 O(n)O(n)（尾端 O(1)O(1)）
+
+
+8
+v.begin() / v.end()
+回傳首個元素或最後一個元素的 iterator
+O(1)O(1)
+
+
+9
+v.front() / v.back()
+回傳容器的首個元素或最後一個元素（未檢查是否為空）
+O(1)O(1)
+
+
+10
+v.push_back(val) / v.emplace_back(args...)
+在 v 的尾端加入 val / args（push_back 複製/移動 val；emplace_back 原地建構）
+O(1)O(1)
+
+
+11
+v.pop_back()
+刪除 v 的最末項，若 v 為空則是未定義行為
+O(1)O(1)
+
+
+
+
+可支援的演算法函數 🔗
+
+
+
+編號
+演算法函數
+功能介紹
+時間複雜度
+
+
+
+
+1
+swap(v1, v2) / v1.swap(v2)
+交換兩 vector
+O(1)O(1)
+
+
+2
+find(v.begin(), v.end(), val)
+在 v 中搜尋 val，找到就返回對應元素的迭代器，否則返回 v.end()
+O(n)O(n)
+
+
+3
+count(v.begin(), v.end(), val)
+計算 v 中 val 出現的次數
+O(n)O(n)
+
+
+4
+replace(v.begin(), v.end(), val, new_val)
+將 v 中所有的 val 替換成 new_val
+O(n)O(n)
+
+
+5
+sort(v.begin(), v.end())
+排序 v ，預設為遞增
+O(nlog⁡n)O(n \log n)
+
+
+6
+reverse(v.begin(), v.end())
+反轉 v 內所有元素
+O(n)O(n)
+
+
+7
+merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin())
+將已排序的 v1 和 v2 合併至 v3（結果為已排序狀態）
+O(v1+v2)O(v1 + v2)
+
+
+8
+binary_search(v.begin(), v.end(), val)
+二分搜尋：若找到 val 回傳 true，否則回傳 false（v 須排序）
+O(log⁡n)O(\log n)
+
+
+9
+lower_bound(v.begin(), v.end(), val)
+回傳在包含 v.begin() 到不含 v.end() 的區間中第一個 ≥\geval 的 iterator（v 須排序）
+O(log⁡n)O(\log n)
+
+
+10
+upper_bound(v.begin(), v.end(), val)
+回傳在包含 v.begin() 到不含 v.end() 的區間中第一個 &gt;val 的 iterator（v 須排序）
+O(log⁡n)O(\log n)
+
+
+11
+next_permutation(v.begin(), v.end())
+變成下一个排列
+O(n)O(n)
+
+
+12
+prev_permutation(v.begin(), v.end())
+變成上一个排列
+O(n)O(n)
+
+
+13
+unique(v.begin(), v.end())
+移除相鄰重複元素（保留第一個），回傳新結尾 iterator，需搭配 erase 真正刪除
+O(n)O(n)
+
+
+14
+max_element(v.begin(), v.end()) / min_element(...)
+找出最大或最小值的 iterator
+O(n)O(n)
+
+
+15
+fill(v.begin(), v.end(), val)
+將整個區間都填上 val
+O(n)O(n)
+
+
+16
+copy(v1.begin(), v1.end(), v2.begin())
+將 v1 的內容複製到 v2（須保證 v2 有足夠空間）
+O(n)O(n)
+
+
+17
+equal(v1.begin(), v1.end(), v2.begin())
+比較 v1 和 v2 內容是否完全相等
+O(n)O(n)
+
+
+
+
+lower_bound / upper_bound 可透過 * 取值，需在由小到大排列好的陣列中才可使用，若回傳的值是 v.end()，代表沒有符合的元素
+
+常用基本操作 Code 🔗
+// 宣告vector&lt;int&gt; v;    // 長度為 0 的空 vectorvector&lt;int&gt; v(5); // 長度為 5 的 vectorvector&lt;int&gt; v(5, 10); // 長度為 5 且每個元素皆被初始化為 10 的 vector，複雜度為 O(n)vector&lt;int&gt; v = &#123;1, 2, 3&#125;;// 宣告雙層 vectorvector&lt; vector&lt;int&gt; &gt; vv;    // 可想像成二維陣列，但每一列長度可以不一樣// 宣告雙層 vector 同時初始化為大小為 10x10 且每個元素皆為 0vector&lt; vector&lt;int&gt; &gt; vv(10, vector&lt;int&gt;(10, 0));// 下標取值int n = v[0];    // 與陣列一樣可使用 index 取值// 取得長度int s = v.size();// 更改大小v.resize(5);    // 將 v 的長度更改為 5// 在尾端加入元素int n = 10;v.push_back(n);v.emplace_back(n);// 移除尾端元素v.pop_back();// 尋找vector&lt;int&gt; v = &#123;1,3,5,7,9&#125;;int val; cin &gt;&gt; valif(find(v.begin(), v.end(), val) == v.end()) &#123;    cout &lt;&lt; &quot;Not find\n&quot;;&#125; else cout &lt;&lt; &quot;Find!&quot;;// input : 5 , output : Find!// input : 6 , output : Not Find// 排序（預設升冪：由小到大）sort(v.begin(), v.end());sort(v, v+v.size());// 排序（降冪：由大到小）sort(v.rbegin(), v.rend());sort(v.begin(), v.end(), greater&lt;int&gt;());// 反轉reverse(v.begin(), v.end());// 二分搜binary_search(v.begin(), v.end(), val)upper_bound(v.begin(), v.end(), val);lower_bound(v.begin(), v.end(), val);// 合併vector&lt;int&gt; v1 = &#123;1,3,5&#125;,            v2 = &#123;2,4,6&#125;,            v3(6);merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin());for(auto i : v3) cout &lt;&lt; i &lt;&lt; &quot; &quot;;// output : 1 2 3 4 5 6// 全排列vector&lt;int&gt; v = &#123;1,3,5&#125;;while(next_permutation(v.begin(),v.end())) &#123;    for(auto i : v) cout &lt;&lt; i &lt;&lt; &quot; &quot;;    cout &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 5 3 // 3 1 5 // 3 5 1 // 5 1 3 // 5 3 1
+
+注意：vector 不支援對前端元素使用 新增 或 刪除 的操作
+
+補充 🔗
+
+push_back() 與 emplace_back() 功能相同，但如果以效能為優先，emplace_back() 通常比 push_back() 更快一點，因為是直接呼叫 constructor 不會複製 object，所以有時候執行效率會比較快。
+延伸閱讀：codingninjas - emplace_back() vs push_back() in C++ Vectors
+
+
+
+在知道需要多少元素後，可以先對 vector 做 reserve() 擴充 capacity 再 emplace_back() ，會比 空 vector 慢慢 emplace_back() 快
+延伸閱讀：ping 不見路 - STL vector 效率小記
+示意圖 (圖片來源)
+
+
+list 串列 🔗
+list 是雙向鏈結串列（Doubly Linked List），每個節點包含前一個節點與下一個節點的指標，因此可以從任意位置快速插入或刪除元素，且不需要搬移其他元素。
+不同於 vector，list 不支援下標，也就是不能使用 [index] 隨機存取
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+lt.size()
+取得元素個數
+O(1)O(1)
+
+
+2
+lt.empty()
+判斷是否為空
+O(1)O(1)
+
+
+3
+lt.front() / lt.back()
+取得首尾元素
+O(1)O(1)
+
+
+4
+lt.push_front(val) / lt.push_back(val)
+在前/後加入元素
+O(1)O(1)
+
+
+5
+lt.pop_front() / lt.pop_back()
+移除前/後元素
+O(1)O(1)
+
+
+6
+lt.insert(it, val)
+在迭代器 it 前插入 val
+O(1)O(1)
+
+
+7
+lt.erase(it)
+刪除迭代器 it 指向的元素
+O(1)O(1)
+
+
+8
+lt.clear()
+清空整個 list
+O(n)O(n)
+
+
+9
+lt.sort()
+對 list 元素排序
+O(nlog⁡n)O(n \log n)
+
+
+10
+lt.reverse()
+反轉 list
+O(n)O(n)
+
+
+11
+lt.merge(lt2)
+合併另一個已排序 list，結果為排序
+O(n+m)O(n+m)
+
+
+
+常用基本操作 Code 🔗
+list&lt;int&gt; lt;// 尾端加入元素lt.push_back(1);lt.push_back(2);// 前端加入元素lt.push_front(0);// 遍歷for(auto x : lt) cout &lt;&lt; x &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;; // output : 0 1 2// 插入auto it = lt.begin();advance(it, 2); // 移動到 index 2lt.insert(it, 5); for(auto x : lt) cout &lt;&lt; x &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;; // output : 0 1 5 2// 刪除lt.pop_front();lt.pop_back();for(auto x : lt) cout &lt;&lt; x &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;; // output : 1 5// 反轉lt.reverse();for(auto x : lt) cout &lt;&lt; x &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;; // output : 5 1
+string 字串 🔗
+雖然 string 不在 STL 裡，但是由連續的字元組成，實際上就是 vector&lt;char&gt;，加上有一些字串的操作，所以我就順便放進來了
+可支援的操作方法 🔗
+vector 有的 string 幾乎都有
+常用基本操作 Code 🔗
+// 宣告string s;    // 預設為空字串string s1 = &quot;ABC&quot;;// 賦值cin &gt;&gt; s;        // 以空白作為輸入分隔getline(cin,s);  // 以換行作為輸入分隔s = &quot;ShiYu&quot;;s = s1;// 串接s = &quot;ShiYu&quot;;s1 = &quot;ABC&quot;;s += s1;cout &lt;&lt; s;// output : ShiYuABC// 字串轉數字int a = stoi(&quot;123&quot;);            // stoi : string to intlong b = stol(&quot;12345678900&quot;);   // stol : string to longdouble c = stod(&quot;3.14159&quot;);     // stod : string to double// 字串轉數字int a = 123;double b = 3.14159;string sa = to_string(a);string sb = to_string(b);// 刪除最後一個字元s.pop_back();// 下標讀取字元cout &lt;&lt; s[3];// output : Y// 擷取子字串cout &lt;&lt; s.substr(0,3);// output : Shi// 取得長度cout &lt;&lt; s1.size();// output : 5
+
+注意：取得字串長度請不要用 strlen()，應該要用 .size()，因為前者複雜度為 O(n)O(n)，後者為 O(1)O(1)
+
+pair 數對 🔗
+可將兩個型態的資料合併，透過成員變數 first 和 second 來存取元素，pair 支援以元素字典序來比較或排序，以 first 為優先
+常用基本操作 Code 🔗
+// 宣告pair&lt;int, double&gt; p;// 賦值p = &#123;1, 2.5&#125;;p = make_pair(1, 2.5);// 取值int f = p.first;    // 1double s = p.second;// 2.5// 比較pair&lt;int, double&gt; a, b;a = &#123;1, 2.5&#125;;b = &#123;1, 2.6&#125;;cout &lt;&lt; (a &lt; b) &lt;&lt; &quot;\n&quot;; // output : 1 (true)// 交換兩 pairpair&lt;int, int&gt; a,b;a = &#123;1, 3&#125;;b = &#123;2, 4&#125;;swap(a, b); // or a.swap(b)cout &lt;&lt; a.first &lt;&lt; &quot; &quot; &lt;&lt; a.second &lt;&lt; &quot;\n&quot;; // output : 2 4// pair 搭配 vector 新增元素vector&lt; pair&lt;int,int&gt; &gt; vp;vp.push_back(make_pair(1,2));vp.emplace_back(3,4); // 用 emplace_back 可以不用 make_pairfor(auto i : vp) &#123;    cout &lt;&lt; i.first &lt;&lt; &quot; &quot; &lt;&lt; i.second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 3 4// 使用 vector 排序多個 pairpair&lt;int,int&gt; a = &#123;1,3&#125;,              b = &#123;2,4&#125;,              c = &#123;1,2&#125;;vector&lt; pair&lt;int, int&gt; &gt; v&#123;a, b, c&#125;;sort(v.begin(), v.end());for(auto i : v) &#123;    cout &lt;&lt; i.first &lt;&lt; &quot; &quot; &lt;&lt; i.second &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2// 1 3// 2 4
+tuple 數組 🔗
+與 pair 相似，但可以同時組合多個不同型別的元素( pair 只能 2 個)
+常用基本操作 Code 🔗
+// 宣告tuple&lt;string, int, bool&gt; tp;// 初始化tuple&lt;string, int, bool&gt; tp(&quot;ShiYu&quot;, 16, true); // 賦值tp = &#123;&quot;ShiYu&quot;, 16, true&#125;;tp = make_tuple(&quot;ShiYu&quot;, 16, true);// 賦值（使用 tie，須放變數）string name = &quot;ShiYu&quot;; int age = 16;bool b = true;tie(name, age, b) = tp;// 取值int age = get&lt;1&gt;(tp); // 16// 修改值get&lt;2&gt;(tp) = false;// 取得元素個數cout &lt;&lt; tuple_size&lt;decltype(tp)&gt;::value &lt;&lt; &quot;\n&quot;; // output : 3// tuple 搭配 vector 新增元素vector&lt; tuple&lt;int, int, int&gt; &gt; vt;vt.push_back(make_tuple(1, 2, 3));vt.emplace_back(4, 5, 6); // 用 emplace_back 可以不用 make_tuplefor(auto&amp; [a,b,c] : vt) &#123;    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; &quot;\n&quot;;&#125;// output : // 1 2 3// 4 5 6
+stack 堆疊 🔗
+可以想像成一疊盤子，每次只能在最上面 放置 或 拿走 一個盤子
+有著 後進先出 Last In First Out (LIFO) 的規則
+
+C++ 的 stack 是 容器適配器（Container Adapter），預設以 deque 為底層容器，也可使用 vector 或 list
+
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+
+
+
+
+1
+s.size()
+取得 s 大小
+
+
+2
+s.empty()
+回傳 s 是否為空
+
+
+3
+s.top()
+取得 s 頂端元素
+
+
+4
+s.push(val) / s.emplace(val)
+將 val 放入 s 頂端
+
+
+5
+s.pop()
+移除 s 頂端元素
+
+
+
+
+複雜度皆為 O(1)
+stack 不支援隨機存取，只能操作頂端元素，也不支援迭代器，無法直接遍歷
+注意：.top() 與 .pop() 不會檢查 stack 是否為空，若 stack 為空則是未定義行為，使用前須自行以 .empty() 檢查確保不會出錯
+
+示意圖 🔗
+
+(圖片來源)
+常用基本操作 Code 🔗
+依照示意圖實作
+stack&lt;int&gt; stk;for(int i=1;i&lt;=3;++i) &#123;    stk.push(i);&#125;while(!stk.empty()) &#123;    cout &lt;&lt; stk.top() &lt;&lt; &quot;\n&quot;;    stk.pop();&#125;// output : // 3// 2// 1
+常見應用 🔗
+
+表達式求值
+括號匹配
+維護單調序列
+
+queue 佇列 🔗
+可以想像為排隊的人群：新來的人排在隊伍的尾端，最前面的人結完帳離開隊伍
+有著 先進先出 First In First Out (FIFO) 的規則
+
+C++ 的 queue 是 容器適配器（Container Adapter），預設以 deque 為底層容器，也可以使用 list
+
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+
+
+
+
+1
+q.size()
+取得 q 長度
+
+
+2
+q.empty()
+回傳 q 是否為空
+
+
+3
+q.front()
+取得 q 最前端（最早加入）的元素
+
+
+4
+q.back()
+取得 q 最尾端（最後加入）的元素
+
+
+5
+q.push(val) / q.emplace(val)
+將 val 加入  q 尾端
+
+
+6
+q.pop()
+移除 q 最前端元素
+
+
+
+
+複雜度皆為 O(1)
+queue 不支援隨機存取，只能操作前端元素，也不支援迭代器，無法直接遍歷
+注意：.front() 與 .pop() 不會檢查 queue 是否為空，若 queue 為空則是未定義行為，使用前須自行以 .empty() 檢查確保不會出錯
+
+示意圖 🔗
+
+(圖片來源)
+常用基本操作 Code 🔗
+queue&lt;int&gt; q;q.emplace(1);q.emplace(2);q.emplace(3);while(!q.empty()) &#123;    cout &lt;&lt; q.size() &lt;&lt; &quot; &quot; &lt;&lt; q.front() &lt;&lt; &quot; &quot; &lt;&lt; q.back() &lt;&lt; &quot;\n&quot;;    q.pop();&#125;// output : // 3 1 3// 2 2 3// 1 3 3
+常見應用 🔗
+
+BFS
+拓墣排序
+任務排程
+
+deque 雙端佇列 🔗
+為 double ended queue 的縮寫，唸作 deck 而非 de-queue
+一般的 queue 只能從尾端新增元素、從前端刪除元素，而 deque 的前後都可以使用新增和刪除的操作，
+也支援下標隨機讀取 dq[i]，基本上就是多了 emplace_front()、pop_front() 的 vector
+雖然功能方便但由於常數較大，在程式競技比賽中非必要不會去使用
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+deque 與 vector 相比只是多了針對 front 的操作，少了針對記憶體的操作，因為 vector 記憶體連續，deque 則是分段儲存
+
+
+
+編號
+操作方法
+功能介紹
+
+
+
+
+1
+dq[i]
+隨機讀取第 i 個元素
+
+
+2
+dq.size()
+取得元素個數
+
+
+3
+dq.empty()
+判斷是否為空
+
+
+4
+dq.push_front(val) / dq.emplace_front(val)
+將 val 加入  dq 前端
+
+
+5
+dq.push_back(val) / dq.emplace_back(val)
+將 val 加入  dq 尾端
+
+
+6
+ dq.pop_front()
+移除 dq 最前端元素
+
+
+7
+dq.pop_back()
+移除 dq 最尾端元素
+
+
+
+
+複雜度皆為 O(1)
+
+常用基本操作 Code 🔗
+deque&lt;int&gt; dq;// 前後新增元素dq.emplace_front(1);dq.emplace_back(2);for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;// 刪除前端元素dq.pop_front();for(auto i : dq) cout &lt;&lt; i &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;// 刪除尾端元素dq.pop_back();cout &lt;&lt; dq.size() &lt;&lt; &quot;\n&quot;;// output : // 1 2 // 2 // 0
+常見應用 🔗
+
+滑動窗口
+0-1 BFS
+
+priority_queue 優先佇列 🔗
+priority_queue 是基於堆積（heap）結構實作的容器適配器，它可以維持最頂端的元素永遠是最大或最小的，所以可以很方便且快速地存取極值
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+pq.size()
+取得元素個數
+O(1)O(1)
+
+
+2
+pq.empty()
+判斷是否為空
+O(1)O(1)
+
+
+2
+pq.top()
+回傳 pq 中最大或最小的元素
+O(1)O(1)
+
+
+3
+pq.push(val) / pq.emplace(val)
+將 val 加入 pq 中
+O(log⁡n)O(\log n)
+
+
+4
+pq.pop()
+將 pq 中最大或最小的元素移除
+O(log⁡n)O(\log n)
+
+
+
+常用基本操作 Code 🔗
+priority_queue&lt;int&gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 9// 最小堆priority_queue&lt; int, vector&lt;int&gt;, greater&lt;int&gt; &gt; pq;pq.emplace(3);pq.emplace(5);pq.emplace(9);cout &lt;&lt; pq.top();// output : 3
+補充 🔗
+
+priority_queue 有三個型別參數 T、C、Cmp
+T 是內容物的型別，C 是所採用的容器，Cmp 是比大小的依據
+priority_queue 能使用的容器有 vector 和 deque
+Cmp 的預設值是 less&lt;T&gt;，此時的 priority_queue 是最大堆 max heap
+若改成 greater&lt;T&gt;，則 priority_queue 為 最小堆 min heap
+建構式如上方 Code 第 8 行，而 output 為最小值
+
+延伸閱讀 🔗
+
+Binary Heap 的排序原理
+資料結構大便當： Binary Heap
+
+常見應用 🔗
+
+動態維護極值
+動態第 K 大
+最短路徑演算法（Dijkstra）
+
+set 集合 🔗
+set 是一個平衡二元搜尋樹容器，底層使用 紅黑樹（Red-Black Tree）實作
+主要的特性為以下三種：
+
+內部元素自動排序（從小到大）
+沒有重複元素（方便去重）
+插入、刪除和查詢的時間複雜度皆為 O(log⁡n)O(\log n)
+
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+s.size()
+取得元素個數
+O(1)O(1)
+
+
+2
+s.empty()
+判斷是否為空
+O(1)O(1)
+
+
+3
+s.insert(K)
+插入元素 K，若已存在則忽略
+O(log⁡n)O(\log n)
+
+
+4
+s.erase(K)
+刪除鍵為 K 的元素，回傳刪除數量（0 或 1）
+O(log⁡n)O(\log n)
+
+
+5
+s.erase(it)
+刪除迭代器指向元素
+O(log⁡n)O(\log n)
+
+
+6
+s.erase(it_first, it_last)
+刪除區間 [first,last)
+O(klog⁡n)O(k \log n)，k = 刪除數量
+
+
+7
+s.find(K)
+尋找 K，回傳迭代器，找不到則回傳 s.end()
+O(log⁡n)O(\log n)
+
+
+8
+s.count(K)
+回傳鍵為 K 的個數（0 或 1）
+O(log⁡n)O(\log n)
+
+
+9
+s.lower_bound(K)
+回傳第一個大於等於 K 的元素迭代器
+O(log⁡n)O(\log n)
+
+
+10
+s.upper_bound(K)
+回傳第一個大於 K 的元素迭代器
+O(log⁡n)O(\log n)
+
+
+
+常用基本操作 Code 🔗
+// 宣告set&lt;int&gt; s;// 插入s.insert(10);// 刪除s.erase(10);s.erase(s.begin());// 回傳該元素的 iterator，若 set 內部無該元素，則回傳 end()s.find(10);// 問一個元素在不在 set 裡。可透過 find 的 return 值，或使用 s.countif(s.find(10) != s.end()) cout &lt;&lt; &quot;In!\n&quot;;if(s.count(10)) cout &lt;&lt; &quot;In!\n&quot;;// 遍歷 set 元素for(auto &amp;i : s) cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+延伸閱讀 🔗
+
+資料結構 — 紅黑樹(Red-Black Tree)
+Shengyuu - 紅黑樹 - HackMD
+hwdong - 最好懂的红黑树教程 - Youtube
+
+map 映射 🔗
+類似於 python 中的 字典 dict，內部為 鍵值對 key-value pair，
+主要的特性為以下三種：
+
+每個元素都是 pair&lt;key, value&gt;
+內部依 鍵 key 自動排序
+可以修改 值 value ，但不能修改 鍵 key （因為會破壞排序）
+插入/刪除/查詢鍵的值，時間複雜度皆為 O(log⁡n)O(\log n)
+
+示意圖 🔗
+
+(圖片來源)
+可支援的操作方法 🔗
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+m[k]
+存取鍵值 k 對應的 value，若不存在則插入預設值
+O(log⁡n)O(\log n)
+
+
+2
+m.size()
+取得元素數量
+O(1)O(1)
+
+
+3
+m.empty()
+判斷是否為空
+O(1)O(1)
+
+
+4
+m.insert(pair&lt;K,T&gt; p)
+插入鍵值對 p，若 key 已存在則不修改 value；回傳 pair（first=迭代器，second=是否插入成功）
+O(log⁡n)O(\log n)
+
+
+5
+m.erase(k)
+刪除 key 為 k 的元素，回傳刪除數量（0 或 1）
+O(log⁡n)O(\log n)
+
+
+6
+m.erase(it)
+刪除迭代器指向的元素
+O(log⁡n)O(\log n)
+
+
+7
+m.erase(it_first, it_last)
+刪除區間 [first,last) 的元素
+O(klog⁡n)O(k \log n)，k=刪除數量
+
+
+8
+m.find(k)
+查找 key=k，回傳指向元素的迭代器，找不到回傳 m.end()
+O(log⁡n)O(\log n)
+
+
+9
+m.count(k)
+回傳 key=k 的元素數量（map 中 0 或 1）
+O(log⁡n)O(\log n)
+
+
+10
+m.lower_bound(k)
+回傳第一個 key &gt;= k 的元素迭代器
+O(log⁡n)O(\log n)
+
+
+11
+m.upper_bound(k)
+回傳第一個 key &gt; k 的元素迭代器
+O(log⁡n)O(\log n)
+
+
+12
+m.clear()
+清空 map
+O(n)O(n)
+
+
+
+常用基本操作 Code 🔗
+map&lt;int, string&gt; m;// 讀取指定 key 的 valuecout &lt;&lt; m[1] &lt;&lt; &quot;\n&quot;;        // output: onecout &lt;&lt; m[2] &lt;&lt; &quot;\n&quot;;        // output: two// 插入元素m[1] = &quot;one&quot;;                // 使用 operator[]m.insert(&#123;2, &quot;two&quot;&#125;);        // 使用 insertm.insert(make_pair(3, &quot;three&quot;));// 刪除元素m.erase(2);m.erase(m.begin());// 查詢 key 是否存在if(m.find(3) != m.end()) cout &lt;&lt; &quot;3 in map\n&quot;;// 遍歷 mapfor(auto &amp;p : m) cout &lt;&lt; p.first &lt;&lt; &quot;:&quot; &lt;&lt; p.second &lt;&lt; &quot; &quot;;cout &lt;&lt; &quot;\n&quot;;
+multiset 多重集合 &amp; multimap 多重映射 🔗
+兩者為 set、map 的延伸，用法相似但允許有重複元素，且 multimap 中一個鍵值可能對應到不同的值，所以不支援下標
+示意圖 🔗
+
+(圖片來源)
+unordered_set 無序集合 &amp; unordered_map 無序映射 🔗
+兩者為 set、map 的延伸，用法相似但因為底層使用 雜湊表 Hash Table 實作，所以內部不排序
+因為無序，所以當然沒有 lower_bound()、upper_bound()，unordered_map 支援下標
+插入/刪除/查詢的時間複雜度平均 O(1)O(1)，最壞 O(n)O(n)（Hash 碰撞）
+常數較大，競賽中非必要時不常用
+示意圖 🔗
+
+(圖片來源)
+延伸閱讀 🔗
+
+資料結構 - 雜湊表 Hash Table
+雜湊表（Hash Table）- 拉爾夫的技術隨筆
+示意圖(圖片來源)
+
+
+unordered_multiset 無序多重集合 &amp; unordered_multimap 無序多重映射 🔗
+依名稱即可知道為前兩者的結合，內部不排序且可允許重複元素
+set / map 延伸容器對照表 🔗
+
+
+
+容器
+是否排序
+是否允許重複
+下標支援
+插入/刪除/查找平均時間複雜度
+
+
+
+
+set
+✅
+❌
+❌
+O(log⁡n)O(\log n)
+
+
+map
+✅
+❌
+✅
+O(log⁡n)O(\log n)
+
+
+multiset
+✅
+✅
+❌
+O(log⁡n)O(\log n)
+
+
+multimap
+✅
+✅
+❌
+O(log⁡n)O(\log n)
+
+
+unordered_set
+❌
+❌
+❌
+平均 O(1)O(1)
+
+
+unordered_map
+❌
+❌
+✅
+平均 O(1)O(1)
+
+
+unordered_multiset
+❌
+✅
+❌
+平均 O(1)O(1)
+
+
+unordered_multimap
+❌
+✅
+❌
+平均 O(1)O(1)
+
+
+
+bitset 位集 🔗
+bitset 為固定長度的位元集合，可以視為一個效率很快的 bool 陣列
+因為 bool 這個型別明明只能表示 true 或 false，但通常卻佔了 1 byte 的記憶體空間
+用 bitset 可以宣告固定長度的 bits，可以想像為一堆 0 和 1 的陣列
+並且 bitset 的位元運算是被優化過的，對常數優化及空間壓縮有不錯的效果，速度大約是 bool 的 32 倍
+可支援的操作函數 🔗
+
+
+
+編號
+操作方法
+功能介紹
+時間複雜度
+
+
+
+
+1
+b[i]
+存取第 i 位
+O(1)O(1)
+
+
+2
+b.size()
+回傳 b 的總位數
+O(1)O(1)
+
+
+3
+b.count()
+計算 b 中為 1 的位數
+O(N)O(N)
+
+
+4
+b.set()
+將所有位元設為 1
+O(N)O(N)
+
+
+5
+b.reset()
+將所有位元設為 0
+O(N)O(N)
+
+
+6
+b.flip()
+將所有位元取反（0 ↔ 1）
+O(N)O(N)
+
+
+7
+b.any() / b.none()
+檢查是否有至少一個位元為 1 / 全部為 0
+O(N)O(N)
+
+
+8
+b.to_string()
+將 bitset 轉為字串
+O(N)O(N)
+
+
+9
+b.to_ulong()
+將 bitset 轉為 unsigned long（注意溢位）
+O(N)O(N)
+
+
+
+常用基本操作 Code 🔗
+// 宣告bitset&lt;5&gt; b; // 大小為 5，初始值 00000// 賦值b[0] = 1; // 00001 以右邊為低位// 設置b.set();	// 11111b.reset();  // 00000b.flip();   // 11111// 計數與檢查cout &lt;&lt; b.count() &lt;&lt; &quot;\n&quot;; // 5cout &lt;&lt; b.any() &lt;&lt; &quot;\n&quot;;   // 1 (true)cout &lt;&lt; b.none() &lt;&lt; &quot;\n&quot;;  // 0 (false)// 轉換cout &lt;&lt; b.to_string() &lt;&lt; &quot;\n&quot;;  // &quot;11111&quot;cout &lt;&lt; b.to_ulong() &lt;&lt; &quot;\n&quot;;   // 31// 位元運算bitset&lt;5&gt; a(&quot;10101&quot;), b(&quot;01110&quot;);cout &lt;&lt; (a &amp; b) &lt;&lt; &quot;\n&quot;; // 00100cout &lt;&lt; (a | b) &lt;&lt; &quot;\n&quot;; // 11111cout &lt;&lt; (a ^ b) &lt;&lt; &quot;\n&quot;; // 11011
+常見應用 🔗
+
+空間優化
+狀態壓縮 DP
+
+
+容器分類表格 🔗
+
+
+
+類別分類
+主要容器
+用途 / 特點
+
+
+
+
+序列式容器
+vector, deque, list
+存放有序元素，支援迭代器操作；vector 隨機存取快，deque 前後操作靈活，list 雙向鏈結串列，插入刪除快
+
+
+容器適配器
+stack, queue, priority_queue
+封裝序列式容器，提供特定操作：stack（後進先出）、queue（先進先出）、priority_queue（依優先權排序）
+
+
+關聯容器
+set, map, multiset, multimap
+自動排序，快速查找、插入、刪除；set 存唯一元素，map 存 key-value；multiset/multimap 允許重複
+
+
+無序容器
+unordered_set, unordered_map, unordered_multiset, unordered_multimap
+基於 Hash 表，平均 O(1) 查找、插入；最壞情況 O(n)；元素無序
+
+
+工具型容器
+pair, tuple, bitset
+儲存固定數量元素或位元資訊；pair 兩個元素，tuple 多個元素，bitset 二進位操作與狀態壓縮
+
+
+
+題單 🔗
+看完這篇筆記相信大家對 STL 有一定的瞭解了，不過還是要實際練習才能掌握，所以我把曾經寫過的題目整理成資料庫，來自各大 Online Judge，有依照不同的難度及不同資料結構分類好，歡迎大家自行運用，多練習才能讓你更加熟練。
+STL 題單連結 - Notion 🔗
+
+Outro 🔗
+這篇文章只用了兩天的時間，從收集資料、整理資訊、規劃架構，再來開始寫每個資料結構的內容，製作表格、寫 Code、找圖片（每張圖片皆有附上來源）、找補充資料，到最後不斷地重複新增和修改內容，直到整篇文章逐漸完整，我從中學習到的不只有這篇文章所呈現的知識，還有很多重要的能力，也感受到了學習的快樂，日後會不斷地學習新知識，也會針對各主題寫成一篇筆記發佈，感謝大家的閱讀
+下回預告：點擊前往 C++ 實作資料結構 🔗
+
+參考資料 🔗
+
+The C++ Standard Template Library (STL)
+
+從零開始的演算法競賽入門教學 - STL
+Ian Shih - STL Containers - HackMD
+C++ 中 STL 用法超詳細總結 - Github
+進階 C++ STL 迭代器 - HackMD
+C++ STL 常用容器以及操作簡介
+C++ STL 學習總結(全面)
+STL in C++ - Youtube
+cplusplus reference
+cppreference
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>DSA</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資料結構 Data Structures</tag>
+        <tag>動態陣列 vector</tag>
+        <tag>串列 list</tag>
+        <tag>字串 string</tag>
+        <tag>數對 pair</tag>
+        <tag>數組 tuple</tag>
+        <tag>堆疊 stack</tag>
+        <tag>佇列 queue</tag>
+        <tag>雙端佇列 deque</tag>
+        <tag>優先佇列 priority_queue</tag>
+        <tag>集合 set</tag>
+        <tag>映射 map</tag>
+        <tag>多重集合 multiset</tag>
+        <tag>多重映射 multimap</tag>
+        <tag>無序集合 unordered_set</tag>
+        <tag>無序映射 unordered_map</tag>
+        <tag>位集 bitset</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排序演算法 Sort Algorithm</title>
+    <url>/post/Sort-Algorithm/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/Sort-Algorithm/
+公開發布日期：2023/02/25
+
+
+本文架構 🔗
+線性排序演算法種類 🔗
+
+氣泡排序 Bubble Sort
+選擇排序 Selection Sort
+插入排序 Insertion Sort
+快速排序 Quick Sort
+合併排序 Merge Sort
+堆排序 Heap Sort
+希爾排序 Shell Sort
+計數排序 Counting Sort
+桶排序 Bucket Sort
+基數排序 Radix Sort
+
+每個排序演算法的內容 🔗
+
+排序介紹
+動畫演示
+實作步驟
+C++ 程式碼
+注意事項
+時間複雜度
+總結
+
+測試模板 🔗
+本文介紹的 10 種排序演算法都會附上寫好的函式，這裡提供可 EOF 輸入的測試模版，請在區塊中加上各種排序演算法函式，若沒有指定呼叫方法則直接呼叫函式名稱即可運作
+#include &lt;bits/stdc++.h&gt;using namespace std;vector&lt;int&gt; v;// 可以將底下的某個排序演算法函式複製起來放進來這個區塊// ----------------------------------------------// ----------------------------------------------int main(void)&#123;    int n;    while (cin &gt;&gt; n) v.emplace_back(n);    // 這行放入某個排序演算法函式名稱用來呼叫 例如：BubbleSort();    // ------------------------------------------    // ------------------------------------------        for (auto &amp;i : v) cout &lt;&lt; v[i] &lt;&lt; &quot; &quot;;    return 0;&#125;
+
+排序演算法的詳細介紹 🔗
+氣泡排序 Bubble Sort 🔗
+氣泡排序是一種簡單的排序演算法，原理是依序比較相鄰的兩個元素，如果前一個元素大於後一個元素，就交換它們的位置，重複進行直到排序完成。
+因為排序過程中較大的元素會像氣泡一樣慢慢浮到數列的右端，所以叫氣泡排序。
+動畫演示 🔗
+
+實作步驟 🔗
+
+外層 for 迴圈控制待排序的數量，每一輪會減少一個，直到排序完成
+內層 for 迴圈表示每輪需要比較的次數
+如果前一個數大於後一個數，則使用 swap() 交換
+
+C++ Code 🔗
+void BubbleSort()&#123;    int n = v.size();    for (int i=n; i&gt;1; --i)    &#123;        for (int j=0; j&lt;i-1; ++j)        &#123;            if (v[j] &gt; v[j+1])             &#123;                swap(v[j],v[j+1]);            &#125;        &#125;    &#125;&#125;
+優化 🔗
+如果某輪沒有發生交換，就代表數列已經排好了可以提前結束，這樣可以減少後面發生不必要的比較
+C++ Code 🔗
+void BubbleSort()&#123;    int n = v.size();    for (int i=n; i&gt;1; --i)    &#123;        bool check = false;        for (int j=0; j&lt;i-1; ++j)        &#123;            if (v[j] &gt; v[j+1])             &#123;                swap(v[j],v[j+1]);                check = true;            &#125;        &#125;        if (!check) break;    &#125;&#125;
+時間複雜度 🔗
+
+時間複雜度：O(n2)O(n^2)
+
+每一輪排序都需要進行 n−in-i 次比較，而最多需要進行 n−1n-1 輪排序。
+因此，總的比較次數為 (n−1)+(n−2)+...+2+1=(n2−n)/2(n-1)+(n-2)+...+2+1=(n^2-n)/2
+取最高次項所以時間複雜度為 O(n2)O(n^2)
+
+
+
+總結 🔗
+氣泡排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序。
+選擇排序 Selection Sort 🔗
+選擇排序是一種簡單的排序演算法，它的原理是選擇最小的元素，與第一個元素交換位置，然後在剩下的元素中選擇最小的元素，與第二個元素交換位置，以此類推，重複直到排序完成。
+動畫演示 🔗
+
+實作步驟 🔗
+
+外層 for 迴圈遍歷 0→n−10 \to n-1 個元素
+每輪設最小值為第 ii 個元素
+內層迴圈從 ii 開始往後遍歷到底，更新最小值位置
+交換第 ii 個元素與最小值
+
+C++ Code 🔗
+void SelectionSort()&#123;    int n = v.size();    for (int i=0; i&lt;n-1;++i)    &#123;        int mini = i;        for (int j=i; j&lt;n; ++j)        &#123;            if (v[j] &lt; v[mini])            &#123;                mini = j;               &#125;        &#125;        swap(v[i], v[mini]);    &#125;&#125;
+時間複雜度 🔗
+
+時間複雜度：O(n2)O(n^2)
+
+選擇排序的核心操作是選擇最小元素，將其與當前位置交換，而選擇最小元素需要在未排序的序列中進行線性搜索，因此需要執行 nn 次循環和 nn 次內層循環，時間複雜度為 O(n2)O(n^2)。
+
+
+
+總結 🔗
+選擇排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序，且較不穩定，如當元素相等時，彼此順序還是會改變。
+插入排序 Insertion Sort 🔗
+將未排序的資料依次插入已排序序列中，形成新的已排序序列。
+動畫演示 🔗
+
+實作步驟 🔗
+
+for 遍歷 1→n−11 \to n-1 個元素
+暫時取出 v[i]v[i] 為待插入元素 設 jj 為插入點 初始為 i−1i-1
+用 while 迴圈開始由後往前掃描 確認在範圍內且待插入元素小於掃到的元素
+把掃過的元素往後面搬 且 jj 遞減
+若碰到最前面了或是遇到比待插入元素還要大的就退出 while 迴圈
+將 插入點 設為待插入元素 v[i]v[i]
+
+C++ Code 🔗
+void InsertSort()&#123;    int n = v.size();    for (int i=1; i&lt;n;++i)    &#123;        int temp = v[i], j = i-1;        while (j &gt;= 0 &amp;&amp; temp &lt; v[j])        &#123;            v[j+1] = v[j];            j--;        &#125;        v[j+1] = temp;    &#125;&#125;
+注意事項 🔗
+
+while 迴圈條件要設定邊界，插入點須 ≥0\ge 0。
+
+時間複雜度 🔗
+
+時間複雜度：O(n2)O(n^2)
+
+要遍歷 n−1n-1 個元素，每次要往前掃瞄並搬動元素
+
+
+
+總結 🔗
+插入排序演算法是一種簡單但效率較低的排序演算法，通常只適用於小規模資料的排序。
+合併排序 Merge Sort 🔗
+合併排序 Merge Sort 是一種基於分治法的排序演算法，也是一種比較經典且常用的排序演算法之一。
+合併排序的主要流程包括分解、排序和合併三個步驟。
+首先將要排序的序列分成兩部分，分別對這兩部分進行排序，最後將排好序的兩個部分合併起來即可得到排序後的序列。
+在排序的過程中，通過遞歸地將序列分解成小問題，再利用合併操作將小問題的解合併成原問題的解。
+動畫演示 🔗
+
+實作步驟 🔗
+
+定義 MergeSort() 將 l、r 作為參數
+算出 mid 拆成兩半 當 l == r 代表已排好可以返回，否則分別遞迴做拆分
+呼叫 merge() 帶入 l,r 將 [l,r] 區間中兩個已排序的數列合併成一個已排序的數列
+merge() 先算出 mid 以及建立一個暫存的數列，長度設為合併後的數列長度
+for 用兩個指針分別從 l 和 mid 開始遍歷，哪個較小就先放入暫存數列中（注意邊界）
+將排序好的暫存數列全部更新至原數列中
+
+C++ Code 🔗
+呼叫時請用 MergeSort(0, v.size());
+void merge(int l, int r)&#123;    int mid = (l+r)/2, tmp[r-l+1];    for(int i=l, j=mid+1, k=0; i&lt;=mid || j&lt;=r; ++k)    &#123;        if((v[i] &lt;= v[j] &amp;&amp; i &lt;= mid) || j &gt; r) tmp[k] = v[i++];        else tmp[k] = v[j++];    &#125;    for(int i=l, j=0; i&lt;=r; ++i, ++j) v[i] = tmp[j];&#125;void MergeSort(int l, int r)&#123;    if(l == r) return;    int mid = (l+r)/2;    MergeSort(l, mid); MergeSort(mid+1, r);    merge(l, r);&#125;
+注意事項 🔗
+
+注意邊界 在 merge()merge() 中 確保 i,ji,j 兩指針不會跑出兩數列
+注意分割遞迴終止條件 是 l == r
+tmp 的長度是 r−l+1r-l+1
+for 的 kk 從 00 開始 取左時 ++i 取右時 ++j
+比大小時注意要多加上邊界條件 且若右數列取完了就直接取左列元素
+最後要把暫存元素更新到原數列中時 注意初始位置
+
+時間＆空間複雜度 🔗
+
+
+平均時間複雜度：O(nlog⁡n)O(n\log n)
+
+在平均情況下，合併排序的時間複雜度為 O(nlog⁡n)O(n\log n)。這是因為在合併排序的過程中，每個元素都需要進行一次比較，而且每個元素都需要被移動到新數組中的正確位置，這樣每個元素都需要進行 log⁡n\log n 級別的操作。
+
+
+
+空間複雜度：O(n)O(n)
+
+合併排序需要額外的空間來存儲排序過程中的元素，這些儲存空間的大小與待排序數列的大小相同。
+
+
+
+總結 🔗
+合併排序是一種高效穩定的排序算法，通過分治的思想，先拆分問題再合併解決。其時間複雜度為 O(nlog⁡n)O(n \log n)，在處理大量資料時表現良好。在實作時需要注意指針的起始值、合併區間的邊界問題等細節。
+快速排序 Quick Sort 🔗
+快速排序 Quick Sort 是一種常見的分治演算法，被認為是最快的排序演算法之一。
+它是選擇一個基準元素（通常是中間點），通過一趟排序將待排序列分為兩部分，
+其中一部分的所有元素都比基準元素小，另一部分的所有元素都比基準元素大，
+然後再按照此方法對這兩部分分別進行快速排序，直到整個序列有序。
+動畫演示 🔗
+本動畫以左邊當基準點
+
+實作步驟 🔗
+
+選擇中間點為基準點元素 pivot
+找到左邊大於等於基準點的元素以及右邊小於等於基準點的元素
+如果左邊大於等於右邊，交換它們
+遞迴排序左半部分以及右半部分
+
+C++ Code 🔗
+呼叫時請用 QuickSort(0, v.size());
+void QuickSort(int l, int r) &#123;    if (l &gt;= r) return;    int i = l, j = r, pivot = v[(l + r) / 2];    while (i &lt;= j)     &#123;        while (v[i] &lt; pivot) i++;        while (v[j] &gt; pivot) j--;        if (i &lt;= j)         &#123;            swap(v[i], v[j]);            i++; j--;        &#125;    &#125;    QuickSort(l, j); QuickSort(i, r);&#125;
+時間複雜度 🔗
+
+
+平均時間複雜度：O(nlog⁡n)O(n\log n)
+
+在平均情況下，每次切分都能將數列分為近似相等的兩個子數列，快速排序的時間複雜度為 O(nlog⁡n)O(n\log n)。
+
+
+
+最壞時間複雜度：O(n2)O(n^2)
+
+當數列已經排好序或接近排好序時，選擇第一個或最後一個元素作為基準元素，時間複雜度會退化為 O(n2)O(n^2)。
+
+
+
+注意事項 🔗
+
+需要注意邊界條件，例如遞迴結束的條件。
+快速排序是一個不穩定的排序演算法，相同元素的相對位置可能會在排序後發生變化。
+在選擇 pivot 時，可以選擇任意一個元素作為 pivot，但選擇哪個 pivot 會影響到排序的效率。如果每次都選擇最小或最大的元素作為 pivot，就會導致最壞情況下的時間複雜度從 O(nlog⁡n)O(n\log n) 暴增為 O(n2)O(n^2)。因此，為了避免這種情況，可以選擇隨機的 pivot，通常選擇數列的中間元素作為 pivot，這樣可以確保每次排序的平均時間複雜度都是 O(nlog⁡n)O(n\log n)。
+
+總結 🔗
+快速排序演算法是透過分治，達成高效率的排序演算法。它可以在短時間內對大型資料進行排序。儘管最壞情況下的時間複雜度較高，但在大多數情況下，它的表現都很優秀。
+堆積排序 Heap Sort 🔗
+堆積排序 Heap Sort 是一種使用二元樹 Binary Tree 資料結構的排序演算法。
+堆可以看作是一個完全二元樹，它具有以下兩個性質：
+
+父節點的值永遠大於或等於（小於或等於）子節點的值。
+堆中任意節點的子樹都符合上述特點。
+
+實作步驟 🔗
+
+建立堆：將待排序的數列轉換成一個堆。這一步可以通過從最後一個非葉子節點開始，對每個節點進行調整來實現。具體來說，對於一個父節點，如果它的子節點的值比它的值大（或小），就交換它們，直到子樹也是一個堆，調整完成後就得到了一個初始的大根堆。
+排序：從堆的尾部開始，每次取出堆頂元素與堆尾元素交換位置。交換後，堆的長度減1，重複此操作直到堆的大小為1，由於每次都是取出堆頂元素，所以得到的數列就是有序的，以保證元素依然構成一個大根堆。
+
+C++ Code 🔗
+void heapify(int n, int i) &#123;    int mx = i; // 初始化最大值為根節點    int lt = 2 * i + 1; // 找到左子節點的索引    int rt = 2 * i + 2; // 找到右子節點的索引    if (lt &lt; n &amp;&amp; v[lt] &gt; v[mx]) // 如果左子節點的值比最大值還要大    &#123;         mx = lt; // 更新最大值的索引為左子節點的索引    &#125;    if (rt &lt; n &amp;&amp; v[rt] &gt; v[mx]) // 如果右子節點的值比最大值還要大    &#123;         mx = rt; // 更新最大值的索引為右子節點的索引    &#125;    if (mx != i) // 如果最大值不是根節點    &#123;         swap(v[i], v[mx]); // 把最大值交換到根節點        heapify(n, mx); // 遞迴對以最大值為根的子樹進行heapify操作    &#125;&#125;void HeapSort() &#123;    int n = v.size();    for (int i = n / 2 - 1; i &gt;= 0; i--) // 建立最大堆    &#123;         heapify(n, i);    &#125;    for (int i = n - 1; i &gt; 0; i--) // 進行堆排序    &#123;         swap(v[0], v[i]); // 把最大值與根節點交換        heapify(i, 0); // 對剩餘元素進行 heapify 操作    &#125;&#125;
+時間＆空間複雜度 🔗
+
+
+時間複雜度：O(nlogn)O(nlogn)
+
+在堆積排序中，排序的主要操作是下潛，即將堆頂元素下潛到合適的位置，這個操作的時間複雜度是 O(logn)。在排序過程中，需要執行 n 次下潛操作，因此排序的時間複雜度為 O(nlogn)O(nlogn)。
+
+
+
+空間複雜度：O(1)O(1)
+
+由於堆積排序是一種原地排序算法，因此它的空間複雜度是 O(1)O(1)，即不需要額外的空間。在堆排序中，只需要用到常數個變量作為中間變量，不需要額外的數組或其他資料結構。
+
+
+
+注意事項 🔗
+
+記得使用交換操作來實現堆的調整和排序。
+調整堆的時候，要先找到子節點中的最大值，然後再和父節點比較，如果子節點的值比父節點大，就將子節點的值上移。
+調整堆的時候，要特別注意邊界情況，例如在定位左右子節點的時候，要判斷右子節點是否存在。
+
+總結 🔗
+堆排序是一種高效的排序算法，它具有良好的時間複雜度和空間複雜度，並且它只需要一個輔助空間來存儲堆，可以實現原地排序，因此堆排序在排序大資料時非常有效。但是在實際應用中，由於堆排序的常數因子比較大，因此實際運行速度可能不如快速排序和插入排序等算法。
+希爾排序（Shell Sort） 🔗
+希爾排序（Shell Sort）是一種插入排序的改進版，其基本思想是先將待排序的序列按照一定間隔分成幾個子序列，然後對每個子序列進行插入排序。接著逐步縮小間隔，重複進行上述操作，直到間隔縮小到1時，最後對整個序列進行一次插入排序，完成排序。
+希爾排序的主要優點是在比較次數和移動次數上都有所改進，因為希爾排序採用分組的方式進行插入排序，每次排序可以使得一定程度上有序，因此在進行後面的排序時就可以利用前面排序時建立的有序性，減少比較次數和移動次數，此外希爾排序不需要額外的儲存空間。
+實作步驟 🔗
+
+首先選擇一個增量序列，這個序列的選擇可以影響希爾排序的效率。
+將待排序的序列按照增量序列分成幾個子序列，對每個子序列進行插入排序。
+逐步縮小增量序列，重複上述操作，直到增量為 1 時，最後對整個序列進行一次插入排序，完成排序。
+
+C++ Code 🔗
+void ShellSort() &#123;    int n = v.size();    // 初始化增量 gap，設為 n/2、n/4、n/8、...直到 1    for (int gap = n / 2; gap &gt; 0; gap /= 2)     &#123;        // 以 gap 為間隔，對每個子序列進行插入排序        for (int i = gap; i &lt; n; i++)         &#123;            int temp = v[i], j;            for (j = i; j &gt;= gap &amp;&amp; v[j - gap] &gt; temp; j -= gap)             &#123;                v[j] = v[j - gap];            &#125;            v[j] = temp;        &#125;    &#125;&#125;
+時間＆空間複雜度 🔗
+
+
+時間複雜度：
+
+希爾排序的時間複雜度取決於子序列的間隔序列（Increment sequence），一般會使用 Hibbard 增量序列（Hibbard’s increment sequence），其公式為：hk=2k−1h_k = 2^k - 1，其中 k 為子序列的索引，h_k 為對應的增量。
+
+
+平均時間複雜度：O(n(logn)2)O(n(logn)^2)
+最壞時間複雜度：O(n(logn)2)O(n(logn)^2)
+最佳時間複雜度：O(n)O(n)
+
+
+
+空間複雜度：O(1)O(1)
+
+希爾排序是一種原地排序算法，只需要一個輔助變量來進行元素交換，因此空間複雜度為 O(1)O(1)
+
+
+
+注意事項 🔗
+
+在實際應用中，希爾排序的實現需要根據具體情況進行優化，選擇合適的增量序列，以及在實現中注意避免不必要的交換和比較操作，從而提高排序的效率。
+增量序列的選擇很重要，通常建議使用 Shell 提出的增量序列（1, 4, 13, 40, …），但也可以根據具體情況進行調整。
+插入排序可以使用直接插入排序或折半插入排序，具體選擇哪種排序算法可以根據實際情況進行選擇。
+希爾排序的實現比較複雜，需要較好的理解和熟練的實現技巧。此外，在某些特殊情況下，希爾排序的效率可能會比其他排序算法低，因此在實際應用中需要仔細選擇排序算法。
+
+總結 🔗
+希爾排序是一種高效的排序算法，它通常比傳統的插入排序要快很多，特別是對於大型資料集。希爾排序采用分組的方式進行插入排序，每次排序可以使得一定程度上有序，因此在進行後面的排序時就可以利用前面排序時建立的有序性，減少比較次數和移動次數。
+計數排序（Counting Sort） 🔗
+計數排序（Counting Sort）是一種線性時間的排序算法，它可以用於排序一定範圍內的整數。計數排序的核心思想是先統計每個元素出現的次數，然後根據元素出現的次數，將元素排列成有序序列。
+動畫演示 🔗
+
+實作步驟 🔗
+
+計算待排序數組中每個元素出現的次數。假設待排序的元素範圍為 [0, k]，則可以創建一個長度為 k+1 的計數數組，對於每個出現的元素值，在計數數組中相應的位置上加一。
+對計數數組進行遍歷，依次累加前面所有元素的值，得到每個元素在有序序列中的位置。從計數數組的第二個元素開始，依次將前一個元素的值加到當前元素上，最終得到一個每個元素在有序序列中的位置的累加數組。
+根據計數數組和有序序列的位置信息，將元素依次放入有序序列中。從原數組末尾開始，對每個元素值，從累加數組中取得對應的位置，把該元素放入有序序列中的該位置。每放入一個元素，該位置在累加數組中的值就需要減一。
+將有序序列返回到原數組中。
+
+C++ Code 🔗
+void CountingSort() &#123;    int n = v.size();    int max_val = 100;  // 假設元素的範圍為[0,100]    // 計算元素出現的次數，初始化計數數組為0    vector&lt;int&gt; count(max_val + 1, 0);    for (int i = 0; i &lt; n; i++)     &#123;        count[v[i]]++;  // 計算v[i]出現的次數    &#125;    // 累加前面所有元素的值，得到每個元素在有序序列中的位置    for (int i = 1; i &lt;= max_val; i++)     &#123;        count[i] += count[i - 1];  // 累加前面所有元素的值    &#125;    // 根據計數數組和有序序列的位置信息，將元素依次放入有序序列中    vector&lt;int&gt; result(n, 0);    for (int i = n - 1; i &gt;= 0; i--)     &#123;        result[count[v[i]] - 1] = v[i];  // 將v[i]放到有序序列的對應位置上        count[v[i]]--;  // 將計數數組中對應元素的值減1    &#125;    // 將結果返回到原數組中    for (int i = 0; i &lt; n; i++)     &#123;        v[i] = result[i];    &#125;&#125;
+注意事項 🔗
+
+計數排序只適用於元素範圍較小的情況。如果元素範圍過大，則需要創建過大的計數數組，進而影響排序的效率和空間複雜度。
+計數排序是一種穩定的排序演算法。如果待排序數組中有相等的元素，排序後相等元素的相對位置不會改變。
+計數排序對於浮點數和負整數排序的支援不好。
+
+時間＆空間複雜度 🔗
+
+
+時間複雜度：O(n+k)O(n+k)
+
+計數排序的時間複雜度可以分為兩部分：計數過程和排序過程。首先是計數過程，需要對整個序列進行一次遍歷，把每個元素出現的次數記錄在計數數組中。由於計數數組的大小等於待排序序列的範圍，因此計數過程的時間複雜度為 O(n+k)O(n+k)，其中 n 是序列的長度，k 是序列中元素的範圍。接下來是排序過程，需要遍歷待排序序列，根據計數數組中的信息將每個元素放置到排序好的位置上。由於只需要遍歷一次待排序序列，因此排序過程的時間複雜度為 O(n)O(n)。因此，計數排序的時間複雜度為 O(n+k)O(n+k)，其中 n 為待排序元素的數量，k 為待排序元素的最大值。需要注意的是，當範圍 k 比較大時，計數排序的效率可能會比較低。
+
+
+
+空間複雜度：O(k)O(k)
+
+計數排序的空間複雜度主要取決於計數數組的大小 k。因此，計數排序的空間複雜度為 O(k)。需要注意的是，當範圍 k 比較大時，計數排序的空間複雜度也會相應增加。
+
+
+
+總結 🔗
+計數排序是一種高效的排序算法，適用於元素範圍較小的場景，在各種應用中都有著廣泛的應用，例如對於年齡、成績等數值型資料的排序。
+儘管它的時間複雜度比其他常用排序算法（如快速排序和合併排序）更小，但是它的應用受到了很大的限制，因為它需要在內存中創建一個大小為k的計數數組，如果k太大，計數數組將占用大量內存。此外，計數排序也不適用於具有負值元素的數組。
+桶排序（Bucket Sort） 🔗
+桶排序（Bucket Sort）是一種非常簡單的排序演算法，它的基本思想是將要排序的資料分為幾個桶，每個桶裡的資料都有一定的範圍。然後，對每個桶中的資料進行排序，最後按照桶的順序將所有桶中的資料合併起來。
+實作步驟 🔗
+
+建立一個 vector 來儲存待排序數列。
+找出數列中的最大值和最小值，並算出每個桶的範圍。
+建立桶(bucket)的數量，這裡以 10 個桶作為範例，並建立一個 vector，裡面包含了 10 個子 vector，分別代表每個桶的元素。
+將資料分配到對應的桶中，具體的方法是透過取整和乘法來判斷資料應該放在哪個桶中。
+對每個桶中的資料進行排序，可以使用 std::sort 函式。
+將排序後的資料依次放回原數組中。
+
+C++ Code 🔗
+void bucketSort() &#123;    int n = v.size();    // 建立桶（bucket）的數量，這裡以 10 個桶作為範例    const int bucket_num = 10;    vector&lt;vector&lt;int&gt;&gt; buckets(bucket_num);    // 將資料分配到對應的桶中    for (int i = 0; i &lt; n; i++)     &#123;        int index = v[i] / bucket_num;        buckets[index].push_back(v[i]);    &#125;    // 對每個桶中的資料進行排序    for (int i = 0; i &lt; bucket_num; i++)     &#123;        sort(buckets[i].begin(), buckets[i].end());    &#125;    // 將排序後的資料依次放回原數組中    int k = 0;    for (int i = 0; i &lt; bucket_num; i++)     &#123;        for (int j = 0; j &lt; buckets[i].size(); j++)        &#123;            v[k] = buckets[i][j];            k++;        &#125;    &#125;&#125;
+注意事項 🔗
+
+桶的大小設置：桶的大小應當選擇適中的值，太小會增加排序的時間複雜度，太大會佔用過多的空間。
+桶的數量：桶的數量應當根據資料的範圍和桶的大小進行設置。桶的數量不夠，會造成資料的堆積；桶的數量太多，會浪費空間。
+將資料分配到桶(bucket)中時，要注意取整和乘法的方法，避免產生錯誤。
+桶內部排序算法的選擇：桶內部的排序算法可以是任何一種穩定的排序算法，例如插入排序、冒泡排序等等。需要根據具體的應用場景選擇最優的算法。
+
+時間＆空間複雜度 🔗
+
+
+時間複雜度：O(n+k)O(n+k)
+
+計數排序的時間複雜度可以分為兩部分：計數過程和排序過程。首先是計數過程，需要對整個序列進行一次遍歷，把每個元素出現的次數記錄在計數數組中。由於計數數組的大小等於待排序序列的範圍，因此計數過程的時間複雜度為 O(n+k)O(n+k)，其中 n 是序列的長度，k 是序列中元素的範圍。接下來是排序過程，需要遍歷待排序序列，根據計數數組中的信息將每個元素放置到排序好的位置上。由於只需要遍歷一次待排序序列，因此排序過程的時間複雜度為 O(n)O(n)。因此，計數排序的時間複雜度為 O(n+k)O(n+k)，其中 n 為待排序元素的數量，k 為待排序元素的最大值。需要注意的是，當範圍 k 比較大時，計數排序的效率可能會比較低。
+
+
+
+空間複雜度：O(n+k)O(n+k)
+
+桶排序的空間複雜度取決於桶的數量和每個桶內部元素的個數。由於每個桶內部的元素個數都不超過n/k，因此每個桶所需的空間是 O(n/k)O(n/k)。總空間複雜度就是 O(n+k)O(n + k)。如果k接近n，則空間複雜度就會接近 O(n)O(n)。需要注意的是，當k比較大時，可能會出現空間浪費的情況，因此需要根據具體情況來選擇適當的桶數量。
+
+
+
+總結 🔗
+桶排序是一種簡單但有效的線性時間複雜度排序算法，優點是簡單易懂，而且比較容易實現。桶排序在資料分佈比較集中的情況下效果較好，但當資料分佈比較分散時，則會產生較多的桶(bucket)。適用於待排序資料分布範圍有限的情況。
+基數排序（Radix Sort） 🔗
+基數排序是一種非比較排序算法，適用於整數排序。基本思想是根據排序元素的位數，將整數按照位數從低到高或者從高到低進行排序，可以使用桶排序或計數排序等算法來實現。它的排序過程是先從最低有效位開始，依次對每一位進行排序，直到最高有效位。
+例如，將一個整數序列按照個位、十位、百位的順序來排序。首先，按照個位進行排序，將序列中所有數字根據個位數分成10個桶，分別把它們放進對應的桶中。然後，按照桶的順序把數字放回原序列中。接下來，再按照十位進行排序，以此類推，直到按照最高有效位進行排序為止。
+動畫演示 🔗
+
+實作步驟 🔗
+
+找出數組中最大的元素，確定最高位數，用變數 digit 記錄；
+從最低位數開始，將數組中的元素按照該位數的值放入相應的桶子（桶子數量為 10，分別代表 0~9）中，並計算每個桶子中的元素個數；
+計算每個桶子中元素在暫存陣列中的結束位置；
+把元素按照桶子中的順序放入暫存陣列中；
+把暫存陣列中的元素放回原陣列；
+重複步驟 2~5 直到排序完成。
+
+C++ Code 🔗
+void RadixSort() &#123;    int max = *max_element(v.begin(), v.end()); // 找出最大值    int digit = 1;    vector&lt;int&gt; tmp(v.size()); // 建立暫存的 vector    while (max / digit &gt; 0)     &#123;        vector&lt;int&gt; count(10); // 計數排序用的計數陣列        // 計算每個桶子中的元素個數        for (int i = 0; i &lt; v.size(); i++)         &#123;            int bucket = (v[i] / digit) % 10;            count[bucket]++;        &#125;        // 計算每個桶子中元素在暫存陣列中的結束位置        for (int i = 1; i &lt; count.size(); i++)         &#123;            count[i] += count[i-1];        &#125;        // 把元素放入暫存陣列        for (int i = v.size() - 1; i &gt;= 0; i--)         &#123;            int bucket = (v[i] / digit) % 10;            tmp[count[bucket] - 1] = v[i];            count[bucket]--;        &#125;        // 把暫存陣列中的元素放回原陣列        for (int i = 0; i &lt; v.size(); i++)         &#123;            v[i] = tmp[i];        &#125;        digit *= 10; // 到下一個數位    &#125;&#125;
+注意事項 🔗
+
+基數排序適用於位數相同的數列排序，如果位數不同，需將所有數字補齊至相同位數。
+每個位數的排序需要使用穩定排序算法，以保證相同位數上的數字相對位置不變。
+實作時需要用到桶來存儲數字，桶的數量與基數相同，這將需要額外的空間開銷。
+
+時間＆空間複雜度 🔗
+
+
+時間複雜度：O(d(n+k))O(d(n+k))
+
+其中 d 為最大位數，n 為數組大小，k 為桶子數量，通常為 10（代表數字 0~9）。因為每一位數都要進行一次計數排序，計數排序的時間複雜度為 O(n+k)O(n+k)，所以時間複雜度為 O(d(n+k))。
+
+
+
+空間複雜度：O(n+k)O(n+k)
+
+基數排序的空間複雜度主要由暫存陣列和計數陣列決定，因此空間複雜度為 O(n+k)O(n+k)。
+
+
+
+總結 🔗
+基數排序是一種穩定性較好且時間複雜度為線性的排序算法，但對於數字位數較大的情況下，其空間複雜度較高，可能需要額外的存儲空間。
+基數排序的優點是能夠處理不同長度的數字，且在數字大小範圍有限的情況下，表現優於快速排序和堆排序。
+但是它需要額外的空間儲存桶，且當數字大小範圍非常大時，需要大量的額外空間，並且其時間複雜度也會增加。
+排序演算法的分類 🔗
+比較排序 Comparison Sort 🔗
+
+交換類排序 Exchange Sort
+
+氣泡排序
+快速排序
+
+
+選擇類排序 Selection Sort
+
+選擇排序
+堆積排序
+
+
+插入類排序 Insertion Sort
+
+插入排序
+希爾排序
+
+
+合併類排序 Merge Sort
+
+合併排序
+
+
+
+非比較排序 Non-Comparison Sort 🔗
+
+計數排序
+桶排序
+基數排序
+
+排序演算法的比較 🔗
+
+
+
+排序演算法
+最差時間複雜度
+平均時間複雜度
+最佳時間複雜度
+空間複雜度
+方式
+穩定度
+
+
+
+
+氣泡排序
+O(n2)O(n^2)
+θ(n2)\theta(n^2)
+ω(n)\omega(n)
+O(1)O(1)
+In-place
+✅
+
+
+選擇排序
+O(n2)O(n^2)
+θ(n2)\theta(n^2)
+ω(n2)\omega(n^2)
+O(1)O(1)
+In-place
+❌
+
+
+插入排序
+O(n2)O(n^2)
+θ(n2)\theta(n^2)
+ω(n)\omega(n)
+O(1)O(1)
+In-place
+✅
+
+
+合併排序
+O(nlog⁡n)O(n\log n)
+θ(nlog⁡n)\theta(n \log n)
+ω(nlog⁡n)\omega(n\log n)
+O(n)O(n)
+Out-place
+✅
+
+
+快速排序
+O(n2)O(n^2)
+θ(nlog⁡n)\theta(n\log n)
+ω(nlog⁡n)\omega(n\log n)
+O(log⁡n)O(\log n)
+In-place
+❌
+
+
+堆積排序
+O(nlog⁡n)O(n\log n)
+θ(nlog⁡n)\theta(n\log n)
+ω(nlog⁡n)\omega(n\log n)
+O(1)O(1)
+In-place
+❌
+
+
+希爾排序
+O(nlog⁡2n)O(n \log^2 n)
+θ(nlog⁡n)\theta(n\log n)
+ω(nlog⁡2n)\omega(n \log^2 n)
+O(1)O(1)
+In-place
+❌
+
+
+計數排序
+O(n+k)O(n+k)
+θ(n+k)\theta(n+k)
+ω(n+k)\omega(n+k)
+O(k)O(k)
+Out-place
+✅
+
+
+桶排序
+O(n2)O(n^2)
+θ(n+k)\theta(n+k)
+ω(n+k)\omega(n+k)
+O(n+k)O(n+k)
+Out-place
+❌
+
+
+基數排序
+O(n×k)O(n \times k)
+θ(n×k)\theta(n \times k)
+ω(n×k)\omega(n \times k)
+O(n+k)O(n+k)
+Out-place
+✅
+
+
+
+特點與優缺點 🔗
+
+
+
+排序演算法
+主要特點
+優點
+缺點
+
+
+
+
+氣泡排序
+一種簡單的交換排序演算法，每次將相鄰的元素進行比較和交換
+實現簡單，程式易懂
+時間複雜度較高，效率低
+
+
+選擇排序
+每次選出最小（大）的元素放到已排序序列的末尾
+實現簡單，程式易懂，穩定
+時間複雜度較高，效率低
+
+
+插入排序
+將未排序元素逐個插入到已排序的序列中，從後往前比較
+實現簡單，對小規模資料排序效率高
+時間複雜度較高，對大規模資料排序效率較低
+
+
+合併排序
+分治策略，將序列遞迴划分為子序列，然後將子序列合併
+時間複雜度較低，效率較高，穩定
+需要較大的輔助空間
+
+
+快速排序
+分治策略，選定一個基準元素，將序列分為左右兩部分，遞迴排序
+時間複雜度較低，效率較高，適用於大規模資料排序
+不穩定，最壞情況下時間複雜度較高
+
+
+堆積排序
+將序列構建成大根堆（小根堆），每次將堆頂元素與末尾元素交換，重新調整堆
+時間複雜度較低，效率較高，適用於大規模資料排序
+不穩定
+
+
+希爾排序
+插入排序的改進版本，設定一個增量，將序列劃分為若干子序列進行排序
+對於中等規模資料排序效率較高
+不穩定
+
+
+計數排序
+統計序列中各元素的出現次數，根據出現次數和元素值的關係排序
+時間複雜度較低，適用於資料範圍較小的整數排序
+對於資料範圍較大的情況需要較大的輔助空間
+
+
+桶排序
+將元素劃分到不同的桶中，對每個桶中的元素進行排序，最後合併
+適用於元素值分佈較均勻的情況，時間複雜度較低
+對於元素值分佈不均勻的情況效率較低
+
+
+基數排序
+按照元素的位數進行排序，從低位到高位進行排序，每一位使用穩定排序演算法進行排序
+適用於大規模資料排序且穩定，可以處理多關鍵字排序
+需要額外的記憶體空間且時間複雜度高，效率較低
+
+
+
+文章總結 🔗
+在本文中，我們介紹了 10 種常見的排序演算法，每種演算法都有其優點和缺點。
+在實際應用中，需要根據具體的情況選擇最適合的排序演算法。
+如果你想學習排序演算法，我建議利用本文章及網路上各種資源，理解各個演算法中的原理，並且嘗試自己實作出這些演算法。
+通過不斷的練習，你將能更深入地理解這些排序演算法的原理和應用，或許能夠應用來解決現實中的問題，希望此篇文章能讓你有所收穫！
+
+參考資料 🔗
+
+維基百科：排序算法
+資料結構和演算法：排序演算法
+菜鳥教程：排序算法
+排序算法動畫
+Sorting Algorithm
+Sorting algorithms on GeeksforGeeks
+15 Sorting Algorithms in 6 Minutes - YT
+
+
+此篇文章因內容繁多，所以在整理資料及撰寫上，可能會有些錯誤，也請大家多留言或善用右側聊天室提出問題，我會馬上勘誤修正，謝謝。
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>DSA</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>實作</tag>
+        <tag>時間 &amp; 空間複雜度</tag>
+        <tag>排序演算法 Sort Algorithm</tag>
+        <tag>氣泡排序 Bubble Sort</tag>
+        <tag>選擇排序 Selection Sort</tag>
+        <tag>插入排序 Insertion Sort</tag>
+        <tag>合併排序 Merge Sort</tag>
+        <tag>快速排序 Quick Sort</tag>
+        <tag>堆積排序 Heap Sort</tag>
+        <tag>希爾排序 Shell Sort</tag>
+        <tag>計數排序 Counting Sort</tag>
+        <tag>桶排序 Bucket Sort</tag>
+        <tag>基數排序 Radix Sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NFIRC 南附資研社 - 從零開始的社團創辦與經營之路</title>
+    <url>/post/NFIRC/</url>
+    <content><![CDATA[創社計畫 🔗
+創社歷程、成果、心得與反思 🔗
+撰寫中 … 🔗
+第一屆年報 🔗
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>社團</category>
+      </categories>
+      <tags>
+        <tag>南附資研社</tag>
+        <tag>NFIRC 1st</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>訓練神經網路計算過程</title>
+    <url>/post/Neural-Network/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/Neural-Network/
+公開發布日期：2023/12/23
+
+這是一個具有一層隱藏層的神經網路：
+
+假設 🔗
+
+輸入層有 3 個節點，輸入 X 中有 3 筆數據，其標籤為 Y：
+
+X=[1202−32−1−13],Y=[12−3]    X = 
+        \begin{bmatrix}
+            1 &amp; 2 &amp; 0   \\
+            2 &amp; -3 &amp; 2  \\
+            -1 &amp; -1 &amp; 3 \\
+        \end{bmatrix},
+    Y = 
+        \begin{bmatrix}
+            1  \\
+            2  \\
+            -3 \\
+        \end{bmatrix}
+
+W1=[−10−111−1]    W_1 = 
+        \begin{bmatrix}
+            -1 &amp; 0 \\
+            -1 &amp; 1 \\
+            1 &amp; -1 \\
+        \end{bmatrix}
+
+
+隱藏層有 2 個節點，隱藏層權重矩陣為 W1W_1，線性組合 Z=XW1Z=XW_1，
+經過激活函數 σ\sigma 後的值為 KK，即 K=σ(Z)K = \sigma(Z)
+另激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)
+輸出層有 1 個節點，其權重矩陣為 W2W_2，線性輸出 O=KW2O=KW_2
+
+W2=[1−2]    W_2 = 
+        \begin{bmatrix}
+            1  \\
+            -2 \\
+        \end{bmatrix}
+
+
+將輸出值與標籤去計算損失，令損失為 JJ，假設使用加總型式的最小平方損失
+
+J=∑(12(O−Y)2)J = \sum (\frac{1}{2}(O-Y)^2) 
+
+此時，已知輸出層梯度：
+Gout=∂J∂O=O−YG_{out} = \frac{\partial J}{\partial O}=O-Y
+
+
+隱藏層梯度：
+
+G2=∂J∂W2=∂J∂O∂O∂W2=((Gout)T⋅K)T=KTGout\begin{equation}
+    \begin{aligned}
+        G_2
+        &amp;= 
+            \frac{\partial J}{\partial W_2}
+         = 
+            \frac{\partial J}{\partial O} \frac{\partial O}{\partial W_2} 
+            \\\\
+        &amp;= 
+            ((G_{out})^T \cdot K)^T 
+         = 
+            K^TG_{out}
+    \end{aligned}
+\end{equation}
+
+
+ReluRelu 函數的微分式：
+
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+    \begin{cases}
+        0 \quad x &lt; 0   \\
+        1 \quad x \ge 0 \\
+    \end{cases}
+
+
+先假定一個暫存的 GtempG_{temp} ：
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積
+
+輸入層梯度：
+
+G1=∂J∂W1=∂J∂O∂O∂K∂K∂Z∂Z∂W1=(((Gout⋅W2T)∘σ′(Z))T⋅X)T=((Gtemp)T⋅X)T=XTGtemp\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            \frac{\partial J}{\partial W_1}
+         = 
+            \frac{\partial J}{\partial O} 
+            \frac{\partial O}{\partial K}
+            \frac{\partial K}{\partial Z}
+            \frac{\partial Z}{\partial W_1} 
+            \\\\
+        &amp;= 
+            (((G_{out} \cdot W^T_2) \circ \sigma^{\prime} (Z))^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            ((G_{temp})^T \cdot X)^T 
+            \\\\
+        &amp;= 
+            X^TG_{temp}
+    \end{aligned}
+\end{equation}
+
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+
+假設我們採用隨機梯度下降法來進行更新，且學習率令為 0.10.1，則
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+問題 🔗
+求矩陣 Z,K,O,Gout,G2,σ′(Z),Gtemp,G1,W1new,W2newZ,K,O,G_{out},G_2,\sigma^{\prime}(Z),G_{temp},G_1,W_1^{new},W_2^{new}
+
+求解過程皆省略公式推導過程，將直接使用最終結果代入計算
+
+
+ZZ
+由線性組合 Z=XW1Z=XW_1：
+Z=XW1=[1202−32−1−13]⋅[−10−111−1]=[−323−55−4]\begin{equation}
+    \begin{aligned}
+        Z
+        &amp;= 
+            XW_1 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; 0   \\
+                2 &amp; -3 &amp; 2  \\
+                -1 &amp; -1 &amp; 3 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+KK
+由經過激活函數 σ\sigma 後的值 K=σ(Z)K = \sigma(Z)，且激活函數 σ\sigma 為 ReluRelu 函數， σ(x)=Relu(x)=max(x,0)\sigma(x)=Relu(x)=max(x,0)：
+K=σ(Z)=σ ([−323−55−4])=[023050]\begin{equation}
+    \begin{aligned}
+        K 
+        &amp;= 
+            \sigma(Z) 
+            \\\\
+        &amp;= 
+            \sigma\ 
+            (
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}
+            ) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+OO
+輸出層有 1 個節點，其權重矩陣為 W2W_2，由線性輸出 O=KW2O=KW_2：
+O=KW2=[023050]⋅[1−2]=[−435]\begin{equation}
+    \begin{aligned}
+        O 
+        &amp;= 
+            KW_2 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 2 \\
+                3 &amp; 0 \\
+                5 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GoutG_{out}
+由輸出層梯度 Gout=O−YG_{out} = O-Y：
+Gout=O−Y=[−435]−[12−3]=[−518]\begin{equation}
+    \begin{aligned}
+        G_{out} 
+        &amp;= 
+            O-Y 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -4 \\
+                3  \\
+                5  \\
+            \end{bmatrix} 
+            - 
+            \begin{bmatrix}
+                1  \\
+                2  \\
+                -3 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G2G_2
+由隱藏層梯度 G2=KTGoutG_2 = K^TG_{out}，其中 KTK^T 為 矩陣 KK 的轉置：
+K=[023050],KT=[035200]K = 
+    \begin{bmatrix}
+        0 &amp; 2 \\
+        3 &amp; 0 \\
+        5 &amp; 0 \\
+    \end{bmatrix},
+K^T = 
+    \begin{bmatrix}
+        0 &amp; 3 &amp; 5 \\
+        2 &amp; 0 &amp; 0 \\
+    \end{bmatrix}
+
+G2=KTGout=[035200]⋅[−518]=[43−10]\begin{equation}
+    \begin{aligned}
+        G_2 
+        &amp;= 
+            K^TG_{out} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 3 &amp; 5 \\
+                2 &amp; 0 &amp; 0 \\
+            \end{bmatrix} 
+            \cdot
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+σ′(Z)\sigma^{\prime}(Z)
+其中 σ′\sigma^{\prime} 為 ReluRelu 函數的微分式：
+σ′(x)={0x&lt;01x≥0\sigma^{\prime}(x) = 
+\begin{cases}
+    0 \quad x &lt; 0   \\
+    1 \quad x \ge 0 \\
+\end{cases}
+
+σ′(Z)=σ′([−323−55−4])=[011010]\begin{equation}
+    \begin{aligned}
+        \sigma^{\prime}(Z)
+        &amp;= 
+            \sigma^{\prime}(
+            \begin{bmatrix}
+                -3 &amp; 2 \\
+                3 &amp; -5 \\
+                5 &amp; -4 \\
+            \end{bmatrix}) 
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+GtempG_{temp}
+由假定暫存的 Gtemp=(Gout⋅W2T)∘σ′(Z)G_{temp} = (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z)
+其中的 ⋅\cdot 代表一般的矩陣乘法、∘\circ 代表阿達瑪乘積，為對應位置的矩陣元素乘積，且 W2TW_2^T 為矩陣 W2W_2 的轉置：
+W2=[1−2],W2T=[1−2]W_2 = 
+    \begin{bmatrix}
+        1  \\
+        -2 \\
+    \end{bmatrix},
+W_2^T = 
+    \begin{bmatrix}
+        1 &amp; -2 \\
+    \end{bmatrix}
+
+Gtemp=(Gout⋅W2T)∘σ′(Z)=([−518]⋅[1−2])∘[011010]=[−5101−28−16]∘[011010]=[0101080]\begin{equation}
+    \begin{aligned}
+        G_{temp} 
+        &amp;= 
+            (G_{out} \cdot W^T_2) \circ \sigma^{\prime}(Z) 
+            \\\\
+        &amp;=  (
+            \begin{bmatrix}
+                -5 \\
+                1  \\
+                8  \\
+            \end{bmatrix} \cdot
+            \begin{bmatrix}
+                1 &amp; -2
+            \end{bmatrix}
+            ) \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -5 &amp; 10 \\
+                1 &amp; -2 \\
+                8 &amp; -16 \\
+            \end{bmatrix}
+            \circ 
+            \begin{bmatrix}
+                0 &amp; 1 \\
+                1 &amp; 0 \\
+                1 &amp; 0 \\
+            \end{bmatrix} 
+            \\\\
+        &amp;=
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0 \\
+                8 &amp; 0 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+G1G_1
+由輸入層梯度 G1=XTGtempG_1 = X^TG_{temp}，其中 XTX^T 為 矩陣 XX 的轉置：
+X=[1202−32−1−13],XT=[12−12−3−1023],X = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; 0   \\
+        2 &amp; -3 &amp; 2  \\
+        -1 &amp; -1 &amp; 3 \\
+    \end{bmatrix},
+X^T = 
+    \begin{bmatrix}
+        1 &amp; 2 &amp; -1   \\
+        2 &amp; -3 &amp; -1  \\
+        0 &amp; 2 &amp; 3    \\
+    \end{bmatrix},
+
+G1=XTGtemp=[12−12−3−1023]⋅[0101080]=[−610−1120260]\begin{equation}
+    \begin{aligned}
+        G_1
+        &amp;= 
+            X^TG_{temp}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1 &amp; 2 &amp; -1   \\
+                2 &amp; -3 &amp; -1  \\
+                0 &amp; 2 &amp; 3    \\
+            \end{bmatrix}
+            \cdot
+            \begin{bmatrix}
+                0 &amp; 10 \\
+                1 &amp; 0  \\
+                8 &amp; 0  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+W1new,W2newW_1^{new},W_2^{new}
+
+可用 G1,G2G_1,G_2 梯度更新權重 W1,W2W_1,W_2 的值，得到新權重 W1new,W2newW_1^{new},W_2^{new}，
+已知我們採用隨機梯度下降法來進行更新，且學習率為 0.10.1，則
+
+{W1new=W1−0.1×G1W2new=W2−0.1×G2\begin{cases}
+    W_1^{new} = W_1 - 0.1 \times G_1 \\
+    W_2^{new} = W_2 - 0.1 \times G_2 \\
+\end{cases}
+
+W1new=W1−0.1×G1=[−10−111−1]−0.1×[−610−1120260]=[−10−111−1]−[−0.61−1.122.60]=[−0.4−10.1−1−1.6−1]\begin{equation}
+    \begin{aligned}
+        W_1^{new}
+        &amp;= 
+            W_1 - 0.1 \times G_1
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                -6 &amp; 10  \\
+                -11 &amp; 20 \\
+                26 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                -0.6 &amp; 1  \\
+                -1.1 &amp; 2  \\
+                2.6 &amp; 0   \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -0.4 &amp; -1 \\
+                0.1 &amp; -1  \\
+                -1.6 &amp; -1 \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+W2new=W2−0.1×G2=[1−2]−0.1×[43−10]=[−10−111−1]−[4.3−1]=[−3.3−1]\begin{equation}
+    \begin{aligned}
+        W_2^{new}
+        &amp;= 
+            W_2 - 0.1 \times G_2
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                1  \\
+                -2 \\
+            \end{bmatrix}
+            - 0.1 \times
+            \begin{bmatrix}
+                43   \\
+                -10  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -1 &amp; 0 \\
+                -1 &amp; 1 \\
+                1 &amp; -1 \\
+            \end{bmatrix}
+            - 
+            \begin{bmatrix}
+                4.3 \\
+                -1  \\
+            \end{bmatrix}
+            \\\\
+        &amp;= 
+            \begin{bmatrix}
+                -3.3 \\
+                -1   \\
+            \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>神經網路 Neural Network</tag>
+        <tag>損失函數 Loss Function</tag>
+        <tag>梯度下降演算法 Gradient Descent</tag>
+        <tag>激活函數 Activity Function</tag>
+        <tag>AI 人工智慧</tag>
+        <tag>矩陣 Matrix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>南九校資訊社 x 成大資工 x SCIST 2024 聯合寒訓 - 資得其樂 籌辦心得</title>
+    <url>/post/SCIST-Camp-2024/</url>
+    <content><![CDATA[
+本篇文章連結：https://4yu.dev/post/SCIST-Camp-2024/
+公開發布日期：2024/02/08
+
+寒訓詳細資訊 🔗
+
+引言 🔗
+在 2023/11/25 這次的寒訓總召 茶碗蒸 私訊我問說要不要一起辦寒訓，但其實我們南附資研在 2023/11/13 幹部線上開會時就有討論到說寒假要辦營隊，本來沒想說要辦那麼大規模的寒訓，那時的規劃主要是開放給校內的所有學生和老師，大概會舉辦講座提供給校內對資訊領域有興趣的人，且主題訂為資訊領域的多元課程。
+後來思考過後決定接下本次寒訓副召，一開始的召群有南女的總召 茶碗蒸、一中的副召 KCC 還有我，加上 Fishhh、Eason 和 Curious 這三位 SCIST S4 的總召們協助，讓我們日後籌備更順利。
+
+籌備階段 🔗
+我們是先開了線上會議，確認好活動目的與受眾，排好 Deadline 後才開始籌備，一開始是要先招募工作人員，因為有茶碗蒸這個 SCIST 文書在，所以各種表單很快就做好了，而且他也有之前辦茶會迎新的經驗，所以初期還挺順利的，也在一開始就把各校的邀請訊息發出去了，最後是找到了 9 間學校聯合主辦，而 SCIST 則是掛協辦，提供我們講師助教等課程上的資源，我們也開始著手撰寫計劃書、排時間表、預估經費、詢問場地租借…等。在計劃書撰寫上感謝小白幫了很大的忙，而其他的事情也很幸運有上一屆寒訓的 PJ、Koying…等人的努力，有留下文檔提供我們很多資訊可作參考，讓我們在初期不容易迷失方向，對我們幫助很大。
+在短短的一週內，就收到了個主辦校報名的工作人員 35 人左右，其中我從南附資研中就拉了 10 幾個人來當行政，加上 SCIST 的講師及助教，最後行政組達到了 50 人左右。
+
+我們接著開放學員報名，一開始報名狀況其實不是很好，我們很怕無法收到預估的學員人數，所以加強了各校的宣傳，我也以擔任小編的經驗到各大社團和營隊網站上刊登廣告，後來發現報名期間只有第一週和最後一週報名人數才會增加的現象…
+在這要感謝成功大學資工系的 Colten 幫忙處理成大場地以及接線讓成大資工系與本次寒訓合作，讓推廣曝光提升了很多，也提供了我們成大超級棒的階梯教室和電腦教室場地給寒訓使用，也要特別感謝副召 KCC 不斷地與南一中接洽，才能有超大的群英堂提供我們舉辦晚會活動。
+
+過了學員報名期限，很開心的我們收到了超過 100 多位學生的報名，接下來就是繁瑣篩選學員環節，繁瑣是因為要閱讀大量的試算表內容，根據報名者的意願、動機、對資訊領域的了解及熱忱來篩選出 80 位實體學員參與為期 3 天的寒訓，然後要開始寄錄取和未錄取通知信，也開始開放學員繳費，過程中遇到了一些困難與挑戰。
+
+挑戰與學習 🔗
+在做行政的過程中，會不小心放錯連結之類的，當下其實滿慌的，很難及時補救，所以很感謝有行政組的其他人幫忙處理，我也在這次的籌備過程中學到了很多應對問題的方法，讓我了解到做事須謹慎小心且要再三確認，也在當行政的過程中，學習到如何回信、如何應對突發狀況等。
+團隊分工合作 🔗
+在籌備期間我們團隊訂好 Deadline，由召群這分派給每個職位工作，行政組招收了活動、隊輔、總務、場務、美宣和醫護，將每個職位開討論區讓各組員交流更便利，且將資訊公開透明，也將各種連結彙整在一起，讓行政組同步且避免落差，很感謝各組組長非常積極的參與和組員的配合，讓我體會到團隊分工合作的重要性。
+
+活動組 🔗
+這次寒訓的所有遊戲內容和晚會皆由活動組規劃，我覺得他們非常辛苦，比我們召群還要肝，他們從上任就開始想活動、出題、討論流程，常常看到他們在開會，我大部分都會在，感受到他們的忙碌，要絞盡腦汁的思考有什麼團康遊戲可以玩，思考如何讓學員們破冰，讓彼此在短時間內互相熟悉了解，這裡要特別感謝 YuDong、OsGa 和 Joyce 三位超強的活動，前兩位甚至是三天裡最辛苦的主持人，而活動組長 YuDong 和隊輔組長 Joyce 的規劃和執行能力也讓我相當佩服，這三天有這麼精彩的活動真的要歸功於他們
+
+    [{"url":"https://hackmd.io/_uploads/HJxGBXroT.png","alt":"活動組開會","title":""},{"url":"https://hackmd.io/_uploads/rJa7UaQoT.png","alt":"活動組規劃","title":""},{"url":"https://hackmd.io/_uploads/Bkf8pASia.png","alt":"題庫","title":""},{"url":"https://hackmd.io/_uploads/rkl48J8sT.png","alt":"大地遊戲關主分配","title":""}]
+  
+隊輔組 🔗
+隊輔組是人數最多的一組，因為我們總共招收了 85 位實體學員，所以收了 18 位隊輔，負責帶領小隊完成這三天的所有活動，還要做小隊牌、點名、帶跳小隊舞(這點子不是我想的)…等繁雜的工作，是需要有責任感且能了解活動流程的人擔任
+
+    [{"url":"https://hackmd.io/_uploads/SJbTwaQi6.png","alt":"隊輔組開會","title":""},{"url":"https://hackmd.io/_uploads/SkcTL1Usa.png","alt":"小隊舞音樂","title":""},{"url":"https://hackmd.io/_uploads/H1msjkIsT.png","alt":"隊輔組點名","title":""}]
+  
+總務組 🔗
+總務組只有兩個人，負責事前的訂餐與金錢的管控，是非常重要的角色
+
+    [{"url":"https://hackmd.io/_uploads/HkGd6y8iT.png","alt":"餐點店家","title":""},{"url":"https://hackmd.io/_uploads/r1adxgUi6.png","alt":"金錢規劃與收支紀錄","title":""}]
+  
+場務組 🔗
+場務組負責拍照、餐點搬運、場復…等工作，要在大家休息的時候努力工作，非常辛苦，感謝場務這三天的付出。
+美宣組 🔗
+這次的美宣組只有 JT Lin 一個人，他非常辛苦要製作所有工作人員和實體學員的名牌、獎狀、參與證明…等，需要大量的時間製作，還要兼任隊輔，是一個效率高且負責的人，只不過這三天滿諧咖的
+
+    [{"url":"https://hackmd.io/_uploads/ByjPvkIi6.png","alt":"宣傳圖","title":""},{"url":"https://hackmd.io/_uploads/rJWnPyUs6.png","alt":"美宣工作","title":""},{"url":"https://hackmd.io/_uploads/Hyuu_yLjp.jpg","alt":"名牌","title":""}]
+  
+課程內容 🔗
+這次因為 SCIST 協辦，所以有了講師以及助教，感謝講師們在寒訓前辛苦的準備課程講義，每位都帶給學員很大的幫助，以下是我整理的課程資源彙整，大家可以善加利用
+課程資源彙整 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HJGrUmAha.jpg","alt":"20240206_101644","title":""},{"url":"https://hackmd.io/_uploads/HkRNI7Rha.jpg","alt":"20240206_101837","title":""},{"url":"https://hackmd.io/_uploads/BJKIIX02p.jpg","alt":"DSC_3378","title":""},{"url":"https://hackmd.io/_uploads/HyY8IX02p.jpg","alt":"DSC_3383","title":""},{"url":"https://hackmd.io/_uploads/BJKU8mCnp.jpg","alt":"DSC_3385","title":""},{"url":"https://hackmd.io/_uploads/HkML8QC36.jpg","alt":"DSC_3396","title":""},{"url":"https://hackmd.io/_uploads/BkdL8mC3p.jpg","alt":"DSC_3444","title":""},{"url":"https://hackmd.io/_uploads/S1tII70hT.jpg","alt":"DSC_3452","title":""},{"url":"https://hackmd.io/_uploads/rkHULmC2a.jpg","alt":"DSC_3456","title":""},{"url":"https://hackmd.io/_uploads/H1L8UQ0na.jpg","alt":"DSC_3458","title":""},{"url":"https://hackmd.io/_uploads/B1wULQR2T.jpg","alt":"DSC_3460","title":""},{"url":"https://hackmd.io/_uploads/S1X88QRhT.jpg","alt":"DSC_3485","title":""},{"url":"https://hackmd.io/_uploads/HyuILQ036.jpg","alt":"DSC_3503","title":""},{"url":"https://hackmd.io/_uploads/HkYUL703T.jpg","alt":"DSC_3505","title":""},{"url":"https://hackmd.io/_uploads/SkwUU7R36.jpg","alt":"DSC_3514","title":""},{"url":"https://hackmd.io/_uploads/rkeUI7Rha.jpg","alt":"IMG_7065","title":""},{"url":"https://hackmd.io/_uploads/SJiH8Q0h6.jpg","alt":"IMG_7081","title":""},{"url":"https://hackmd.io/_uploads/SJw4UQ03T.jpg","alt":"IMG_9032","title":""},{"url":"https://hackmd.io/_uploads/r1UVUm026.jpg","alt":"IMG_9036","title":""},{"url":"https://hackmd.io/_uploads/rJLNU7Rh6.jpg","alt":"IMG_9086","title":""}]
+  
+活動內容 🔗
+先放照片 下面剩下的文字內容等我有空再補 …
+開幕與破冰 🔗
+
+    [{"url":"https://hackmd.io/_uploads/HkhetmAnT.jpg","alt":"20240205_085547","title":""},{"url":"https://hackmd.io/_uploads/ry4bFQ03a.jpg","alt":"20240205_085620","title":""},{"url":"https://hackmd.io/_uploads/Hk21Y7Ahp.jpg","alt":"20240205_093011","title":""},{"url":"https://hackmd.io/_uploads/H1HlFXAh6.jpg","alt":"20240205_093051","title":""},{"url":"https://hackmd.io/_uploads/BkagYX02p.jpg","alt":"20240205_093139","title":""},{"url":"https://hackmd.io/_uploads/ry1-t7Anp.jpg","alt":"20240205_093648","title":""},{"url":"https://hackmd.io/_uploads/S1JbFQC2p.jpg","alt":"20240205_093708","title":""},{"url":"https://hackmd.io/_uploads/rkigK7A2p.jpg","alt":"20240205_093714","title":""},{"url":"https://hackmd.io/_uploads/ByHxFXR3a.jpg","alt":"20240205_093746","title":""},{"url":"https://hackmd.io/_uploads/S16ltX0hT.jpg","alt":"20240205_093822","title":""},{"url":"https://hackmd.io/_uploads/SyHlFQAha.jpg","alt":"20240205_093916","title":""},{"url":"https://hackmd.io/_uploads/BJlixKQCnT.jpg","alt":"20240205_093947","title":""},{"url":"https://hackmd.io/_uploads/HJKeFXC2p.jpg","alt":"20240205_094010","title":""},{"url":"https://hackmd.io/_uploads/rJMetmChT.jpg","alt":"20240205_094025","title":""},{"url":"https://hackmd.io/_uploads/rJ_xKmAnp.jpg","alt":"20240205_094042","title":""},{"url":"https://hackmd.io/_uploads/SyDso7A3T.jpg","alt":"DSC_3550","title":""},{"url":"https://hackmd.io/_uploads/rkdooXA3a.jpg","alt":"DSC_3372","title":""},{"url":"https://hackmd.io/_uploads/SkDiiXR3p.jpg","alt":"DSC_3263","title":""},{"url":"https://hackmd.io/_uploads/HkOssmR2a.jpg","alt":"20240205_094324","title":""},{"url":"https://hackmd.io/_uploads/rkujoQ0np.jpg","alt":"20240205_094148","title":""},{"url":"https://hackmd.io/_uploads/ryuojXR2T.jpg","alt":"20240205_094125","title":""},{"url":"https://hackmd.io/_uploads/Bkusjm0hp.jpg","alt":"20240205_090344","title":""},{"url":"https://hackmd.io/_uploads/S1lWYXA3a.jpg","alt":"20240205_094358","title":""},{"url":"https://hackmd.io/_uploads/Hy7WF70h6.jpg","alt":"20240205_094504","title":""},{"url":"https://hackmd.io/_uploads/BJJxYQC26.jpg","alt":"20240205_094856","title":""},{"url":"https://hackmd.io/_uploads/ByPltXA3T.jpg","alt":"20240205_095313","title":""},{"url":"https://hackmd.io/_uploads/Bk5gtmRhT.jpg","alt":"20240205_095827","title":""},{"url":"https://hackmd.io/_uploads/BJylKQ03p.jpg","alt":"20240205_100114","title":""},{"url":"https://hackmd.io/_uploads/HyK1FQR2a.jpg","alt":"20240205_100417","title":""},{"url":"https://hackmd.io/_uploads/S1mgYQC3p.jpg","alt":"20240205_101227","title":""}]
+  
+贊助商分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1jw37Cnp.jpg","alt":"IMG_7336","title":""},{"url":"https://hackmd.io/_uploads/r1hvh7C2a.jpg","alt":"DSC_3652","title":""},{"url":"https://hackmd.io/_uploads/SJnv3QRnp.jpg","alt":"DSC_3609","title":""},{"url":"https://hackmd.io/_uploads/S13P2QC3a.jpg","alt":"DSC_3602","title":""},{"url":"https://hackmd.io/_uploads/rJ2P27Rha.jpg","alt":"DSC_3571","title":""},{"url":"https://hackmd.io/_uploads/B12v3XRna.jpg","alt":"20240206_132112","title":""}]
+  
+遊戲活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/SJ98cmy6T.jpg","alt":"20240205_195634","title":""},{"url":"https://hackmd.io/_uploads/SyGu9XyTp.jpg","alt":"20240206_194936","title":""},{"url":"https://hackmd.io/_uploads/HJGucQy6p.jpg","alt":"20240206_195113","title":""},{"url":"https://hackmd.io/_uploads/HyfO5m166.jpg","alt":"20240206_195918","title":""},{"url":"https://hackmd.io/_uploads/HkGu5mJpp.jpg","alt":"20240206_200137","title":""},{"url":"https://hackmd.io/_uploads/rkf_cQJT6.jpg","alt":"20240206_200804","title":""},{"url":"https://hackmd.io/_uploads/r1fdcmy66.jpg","alt":"20240206_200805","title":""},{"url":"https://hackmd.io/_uploads/HJhK5XyaT.jpg","alt":"DSC_3475","title":""},{"url":"https://hackmd.io/_uploads/S1e2Yq7JTa.jpg","alt":"DSC_3480","title":""},{"url":"https://hackmd.io/_uploads/ryxhF5XJ6T.jpg","alt":"DSC_3653","title":""},{"url":"https://hackmd.io/_uploads/SJnY5mypT.jpg","alt":"DSC_3854","title":""},{"url":"https://hackmd.io/_uploads/r1hY9mJpp.jpg","alt":"IMG_7110","title":""},{"url":"https://hackmd.io/_uploads/S16Yq7k6T.jpg","alt":"IMG_7114","title":""},{"url":"https://hackmd.io/_uploads/HkhtcmypT.jpg","alt":"IMG_7117","title":""},{"url":"https://hackmd.io/_uploads/S1hK9Q1pT.jpg","alt":"IMG_7120","title":""},{"url":"https://hackmd.io/_uploads/HynFqQyTp.jpg","alt":"IMG_7122","title":""},{"url":"https://hackmd.io/_uploads/rknK5Q1pp.jpg","alt":"IMG_7125","title":""},{"url":"https://hackmd.io/_uploads/HJ3Ycm1a6.jpg","alt":"IMG_7127","title":""},{"url":"https://hackmd.io/_uploads/r1htcQ1p6.jpg","alt":"IMG_7133","title":""},{"url":"https://hackmd.io/_uploads/SJnYc716p.jpg","alt":"IMG_7136","title":""},{"url":"https://hackmd.io/_uploads/ry3F9XyTp.jpg","alt":"IMG_7139","title":""},{"url":"https://hackmd.io/_uploads/rJg2Yq7k6T.jpg","alt":"IMG_7141","title":""},{"url":"https://hackmd.io/_uploads/ryght57ypp.jpg","alt":"IMG_7143","title":""},{"url":"https://hackmd.io/_uploads/SJe3K5mJpa.jpg","alt":"IMG_7144","title":""},{"url":"https://hackmd.io/_uploads/S12Y9X1TT.jpg","alt":"IMG_7146","title":""},{"url":"https://hackmd.io/_uploads/rJ3Y5QyTp.jpg","alt":"IMG_7171","title":""},{"url":"https://hackmd.io/_uploads/HkehF5my6p.jpg","alt":"IMG_7186","title":""},{"url":"https://hackmd.io/_uploads/By3YqXJap.jpg","alt":"IMG_7196","title":""},{"url":"https://hackmd.io/_uploads/HkxnF571pp.jpg","alt":"IMG_7224","title":""},{"url":"https://hackmd.io/_uploads/SJg3Kq7kaT.jpg","alt":"IMG_7225","title":""},{"url":"https://hackmd.io/_uploads/SknKq7kTT.jpg","alt":"IMG_7227","title":""},{"url":"https://hackmd.io/_uploads/r13K57Jpa.jpg","alt":"IMG_7228","title":""},{"url":"https://hackmd.io/_uploads/rJe3KqQ1aT.jpg","alt":"IMG_7246","title":""},{"url":"https://hackmd.io/_uploads/rJhF5XyTa.jpg","alt":"IMG_7247","title":""},{"url":"https://hackmd.io/_uploads/H1hY97ypa.jpg","alt":"IMG_7395","title":""},{"url":"https://hackmd.io/_uploads/Skl2FcXJ6a.jpg","alt":"IMG_7401","title":""},{"url":"https://hackmd.io/_uploads/ByAO5XyTT.jpg","alt":"IMG_9050","title":""}]
+  
+晚會 🔗
+
+闖關活動 🔗
+
+    [{"url":"https://hackmd.io/_uploads/ryUD3m1aT.jpg","alt":"20240207_091051","title":""},{"url":"https://hackmd.io/_uploads/BkrwhQypa.jpg","alt":"20240207_092117","title":""},{"url":"https://hackmd.io/_uploads/H1rvnXyaT.jpg","alt":"20240207_104938","title":""},{"url":"https://hackmd.io/_uploads/ByLv2m1aa.jpg","alt":"DSC_3856","title":""},{"url":"https://hackmd.io/_uploads/S1Lv3Xkaa.jpg","alt":"DSC_3875","title":""},{"url":"https://hackmd.io/_uploads/SJLD37Jap.jpg","alt":"DSC_3880","title":""},{"url":"https://hackmd.io/_uploads/S1Dvh7kTT.jpg","alt":"DSC_3881","title":""},{"url":"https://hackmd.io/_uploads/H1vw2mk6T.jpg","alt":"DSC_3883","title":""},{"url":"https://hackmd.io/_uploads/r18wh716T.jpg","alt":"DSC_3884","title":""},{"url":"https://hackmd.io/_uploads/Sywvh7JT6.jpg","alt":"DSC_3887","title":""},{"url":"https://hackmd.io/_uploads/By8PhQ1a6.jpg","alt":"DSC_3901","title":""},{"url":"https://hackmd.io/_uploads/ry8PhQkpp.jpg","alt":"DSC_3910","title":""},{"url":"https://hackmd.io/_uploads/rk8v3m1ap.jpg","alt":"DSC_3911","title":""},{"url":"https://hackmd.io/_uploads/B1LDnXkpp.jpg","alt":"DSC_3915","title":""},{"url":"https://hackmd.io/_uploads/BkLwnmy66.jpg","alt":"DSC_3916","title":""},{"url":"https://hackmd.io/_uploads/BJvD2QkT6.jpg","alt":"DSC_3921","title":""},{"url":"https://hackmd.io/_uploads/SJwD27ypT.jpg","alt":"DSC_3924","title":""},{"url":"https://hackmd.io/_uploads/BkgIvnQypa.jpg","alt":"DSC_3928","title":""},{"url":"https://hackmd.io/_uploads/rJIvhmypT.jpg","alt":"DSC_3948","title":""},{"url":"https://hackmd.io/_uploads/SJvv2m1TT.jpg","alt":"DSC_3951","title":""},{"url":"https://hackmd.io/_uploads/B1eIv2QJ66.jpg","alt":"DSC_3961","title":""},{"url":"https://hackmd.io/_uploads/H1xUP37JTa.jpg","alt":"DSC_3979","title":""},{"url":"https://hackmd.io/_uploads/SJlIvh7Jap.jpg","alt":"DSC_3994","title":""},{"url":"https://hackmd.io/_uploads/HyIw3QyTa.jpg","alt":"DSC_4010","title":""},{"url":"https://hackmd.io/_uploads/ryUD2Xkpa.jpg","alt":"DSC_4019","title":""},{"url":"https://hackmd.io/_uploads/r1LDhQkaT.jpg","alt":"DSC_4029","title":""},{"url":"https://hackmd.io/_uploads/B1xIP2mJTp.jpg","alt":"DSC_4040","title":""},{"url":"https://hackmd.io/_uploads/HyxUv3Q1a6.jpg","alt":"DSC_4048","title":""},{"url":"https://hackmd.io/_uploads/ByxIvnXk6T.jpg","alt":"DSC_4113","title":""},{"url":"https://hackmd.io/_uploads/HJl8v3mJTp.jpg","alt":"DSC_4125","title":""},{"url":"https://hackmd.io/_uploads/BkgLDhm16T.jpg","alt":"DSC_4131","title":""},{"url":"https://hackmd.io/_uploads/rkeUPnQyTT.jpg","alt":"DSC_4160","title":""},{"url":"https://hackmd.io/_uploads/BygDD27kTa.jpg","alt":"IMG_7522","title":""},{"url":"https://hackmd.io/_uploads/ryvP3my6a.jpg","alt":"IMG_7529","title":""},{"url":"https://hackmd.io/_uploads/SyPw271p6.jpg","alt":"IMG_7530","title":""},{"url":"https://hackmd.io/_uploads/Hk8PhQJap.jpg","alt":"IMG_7532","title":""}]
+  
+經驗分享 🔗
+
+    [{"url":"https://hackmd.io/_uploads/rJS9jQkTp.jpg","alt":"DSC_4264","title":""},{"url":"https://hackmd.io/_uploads/SyS5j71aa.jpg","alt":"DSC_4255","title":""},{"url":"https://hackmd.io/_uploads/rkH5iQkaa.jpg","alt":"DSC_4240","title":""},{"url":"https://hackmd.io/_uploads/rkr5s7kpT.jpg","alt":"DSC_4247","title":""},{"url":"https://hackmd.io/_uploads/Bkrco7kT6.jpg","alt":"DSC_4226","title":""},{"url":"https://hackmd.io/_uploads/BkB9oXk6a.jpg","alt":"DSC_4215","title":""},{"url":"https://hackmd.io/_uploads/SkH5j7JaT.jpg","alt":"DSC_4220","title":""},{"url":"https://hackmd.io/_uploads/S1BqsXkpa.jpg","alt":"DSC_4214","title":""},{"url":"https://hackmd.io/_uploads/SkBciXypT.jpg","alt":"20240207_135837","title":""},{"url":"https://hackmd.io/_uploads/BJS9s7k6a.jpg","alt":"DSC_4209","title":""},{"url":"https://hackmd.io/_uploads/SJr5o7yaT.jpg","alt":"20240207_135437","title":""},{"url":"https://hackmd.io/_uploads/rkHqj7J66.jpg","alt":"20240207_135238","title":""},{"url":"https://hackmd.io/_uploads/S1S9jm1Tp.jpg","alt":"20240207_135221","title":""},{"url":"https://hackmd.io/_uploads/Syrcom1T6.jpg","alt":"20240207_134445","title":""},{"url":"https://hackmd.io/_uploads/rkHco716T.jpg","alt":"20240207_134024","title":""}]
+  
+頒獎與閉幕 🔗
+
+    []
+  
+大合照 🔗
+
+回饋 🔗
+
+    [{"url":"https://hackmd.io/_uploads/H1Uq5TQj6.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/SJFyo6Qja.png","alt":"image","title":""},{"url":"https://hackmd.io/_uploads/S1Ylspmjp.png","alt":"image","title":""}]
+  
+檢討與反思 🔗
+照片整理了很久，等我有空再來回補文字
+未來展望 🔗
+待更新…
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>心得</category>
+        <category>營隊</category>
+      </categories>
+      <tags>
+        <tag>SCIST</tag>
+        <tag>資訊社</tag>
+        <tag>寒訓</tag>
+        <tag>營隊</tag>
+        <tag>AI</tag>
+        <tag>DC Bot</tag>
+        <tag>成大資工</tag>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 中央大學</title>
+    <url>/post/SPC-NCU/</url>
+    <content><![CDATA[人數 🔗
+
+錄取名額：3
+
+一般組：2
+資安組：1
+採聯招方式
+
+
+符合報名資格人數：56
+過書審進面試人數：15
+
+時程 🔗
+
+報名：10/04 ~ 10/09
+面試名單：10/22
+面試：10/29
+放榜：11/19
+
+
+面試前 🔗
+我早起從臺南趕高鐵去桃園，然後坐計程車到中大準時報到，門口滿壯觀的是一個上坡跟中大校徽
+
+面試地點在工程五館
+
+我們先在二樓特選生休息室等待，冰川超社牛問其他人要不要加入 Discord 群
+
+由於那教室裡面網路超爛，所以我就出去走廊陽台透氣滑手機，wifecake 走過來跟我聊天（那時還不知道他是誰）
+面試順序是照書審分數由高到低排序的，我是第五位，前一個是 Eason，後一個是冰川，輪到我時有一個酷酷的學長帶上去三樓門口等待，他人超好一直跟我聊天，然後發現他也是臺南人，更巧的是他姐高中跟我同一間，另一個姐跟 Eason 同一間
+
+面試過程 🔗
+👨🏻‍🏫：教授（有五個，只有中間那個有講話）
+🤡：我
+（學長開門，Eason 走出來，我走進去跟教授打個招呼，然後開簡報）
+🤡：（介紹申請動機與家庭背景）
+🤡：（介紹檢定成績）
+👨🏻‍🏫：（打斷我介紹 直接開問）你是怎麼自學的
+🤡：（回答內容摘要：SCIST 線上資源、網路教材）
+👨🏻‍🏫：你為什麼會想考大學生在考的 CPE
+🤡：（回答內容摘要：檢驗自身程式能力、訓練英文閱讀能力，看看自己在大學生中的排名）（👨🏻‍🏫 轉過去對右邊的教授點頭微笑一下）
+（介紹程式競賽與資安領域的表現）
+👨🏻‍🏫：如何維持大學的學業
+🤡：（回答內容摘要：先修、時間管理）
+🤡：（介紹其他特殊經歷）
+👨🏻‍🏫：進大學後的研究方向
+🤡：（回答內容摘要：深度強化學習）
+🤡：（未來展望與結尾）
+🤡：請問教授還有問答環節嗎
+👩🏻‍🏫（最右邊的女教授）：因為時間滿久的剛剛問題有問完了
+中大原本公告：
+實際上：教授在自我介紹時打斷直接開問，中間因為還沒介紹完簡報我怕時間不夠用所以回答的沒有很完整就繼續介紹了，最後用了大概 10 分鐘左右
+
+面試後 🔗
+面試完後跟 冰川、Eason、隨風（Eason 的學長 之前的中大資工特選生）一起走去學校外面吃一間不錯的漢堡
+
+路途一直飄雨感覺中大這地理位置真的很潮濕，後來還去咖啡廳，有聊到他們都沒有被打斷介紹直接問問題，他們覺得是教授是對內容有興趣才會打斷，但我覺得讓我在介紹完簡報後再提問我會回答的更好一點
+
+結果 🔗
+雖然中大資工分成兩組，但是因為採聯招方式，所以報名時可以兩組都選而且只要繳費一次，面試也是只要一次，放榜之後會依照志願序分配組別
+放榜結果：
+
+一般組：備取 1（正取 2 人、備取 7 人）遞補錄取
+資安組：正取（正取 1 人、備取 3 人）
+
+心得 🔗
+中大放榜之後，我心中放下一塊大石，因為第一間就正取了，後面幾間面試時我其實都沒什麼壓力了，個人認為中大資工教授比較喜歡有接觸 AI 的人（一般組正取兩個都是做 AI 科展專題的旺宏金牌，我也有碰 AI 所以資安組正取 + 一般組備 1），後來才聽說原來系上有 90% 教授實驗室的研究方向都是 AI，還有舉辦 AI CUP 競賽的 AI 李白 – 蔡宗翰教授，而且偏好有接觸社群貢獻和多方面發展的人，太專精在競程反而會給比較低分，因為教授可能已經覺得這人會錄取特別喜歡競程的清大（實例：今年跟去年都有是清大正取且進過 TOI 選訓營一階的人在中央是備取很後面或未錄取），不過我是沒特別專精在某個領域但有很多特殊經歷的，所以在這裡對我來說會比較有優勢，但在其他學校就不一定了
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中央大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 臺灣師範大學</title>
+    <url>/post/SPC-NTNU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+一般組
+資安組
+
+
+
+
+報名人數
+83
+48
+
+
+過書審進面試人數
+17
+16
+
+
+錄取名額
+5
+3
+
+
+
+時程 🔗
+
+報名：10/01 ~ 10/09
+面試名單：11/12
+面試：11/15
+放榜：12/05
+
+
+面試前 🔗
+臺師大把我這個臺南人排在第二個面試，我必須要超早起搭第一班高鐵才能趕得上，第一次在外面等高鐵站開門，還好有 Eason 陪我一起。之前一日資訊營我有來臺師大公館校區當助教所以路途有熟悉的感覺。
+
+
+面試過程 🔗
+臺師大的面試是最特別的，分為三間教室各一個教授，第一間是 3 分鐘自我介紹並要接受提問，第二間是專業問答，有幾個不同主題選兩個並回答問題，第三間是最輕鬆的聊天，有很多卡片可以選擇跟教授聊哪些主題，因為我一般組跟資安組都有進複試所以要面試兩輪
+第一輪面試 🔗
+第一間：自我介紹 🔗
+可使用簡報，我有準備也有在報到時用那邊的電腦上傳到他們給的資料夾，但不知道為什麼進到第一間面試時沒有同步過去導致我是沒有簡報直接講完的
+🤡：我
+👨🏻‍🏫：陳教授
+
+🤡：（自我介紹）
+👨🏻‍🏫：Supervised learning 跟 Unsupervised learning 的差別
+🤡：差別在於訓練時有沒有 Label，監督式學習資料與標籤之間的關係可以用來預測新資料，
+非監督式學習是要找出資料之間隱藏的內部結構
+👨🏻‍🏫：你的強化學習專案是用什麼算法
+🤡：有用過 DQN 和 PPO
+👨🏻‍🏫：Loss Function 有什麼不同
+🤡：DQN 是透過最小化誤差來學習 Q 值，PPO 比較像是學習一個策略
+👨🏻‍🏫：有考英文檢定嗎
+🤡：目前正在準備多益
+聊到外面學長敲門才出去，問到的都有回答出來，感覺第一間自我介紹的提問比第二間專業問題的提問還要更專業，還有很多人說在第一間被全英文問答，教授口音又很重，他們感覺滿慌的，我最後一題回答完後剛好學長敲門我才沒被用英文問，後來去查臺師大教授名單找了才知道原來專長是機器學習還在國外留學過難怪會這樣
+第二間：專業問答 🔗
+🤡：我
+👨🏻‍🏫：紀教授
+
+🤡：（進去先簡單自我介紹了一分鐘）
+👨🏻‍🏫：螢幕上的主題選兩個，可以不用選資安，因為你這次面完要接著考筆試
+
+
+
+
+
+
+
+
+
+
+演算法
+資料結構
+程式設計
+
+
+?
+?
+?
+
+
+資訊安全
+人工智慧
+?
+
+
+X
+其他
+X
+
+
+
+
+我忘記 ? 的是什麼了
+
+🤡：人工智慧 和 資料結構
+👨🏻‍🏫：解釋 圖靈測試
+🤡：由艾倫圖靈提出的思想實驗，目的是在測驗電腦能不能讓人類分辨不出來是在跟人還是電腦對話
+👨🏻‍🏫：解釋 K-NN
+🤡：K 近鄰算法，機器學習裡面預測一個新資料是哪個類別時，看看離它最近的 K 個資料是什麼類別來決定答案
+
+然後就開始聊我的強化學習專案技術細節：Reward Funtion 是如何設計之類的
+
+👨🏻‍🏫：好先換資料結構 解釋 stack 特性與應用
+🤡：特性是先進後出，像堆疊盤子一樣，先想到應用的是括號匹配的題目，還有維護單調隊列之類的
+👨🏻‍🏫：BST 最佳 / 最差情況 &amp; 如何解決
+🤡：最佳情況的話 BST 是平衡的 O(log N)，最差會變成一條鏈 O(N)，解決方法就是用像 set 這種底層是紅黑樹之類的資料結構
+第三間：卡片閒聊 🔗
+🤡：我
+👨🏻‍🏫：蔣教授
+
+👨🏻‍🏫：應該知道第三關要做什麼吧
+🤡：有先上網看過別人心得，結果真的是卡片
+👨🏻‍🏫：四張主要卡片選幾張介紹自己：
+
+可複選所以我選擇全部都講一次
+
+
+高中生活：描述高中生活
+🤡：高一開始考 APCS 並創了校內資訊社團，高二經營社團、到處打比賽、參與社群、擔任各種課程講師、高三擔任社群總召、準備特選，因為一直都有目標而且想持續進步所以過得滿精彩的
+特殊之處：與其他特選生的不同之處
+🤡：除了刷題精進自己能力以外，還有創社、講課、投入社群等不同的多元表現
+特殊選才：為何投入特殊選才、何時開始的、做了什麼準備
+🤡：是因為有了這些特殊經歷才讓我想嘗試這個管道、高二暑假、審視自己和規劃未來並調整心態
+未來展望：希望進大學後成為一個怎樣的人
+🤡：我希望能成為自己曾經想成為的樣子，知道自己在做什麼，為了目標努力，充實自己大學生活的人
+
+👨🏻‍🏫：選 3 張卡片描述未來想做的事
+
+社團領導
+師資培育
+學術研究
+海外留學
+程式競賽
+企業培訓
+
+
+我其實也想每張都選，但最後因為時間關係所以只選了 3 張能讓我結合自身經歷的
+
+
+社團領導：對應我創社當社長和擔任社群總召的經歷
+師資培育：對應擔任課程講師、助教的經歷
+程式競賽：可以組隊打 ICPC、AI CUP 之類的競賽
+
+
+講完之後教授翻開卡片背面，每張背面都有台師大歷屆學生的相關成果，有點宣傳的效果
+
+整個過程滿輕鬆的，教授全程笑笑的，感覺真的是想透過卡片與聊天過程認識一個人的經歷與特質，我回答的時候有下意識地挑一些對我比較有優勢的地方特別提出來講，所以第一輪面試很順利也還滿有把握的
+
+資安組筆試 🔗
+資安組除了面試之外還有筆試，我甚至當天到現場才知道這件事，根本完全沒準備直接裸考 🤡，而且時間超級緊迫，我第一輪面試完要馬上衝去別棟筆試完再回來面試第二輪
+一、程式設計 🔗
+
+ans = ?
+
+#include&lt;stdio.h&gt;int main()&#123;    int ans=0;    for(int i=0,j=0;i&lt;5;j+=(i++))        ans+=j;    printf(&quot;%d&quot;,ans);&#125;
+
+ans = ?
+
+#include&lt;stdio.h&gt;int f(int x,int y)&#123;    return x | (1 &lt;&lt;y);&#125;int main()&#123;    int ans = f(2,7);    printf(&quot;%d&quot; , ans);&#125;
+
+當輸入 50 時
+
+為何會印出 50 0 0？
+為何會印出stack smashing detected？
+
+
+
+#include&lt;stdio.h&gt;int main()&#123;    int8_t a=10 ,b=23, c=44;    scanf(&quot;%d&quot;,&amp;a);    printf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);&#125;
+二、系統安全 🔗
+
+linux 檔案權限中的 s 是什麼意思？
+proc/version 為何佔用 0 byte
+如果要將 test.pdf 隱藏起來，那該要怎麼去打 linux command
+
+三、網路 🔗
+
+ping 的原理
+家中的ip分享器原理
+為何網頁有時會顯示不安全，至少寫出3個原因
+
+四、密碼學 🔗
+
+手算凱撒密碼（密文忘了）
+在 1～124 中取一個數乘以 17，再除以 125 要餘 1，1～143 中與 143 互質的數有幾個
+證明 16 bits 的 key 不安全
+
+
+感謝 yih 背出來的題目 Orz
+
+寫完之後回到原本那棟的地下一樓休息室等第二輪面試，遇到很多認識的人大家一起聊天，OsGa 剛好在台北還特別過來師大陪我一起組黃氏兄弟，也遇到了 Ricky，他想從臺科大重特到臺師大，詳細過程可以看 這篇文章 真心佩服他的勇氣，然後因為第一間自我介紹我有準備簡報但用不了就去找行政人員問了一下，發現另一個女生也跟我遇到同樣問題一起來問，我覺得他滿眼熟的感覺是我當某一場課程講師教過的學員。後來我重新上傳了一次在第二輪終於有簡報可以用了
+
+第二輪面試 🔗
+第一間 🔗
+
+用簡報快速帶過第一輪介紹過的經歷，因為是資安組面試所以最後有詳細補充我在 AIS3 Junior 2024 拿到最佳專題獎的實作內容
+
+👨🏻‍🏫：LLaMA 是什麼
+
+他的反應讓我感覺不是要我解釋 LLM，而是他真的不知道有 LLaMA，直到我說類似 GPT 他才懂
+
+👨🏻‍🏫：AI 想的漏洞攻擊方法有比人類更好、更快嗎，如果沒有的話，你們專案有 AI 跟沒 AI 有什麼差別
+
+顯然完全放錯重點，我們專案是模擬駭客利用購物網站上的 AI 客服助手透過 Prompt Injection 的方式攻擊網站漏洞，而不是讓 AI 想出攻擊方法，反正他一直重複問類似的問題，我不管回答什麼他都跳針到最後時間結束，感覺他自己不太接觸資安領域，所以隨便想了個問題來一直問，出去之後覺得心情滿差的
+
+第二間：專業問答 🔗
+教授看到我又來一次，就不考專業問題了，直接開始聊天
+👨🏻‍🏫：你覺得剛剛考資安筆試的題目如何
+
+因為這份題目是他出的
+
+👨🏻‍🏫：有什麼問題想問嗎
+🤡：我想問關於 APCS 改制的問題，因為看到網路上有消息透露 APCS 要改成類似英檢那樣分級的新制度，這是假消息還是已經確定了
+👨🏻‍🏫：你們消息傳好快，是有這件事不過我是不太清楚詳細內容，而且負責的教授現在人在國外。時間還很多還有想問的嗎
+🤡：那我想了解一下師資培育的一些細節
+👨🏻‍🏫：校內有指定要修師培的課，然後要考核通過才行，我自己也是負責師資培育的，看過外面很多不太合格的資訊老師，所以對臺師大的學生滿有信心的
+🤡：那臺師大有什麼資源可以先修或需要提前準備什麼事情
+👨🏻‍🏫：我有開 TouTube 頻道：Neokent 的線上課程 可以去按讚訂閱分享開啟小鈴鐺。不然你之前是透過什麼資源學程式的
+🤡：之前學程式是參加 SCIST 演算法培訓課程 ，我現在擔任 S5 的總召
+👨🏻‍🏫：每年都會有 SCIST 的人上來這裡面試，印象滿深刻的
+第三間：專業問答 🔗
+
+教授看到我又來了就說不用翻卡牌了 直接開始閒聊
+
+👨🏻‍🏫：上面的教授都問了些什麼？
+👨🏻‍🏫：想問你們考生對目前 APCS 的看法，有沒有什麼建議？
+🤡：觀念題計分方式可更透明、觀念題型可以更偏邏輯思考而非透過複雜化考倒學生、Code Style 可以統一、實作題檢定系統可優化、入場證件多元開放（學生證、健保卡）而不限於身分證、場次可再新增一場，並且時整體日期可以往前調，避免現在檢定成績公布時間都來不及趕上各種報名時需要的證明
+👨🏻‍🏫：依你的專長領域來特選為什麼會想投資安組 還是想說順便投的？
+🤡：雖然資安經歷比較沒有競程經歷多，但對資安和 AI 領域都有興趣
+
+教授看了桌上的表，上面有大家的主要經歷
+
+👨🏻‍🏫：你會兩組都進是因為有其他特殊經歷是別人沒有的所以加了不少分
+👨🏻‍🏫：你有 AIS3 最佳專題獎，我看到今天很多人也都有，想知道為什麼？
+🤡：除了不同年度之外，還分為 AIS3 和 AIS3 Junior，AIS3 有不同類別的主題，每個主題都有最佳專題獎，AIS3 Junior 則是只有前兩名有，所以今天才會有那麼多人有最佳專題獎。
+
+面試後 🔗
+面試後跟一群人（OsGa、Ricky、yih、soar）一起去吃師大學餐，自助餐價格跟菜色都還算可以，但是餐廳滿熱的，吃完就跟 Eason 逛北車地下街，最後搭客運還差點趕不上，因為我們不知道上車的地方在五樓，總之就是行程很趕很累的一天
+
+結果 🔗
+一般組：正取（正取 5 人、備取 9 人） 🔗
+資安組：未錄取（正取 3 人、備取 7 人） 🔗
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>臺灣師範大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 中興大學</title>
+    <url>/post/SPC-NCHU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+一般組
+資安組
+
+
+
+
+報名人數
+57
+44
+
+
+過書審進面試人數
+8
+19
+
+
+錄取名額
+1
+3
+
+
+
+時程 🔗
+
+報名：10/28 ~ 11/10
+面試名單：12/02
+面試：12/06
+放榜：12/20
+
+
+面試過程 🔗
+中興我也是兩組都報名也都有進二階所以要面試兩次，有兩間教室一間面試一間給特選生休息和社交，然後時間到要出去走廊坐椅子排隊準備，面試要坐在講台自我介紹且沒有簡報，下面有五位教授坐一排輪流提問
+第一次面試 🔗
+👨🏻‍🏫：教授
+🤡：我
+🤡：（自我介紹）
+👨🏻‍🏫 1：除了程式以外你知道資工系還有哪些課程嗎
+🤡：除了程式以外有比較重要的數學例如微積分、離散、線性代數、機率與統計之類的
+👨🏻‍🏫 2：介紹一下 Heap
+🤡：一個可以用來維護極值的資料結構
+👨🏻‍🏫 2：那跟直接找有什麼差別？
+🤡：用 Heap 時間複雜度是 O(log⁡n)O(\log n)，直接找要 O(n)O(n)
+👨🏻‍🏫 2：為什麼？
+🤡：因為 Heap 是一個完全二元樹
+👨🏻‍🏫 2：那插入元素怎麼實作
+🤡：先放在最左葉節點，然後一直不斷跟父節點交換直到保證所有子節點都比較小
+👨🏻‍🏫 3：當講師的課程內容是什麼
+🤡：自己編的課程教材有 Python 語法、C++ 語法、基本資料結構和演算法、AI 機器學習入門
+👨🏻‍🏫 4：介紹一下學科能力競賽
+🤡：教育部辦給高中生的演算法競賽，分區域複賽和全國決賽，我有兩年拿到複賽佳作
+第二次面試 🔗
+👨🏻‍🏫 5：又見面了！
+🤡：（補充資安 &amp; AI 經歷）
+👨🏻‍🏫 5：未來想從事什麼工作
+🤡：AI/ML 軟體工程師
+👨🏻‍🏫 3：有具體一點的方向嗎
+🤡：RL 應用例如 FSD 全自動駕駛系統之類的
+👨🏻‍🏫 3：不錯，那還有很多東西要學，加油！
+👨🏻‍🏫 1：你在台南讀書，你那間學校和家齊、南二中有什麼區別
+🤡：我們學校是綜高，其他都是高中，而我是普高自然組…（後面不知道講到什麼就順便帶到創社團和辦營隊的事情了）
+👨🏻‍🏫 4：那你上大學之後想做什麼事
+🤡：：加入實驗室做研究，希望能發一篇 RL paper，並爭取一些實習機會，然後持續推廣資訊教育之類的
+補充：Eason 後來有跟我說他除了也被問 Heap 之外還被問到 OOP 和特性，沒事先準備的話較難短時間內解釋清楚
+
+面試後 🔗
+當天剛好也是海洋大學面試，有些人面完中興馬上衝去基隆，雖然我也有進海大複試但我選擇不去，跟剩下的一些人待在休息室社交，結果有一位教授就過來跟我們聊天，在場的特選生有 @chao、@Sam、@y1wen、@che
+
+
+教授就問我們從哪裡來的，感覺他很認真聽我們的自我介紹，對每個人都有印象，然後說今年有面試是他發起的因為去年沒有，chao 有問教授說：資安組的報名條件其實一般組也達得到，如果一般組沒資安背景的人來特資安組有機會上嗎？教授說其實進來後都是資工系沒有分組，只是這幾年有多了資安外加名額讓面試的時候分流，不過最後都還是會看能力來決定是否錄取
+後來下午還有很多時間我就在校園到處逛逛，發現學校裡就有 Subway、85°C、路易莎，中央輸光
+
+然後在吃小木屋鬆餅的時候接到海大打過來的面試提醒電話。。。
+
+
+結果 🔗
+
+一般組：備取 4（正取 1 人、備取 7 人）遞補到備取 2
+資安組：正取（正取 3 人、備取 10 人）遞補到備取 6
+
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中興大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 成功大學</title>
+    <url>/post/SPC-NCKU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+甲組（競程）
+乙組（開發）
+
+
+
+
+報名人數
+?
+?
+
+
+過書審進面試人數
+28
+42
+
+
+錄取名額
+4
+4
+
+
+
+時程 🔗
+
+報名：10/17 ~ 10/23
+面試名單：11/08
+面試：11/16
+放榜：12/11
+
+
+成大沒有面試只有上機考，分為甲組（競程）和乙組（開發），甲組就是考一些 DSU、Greedy、快速冪、LCA+倍增法、歐拉定理之類的東西，詳細題目忘記了沒背出來，我當天超級燒雞，打不贏那些全國賽競程選手，最後當然是沒上，然後我們這屆是成大資工最後一屆特選甲組，蘇文鈺教授說 115 就會把甲組名額給乙組了，乙組的話是考模擬無人車協作之類的專案，好像是要 debug 或寫新功能吧，然後要會用 Docker + GitLab CI/CD，優勢是乙組可以用 AI 協助，所以有人上機考前付費訂閱了 Claude 丟問題上去就能拿到分數了超好笑
+
+
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>成功大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 清華大學</title>
+    <url>/post/SPC-NTHU/</url>
+    <content><![CDATA[人數 🔗
+
+
+
+人數
+A 組（競程）
+B 組（資安）
+
+
+
+
+報名人數
+87
+26
+
+
+過書審進面試人數
+26
+23
+
+
+錄取名額
+6
+3
+
+
+
+時程 🔗
+
+報名：10/08 ~ 10/14
+面試名單：11/29
+面試：12/08
+放榜：12/13
+
+
+面試前 🔗
+上次來清大是 IONC 真懷念，搭高鐵上來北部發現變冷了
+
+在休息室社交，看劉宇勝大跳「解開我」，旁邊還有冰川，清大面試就看到一些進資訊奧林匹亞選訓營的電神，已經想到自己可能不會錄取了，單純來體驗的而已
+
+
+面試過程 🔗
+分為兩間教室，第一間自我介紹 + 問答，第二間有競賽題目要逐一翻開現場思考並說明做法
+第一間 🔗
+👨🏻‍🏫：教授
+🤡：我
+🤡：（自我介紹）
+👨🏻‍🏫：你學習的資源都如何獲取
+🤡：SCIST 線上資源 &amp; 實體培訓
+👨🏻‍🏫：怎麼拉到 30 萬贊助的
+🤡：寫計畫書，寄信給科技公司邀請合作
+👨🏻‍🏫：如何達成合作的，是單方面投資嗎
+🤡：算是互利，有不同贊助方案，協助企業曝光和培育人才
+👨🏻‍🏫：怎麼有那麼多時間投入這些多元表現的，那些社群啊、社團和競賽之類的
+🤡：壓縮自己的娛樂和休息時間，有熱忱和目標就會一直投入時間在這些事情上面
+第二間 🔗
+
+
+完全連接多重圖，按特定順序移除點，問何時 1 與 v 不連通？|E| &lt;= 2|V|。
+
+
+N 人分 K 組，任兩組之間的仇恨值為 F(A, B) = min(f(a, b), ∀a∈A, b∈B)，使任兩組仇恨值最小值最大。
+
+
+N*N 的棋盤，盤上有一些棋，可重複移除最上、下一列，左、右一行，每次移除不可超過 K 顆棋，你會怎麼移除？
+
+
+總共有 N 層樓，從一樓開始需要到達指定樓層 K，總共有 M 個電梯從左往右排，電梯能從一個區間 [l, r] 搭並且只能搭到 r 樓，你只能在同一層由左往右走不能回頭。
+
+
+面試後 🔗
+Koying 跟 temmie 帶我們去清夜吃了一間火鍋，吃完到超算的實驗室逛逛，然後又去吃了好吃的豆花冰沙之後，才跟 Eason 一起坐客運回台南
+
+
+
+結果 🔗
+
+未錄取（正取 6 人、備取 11 人）遞補到備取 9
+選訓營競程仔們全正取，看來清大每年都保持同樣的喜好和標準
+
+
+回到特選心得彙整
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>清華大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資工特選 - 中山大學</title>
+    <url>/post/SPC-NSYSU/</url>
+    <content><![CDATA[人數 🔗
+
+錄取名額：3
+符合報名資格人數：70
+過書審進面試人數：22
+
+時程 🔗
+
+報名：10/16 ~ 10/22
+面試名單：11/19
+面試：11/22
+放榜：12/11
+
+
+面試前 🔗
+中山面試前 3 天中央就放榜了，因為我是正取已經有學校讀了所以那天完全沒有任何壓力，就當作是去高雄一日遊，我甚至穿短褲去面試（因為高雄很熱）
+感謝跟我同校的許又勻（特選生命科學系）的媽媽開車載我們去面試
+面試在下午所以中午先跟 Eason、冰川、Youtong 先去吃中山學餐，那個樓層設計很酷，選擇滿多的但我點的唐揚雞便當不好吃，旁邊有山有海風景很好
+
+面試過程 🔗
+中山是分組團體面試，每組有三個人，在一間超小教室有一個 ㄇ 字型桌子，三個人分別坐在一個邊，要帶自己的電腦展示簡報，有四位教授分成兩組輪流進來聽我們個別自我介紹並現場問答，所以可以聽得到其他兩人的經歷和回覆
+第一組教授 🔗
+👨🏻‍🏫：教授
+🤡：我
+👩🏻‍💻：女特選生
+👨🏻‍💻：男特選生
+👩🏻‍💻：（自我介紹：科技女孩計畫、英文很強、數學建模）
+👨🏻‍🏫：科技女孩計畫是什麼？
+👩🏻‍💻：去美國參加夏令營、在國務院演講
+👨🏻‍🏫：解釋剛剛提到的費馬最後定理如何用數學建模
+👩🏻‍💻：忘記了
+👨🏻‍🏫：xn+yn=znx^n + y^n = z^n 在 n&gt;2n &gt; 2 時沒有正整數解
+🤡：（自我介紹）
+👨🏻‍🏫：跟科技公司合作的那個是什麼？
+🤡：在當 SCIST 總召前有舉辦過演算法+資安實體營隊，有邀請贊助 SCIST 的科技公司合作演講活動
+👨🏻‍🏫：你的程式網站有什麼內容？可以 Demo 一下嗎？
+🤡：（現場打開這個網站 https://4yu.dev 滑這些文章給教授看）
+👨🏻‍💻：（自我介紹：APCS 4+3、資研社教學）
+👨🏻‍🏫：為什麼自走車要用 DFS？有嘗試過其它算法嗎？
+👨🏻‍💻：讓他探索碰到死路就換一條，沒有嘗試過別的算法
+第二組教授 🔗
+
+
+👩🏻‍💻：（自我介紹）
+👨🏻‍🏫：有沒有程式相關經驗？
+👩🏻‍💻：在數學建模時有用過 Python
+👨🏻‍🏫：在國務院演講是什麼樣的活動？
+👩🏻‍💻：科技少女計畫
+🤡：（自我介紹）
+👨🏻‍🏫：你 CPE 檢定考到專業級的感想，對 CPE 有什麼建議（這個楊教授就是負責主辦 CPE 的）
+🤡：我覺得考 CPE 可以練習到程式還可以順便練習英文還不錯，賽中有記分板而不是像 APCS 那種後測很棒，建議的話是每次考試的難度浮動可以穩定平衡一點、檢定系統可以更新、希望高中生不用繳錢也能考
+👨🏻‍🏫：你說你以無指導老師的身份代表學校參賽是什麼？你覺得有指導老師跟沒指導老師的差別
+🤡：高中資訊學科能力競賽，沒有指導老師較考驗自學能力
+👨🏻‍💻：（自我介紹）
+👨🏻‍🏫：為什麽不用 BFS
+👨🏻‍💻：沒嘗試過
+👨🏻‍🏫：遇到障礙物能及時反應嗎
+👨🏻‍💻：有在程式裡面判斷
+👨🏻‍🏫：vector array 差別
+👨🏻‍💻：可以改變長度
+
+意外插曲 🔗
+眾所周知，中山大學有很多猴子🐒，我去面試前的路上邊走邊吃冰 🤡，直接被一隻猴子襲擊，不只搶走我的冰還把我的右手背抓出一道傷口😡
+
+學長幫我簡單消毒後忍痛帶傷面試完才搭捷運去大同醫院打破傷風疫苗，董油桐在旁邊一直笑我😮‍💨
+
+面試後 🔗
+打完疫苗我跟 Youtong 和 Eason 就去駁二走走逛逛，還搭了輕軌，我覺得高雄給我的感覺很 Chill，我會想住在高雄但不會想讀中山😂，晚上還去吃了一間要等超久但很頂的拉麵😋
+
+
+
+
+
+結果 🔗
+備取 4（正取 3 人、備取 7 人）遞補錄取
+
+回到特選心得彙整
+點擊回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>特殊選才</category>
+      </categories>
+      <tags>
+        <tag>資訊工程學系</tag>
+        <tag>特殊選才</tag>
+        <tag>中山大學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>資料結構 進階實作（C++）</title>
+    <url>/post/Data-Structures/</url>
+    <content><![CDATA[本篇文章仍在撰寫中 請稍等內容完整後再閱讀… 🔗
+
+本篇文章連結：https://4yu.dev/post/Data-Structures/
+
+Intro 🔗
+此篇文章使用 C++ 來實作各種從基礎到進階的資料結構
+可先閱讀這篇關於 C++ 內建基礎資料結構的 C++ STL 大全 後再回來繼續
+STL 中的基礎資料結構只需學會如何應用即可，而此篇的資料結構則是要自行實作
+內容一樣很多，若有編寫錯誤之處請使用右側聊天室回報給我，將盡快修改
+
+實作資料結構 🔗
+本篇包含以下資料結構的實作
+
+前綴和 &amp; 差分數列
+樹狀數組 BIT
+稀疏表 Sparse Table
+線段樹 Segment Tree
+鏈結串列 Linked-list
+並查集 DSU
+二元搜尋樹 BST
+樹堆 Treap
+伸展樹 Splay Tree
+字典樹 Trie
+rope
+pbds
+
+
+前綴和 &amp; 差分數列 🔗
+本篇開頭以此做為基礎，與其稱呼它們為資料結構，我更傾向將它們視為一種能有效的降低時間複雜度的重要預處理技巧
+前綴和（Prefix Sum）可以簡單理解為 數列由前往後累加的值
+
+建出前綴和數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    p[0] = 0;    for(int i=0;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        sum[i+1] = v[i] + p[i];    &#125;    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：前綴和數列會比原數列多了一項，記得初始化第 0 項為 0
+
+Input 🔗
+51 2 3 4 5
+Output 🔗
+0 1 3 6 10 15 
+快速查詢區間和 🔗
+要查詢數列區間 [l,r][l,r] 的和，原始方法是用迴圈慢慢加
+int sum = 0;for(int i=l;i&lt;=r;++i) sum += p[i];
+有了前綴和後，每次查詢使用一次減法 第 r+1 項 - 第 l 項 即可快速取得區間和，直接將時間複雜度從 O(n)O(n) 降到 O(1)O(1)
+
+int q,l,r; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r;    cout &lt;&lt; p[r+1] - p[l] &lt;&lt; &#x27;\n&#x27;;&#125;
+內建函數 🔗
+std 內建了可以建立前綴和的函數 partial_sum(原數列起點, 原數列終點, 新數列起點)，使用方法如下：
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), p(n+1);    for(auto &amp;i:v) cin &gt;&gt; i;    partial_sum(v.begin(), v.end(), p.begin()+1);    for(auto i:p) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+
+前綴和能快速取得區間和，而快速取得區間的最大/最小值則會用到本篇內容之一的 稀疏表 Sparse Table
+
+
+補充：後綴和（Suffix Sum）
+會前綴和就知道後綴和就是由後往前累加的值，可以自己試著建看看
+
+二維前綴和 🔗
+二維前綴和是前綴和概念在二維空間的擴展，可快速查詢二維平面上任意子矩形的數值總和
+
+首先要先了解排容原理
+A∪B=A+B−A∩BA \cup B = A + B - A \cap B
+
+而二維前綴和也運用了這個原理
+
+建出二維前綴和 🔗
+#include &lt;bits/stdc++.h&gt;#define RPT(i,n) for(int i=1;i&lt;=n;++i)using namespace std;const int N = 100;int tb[N][N], pre[N][N];signed main() &#123;    int r,c; cin &gt;&gt; r &gt;&gt; c;    RPT(i,r) RPT(j,c)    &#123;        cin &gt;&gt; tb[i][j];        pre[i][j] = pre[i-1][j] + pre[i][j-1]                   - pre[i-1][j-1] + tb[i][j];    &#125;    RPT(i,r) RPT(j,c) cout &lt;&lt; pre[i][j] &lt;&lt; &quot; \n&quot;[j == c];&#125;
+Input 🔗
+3 31 2 34 5 67 8 9
+Output 🔗
+1 3 65 12 2112 27 45
+查詢子矩形總和 🔗
+建完二維前綴和後每個子矩形皆會在右下角的點形成總和
+查詢任意子矩形都可以用排容原理計算出來
+不用使用雙重迴圈一個一個加起來
+以下示範計算 (x1,y1) 到 (x2,y2) 的子矩形總和
+
+int q; cin &gt;&gt; q;while(q--)&#123;    int x1,x2,y1,y2;    cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;    x1--; y1--;    int sum = pre[x2][y2] - pre[x1][y2]             - pre[x2][y1] + pre[x1][y1];    cout &lt;&lt; ans &lt;&lt; &#x27;\n&#x27;;&#125;
+差分數列 🔗
+與前綴和相反的概念，差分數列為原數列相鄰元素的差值
+建出差分數列 🔗
+#include &lt;bits/stdc++.h&gt;using namespace std;signed main() &#123;    int n; cin &gt;&gt; n;    vector&lt;int&gt; v(n), d(n);    cin &gt;&gt; v[0]; d[0] = v[0];    for(int i=1;i&lt;n;++i)    &#123;        cin &gt;&gt; v[i];        d[i] = v[i] - v[i-1];    &#125;    for(auto i:d) cout &lt;&lt; i &lt;&lt; &#x27; &#x27;;&#125;
+我們要解決以下問題：
+在區間 [l,r] 加上 x，經過多次不同的操作後，求最後的數列
+有了差分數列我們就不用每次操作都用迴圈在原數列上從 l 到 r 逐個加上 x
+只需在差分數列上做以下兩步操作：
+
+第 l 項 + x（相當於將原數列第 l 項開始以後的數都 + x）
+第 r+1 項 - x（相當於將原數列第 r+1 項開始以後的數停止 + x）
+
+所以不管區間 [l,r] 多大，都只用兩次加減法操作就能達成在區間 [l,r] 加上 x
+所有操作結束後對差分數列做一次前綴和即可得到最後的數列結果，也成功降低了時間複雜度
+int q,l,r,x; cin &gt;&gt; q;while(q--)&#123;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;    d[l] += x;    d[r+1] -= x;&#125;int sum = 0;for(int i=0;i&lt;n;++i)&#123;    sum += d[i];    cout &lt;&lt; sum &lt;&lt; &#x27; &#x27;;&#125;
+
+注意：此方法只適用於不需要中途詢問的情況，前綴和 &amp; 差分如果要帶修改則會用到本篇內容之一的 BIT 樹狀數組
+
+
+補充：二維差分數列
+可以自行試著建看看，能有效地處理二維矩形區域更新的操作
+
+小結 🔗
+這兩種資料結構在處理區間操作時非常有用，特別是在需要頻繁進行區間求和或區間更新的問題中
+差分和前綴和互為逆運算
+對差分數列做前綴和 或 對前綴和數列作差分 都會獲得 原陣列
+
+本篇文章作者比較懶，仍持續在撰寫中，請稍等內容完整後再閱讀… 🔗
+
+樹狀數組 BIT 🔗
+
+
+稀疏表 Sparse Table 🔗
+
+線段樹 Segment Tree 🔗
+
+鏈結串列 Linked-list 🔗
+
+並查集 DSU 🔗
+
+
+二元搜尋樹 BST 🔗
+
+樹堆 Treap 🔗
+
+伸展樹 Splay Tree 🔗
+
+動態樹 Link-Cut Tree 🔗
+
+字典樹 Trie 🔗
+
+rope 🔗
+
+
+pbds 🔗
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>DSA</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>資料結構 Data Structures</tag>
+        <tag>前綴和 &amp; 差分數列</tag>
+        <tag>樹狀數組 BIT</tag>
+        <tag>稀疏表 Sparse Table</tag>
+        <tag>線段樹 Segment Tree</tag>
+        <tag>鏈結串列 Linked-list</tag>
+        <tag>並查集 DSU</tag>
+        <tag>二元搜尋樹 BST</tag>
+        <tag>樹堆 Treap</tag>
+        <tag>伸展樹 Splay Tree</tag>
+        <tag>動態樹 Link-Cut Tree</tag>
+        <tag>字典樹 Trie</tag>
+        <tag>rope</tag>
+        <tag>pbds</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI 軟體工程師 - 職業達人訪談大啟示（高一輔導課期末報告）</title>
+    <url>/post/Profession-Interview/</url>
+    <content><![CDATA[訪談日期：2022/12/10 🔗
+訪談地點：竹崎高中 🔗
+訪談對象：黃皇賓 老師 🔗
+
+我國中時的資訊領域啟蒙老師
+
+畢業大學校系：中正大學 🔗
+最高學歷：中正電機所 🔗
+曾經的職業：AI 軟體工程師 🔗
+軟體工程師種類與其相關技術心智圖 🔗
+
+
+此心智圖利用Diagrams.net軟體製作，為個人自製，若相關技術有錯誤部分請見諒，使用此圖請附註來源：4yu Blog
+
+軟體工程師工作內容與關係 🔗
+
+工作年資：5年 🔗
+工作單位：車輛研究測試中心 🔗
+
+為中華民國經濟部所屬之非營利研究機構，成立於1990年10月。其宗旨為「提供具國際公信力之車輛及零組件檢測與認證服務，並從事相關之技術研發與產品品質改善發展業務，以達成保障行車安全，維護消費者權益與協助輔導車輛及零組件工業升級發展」。
+
+
+網站：https://www.artc.org.tw/
+
+實際工作內容＆工作目標 🔗
+主要工作項目是為無人自駕車  開發辨識系統 利用AI辨識路況 以下為開發的相關技術：
+
+目標：達成公司要求
+
+無人自駕車網頁連結：https://www.artc.org.tw/tw/research/detail/39
+
+興趣何倫碼 🔗
+
+研究型  I
+實作型 R
+
+重要學科 🔗
+
+數學
+物理
+英文
+資訊科技
+
+相關的知識領域 🔗
+
+數學
+物理
+資訊電子
+網路電信
+工程科技
+機械
+
+須具備的主要能力 🔗
+
+數學推理
+科學能力
+組織能力
+閱讀理解
+計算能力
+外語能力
+抽象推理
+系統開發
+溝通協作
+資訊處理能力
+
+所需的人格特質 🔗
+
+探究性
+合作性
+堅毅性
+自信心
+變通性
+客觀性
+深思性
+愛挑戰
+有興趣
+有熱忱
+創意想法
+抗壓性高
+
+重視的核心素養 🔗
+自主行動
+
+身心素質與自我精進
+系統思考與解決問題
+規劃執行與創新應變
+
+溝通互動
+
+資訊運用與溝通表達
+科技資訊與媒體素養
+
+社會參與
+
+道德實踐與公民意識
+人際關係與團隊合作
+
+可滿足您的工作價值感 🔗
+
+創意追求
+智性激發
+成就感
+經濟報酬
+安全穩定
+工作環境
+上司關係
+同事關係
+錢多事少離家近
+
+選擇這份工作的原因 🔗
+
+本科生
+有興趣
+薪水高
+
+為提升工作專業，需要在哪些部分努力 🔗
+
+程式開發
+產業技術
+溝通能力
+
+一句話形容從事此工作帶給您的感覺 🔗
+每天都有新的挑戰 以及繁忙的工作項目 覺得很具挑戰性 也需要非常強的抗壓性
+對這份工作喜歡程度 (1 ~ 10) 🔗
+7
+原因：因為投資報酬率高
+少三分：
+
+較有挑戰
+事情太多做不完
+長時間工作
+
+分享最有挑戰性的經驗 如何解決此問題的 🔗
+發現開發的程式與實際執行測試的結果不符 需要 Debug
+透過不斷的模擬及測試 一步一步找出問題所在 並確實修正
+
+Debug：除錯或偵錯是發現和減少電腦程式或電子儀器裝置中程式錯誤的一個過程
+
+遇到過什麼挫折或麼事情失敗 如何調適心情 🔗
+Code 寫不出來
+去散散心就好 不要太專注於現有的困難
+有時在散心放鬆時就能想到好辦法
+回憶大學所學，印象深刻的學習是什麼，對未來就業有什麼影響 🔗
+在那時候 AI 人工智慧是一個非常新的技術 在大學修了這門課
+需要去找大量國外的技術論文 閱讀 學習 並實作
+畢業後找到相關工作 符合市場需求
+有做過什麼特別印象深刻的產品或服務嗎? 🔗
+運用 AI 開發無人自駕車的辨識系統 非常具技術性與專業性
+請問職場上男女比例 🔗
+9:1
+對於這樣性別分布情形，你的想法是什麼 🔗
+分布不均 產業現況
+對此工作的未來願景 🔗
+薪水變多 技術上更突破
+若未來想從事這份工作，有何建議或忠告 🔗
+抗壓性要高 耐操
+所需相關證照 🔗
+相關科技畢業
+每日上班工時 🔗
+10 幾個小時 責任制度為主
+薪水 🔗
+新鮮人起薪：50000/月
+月薪：7 ~ 8萬
+福利：三節獎金
+年薪：百萬以上
+以下為各類工程師平均年薪圖：
+
+Q &amp; A 🔗
+
+軟體工程師的種類？（講三個）
+需要什麼能力 或特質（講三個）
+月薪多少？
+
+
+回到導覽頁面
+
+]]></content>
+      <categories>
+        <category>筆記</category>
+        <category>報告</category>
+      </categories>
+      <tags>
+        <tag>軟體工程師</tag>
+        <tag>職業訪談</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello, World.</title>
+    <url>/post/Hello-World/</url>
+    <content><![CDATA[歡迎來到士育的部落格！ 🔗
+網頁介紹 🔗
+此網頁使用了 Hexo 靜態網頁框架
+部署在 Github pages 上
+我使用的 Theme 主題是 Butterfly
+創建日期為 2022/12/01（高一）版本使用 4.5.1（已在 2025/07/06 升級為 5.4.1）
+網頁用途 🔗
+這裡是我的程式筆記網頁
+內容包括資料結構與演算法、機器學習和量子計算等領域
+不會有程式語言基礎語法，因為網路上資源多且詳細
+筆記中的內容或許會有小錯誤或不完整，我會不斷的更新修改
+我也會不定期的發佈各種心得紀錄
+有興趣的人可以參閱其他文章或到上方其他頁面看看
+如果你對文章有任何想法或建議，歡迎在文章下方評論區登入 GitHub 帳號留言你的想法
+或是可以直接使用右下角的「線上聊天室功能」傳訊息給我，我會盡快回覆你的訊息
+若你想開始學程式，請到上方「link 連結」的頁面，我有放許多資源可以提供你學習
+提供的資源涵蓋各種程式語言的基礎語法以及各種程式相關平台與工具
+以及各大程式社群的 Discord 伺服器
+希望能對你有所幫助！
+本網站網址 🔗
+https://4yu.dev
+
+回到導覽頁面
+
+]]></content>
+  </entry>
+</search>
