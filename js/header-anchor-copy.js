@@ -8,8 +8,8 @@
       const button = document.createElement('button')
       button.className = 'header-anchor-copy'
       button.type = 'button'
-      button.title = '複製此標題的連結'
-      button.setAttribute('aria-label', '複製此標題的連結')
+      button.title = '複製此標題的錨點連結'
+      button.setAttribute('aria-label', '複製此標題的錨點連結')
       button.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i>'
 
       button.addEventListener('click', async () => {
@@ -20,14 +20,14 @@
           await navigator.clipboard.writeText(url.href)
           button.classList.add('copied')
           button.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>'
-          button.title = '已複製標題連結'
+          button.title = '已複製錨點連結'
           window.setTimeout(() => {
             button.classList.remove('copied')
             button.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i>'
-            button.title = '複製此標題的連結'
+            button.title = '複製此標題的錨點連結'
           }, 1200)
         } catch (error) {
-          button.title = '無法複製連結，請使用瀏覽器複製功能'
+          button.title = '無法複製錨點連結，請使用瀏覽器複製功能'
         }
       })
 

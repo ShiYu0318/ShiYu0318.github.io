@@ -8,6 +8,16 @@
   padding-right: 1.8em;
 }
 
+.post-content h1::before,
+.post-content h2::before,
+.post-content h3::before,
+.post-content h4::before,
+.post-content h5::before,
+.post-content h6::before {
+  content: none !important;
+  display: none !important;
+}
+
 .post-content .header-anchor {
   margin-right: 0.45em;
   color: #49b1f5;
