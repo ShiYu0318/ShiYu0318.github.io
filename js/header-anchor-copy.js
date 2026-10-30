@@ -1,5 +1,5 @@
 (() => {
-  const headings = '.post-content h1[id], .post-content h2[id], .post-content h3[id], .post-content h4[id], .post-content h5[id], .post-content h6[id]'
+  const headings = '#article-container h1[id], #article-container h2[id], #article-container h3[id], #article-container h4[id], #article-container h5[id], #article-container h6[id]'
 
   function addCopyButtons() {
     document.querySelectorAll(headings).forEach((heading) => {
